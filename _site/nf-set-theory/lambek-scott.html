@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-78ef4ed8d8014daf0fea856a228883a4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d7c918dbda20cac63a795582537877d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -117,24 +117,22 @@ window.Quarto = {
 <span class="menu-text">Logic</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://thing.rodeo/monism/"> 
-<span class="menu-text">Monism</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://thing.rodeo/living-syllabus/"> 
 <span class="menu-text">Living Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://thing.rodeo/git/"> 
-<span class="menu-text">Git</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../nf-set-theory/index.html" aria-current="page"> 
-<span class="menu-text">NF Set Theory</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://thing.rodeo/about/"> 
 <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/#/portal/signin"> 
+<span class="menu-text">Sign in</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/#/portal/signup"> 
+<span class="menu-text"><span class="nav-subscribe-btn">Subscribe</span></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -332,7 +330,11 @@ window.Quarto = {
 </ul>
 <section id="translating-to-json-products-and-limits" class="level3">
 <h3 class="anchored" data-anchor-id="translating-to-json-products-and-limits">Translating to JSON: Products and Limits</h3>
-<p>When building your JSON ontology, you must translate these Cartesian elements into explicit properties: * <strong>The <code>source</code> Array</strong>: In a Cartesian Closed Category, evaluating a function requires the cross-product of the function and the input (<span class="math inline">\(B^A \times A\)</span>). In JSON, represent products by feeding an array of IDs into the <code>source</code> key: <code>"source": ["Exponential_Object", "Domain_Object"]</code>. * <strong>The <code>topology_limits</code> Constraint</strong>: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding <code>"topology_limits": ["no_terminal_object"]</code> to your morphism’s <code>constraints</code> array alerts the validation engine to prevent recursive paradoxes when tracing compositions.</p>
+<p>When building your JSON ontology, you must translate these Cartesian elements into explicit properties:</p>
+<ul>
+<li><strong>The <code>source</code> Array</strong>: In a Cartesian Closed Category, evaluating a function requires the cross-product of the function and the input (<span class="math inline">\(B^A \times A\)</span>). In JSON, represent products by feeding an array of IDs into the <code>source</code> key: <code>"source": ["Exponential_Object", "Domain_Object"]</code>.</li>
+<li><strong>The <code>topology_limits</code> Constraint</strong>: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding <code>"topology_limits": ["no_terminal_object"]</code> to your morphism’s <code>constraints</code> array alerts the validation engine to prevent recursive paradoxes when tracing compositions.</li>
+</ul>
 <hr>
 <div class="card mb-3">
 <div class="card-header">

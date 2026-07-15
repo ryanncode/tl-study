@@ -25,15 +25,24 @@ However, before we map JSON, we must understand the logical and topological boun
 2. **First-Order Logic**: Manually constructing the finite axioms (Hailperin) and stratification rules (Quine) that mathematically authorize this flat ontology.
 3. **The JSON Pivot**: Translating these semantic rules into JSON, the perfect computational medium for modeling a flat, self-referential graph without spatial recursion.
 
-## Connect Your Execution Environment
+## Connect Your Execution Environment: The Digital Garden
 
-To participate in the problem-posing exercises, you must connect your GitHub account. Your answers are serialized as JSON and saved directly to a private repository on your account. 
+To participate in the problem-posing exercises, you must connect your GitHub account. Unlike standard learning platforms, this curriculum does not use a backend database to evaluate your answers with a rigid machine script. 
 
+Instead, this platform acts as a **Stateful Socratic Environment**:
+
+1. **Your Repo is a Digital Garden:** Your creative proofs, essays, and ontological designs are serialized directly to a private GitHub repository that you own. As you progress, these files are synthesized into a personal, publishable artifact.
+2. **Stateful Narrative Progression:** Your creative inputs are highly consequential. The logic you construct in early chapters will be dynamically injected into later prompts, forcing you to live with and defend your own axioms against systemic paradoxes.
+3. **Public Cohort Discussion:** True mathematical proofs are validated by the community, not a machine. When you construct a novel proof, you will have the option to "Publish to Cohort" to debate your logic in the centralized community forum, ensuring your personal repository remains pristine.
 ::: {.callout-important}
 ### Authentication Required
-Click the button below to initiate the GitHub Device Authorization Flow. You will be prompted to enter a generated code on GitHub's official site to grant this application read/write access to your designated repository.
+To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
 
-<button class="btn btn-primary mt-3" onclick="tlStudySync.startDeviceFlow()">Authenticate with GitHub</button>
+1. Click the button below to authenticate.
+2. If this is your first time, you will be prompted to install the App. **Select a brand new, empty, private repository** dedicated to this course.
+3. The app will automatically sync your solutions back to this single, isolated repository.
+
+<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
 :::
 
 ## Chapter Progression

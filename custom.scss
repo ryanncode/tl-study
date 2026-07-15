@@ -1,9 +1,12 @@
 /*-- scss:defaults --*/
 
 $font-family-sans-serif: "Inter", sans-serif !default;
-$navbar-bg: #4a5568 !default;
-$navbar-dark-color: #ffffff !default;
-$body-bg: #f0f4f8 !default;
+$navbar-bg: #e4e9ee !default; /* Blend seamlessly into the body */
+
+/* Kill the default Cosmo neon blue */
+$primary: #4a5568 !default;
+$link-color: #4a5568 !default;
+$link-hover-color: #1a202c !default;
 $body-color: #2d3748 !default;
 
 /*-- scss:rules --*/
@@ -16,28 +19,87 @@ $body-color: #2d3748 !default;
     src: url("https://thing.rodeo/assets/fonts/inter-roman.woff2") format("woff2");
 }
 
-.navbar {
-  border-bottom: none;
+/* Exact Ghost CMS Dark Navbar Replication */
+#quarto-header > .navbar {
+  background-color: #4a5568 !important;
+  height:100px !important; /* One simple parameter: fixed height (increased) */
+  padding: 0 4vmin !important; /* Remove vertical padding to let flexbox center perfectly within the height */
+  border: none;
   font-family: $font-family-sans-serif;
-  padding: 1rem 2rem;
 }
 
-.navbar-brand {
+#quarto-header .navbar-container {
+  max-width: 1200px;
+  height: 100%; /* Fill the fixed 80px height */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#quarto-header .navbar-brand-container {
+  flex: 0 0 auto;
+  margin: 0 !important;
+}
+
+#quarto-header .navbar-brand {
+  font-size: 23px; 
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #ffffff !important;
+  color: rgba(255, 255, 255, 0.95) !important; /* Softened from pure white */
+  padding: 0;
+  margin-right: 40px; 
 }
 
-.navbar .nav-link {
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8) !important;
-  margin-right: 1.5rem;
-  transition: color 0.2s ease-in-out;
+/* Left align the navigation links right next to the brand */
+#quarto-header .navbar-collapse {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.navbar .nav-link:hover, .navbar .nav-link.active {
-  color: #ffffff !important;
+#quarto-header .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px; 
+}
+
+#quarto-header .nav-item .nav-link {
+  font-size: 15px; /* Matches 1.5rem in a 10px base Ghost theme */
+  font-weight: 550; /* Ghost specific variable font weight */
+  color: rgba(255, 255, 255, 0.85) !important; /* Softened from white */
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+#quarto-header .nav-item .nav-link:hover {
+  opacity: 0.8; /* Ghost specific hover effect */
+}
+
+/* Optional active link styling if needed */
+#quarto-header .nav-item .nav-link.active {
+  opacity: 1; 
+}
+
+/* Subscribe Button Pill Styling */
+.nav-subscribe-btn {
+  background-color: #ffffff;
+  color: #15171a !important;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+#quarto-header .nav-item .nav-link:has(.nav-subscribe-btn):hover {
+  opacity: 1; /* Disable default fade on wrapper */
+}
+.nav-subscribe-btn:hover {
+  opacity: 0.9;
 }
 
 code {
@@ -53,4 +115,58 @@ h1, h2, h3, h4, h5, h6 {
   color: #1a202c;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+}
+
+/* Special Interactive Section Differentiation */
+textarea.form-control, input.form-control {
+  background-color: #f7fafc;
+  border: 1px solid #cbd5e0;
+  color: #2d3748;
+  border-radius: 6px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+textarea.form-control:focus, input.form-control:focus {
+  background-color: #ffffff;
+  border-color: #606872; /* Subtle contrast using Neorationalism active menu color */
+  box-shadow: 0 0 0 3px rgba(96, 104, 114, 0.2);
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #4a5568;
+  border-color: #4a5568;
+  color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #606872;
+  border-color: #606872;
+}
+
+/* Fix Sidebar Link Colors (White text on light grey background issue) */
+#quarto-sidebar .sidebar-link {
+  color: #4a5568 !important; /* Muted slate for non-active links */
+  transition: color 0.2s ease;
+}
+
+#quarto-sidebar .sidebar-link:hover {
+  color: #2d3748 !important; /* Darker on hover */
+}
+
+#quarto-sidebar .sidebar-link.active {
+  color: #1a202c !important; /* Almost black for active link */
+  font-weight: 700;
+}
+
+/* Problem Card Styling */
+.card:not(.bg-primary) .card-header {
+  background-color: rgba(74, 85, 104, 0.15);
+  color: #1a202c;
+}
+
+.card.bg-primary .card-header {
+  background-color: rgba(0, 0, 0, 0.15); /* Slight darkening for the primary background */
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }

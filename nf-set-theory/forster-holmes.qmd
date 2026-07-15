@@ -25,7 +25,7 @@ In standard math, the size of a set $x$ is trivially equal to the size of its si
 > Strongly Cantorian sets subvert stratification requirements. Variables bounded within Strongly Cantorian sets can have their types raised or lowered freely during logical deductions, making them incredibly powerful tools for mathematical proofs.
 
 **Mechanical Implications for Software Engines:**
-Because a Strongly Cantorian set has a natural bijection with its singletons, an automated reasoning engine (or a JSON validation script) can safely ignore the strict $+1$ typing flags (like Hailperin's Axiom P2) when evaluating variables bounded strictly within that set. It allows the machine to treat the set as a perfectly stable type across all boundaries.
+Because a Strongly Cantorian set has a natural bijection with its singletons, you can safely ignore the strict $+1$ typing flags (like Hailperin's Axiom P2) when evaluating variables bounded strictly within that set. It allows your ontological framework to treat the set as a perfectly stable type across all boundaries.
 
 ## NFU as an "Elementary" Foundation (Holmes)
 

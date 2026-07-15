@@ -1,5 +1,5 @@
 {
-  "curriculum_master_hash": "69874a4a",
+  "curriculum_master_hash": "9e08f60e",
   "documents": {
     "forster-holmes.qmd": {
       "document_hash": "7884897c",
@@ -24,11 +24,11 @@
       }
     },
     "index.qmd": {
-      "document_hash": "5b4cef4a",
+      "document_hash": "d3dfea79",
       "problems": {}
     },
     "lambek-scott.qmd": {
-      "document_hash": "86efd71c",
+      "document_hash": "5d6b6a4a",
       "problems": {
         "lambek-7-1": {
           "title": "Problem 7.1: Modeling Modus Ponens",
@@ -54,7 +54,7 @@
       }
     },
     "mclarty-forster-stratified.qmd": {
-      "document_hash": "c6f362a7",
+      "document_hash": "34948e0e",
       "problems": {
         "mclarty-8-1": {
           "title": "Problem 8.1: The T-Functor JSON Property",
@@ -106,5 +106,5 @@
       }
     }
   },
-  "generated_at": "2026-07-15T00:49:29.156Z"
+  "generated_at": "2026-07-15T02:26:01.604Z"
 }

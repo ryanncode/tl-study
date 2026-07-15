@@ -1,6 +1,6 @@
 ---
 title: "Thinghood Limited: Study Environment"
-page-layout: full
+toc: false
 ---
 
 Welcome to the **Thinghood Limited** interactive studies environment. This platform hosts our core theoretical curriculums and problem sets, mapping the philosophical implications of a Monistic Universe into rigorous mathematical and categorical semantics.

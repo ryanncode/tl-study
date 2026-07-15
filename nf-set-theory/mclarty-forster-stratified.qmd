@@ -16,6 +16,7 @@ Categorical logic relies heavily on Cartesian Closed Categories (categories with
 Colin McLarty definitively proved that **the category of sets within NF cannot constitute a topos**, and furthermore, it is not Cartesian Closed. 
 
 A topos represents a mathematical universe possessing finite limits, Cartesian closedness (exponential objects for functions), and a subobject classifier ($\Omega$). McLarty demonstrated that:
+
 1. In NF, subsets have monic inclusion functions.
 2. Therefore, every set has a monic mapping to the Universal Set $V$.
 3. Using the internal language of a topos, McLarty proved that *only a trivial topos can have an object to which every other object has a monic mapping*.
@@ -71,7 +72,7 @@ To bypass stratification violations in evaluation maps, Forster uses the $T$-fun
 ::: {.card-body}
 Because NF is not Cartesian Closed natively, only the subcategory of Strongly Cantorian sets forms a true Elementary Topos. 
 
-Write the JSON category validation logic that flags the system as a `Stratified_Pseudo_Elephant`, but allows the `true_topos_subcategory` to be extracted based on the `strongly_cantorian` property.
+Write the JSON structural properties that establish the system as a `Stratified_Pseudo_Elephant`, while allowing the `true_topos_subcategory` to be extracted based on the `strongly_cantorian` property.
 
 <textarea id="mclarty-8-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>

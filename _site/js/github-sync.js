@@ -1,14 +1,14 @@
 /**
  * github-sync.js
  * 
- * Handles GitHub App OAuth Device Flow, syncing JSON/Markdown data
- * to a student's personal repo, and managing version archives.
+ * Handles GitHub App OAuth Web Flow, automatic repository discovery, 
+ * syncing JSON/Markdown data to a student's personal repo, and managing version archives.
  */
 
 const SYNC_CONFIG = {
-    // Placeholder Client ID for the GitHub App
+    // Client ID for the GitHub App
     clientId: 'GITHUB_APP_CLIENT_ID',
-    // The relay server URL that exchanges device code for a token
+    // The relay server URL that exchanges the web flow code for a token (Cloudflare Worker)
     tokenRelayUrl: 'https://oauth-relay.thing.rodeo/api/token',
     // Local storage keys
     tokenKey: 'tl_study_github_token',
@@ -52,73 +52,112 @@ class GitHubSync {
     }
 
     isAuthenticated() {
-        return !!this.token && !!this.repo && !!this.owner;
+        return !!this.token;
+    }
+    
+    isFullyConfigured() {
+        return this.isAuthenticated() && !!this.repo && !!this.owner;
     }
 
     /**
-     * Initializes the Device Authorization Flow
+     * Initializes the Web Authorization Flow
      */
-    async startDeviceFlow() {
-        try {
-            const response = await fetch('https://github.com/login/device/code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    client_id: SYNC_CONFIG.clientId
-                })
-            });
-            const data = await response.json();
-            this.showAuthPrompt(data.user_code, data.verification_uri);
-            this.pollForToken(data.device_code, data.interval);
-        } catch (error) {
-            console.error("Failed to start device flow:", error);
-        }
+    startAuthFlow() {
+        const redirectUri = window.location.origin + window.location.pathname;
+        const authUrl = \`https://github.com/login/oauth/authorize?client_id=\${SYNC_CONFIG.clientId}&redirect_uri=\${encodeURIComponent(redirectUri)}\`;
+        window.location.href = authUrl;
     }
 
-    showAuthPrompt(userCode, url) {
-        alert(`GitHub Auth Required: Go to ${url} and enter code: ${userCode}`);
-    }
-
-    async pollForToken(deviceCode, intervalSeconds) {
-        let attempts = 0;
-        const maxAttempts = 20;
-
-        const interval = setInterval(async () => {
-            attempts++;
-            if (attempts > maxAttempts) {
-                clearInterval(interval);
-                console.error("Authentication timed out.");
-                return;
-            }
-
+    /**
+     * Checks if the user just returned from the OAuth flow with a ?code= parameter
+     */
+    async handleOAuthCallback() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        
+        if (code) {
+            // Remove code from URL to prevent refreshing and using it again
+            window.history.replaceState({}, document.title, window.location.pathname);
+            
             try {
+                // Exchange code for token via serverless relay
                 const res = await fetch(SYNC_CONFIG.tokenRelayUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ device_code: deviceCode })
+                    body: JSON.stringify({ code: code })
                 });
 
                 if (res.status === 200) {
                     const data = await res.json();
                     if (data.access_token) {
-                        clearInterval(interval);
                         this.token = data.access_token;
                         localStorage.setItem(SYNC_CONFIG.tokenKey, this.token);
+                        console.log("Successfully authenticated with GitHub.");
                         
-                        this.owner = prompt("Enter your GitHub Username:");
-                        this.repo = prompt("Enter the repository name (e.g., tl-study-notes):");
-                        localStorage.setItem(SYNC_CONFIG.ownerKey, this.owner);
-                        localStorage.setItem(SYNC_CONFIG.repoKey, this.repo);
-
-                        console.log("Successfully authenticated and configured repository.");
-                        this.loadData();
+                        await this.discoverRepository();
+                    } else {
+                        console.error("Token exchange failed:", data);
                     }
+                } else {
+                    console.error("Relay returned error:", await res.text());
                 }
-            } catch (err) {}
-        }, intervalSeconds * 1000);
+            } catch (err) {
+                console.error("Error during token exchange:", err);
+            }
+        }
+    }
+
+    /**
+     * Automatically discover the repository where the GitHub App is installed
+     */
+    async discoverRepository() {
+        if (!this.token) return;
+        
+        try {
+            const headers = {
+                'Authorization': \`Bearer \${this.token}\`,
+                'Accept': 'application/vnd.github.v3+json'
+            };
+
+            // 1. Get the user's installations of this app
+            const instRes = await fetch('https://api.github.com/user/installations', { headers });
+            if (instRes.status !== 200) throw new Error("Failed to fetch installations");
+            
+            const instData = await instRes.json();
+            if (instData.total_count === 0 || instData.installations.length === 0) {
+                alert("GitHub App is not installed on any repository. Please install it on your designated study repository.");
+                return;
+            }
+            
+            // Just use the first installation
+            const installationId = instData.installations[0].id;
+            
+            // 2. Get the repositories accessible by this installation
+            const repoRes = await fetch(\`https://api.github.com/user/installations/\${installationId}/repositories\`, { headers });
+            if (repoRes.status !== 200) throw new Error("Failed to fetch repositories");
+            
+            const repoData = await repoRes.json();
+            if (repoData.total_count === 0 || repoData.repositories.length === 0) {
+                alert("The GitHub App was installed, but no repositories were selected. Please configure the app's repository access.");
+                return;
+            }
+            
+            // Use the first accessible repository
+            const repo = repoData.repositories[0];
+            this.owner = repo.owner.login;
+            this.repo = repo.name;
+            
+            localStorage.setItem(SYNC_CONFIG.ownerKey, this.owner);
+            localStorage.setItem(SYNC_CONFIG.repoKey, this.repo);
+            
+            console.log(\`Automatically discovered repository: \${this.owner}/\${this.repo}\`);
+            
+            // Now that we have the repo, load the data
+            this.loadData();
+            
+        } catch (error) {
+            console.error("Error discovering repository:", error);
+        }
     }
 
     /**
@@ -135,7 +174,7 @@ class GitHubSync {
             console.error("Failed to load versions.json", e);
         }
 
-        if (!this.isAuthenticated()) {
+        if (!this.isFullyConfigured()) {
             const sandboxData = localStorage.getItem('tl_study_sandbox_data');
             if (sandboxData) {
                 this.data = JSON.parse(sandboxData);
@@ -147,12 +186,12 @@ class GitHubSync {
         }
 
         const headers = {
-            'Authorization': `Bearer ${this.token}`,
+            'Authorization': \`Bearer \${this.token}\`,
             'Accept': 'application/vnd.github.v3+json'
         };
 
         // 1. Load JSON Data
-        const jsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.dataFilePath}`;
+        const jsonUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.dataFilePath}\`;
         try {
             const jsonRes = await fetch(jsonUrl, { headers });
             if (jsonRes.status === 200) {
@@ -169,7 +208,7 @@ class GitHubSync {
         }
 
         // 2. Load Markdown SHA
-        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.markdownFilePath}`;
+        const mdUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.markdownFilePath}\`;
         try {
             const mdRes = await fetch(mdUrl, { headers });
             if (mdRes.status === 200) {
@@ -181,7 +220,7 @@ class GitHubSync {
         }
 
         // 3. Load README SHA
-        const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.readmeFilePath}`;
+        const readmeUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.readmeFilePath}\`;
         try {
             const readmeRes = await fetch(readmeUrl, { headers });
             if (readmeRes.status === 200) {
@@ -207,22 +246,20 @@ class GitHubSync {
     }
 
     showOutdatedWarning() {
-        // Prevent multiple warnings
         if (document.getElementById('version-warning')) return;
-        
         const target = document.querySelector('main') || document.body;
         const banner = document.createElement('div');
         banner.id = 'version-warning';
         banner.className = 'alert alert-warning mt-3';
-        banner.innerHTML = `<strong>Curriculum Updated:</strong> The curriculum has been updated since your last save. You are viewing your answers for an older version.`;
+        banner.innerHTML = \`<strong>Curriculum Updated:</strong> The curriculum has been updated since your last save. You are viewing your answers for an older version.\`;
         target.prepend(banner);
     }
 
     async buildVersionSwitcher() {
-        if (!this.isAuthenticated()) return;
-        const url = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/nf-set-theory/archive`;
+        if (!this.isFullyConfigured()) return;
+        const url = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/nf-set-theory/archive\`;
         try {
-            const res = await fetch(url, { headers: { 'Authorization': `Bearer ${this.token}`, 'Accept': 'application/vnd.github.v3+json' } });
+            const res = await fetch(url, { headers: { 'Authorization': \`Bearer \${this.token}\`, 'Accept': 'application/vnd.github.v3+json' } });
             if (res.status === 200) {
                 const folders = await res.json();
                 if (folders.length > 0) {
@@ -235,11 +272,11 @@ class GitHubSync {
                         target.prepend(container);
                     }
                     
-                    container.innerHTML = `<span><strong>Version History:</strong> View previous saves</span>`;
+                    container.innerHTML = \`<span><strong>Version History:</strong> View previous saves</span>\`;
                     
                     const select = document.createElement('select');
                     select.className = 'form-select w-auto';
-                    select.innerHTML = `<option value="latest">Latest Save (Root)</option>`;
+                    select.innerHTML = \`<option value="latest">Latest Save (Root)</option>\`;
                     
                     const currentActiveHash = (this.data._metadata && this.data._metadata.master_hash) ? this.data._metadata.master_hash : null;
                     
@@ -247,7 +284,7 @@ class GitHubSync {
                         if (f.type === 'dir') {
                             const opt = document.createElement('option');
                             opt.value = f.name;
-                            opt.textContent = `Version Hash: ${f.name}`;
+                            opt.textContent = \`Version Hash: \${f.name}\`;
                             if (currentActiveHash === f.name) opt.selected = true;
                             select.appendChild(opt);
                         }
@@ -268,9 +305,9 @@ class GitHubSync {
             return;
         }
         
-        const url = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/nf-set-theory/archive/${hash}/data.json`;
+        const url = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/nf-set-theory/archive/\${hash}/data.json\`;
         try {
-            const res = await fetch(url, { headers: { 'Authorization': `Bearer ${this.token}`, 'Accept': 'application/vnd.github.v3+json' } });
+            const res = await fetch(url, { headers: { 'Authorization': \`Bearer \${this.token}\`, 'Accept': 'application/vnd.github.v3+json' } });
             if (res.status === 200) {
                 const fileData = await res.json();
                 this.data = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
@@ -295,7 +332,7 @@ class GitHubSync {
             this.data._metadata.master_hash = this.curriculumVersions.curriculum_master_hash;
         }
 
-        if (!this.isAuthenticated()) {
+        if (!this.isFullyConfigured()) {
             console.log("Not authenticated with GitHub. Saving to Local Sandbox Mode.");
             localStorage.setItem('tl_study_sandbox_data', JSON.stringify(this.data));
             alert("Saved locally to your browser (Sandbox Mode). Connect GitHub to sync across devices.");
@@ -303,13 +340,13 @@ class GitHubSync {
         }
 
         const headers = {
-            'Authorization': `Bearer ${this.token}`,
+            'Authorization': \`Bearer \${this.token}\`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         };
 
         // 1. Save JSON File
-        const jsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.dataFilePath}`;
+        const jsonUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.dataFilePath}\`;
         const jsonBody = {
             message: "Auto-sync JSON from TL Study",
             content: btoa(unescape(encodeURIComponent(JSON.stringify(this.data, null, 2))))
@@ -327,13 +364,13 @@ class GitHubSync {
         }
 
         // 2. Generate and Save Markdown File
-        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.markdownFilePath}`;
-        let markdownContent = `# NF Set Theory - My Solutions\n\n*These solutions were automatically synced from the TL Study platform.*\n\n---\n\n`;
+        const mdUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.markdownFilePath}\`;
+        let markdownContent = \`# NF Set Theory - My Solutions\\n\\n*These solutions were automatically synced from the TL Study platform.*\\n\\n---\\n\\n\`;
         
         // Exclude metadata from human-readable markdown
         for (const [key, value] of Object.entries(this.data)) {
             if (key === '_metadata') continue;
-            markdownContent += `### Problem ID: \`${key}\`\n${value}\n\n`;
+            markdownContent += \`### Problem ID: \\\`\${key}\\\`\\n\${value}\\n\\n\`;
         }
 
         const mdBody = {
@@ -354,7 +391,7 @@ class GitHubSync {
 
         // 3. Save README File
         if (!this.readmeFileSha) {
-            const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.readmeFilePath}`;
+            const readmeUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/\${SYNC_CONFIG.readmeFilePath}\`;
             const readmeBody = {
                 message: "Initialize NF Set Theory README",
                 content: btoa(unescape(encodeURIComponent(STUDENT_README)))
@@ -373,10 +410,10 @@ class GitHubSync {
         // 4. Archival Save
         if (this.curriculumVersions && this.curriculumVersions.curriculum_master_hash) {
             const hash = this.curriculumVersions.curriculum_master_hash;
-            const archiveJsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/nf-set-theory/archive/${hash}/data.json`;
-            const archiveMdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/nf-set-theory/archive/${hash}/Solutions.md`;
+            const archiveJsonUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/nf-set-theory/archive/\${hash}/data.json\`;
+            const archiveMdUrl = \`https://api.github.com/repos/\${this.owner}/\${this.repo}/contents/nf-set-theory/archive/\${hash}/Solutions.md\`;
             
-            // Check if archive files already exist so we don't fail a PUT on overwrite
+            // Check if archive files already exist
             const getJsonRes = await fetch(archiveJsonUrl, { headers });
             if (getJsonRes.status === 200) {
                 const existing = await getJsonRes.json();
@@ -395,18 +432,14 @@ class GitHubSync {
         }
 
         console.log("Sync complete.");
-        this.buildVersionSwitcher(); // Refresh switcher in case it's a new hash
+        this.buildVersionSwitcher();
         
-        // Remove outdated warning if saving resolves it (e.g. they saved on the latest hash)
         const warning = document.getElementById('version-warning');
         if (warning && this.data._metadata.master_hash === this.curriculumVersions.curriculum_master_hash) {
             warning.remove();
         }
     }
 
-    /**
-     * Map active DOM elements (textareas, inputs) back into the JSON object
-     */
     collectFields() {
         const inputs = document.querySelectorAll('.problem-input');
         inputs.forEach(input => {
@@ -417,9 +450,6 @@ class GitHubSync {
         });
     }
 
-    /**
-     * Populate DOM elements from the loaded JSON object
-     */
     populateFields() {
         for (const [key, value] of Object.entries(this.data)) {
             if (key === '_metadata') continue;
@@ -434,7 +464,12 @@ class GitHubSync {
 // Global instance
 window.tlStudySync = new GitHubSync();
 
-// Auto-load if already authenticated or if local sandbox data exists
-document.addEventListener('DOMContentLoaded', () => {
-    window.tlStudySync.loadData();
+// Auto-load or handle callbacks
+document.addEventListener('DOMContentLoaded', async () => {
+    // If URL has a code, we are returning from OAuth
+    if (window.location.search.includes('code=')) {
+        await window.tlStudySync.handleOAuthCallback();
+    } else {
+        window.tlStudySync.loadData();
+    }
 });

@@ -44,8 +44,9 @@ Barr and Wells contextualized these categorical mappings directly into functiona
 
 ### Translating to JSON: Products and Limits
 When building your JSON ontology, you must translate these Cartesian elements into explicit properties:
+
 *   **The `source` Array**: In a Cartesian Closed Category, evaluating a function requires the cross-product of the function and the input ($B^A \times A$). In JSON, represent products by feeding an array of IDs into the `source` key: `"source": ["Exponential_Object", "Domain_Object"]`.
-*   **The `topology_limits` Constraint**: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding `"topology_limits": ["no_terminal_object"]` to your morphism's `constraints` array alerts the validation engine to prevent recursive paradoxes when tracing compositions.
+*   **The `topology_limits` Constraint**: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding `"topology_limits": ["no_terminal_object"]` to your morphism's `constraints` array establishes the structural boundary your future proofs must rely on to prevent recursive paradoxes when tracing compositions.
 
 ---
 
@@ -70,7 +71,7 @@ Write the JSON structure for a morphism that evaluates $B^A \times A \to B$. How
 ::: {.card-body}
 To model an untyped lambda calculus (or an untyped universe like $V$), Lambek introduced the C-Monoid. 
 
-Since a C-Monoid lacks a terminal object (to prevent paradoxes), how will your JSON engine process arrow compositions without hitting a recursive loop? Define the `topology_limits` constraint in JSON.
+Since a C-Monoid lacks a terminal object (to prevent paradoxes), how will you design your JSON syntax to process arrow compositions without hitting a recursive loop? Define the `topology_limits` constraint in JSON.
 
 <textarea id="lambek-7-2" class="form-control problem-input" rows="4" placeholder="Enter your structural logic here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>

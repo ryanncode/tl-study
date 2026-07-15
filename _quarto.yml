@@ -10,7 +10,6 @@ website:
   site-url: "https://thing.rodeo"
   search: false
   navbar:
-    background: "#4a5568"
     left:
       - text: "Home"
         href: "https://thing.rodeo/"
@@ -18,16 +17,15 @@ website:
         href: "https://study.thing.rodeo/"
       - text: "Logic"
         href: "https://thing.rodeo/computation-metalogic/"
-      - text: "Monism"
-        href: "https://thing.rodeo/monism/"
       - text: "Living Syllabus"
         href: "https://thing.rodeo/living-syllabus/"
-      - text: "Git"
-        href: "https://thing.rodeo/git/"
-      - text: "NF Set Theory"
-        href: "nf-set-theory/index.qmd"
       - text: "About"
         href: "https://thing.rodeo/about/"
+    right:
+      - text: "Sign in"
+        href: "https://thing.rodeo/#/portal/signin"
+      - text: "<span class='nav-subscribe-btn'>Subscribe</span>"
+        href: "https://thing.rodeo/#/portal/signup"
   sidebar:
     - id: nf-set-theory
       title: "NF Set Theory"

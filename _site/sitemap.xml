@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thing.rodeo/index.html</loc>
-    <lastmod>2026-07-14T23:36:33.574Z</lastmod>
+    <lastmod>2026-07-15T01:57:53.234Z</lastmod>
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/specker-orey-jensen.html</loc>
@@ -14,15 +14,19 @@
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/mclarty-forster-stratified.html</loc>
-    <lastmod>2026-07-15T00:43:43.177Z</lastmod>
+    <lastmod>2026-07-15T02:20:52.944Z</lastmod>
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/mac-lane-lawvere.html</loc>
     <lastmod>2026-07-15T00:43:23.843Z</lastmod>
   </url>
   <url>
+    <loc>https://thing.rodeo/nf-set-theory/topology-transclusion.html</loc>
+    <lastmod>2026-07-15T00:48:53.926Z</lastmod>
+  </url>
+  <url>
     <loc>https://thing.rodeo/nf-set-theory/lambek-scott.html</loc>
-    <lastmod>2026-07-15T00:43:33.669Z</lastmod>
+    <lastmod>2026-07-15T02:19:59.433Z</lastmod>
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/quine-math-logic.html</loc>
@@ -30,14 +34,10 @@
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/index.html</loc>
-    <lastmod>2026-07-15T00:36:02.737Z</lastmod>
+    <lastmod>2026-07-15T02:23:10.290Z</lastmod>
   </url>
   <url>
     <loc>https://thing.rodeo/nf-set-theory/hailperin-axioms.html</loc>
     <lastmod>2026-07-15T00:42:55.083Z</lastmod>
-  </url>
-  <url>
-    <loc>https://thing.rodeo/nf-set-theory/topology-transclusion.html</loc>
-    <lastmod>2026-07-15T00:48:53.926Z</lastmod>
   </url>
 </urlset>
