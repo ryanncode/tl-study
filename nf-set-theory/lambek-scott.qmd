@@ -1,0 +1,73 @@
+---
+title: "6. Higher-Order Logic: Lambek, Scott, Barr, and Wells"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+# Categorical Semantics for Logic and Computation
+
+To successfully map our NF ontology to JSON, we must understand how logical derivation and computational states are inherently structural. 
+
+J. Lambek and P.J. Scott's *Introduction to Higher-Order Categorical Logic* (1986) demonstrated the fundamental mathematical equivalence between structural logic systems and specific category types. Barr and Wells' *Category Theory for Computer Science* (1990) extended these maps directly into computational state architecture.
+
+## The Equivalence of Logic and Category
+
+Lambek and Scott established a strict dictionary between formal deductive systems, $\lambda$-calculus, and Category Theory:
+
+| Category Theory | Logical Semantics | Typed $\lambda$-Calculus |
+|---|---|---|
+| Object $A$ | Formula $A$ | Type $A$ |
+| Arrow $f: A \rightarrow B$ | Proof of $A \vdash B$ | Term $f(x)$ of type $B$ |
+| Terminal Object $1$ | Truth $\top$ | Basic term $*$ |
+| Product $A \times B$ | Conjunction $A \wedge B$ | Product Type |
+| Exponential $B^A$ | Implication $A \Rightarrow B$ | Function Type / Abstraction |
+| Evaluation $\epsilon_{A,B}$ | Modus Ponens | Application |
+
+### Functional Completeness
+
+A major achievement of categorical logic is **Functional Completeness**: the ability to eliminate bound variables entirely. Any logical deduction dependent on an assumed variable can be algebraically translated into a pure categorical morphism composed of constant structural arrows (evaluations, projections, exponential adjoints). This proves that logic is structurally geometric.
+
+### Untyped Systems and C-Monoids
+
+While typed $\lambda$-calculus strictly correlates to Cartesian Closed Categories, the untyped $\lambda$-calculus semantically maps to **C-Monoids**. A C-monoid is a single-object Cartesian Closed Category that explicitly excludes a terminal object. Because NF allows for a universal set, handling untyped or reflexively typed loops requires leveraging these specialized single-object mapping behaviors.
+
+## Computer Science and State Transitions
+
+Barr and Wells contextualized these categorical mappings directly into functional programming.
+
+* **Programs as Arrows**: Functions $f: S \to T$ operate as structural morphisms. Anonymous functions ($x \mapsto x^2$) define internal operational paths distinct from their formal signature.
+* **Types as Objects**: Data types (Booleans, Integers, complex structs) function as the objects defining the domain and codomain boundaries.
+* **State Machines as Monoids**: A classical automaton operating on an input alphabet acts algebraically as a Monoid (a single object category) where the input string evaluates as a directed path navigating through a free category.
+
+## Problem Set: Categorical Mappings in JSON
+
+::: {.card .mb-3}
+::: {.card-header}
+**Problem 6.1: Modeling Modus Ponens**
+:::
+::: {.card-body}
+In categorical logic, logical implication is represented by the Exponential Object $B^A$, and Modus Ponens is executed by the Evaluation Arrow $\epsilon_{A,B}: B^A \times A \rightarrow B$. How will you map the Evaluation Arrow (Modus Ponens) natively within your JSON `morphism` structure? Provide a JSON snippet showing this interaction.
+
+<textarea id="lambek-6-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+:::
+:::
+
+::: {.card .mb-3}
+::: {.card-header}
+**Problem 6.2: The C-Monoid Topology**
+:::
+::: {.card-body}
+If we use a C-Monoid (a single-object category without a terminal object) to model untyped interactions or universal self-reference, how do you handle arrow composition in your JSON without triggering an infinite recursion parsing error?
+
+<textarea id="lambek-6-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+:::
+:::
+
+---
+
+[Next: Stratified Semantics: McLarty and Forster ➔](mclarty-forster-stratified.qmd)

@@ -1,0 +1,56 @@
+/*-- scss:defaults --*/
+
+$font-family-sans-serif: "Inter", sans-serif !default;
+$navbar-bg: #4a5568 !default;
+$navbar-dark-color: #ffffff !default;
+$body-bg: #f0f4f8 !default;
+$body-color: #2d3748 !default;
+
+/*-- scss:rules --*/
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url("https://thing.rodeo/assets/fonts/inter-roman.woff2") format("woff2");
+}
+
+.navbar {
+  border-bottom: none;
+  font-family: $font-family-sans-serif;
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin-right: 1.5rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #ffffff !important;
+}
+
+code {
+  background-color: rgba(74, 85, 104, 0.1);
+  color: #4a5568;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #1a202c;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}

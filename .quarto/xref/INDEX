@@ -1,0 +1,38 @@
+{
+  "index.qmd": {
+    "index.html": "a61a0303"
+  },
+  "nf-set-theory/01-epistemology.qmd": {
+    "01-epistemology.html": "b0c6be7f"
+  },
+  "nf-set-theory/02-foundational-math.qmd": {
+    "02-foundational-math.html": "6dcf0b7f"
+  },
+  "nf-set-theory/index.qmd": {
+    "index.html": "387b0fd6"
+  },
+  "nf-set-theory/03-proof-theory.qmd": {
+    "03-proof-theory.html": "cc9ca76f"
+  },
+  "nf-set-theory/mac-lane-lawvere.qmd": {
+    "mac-lane-lawvere.html": "2b86c17c"
+  },
+  "nf-set-theory/lambek-scott.qmd": {
+    "lambek-scott.html": "b497efc4"
+  },
+  "nf-set-theory/mclarty-forster-stratified.qmd": {
+    "mclarty-forster-stratified.html": "fda00aa2"
+  },
+  "nf-set-theory/quine-math-logic.qmd": {
+    "quine-math-logic.html": "d5bf1354"
+  },
+  "nf-set-theory/forster-holmes.qmd": {
+    "forster-holmes.html": "18520714"
+  },
+  "nf-set-theory/specker-orey-jensen.qmd": {
+    "specker-orey-jensen.html": "d2374026"
+  },
+  "nf-set-theory/hailperin-axioms.qmd": {
+    "hailperin-axioms.html": "493712b2"
+  }
+}

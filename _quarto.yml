@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Thinghood Limited"
+  site-url: "https://thing.rodeo"
+  search: false
+  navbar:
+    background: "#4a5568"
+    left:
+      - text: "Home"
+        href: "https://thing.rodeo/"
+      - text: "Study"
+        href: "https://study.thing.rodeo/"
+      - text: "Logic"
+        href: "https://thing.rodeo/computation-metalogic/"
+      - text: "Monism"
+        href: "https://thing.rodeo/monism/"
+      - text: "Living Syllabus"
+        href: "https://thing.rodeo/living-syllabus/"
+      - text: "Git"
+        href: "https://thing.rodeo/git/"
+      - text: "NF Set Theory"
+        href: "nf-set-theory/index.qmd"
+      - text: "About"
+        href: "https://thing.rodeo/about/"
+  sidebar:
+    - id: nf-set-theory
+      title: "NF Set Theory"
+      contents:
+        - nf-set-theory/index.qmd
+        - nf-set-theory/quine-math-logic.qmd
+        - nf-set-theory/hailperin-axioms.qmd
+        - nf-set-theory/specker-orey-jensen.qmd
+        - nf-set-theory/forster-holmes.qmd
+        - nf-set-theory/mac-lane-lawvere.qmd
+        - nf-set-theory/lambek-scott.qmd
+        - nf-set-theory/mclarty-forster-stratified.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: true

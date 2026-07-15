@@ -1,0 +1,70 @@
+---
+title: "7. Stratified Semantics: McLarty and Forster"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+# The Crisis of Categorical Closedness in NF
+
+Categorical logic relies heavily on Cartesian Closed Categories (categories with products and exponentials) to provide semantics for the $\lambda$-calculus. Because Quine's New Foundations (NF) permits a universal set and avoids external class hierarchies, it seemed like the perfect foundation for a "Category of all Categories." However, evaluating NF through categorical semantics exposes a critical structural paradox.
+
+## McLarty: The Failure of Cartesian Closedness (1992)
+
+Colin McLarty definitively proved that **the category of sets within NF cannot constitute a topos**, and furthermore, it is not Cartesian Closed. 
+
+A topos represents a mathematical universe possessing finite limits, Cartesian closedness (exponential objects for functions), and a subobject classifier ($\Omega$). McLarty demonstrated that:
+1. In NF, subsets have monic inclusion functions.
+2. Therefore, every set has a monic mapping to the Universal Set $V$.
+3. Using the internal language of a topos, McLarty proved that *only a trivial topos can have an object to which every other object has a monic mapping*.
+4. Because NF contains a universal monic, assuming it has exponential objects (like $B^A$) leads to a direct contradiction. 
+
+Thus, in pure NF, if categorical products exist, exponentials do not. True function abstraction fails structurally under strict Cartesian conditions.
+
+## Forster, Lewicki, and Vidrine: Stratified Pseudo Elephants (2019)
+
+If true Cartesian closedness fails, how do we perform category theory in NF? Thomas Forster, Adam Lewicki, and Alice Vidrine resolved this by formalizing categorical mechanics native to NF's stratified boundaries.
+
+The category of NF sets (Category N) achieves **Pseudo-Cartesian Closure** through the **T-Functor**. 
+The standard evaluation map $ev(\langle x, f \rangle) = f(x)$ violates Quine's stratification rules. To fix this, the T-functor maps elements to their singletons ($x \mapsto \{x\}$). The pseudo-evaluation arrow operates via $TA \times (A \Rightarrow B) \to TB$, mathematically resolving the typing barrier.
+
+### The Stratified Yoneda Lemma
+Because of the typing differentials between morphisms and objects, the classical Yoneda isomorphism fails in NF. The authors formulated the **Stratified Yoneda Lemma**, mapping natural transformations to the target object modified by the T-functor:
+
+$$Nat(C(U,-),F) \cong T(F(U))$$
+
+### The Stratified Pseudo Elephant (SPE)
+
+The resulting categorical environment is called a **Stratified Pseudo Elephant (SPE)**. It operates as a regular category with finite coproducts, a subobject classifier, and a full embedding endofunctor $T$. Within an SPE, only the subcategory of *Strongly Cantorian sets* forms a true elementary topos.
+
+## Problem Set: Pseudo-Cartesian Mapping
+
+::: {.card .mb-3}
+::: {.card-header}
+**Problem 7.1: The T-Functor JSON Property**
+:::
+::: {.card-body}
+When defining the `exponential_object` (function space) in your JSON ontology, you cannot use a standard Cartesian Evaluation arrow due to stratification violations. How will you implement the `pseudo_evaluation` morphism using the `T_functor` wrapper?
+
+<textarea id="stratified-7-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+:::
+:::
+
+::: {.card .mb-3}
+::: {.card-header}
+**Problem 7.2: Topos Boundaries**
+:::
+::: {.card-body}
+According to Forster et al., the full category of NF sets (Category N) is an SPE, but only a specific subcategory forms a true Elementary Topos. What is that subcategory, and how will you flag these specific nodes in your JSON ontology to allow standard Cartesian logic to apply exclusively to them?
+
+<textarea id="stratified-7-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+:::
+:::
+
+---
+
+[Back to Index ➔](index.qmd)

@@ -1,0 +1,51 @@
+---
+title: "Quinean Foundations & Categorical Semantics"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+# Building the Monistic Universe
+
+This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe—a single, flat, self-containing totality. 
+
+We will achieve this through an exhaustive analysis of **Quine's New Foundations (NF) Set Theory** and the structural mapping provided by **Categorical Semantics**.
+
+## The Goal: Formalizing an NF Categorical Ontology
+
+Traditional, standard ontologies (built on Zermelo-Fraenkel set theory) rely on strict, top-down hierarchies. They mathematically forbid a "universal set" (a category that contains itself) because of the Axiom of Foundation and Russell's Paradox. In standard systems, the Category of all Sets is a proper class, not a set, preventing you from treating the universe as a single, manipulated object.
+
+In this course, your problem sets will culminate in the construction of a **Machine-Readable NF Categorical Ontology (JSON)**.
+
+Because a JSON object natively behaves like a flat, self-referential graph (where everything is simply an object, not a rigidly typed Proper Class), it is the perfect medium to map an NF universe. You will map:
+1. **The Universal Set ($V$)**: Safely listing the universe as a member of itself.
+
+2. **Stratification Constraints**: Encoding Hailperin's finite axioms and Quine's relative typing (integers $n$ to $n+1$) into your JSON morphisms to prevent logical collapse.
+
+3. **Categorical Failures**: Documenting the specific sacrifices required to maintain a Monistic Universe, such as mapping McLarty's proof on the failure of Cartesian closedness directly into your ontology.
+
+## Connect Your Execution Environment
+
+To participate in the problem-posing exercises, you must connect your GitHub account. Your answers are serialized as JSON and saved directly to a private repository on your account. 
+
+::: {.callout-important}
+### Authentication Required
+Click the button below to initiate the GitHub Device Authorization Flow. You will be prompted to enter a generated code on GitHub's official site to grant this application read/write access to your designated repository.
+
+<button class="btn btn-primary mt-3" onclick="tlStudySync.startDeviceFlow()">Authenticate with GitHub</button>
+:::
+
+## Chapter Progression
+
+### Quinean Foundations
+1. [Quine's Mathematical Logic and Stratification](quine-math-logic.qmd)
+2. [Hailperin's Finite Axiomatization](hailperin-axioms.qmd)
+3. [The Axiom of Choice Crisis: Specker, Orey, and Jensen](specker-orey-jensen.qmd)
+4. [Untyped Universes: Forster and Holmes](forster-holmes.qmd)
+
+### Categorical Semantics
+5. [Mac Lane, Lawvere, and Foundational Mappings](mac-lane-lawvere.qmd)
+6. [Higher-Order Logic: Lambek and Scott](lambek-scott.qmd)
+7. [The Stratified Pseudo Elephant: McLarty and Forster](mclarty-forster-stratified.qmd)

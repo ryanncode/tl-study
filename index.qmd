@@ -1,0 +1,87 @@
+---
+title: "Thinghood Limited: Study Environment"
+page-layout: full
+---
+
+Welcome to the **Thinghood Limited** interactive studies environment. This platform hosts our core theoretical curriculums and problem sets, mapping the philosophical implications of a Monistic Universe into rigorous mathematical and categorical semantics.
+
+---
+
+## 🚀 Newly Added Topics
+
+::: {.card .text-white .bg-primary .mb-4}
+::: {.card-header}
+**Latest Curriculum Update**
+:::
+::: {.card-body}
+<h3 class="card-title text-white">NF Set Theory & Categorical Semantics</h3>
+<p class="card-text">
+A granular, 7-part exhaustive deep dive into Quine's New Foundations (NF) and Categorical Logic. This module explores the structural mechanics of a Monistic Universe (where the universal set $V$ exists), the failure of Cartesian Closedness, and the mapping of these realities to JSON ontologies using Stratified Pseudo Elephants and C-Monoids.
+</p>
+<a href="nf-set-theory/index.qmd" class="btn btn-light text-primary fw-bold">Start the Deep Dive ➔</a>
+:::
+:::
+
+---
+
+## 📚 Study Categories
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">NF Set Theory</h4>
+<h6 class="card-subtitle mb-2 text-muted">Foundations & Topology</h6>
+<p class="card-text">
+Explore the foundational axioms of Quine's New Foundations, the algebraic mechanization by Hailperin, and the topological crises identified by Specker and Orey.
+</p>
+<a href="nf-set-theory/index.qmd" class="card-link">View Module</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">Categorical Semantics</h4>
+<h6 class="card-subtitle mb-2 text-muted">Morphisms & Logic</h6>
+<p class="card-text">
+Shift from element-based structures to arrow-based categorical semantics. Investigate Lawvere's ETAC, Cartesian Closed Categories, and the translation of logical deductions into morphisms.
+</p>
+<a href="nf-set-theory/mac-lane-lawvere.qmd" class="card-link">View Module</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">Logic & Computation</h4>
+<h6 class="card-subtitle mb-2 text-muted">External Links</h6>
+<p class="card-text">
+Review our broader theoretical frameworks, including Computation Metalogic and formal ontological reasoning.
+</p>
+<a href="https://thing.rodeo/computation-metalogic/" class="card-link">Computation Metalogic</a>
+<br>
+<a href="https://thing.rodeo/monism/" class="card-link">Monism Framework</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">Living Syllabus</h4>
+<h6 class="card-subtitle mb-2 text-muted">External Links</h6>
+<p class="card-text">
+Stay updated on the evolving structure of our educational programs and version-controlled learning objectives.
+</p>
+<a href="https://thing.rodeo/living-syllabus/" class="card-link">Living Syllabus</a>
+<br>
+<a href="https://thing.rodeo/git/" class="card-link">Git Practices</a>
+:::
+:::
+:::
+
+:::
