@@ -1,5 +1,5 @@
 ---
-title: "2. Hailperin's Finite Axiomatization"
+title: "3. Hailperin's Finite Axiomatization"
 format:
   html:
     include-in-header:
@@ -87,34 +87,48 @@ To handle this explosion, Hailperin incorporates **Quine's 15 Derivative Definit
 
 Instead of re-calculating the entire tree every time, the system uses definitions like **D11 (Expansion to Definite Description)** to dictate the exact, pre-compiled mechanical paths required to unpack an abstract concept back into the raw $L_1$ primitive syntax of the nine fundamental axioms.
 
+### Example: Unpacking a Definition
+Consider the Kuratowski ordered pair: $(x,y) = \{\{x\}, \{x,y\}\}$.
+To type-check this, an automated system must expand it into pure $\epsilon$ primitives. 
+The set $\{x\}$ means "the class containing only $x$", which expands to: $\forall z (z \epsilon \{x\} \equiv z = x)$.
+The set $\{x,y\}$ expands to: $\forall z (z \epsilon \{x,y\} \equiv z = x \lor z = y)$.
+By expanding these macros down to their atomic $\epsilon$ connections, the machine can assign stratification integers to $z$, $x$, and $y$.
+
+### Example: Chaining Axioms
+How does the system actually apply the axioms? 
+If a compiler wants to extract the domain of a relation and then combine it with another class, it would chain the axioms sequentially:
+1. **Apply P5 (Domain Extraction)** to isolate the $x$ values into a new class $\alpha$.
+2. **Apply P1 (Union)** to combine class $\alpha$ with an existing class $\gamma$.
+The output of P5 serves directly as the input for P1.
+
 ---
 
 ## Problem Set: Mechanical Formalization
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 2.1: The Kuratowski Contradiction**
+**Problem 3.1: The Kuratowski Contradiction**
 :::
 ::: {.card-body}
 Quine assumed the traditional Kuratowski ordered pair $\{\{x\}, \{x,y\}\}$ could port directly into NF. Hailperin proved this destroys stratification because it elevates the logical types of the variables asymmetrically. 
 
-In your JSON ontology, if a morphism connects `NodeA` to `NodeB`, how will you represent Hailperin's homogeneous ordered pair $\langle \iota x, \iota y \rangle$ to ensure the types remain balanced?
+Write out the logical typing ($n$, $n+1$, $n+2$) for the elements inside a Kuratowski pair, and explain why Hailperin's homogeneous ordered pair $\langle \iota x, \iota y \rangle$ fixes this.
 
-<textarea id="hailperin-2-1" class="form-control problem-input" rows="4" placeholder="Enter your structural mapping here..."></textarea>
+<textarea id="hailperin-3-1" class="form-control problem-input" rows="4" placeholder="Enter your structural mapping here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 2.2: Combinatorial Caching**
+**Problem 3.2: Combinatorial Execution**
 :::
 ::: {.card-body}
-Automated theorem proving in NF using Hailperin's axioms suffers from combinatorial explosion. To optimize your JSON ontology for machine execution, you must invert Quine's concept of "definitional abbreviation" into "functional macros." 
+To map a complex relation into Hailperin's axioms, you must manually execute the tree traversal. 
 
-Explain how your JSON architecture will cache complex `abstractionless_transforms` (like traversing P6 -> P7 -> P2) into a single, reusable morphism definition to prevent processing gridlock.
+Given the task of isolating the domain of an inverted relation and elevating its type, write out the explicit sequence of Hailperin's Axioms (P1-P9) required to perform this exact transformation.
 
-<textarea id="hailperin-2-2" class="form-control problem-input" rows="5" placeholder="Enter your system architecture here..."></textarea>
+<textarea id="hailperin-3-2" class="form-control problem-input" rows="5" placeholder="Enter your axiomatic sequence here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::

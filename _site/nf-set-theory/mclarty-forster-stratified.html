@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7. Stratified Semantics: McLarty and Forster – Thinghood Limited</title>
+<title>8. Stratified Semantics (McLarty &amp; Forster) – Thinghood Limited</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -38,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-748a4fdea3a16b2df2c3fadf5e553d57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-78ef4ed8d8014daf0fea856a228883a4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -147,7 +182,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nf-set-theory/mclarty-forster-stratified.html">7. Stratified Semantics: McLarty and Forster</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nf-set-theory/mclarty-forster-stratified.html">8. Stratified Semantics (McLarty &amp; Forster)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -167,44 +202,50 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../nf-set-theory/topology-transclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Topology and Transclusion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/quine-math-logic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Quine’s Mathematical Logic and Stratification</span></a>
+ <span class="menu-text">2. Quine’s Mathematical Logic and Stratification</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/hailperin-axioms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Hailperin’s Finite Axiomatization</span></a>
+ <span class="menu-text">3. Hailperin’s Finite Axiomatization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/specker-orey-jensen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. The Axiom of Choice Crisis</span></a>
+ <span class="menu-text">4. The Axiom of Choice Crisis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/forster-holmes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Untyped Universes: Forster and Holmes</span></a>
+ <span class="menu-text">5. Untyped Universes (Forster &amp; Holmes)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/mac-lane-lawvere.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Mac Lane, Lawvere, and Foundational Mappings</span></a>
+ <span class="menu-text">6. Mac Lane, Lawvere, and Foundational Mappings</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/lambek-scott.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6. Higher-Order Logic: Lambek, Scott, Barr, and Wells</span></a>
+ <span class="menu-text">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/mclarty-forster-stratified.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">7. Stratified Semantics: McLarty and Forster</span></a>
+ <span class="menu-text">8. Stratified Semantics (McLarty &amp; Forster)</span></a>
   </div>
 </li>
     </ul>
@@ -224,8 +265,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-stratified-yoneda-lemma" id="toc-the-stratified-yoneda-lemma" class="nav-link" data-scroll-target="#the-stratified-yoneda-lemma">The Stratified Yoneda Lemma</a></li>
   <li><a href="#the-stratified-pseudo-elephant-spe" id="toc-the-stratified-pseudo-elephant-spe" class="nav-link" data-scroll-target="#the-stratified-pseudo-elephant-spe">The Stratified Pseudo Elephant (SPE)</a></li>
+  <li><a href="#api-schema-spe-flags" id="toc-api-schema-spe-flags" class="nav-link" data-scroll-target="#api-schema-spe-flags">API Schema: SPE Flags</a></li>
   </ul></li>
-  <li><a href="#problem-set-pseudo-cartesian-mapping" id="toc-problem-set-pseudo-cartesian-mapping" class="nav-link" data-scroll-target="#problem-set-pseudo-cartesian-mapping">Problem Set: Pseudo-Cartesian Mapping</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,7 +276,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">7. Stratified Semantics: McLarty and Forster</h1>
+<h1 class="title">8. Stratified Semantics (McLarty &amp; Forster)</h1>
 </div>
 
 
@@ -274,16 +315,23 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="the-stratified-pseudo-elephant-spe">The Stratified Pseudo Elephant (SPE)</h3>
 <p>The resulting categorical environment is called a <strong>Stratified Pseudo Elephant (SPE)</strong>. It operates as a regular category with finite coproducts, a subobject classifier, and a full embedding endofunctor <span class="math inline">\(T\)</span>. Within an SPE, only the subcategory of <em>Strongly Cantorian sets</em> forms a true elementary topos.</p>
 </section>
-</section>
-<section id="problem-set-pseudo-cartesian-mapping" class="level2">
-<h2 class="anchored" data-anchor-id="problem-set-pseudo-cartesian-mapping">Problem Set: Pseudo-Cartesian Mapping</h2>
+<section id="api-schema-spe-flags" class="level3">
+<h3 class="anchored" data-anchor-id="api-schema-spe-flags">API Schema: SPE Flags</h3>
+<p>When modeling this environment, you will use the following JSON metadata structure on your root category object:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"category_type"</span><span class="fu">:</span> <span class="st">"Stratified_Pseudo_Elephant"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"true_topos_subcategory"</span><span class="fu">:</span> <span class="st">"strongly_cantorian"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"T_functor_applied"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use these exact keys when completing the problem sets to ensure your model mathematically aligns with Forster’s resolution.</p>
+<hr>
 <div class="card mb-3">
 <div class="card-header">
-<p><strong>Problem 7.1: The T-Functor JSON Property</strong></p>
+<p><strong>Problem 8.1: The T-Functor JSON Property</strong></p>
 </div>
 <div class="card-body">
-<p>When defining the <code>exponential_object</code> (function space) in your JSON ontology, you cannot use a standard Cartesian Evaluation arrow due to stratification violations. How will you implement the <code>pseudo_evaluation</code> morphism using the <code>T_functor</code> wrapper?</p>
-<textarea id="stratified-7-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
+<p>To bypass stratification violations in evaluation maps, Forster uses the <span class="math inline">\(T\)</span>-functor. Write the JSON structure for a morphism that utilizes the <code>T_functor_applied</code> flag to legally execute a pseudo-evaluation across type boundaries.</p>
+<textarea id="mclarty-8-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">
 Save to GitHub
 </button>
@@ -291,20 +339,22 @@ Save to GitHub
 </div>
 <div class="card mb-3">
 <div class="card-header">
-<p><strong>Problem 7.2: Topos Boundaries</strong></p>
+<p><strong>Problem 8.2: Topos Boundaries</strong></p>
 </div>
 <div class="card-body">
-<p>According to Forster et al., the full category of NF sets (Category N) is an SPE, but only a specific subcategory forms a true Elementary Topos. What is that subcategory, and how will you flag these specific nodes in your JSON ontology to allow standard Cartesian logic to apply exclusively to them?</p>
-<textarea id="stratified-7-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
+<p>Because NF is not Cartesian Closed natively, only the subcategory of Strongly Cantorian sets forms a true Elementary Topos.</p>
+<p>Write the JSON category validation logic that flags the system as a <code>Stratified_Pseudo_Elephant</code>, but allows the <code>true_topos_subcategory</code> to be extracted based on the <code>strongly_cantorian</code> property.</p>
+<textarea id="mclarty-8-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">
 Save to GitHub
 </button>
 </div>
 </div>
 <hr>
-<p><a href="../nf-set-theory/index.html">Back to Index ➔</a></p>
+<p><a href="../index.html">Home ➔</a></p>
 
 
+</section>
 </section>
 </section>
 

@@ -1,5 +1,5 @@
 ---
-title: "7. Stratified Semantics: McLarty and Forster"
+title: "8. Stratified Semantics (McLarty & Forster)"
 format:
   html:
     include-in-header:
@@ -39,32 +39,45 @@ $$Nat(C(U,-),F) \cong T(F(U))$$
 
 The resulting categorical environment is called a **Stratified Pseudo Elephant (SPE)**. It operates as a regular category with finite coproducts, a subobject classifier, and a full embedding endofunctor $T$. Within an SPE, only the subcategory of *Strongly Cantorian sets* forms a true elementary topos.
 
-## Problem Set: Pseudo-Cartesian Mapping
+### API Schema: SPE Flags
+When modeling this environment, you will use the following JSON metadata structure on your root category object:
+```json
+{
+  "category_type": "Stratified_Pseudo_Elephant",
+  "true_topos_subcategory": "strongly_cantorian",
+  "T_functor_applied": true
+}
+```
+Use these exact keys when completing the problem sets to ensure your model mathematically aligns with Forster's resolution.
+
+---
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 7.1: The T-Functor JSON Property**
+**Problem 8.1: The T-Functor JSON Property**
 :::
 ::: {.card-body}
-When defining the `exponential_object` (function space) in your JSON ontology, you cannot use a standard Cartesian Evaluation arrow due to stratification violations. How will you implement the `pseudo_evaluation` morphism using the `T_functor` wrapper?
+To bypass stratification violations in evaluation maps, Forster uses the $T$-functor. Write the JSON structure for a morphism that utilizes the `T_functor_applied` flag to legally execute a pseudo-evaluation across type boundaries. 
 
-<textarea id="stratified-7-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
+<textarea id="mclarty-8-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 7.2: Topos Boundaries**
+**Problem 8.2: Topos Boundaries**
 :::
 ::: {.card-body}
-According to Forster et al., the full category of NF sets (Category N) is an SPE, but only a specific subcategory forms a true Elementary Topos. What is that subcategory, and how will you flag these specific nodes in your JSON ontology to allow standard Cartesian logic to apply exclusively to them?
+Because NF is not Cartesian Closed natively, only the subcategory of Strongly Cantorian sets forms a true Elementary Topos. 
 
-<textarea id="stratified-7-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
+Write the JSON category validation logic that flags the system as a `Stratified_Pseudo_Elephant`, but allows the `true_topos_subcategory` to be extracted based on the `strongly_cantorian` property.
+
+<textarea id="mclarty-8-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::
 
 ---
 
-[Back to Index ➔](index.qmd)
+[Home ➔](../index.qmd)

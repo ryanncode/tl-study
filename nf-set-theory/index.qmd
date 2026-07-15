@@ -9,7 +9,7 @@ format:
 
 # Building the Monistic Universe
 
-This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe—a single, flat, self-containing totality. 
+This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe, which is a single, flat, self-containing totality.
 
 We will achieve this through an exhaustive analysis of **Quine's New Foundations (NF) Set Theory** and the structural mapping provided by **Categorical Semantics**.
 
@@ -19,12 +19,11 @@ Traditional, standard ontologies (built on Zermelo-Fraenkel set theory) rely on 
 
 In this course, your problem sets will culminate in the construction of a **Machine-Readable NF Categorical Ontology (JSON)**.
 
-Because a JSON object natively behaves like a flat, self-referential graph (where everything is simply an object, not a rigidly typed Proper Class), it is the perfect medium to map an NF universe. You will map:
-1. **The Universal Set ($V$)**: Safely listing the universe as a member of itself.
+However, before we map JSON, we must understand the logical and topological boundaries of the universe. The course progresses through three phases:
 
-2. **Stratification Constraints**: Encoding Hailperin's finite axioms and Quine's relative typing (integers $n$ to $n+1$) into your JSON morphisms to prevent logical collapse.
-
-3. **Categorical Failures**: Documenting the specific sacrifices required to maintain a Monistic Universe, such as mapping McLarty's proof on the failure of Cartesian closedness directly into your ontology.
+1. **Topology and Transclusion**: Understanding the epistemology of the idealized web (unmediated operational inclusion) vs. standard hierarchical file systems.
+2. **First-Order Logic**: Manually constructing the finite axioms (Hailperin) and stratification rules (Quine) that mathematically authorize this flat ontology.
+3. **The JSON Pivot**: Translating these semantic rules into JSON, the perfect computational medium for modeling a flat, self-referential graph without spatial recursion.
 
 ## Connect Your Execution Environment
 
@@ -39,13 +38,16 @@ Click the button below to initiate the GitHub Device Authorization Flow. You wil
 
 ## Chapter Progression
 
+### The Epistemology of the Web
+1. [Topology and Transclusion](topology-transclusion.qmd)
+
 ### Quinean Foundations
-1. [Quine's Mathematical Logic and Stratification](quine-math-logic.qmd)
-2. [Hailperin's Finite Axiomatization](hailperin-axioms.qmd)
-3. [The Axiom of Choice Crisis: Specker, Orey, and Jensen](specker-orey-jensen.qmd)
-4. [Untyped Universes: Forster and Holmes](forster-holmes.qmd)
+2. [Quine's Mathematical Logic and Stratification](quine-math-logic.qmd)
+3. [Hailperin's Finite Axiomatization](hailperin-axioms.qmd)
+4. [The Axiom of Choice Crisis](specker-orey-jensen.qmd)
+5. [Untyped Universes (Forster & Holmes)](forster-holmes.qmd)
 
 ### Categorical Semantics
-5. [Mac Lane, Lawvere, and Foundational Mappings](mac-lane-lawvere.qmd)
-6. [Higher-Order Logic: Lambek and Scott](lambek-scott.qmd)
-7. [The Stratified Pseudo Elephant: McLarty and Forster](mclarty-forster-stratified.qmd)
+6. [Mac Lane, Lawvere, and Foundational Mappings](mac-lane-lawvere.qmd)
+7. [Higher-Order Logic (Lambek & Scott)](lambek-scott.qmd)
+8. [Stratified Semantics (McLarty & Forster)](mclarty-forster-stratified.qmd)

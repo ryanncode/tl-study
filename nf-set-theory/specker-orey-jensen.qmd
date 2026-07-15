@@ -1,5 +1,5 @@
 ---
-title: "3. The Axiom of Choice Crisis"
+title: "4. The Axiom of Choice Crisis"
 format:
   html:
     include-in-header:
@@ -40,34 +40,46 @@ In standard NF, the Axiom of Extensionality dictates that all objects are sets, 
 
 By breaking the strict monistic reduction of all entities to pure sets, Jensen stabilized the universe. Using Ramsey's theorem and shifting automorphisms (mapping infinite sets of indiscernibles across domains to preserve truth values), Jensen proved that **NFU is consistent, and is fully compatible with both the Axiom of Choice and the Axiom of Infinity**. 
 
+### The Standard Axiom of Extensionality
+To complete the upcoming problem set, you must understand how Extensionality is traditionally written in First-Order Logic (FOL):
+$\forall x \forall y (\forall z (z \in x \iff z \in y) \implies x = y)$
+
+*(Translation: For all sets $x$ and $y$, if they contain the exact same elements $z$, then $x$ and $y$ are identical.)*
+When Urelements are introduced, this strict axiom must be modified because Urelements have no members, but are *not* identical to the empty set.
+
 ## Problem Set: Categorical Sacrifices
 
 In your JSON ontology, you must account for the topological realities of the host system you are building.
+## Problem Set: Logical Construction of Urelements
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 3.1: Defining the Choice Axiom Flag**
+**Problem 4.1: Urelements vs The Empty Set**
 :::
 ::: {.card-body}
-If you are mapping a pure NF ontology (based on Quine and Specker), you must explicitly define the failure of the Axiom of Choice. How will you represent the property `axiom_of_choice_valid` in your JSON `categorical_semantics` block, and what arithmetic relation (involving $Nc(USC(V))$ and $Nc(V)$) will you cite in the `structural_reasoning` field?
+In standard ZFC, the only object with no members is the empty set ($\emptyset$). In NFU, there are multiple objects with no members (urelements), plus the actual empty set. 
 
-<textarea id="specker-3-1" class="form-control problem-input" rows="4" placeholder="Enter your JSON mapping here..."></textarea>
+Write out the First-Order Logic definitions that clearly distinguish the empty set from an urelement, ensuring you account for extensionality.
+
+<textarea id="jensen-4-1" class="form-control problem-input" rows="5" placeholder="Enter your logical definitions here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::
 
 ::: {.card .mb-3}
 ::: {.card-header}
-**Problem 3.2: Urelements vs Pure Sets**
+**Problem 4.2: The Choice Axiom Restoration**
 :::
 ::: {.card-body}
-If you choose to model Jensen's NFU instead of pure NF, your ontology must allow Urelements. Write the JSON structure for a `Node` object that validates under Jensen's weakened Extensionality ($Ext'$). How will you distinguish an Urelement from the standard `null_set` inside your data schema?
+Specker proved that AC fails in pure NF because the universe contains too many symmetrical "large" sets. 
 
-<textarea id="specker-3-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
+Explain conceptually (using logic rather than code) how the introduction of urelements breaks this symmetry and allows the Axiom of Choice to function without triggering a contradiction.
+
+<textarea id="jensen-4-2" class="form-control problem-input" rows="4" placeholder="Enter your logical argument here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
 :::
 :::
 
 ---
 
-[Next: Untyped Universes: Forster and Holmes ➔](forster-holmes.qmd)
+[Next: Untyped Universes ➔](forster-holmes.qmd)

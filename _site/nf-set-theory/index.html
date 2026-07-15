@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-748a4fdea3a16b2df2c3fadf5e553d57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-78ef4ed8d8014daf0fea856a228883a4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -56,35 +56,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="../js/github-sync.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -167,44 +138,50 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../nf-set-theory/topology-transclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Topology and Transclusion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/quine-math-logic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Quine’s Mathematical Logic and Stratification</span></a>
+ <span class="menu-text">2. Quine’s Mathematical Logic and Stratification</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/hailperin-axioms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Hailperin’s Finite Axiomatization</span></a>
+ <span class="menu-text">3. Hailperin’s Finite Axiomatization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/specker-orey-jensen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. The Axiom of Choice Crisis</span></a>
+ <span class="menu-text">4. The Axiom of Choice Crisis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/forster-holmes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Untyped Universes: Forster and Holmes</span></a>
+ <span class="menu-text">5. Untyped Universes (Forster &amp; Holmes)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/mac-lane-lawvere.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Mac Lane, Lawvere, and Foundational Mappings</span></a>
+ <span class="menu-text">6. Mac Lane, Lawvere, and Foundational Mappings</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/lambek-scott.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6. Higher-Order Logic: Lambek, Scott, Barr, and Wells</span></a>
+ <span class="menu-text">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../nf-set-theory/mclarty-forster-stratified.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">7. Stratified Semantics: McLarty and Forster</span></a>
+ <span class="menu-text">8. Stratified Semantics (McLarty &amp; Forster)</span></a>
   </div>
 </li>
     </ul>
@@ -223,6 +200,7 @@ window.Quarto = {
   <li><a href="#connect-your-execution-environment" id="toc-connect-your-execution-environment" class="nav-link" data-scroll-target="#connect-your-execution-environment">Connect Your Execution Environment</a></li>
   <li><a href="#chapter-progression" id="toc-chapter-progression" class="nav-link" data-scroll-target="#chapter-progression">Chapter Progression</a>
   <ul class="collapse">
+  <li><a href="#the-epistemology-of-the-web" id="toc-the-epistemology-of-the-web" class="nav-link" data-scroll-target="#the-epistemology-of-the-web">The Epistemology of the Web</a></li>
   <li><a href="#quinean-foundations" id="toc-quinean-foundations" class="nav-link" data-scroll-target="#quinean-foundations">Quinean Foundations</a></li>
   <li><a href="#categorical-semantics" id="toc-categorical-semantics" class="nav-link" data-scroll-target="#categorical-semantics">Categorical Semantics</a></li>
   </ul></li>
@@ -254,16 +232,17 @@ window.Quarto = {
 
 <section id="building-the-monistic-universe" class="level1">
 <h1>Building the Monistic Universe</h1>
-<p>This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe—a single, flat, self-containing totality.</p>
+<p>This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe, which is a single, flat, self-containing totality.</p>
 <p>We will achieve this through an exhaustive analysis of <strong>Quine’s New Foundations (NF) Set Theory</strong> and the structural mapping provided by <strong>Categorical Semantics</strong>.</p>
 <section id="the-goal-formalizing-an-nf-categorical-ontology" class="level2">
 <h2 class="anchored" data-anchor-id="the-goal-formalizing-an-nf-categorical-ontology">The Goal: Formalizing an NF Categorical Ontology</h2>
 <p>Traditional, standard ontologies (built on Zermelo-Fraenkel set theory) rely on strict, top-down hierarchies. They mathematically forbid a “universal set” (a category that contains itself) because of the Axiom of Foundation and Russell’s Paradox. In standard systems, the Category of all Sets is a proper class, not a set, preventing you from treating the universe as a single, manipulated object.</p>
 <p>In this course, your problem sets will culminate in the construction of a <strong>Machine-Readable NF Categorical Ontology (JSON)</strong>.</p>
-<p>Because a JSON object natively behaves like a flat, self-referential graph (where everything is simply an object, not a rigidly typed Proper Class), it is the perfect medium to map an NF universe. You will map: 1. <strong>The Universal Set (<span class="math inline">\(V\)</span>)</strong>: Safely listing the universe as a member of itself.</p>
-<ol start="2" type="1">
-<li><p><strong>Stratification Constraints</strong>: Encoding Hailperin’s finite axioms and Quine’s relative typing (integers <span class="math inline">\(n\)</span> to <span class="math inline">\(n+1\)</span>) into your JSON morphisms to prevent logical collapse.</p></li>
-<li><p><strong>Categorical Failures</strong>: Documenting the specific sacrifices required to maintain a Monistic Universe, such as mapping McLarty’s proof on the failure of Cartesian closedness directly into your ontology.</p></li>
+<p>However, before we map JSON, we must understand the logical and topological boundaries of the universe. The course progresses through three phases:</p>
+<ol type="1">
+<li><strong>Topology and Transclusion</strong>: Understanding the epistemology of the idealized web (unmediated operational inclusion) vs.&nbsp;standard hierarchical file systems.</li>
+<li><strong>First-Order Logic</strong>: Manually constructing the finite axioms (Hailperin) and stratification rules (Quine) that mathematically authorize this flat ontology.</li>
+<li><strong>The JSON Pivot</strong>: Translating these semantic rules into JSON, the perfect computational medium for modeling a flat, self-referential graph without spatial recursion.</li>
 </ol>
 </section>
 <section id="connect-your-execution-environment" class="level2">
@@ -288,21 +267,27 @@ Authenticate with GitHub
 </section>
 <section id="chapter-progression" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-progression">Chapter Progression</h2>
+<section id="the-epistemology-of-the-web" class="level3">
+<h3 class="anchored" data-anchor-id="the-epistemology-of-the-web">The Epistemology of the Web</h3>
+<ol type="1">
+<li><a href="../nf-set-theory/topology-transclusion.html">Topology and Transclusion</a></li>
+</ol>
+</section>
 <section id="quinean-foundations" class="level3">
 <h3 class="anchored" data-anchor-id="quinean-foundations">Quinean Foundations</h3>
-<ol type="1">
+<ol start="2" type="1">
 <li><a href="../nf-set-theory/quine-math-logic.html">Quine’s Mathematical Logic and Stratification</a></li>
 <li><a href="../nf-set-theory/hailperin-axioms.html">Hailperin’s Finite Axiomatization</a></li>
-<li><a href="../nf-set-theory/specker-orey-jensen.html">The Axiom of Choice Crisis: Specker, Orey, and Jensen</a></li>
-<li><a href="../nf-set-theory/forster-holmes.html">Untyped Universes: Forster and Holmes</a></li>
+<li><a href="../nf-set-theory/specker-orey-jensen.html">The Axiom of Choice Crisis</a></li>
+<li><a href="../nf-set-theory/forster-holmes.html">Untyped Universes (Forster &amp; Holmes)</a></li>
 </ol>
 </section>
 <section id="categorical-semantics" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-semantics">Categorical Semantics</h3>
-<ol start="5" type="1">
+<ol start="6" type="1">
 <li><a href="../nf-set-theory/mac-lane-lawvere.html">Mac Lane, Lawvere, and Foundational Mappings</a></li>
-<li><a href="../nf-set-theory/lambek-scott.html">Higher-Order Logic: Lambek and Scott</a></li>
-<li><a href="../nf-set-theory/mclarty-forster-stratified.html">The Stratified Pseudo Elephant: McLarty and Forster</a></li>
+<li><a href="../nf-set-theory/lambek-scott.html">Higher-Order Logic (Lambek &amp; Scott)</a></li>
+<li><a href="../nf-set-theory/mclarty-forster-stratified.html">Stratified Semantics (McLarty &amp; Forster)</a></li>
 </ol>
 
 

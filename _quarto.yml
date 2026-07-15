@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: _site
+  pre-render: "node scripts/generate_hashes.js"
+  resources:
+    - "versions.json"
 
 website:
   title: "Thinghood Limited"
@@ -30,6 +33,7 @@ website:
       title: "NF Set Theory"
       contents:
         - nf-set-theory/index.qmd
+        - nf-set-theory/topology-transclusion.qmd
         - nf-set-theory/quine-math-logic.qmd
         - nf-set-theory/hailperin-axioms.qmd
         - nf-set-theory/specker-orey-jensen.qmd
