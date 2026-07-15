@@ -22,7 +22,7 @@ $body-color: #2d3748 !default;
 /* Exact Ghost CMS Dark Navbar Replication */
 #quarto-header > .navbar {
   background-color: #4a5568 !important;
-  height:100px !important; /* One simple parameter: fixed height (increased) */
+  min-height: 100px !important; /* Changed from height to min-height so mobile menu can expand */
   padding: 0 4vmin !important; /* Remove vertical padding to let flexbox center perfectly within the height */
   border: none;
   font-family: $font-family-sans-serif;
@@ -30,11 +30,11 @@ $body-color: #2d3748 !default;
 
 #quarto-header .navbar-container {
   max-width: 1200px;
-  height: 100%; /* Fill the fixed 80px height */
+  min-height: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between; /* Restored Bootstrap default to keep hamburger on right */
 }
 
 #quarto-header .navbar-brand-container {
@@ -51,19 +51,7 @@ $body-color: #2d3748 !default;
   margin-right: 40px; 
 }
 
-/* Left align the navigation links right next to the brand */
-#quarto-header .navbar-collapse {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: flex-start;
-}
-
-#quarto-header .navbar-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 30px; 
-}
+/* Removed aggressive flex overrides to rely on native Bootstrap navbar responsiveness */
 
 #quarto-header .nav-item .nav-link {
   font-size: 15px; /* Matches 1.5rem in a 10px base Ghost theme */

@@ -1,6 +1,6 @@
 # Thinghood Limited Study Platform
 
-A static, serverless, and sovereign Quarto curriculum hosting various educational topics.
+A static, serverless, and sovereign Quarto curriculum hosting various educational topics, including NF Set Theory, Computational Metalogic, Material Logics I, and Material Logics II.
 
 This project delivers a completely static web application where students can write solutions to problems, execute logic exercises, and securely sync their progress to their own private GitHub repositories—all without a database, server backend, or requiring command-line interaction.
 
@@ -10,7 +10,7 @@ This project delivers a completely static web application where students can wri
 - **Authentication:** GitHub App Web Flow
 - **Serverless Token Relay:** Cloudflare Workers (Handling OAuth token exchange)
 - **Storage:** Student's personal private GitHub repository (via GitHub REST API)
-- **Version Control:** Automated file-level version hashing. The system archives exact snapshots of individual `.html` files when they change, preserving the historical context of a student's answer with zero repository bloat.
+- **Version Control:** Automated file-level version hashing. The system archives exact snapshots of individual `.html` files when they change into `archive/<topic>/`, preserving the historical context of a student's answer with zero repository bloat.
 - **Pedagogy (Zero-Cost Constructivism):** Uses stateful DOM interpolation to pull old answers forward into future prompts, forcing students to defend their own axioms without relying on centralized databases or LLM validation.
 
 ---

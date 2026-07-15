@@ -15,32 +15,39 @@ website:
     left:
       - text: "Home"
         href: "https://thing.rodeo/"
+        target: _self
       - text: "Study"
         href: "https://study.thing.rodeo/"
+        target: _self
       - text: "Logic"
         href: "https://thing.rodeo/computation-metalogic/"
+        target: _self
       - text: "Living Syllabus"
         href: "https://thing.rodeo/living-syllabus/"
+        target: _self
       - text: "About"
         href: "https://thing.rodeo/about/"
+        target: _self
     right:
       - text: "Sign in"
         href: "https://thing.rodeo/#/portal/signin"
+        target: _self
       - text: "<span class='nav-subscribe-btn'>Subscribe</span>"
         href: "https://thing.rodeo/#/portal/signup"
+        target: _self
   sidebar:
     - id: nf-set-theory
       title: "NF Set Theory"
       contents:
         - nf-set-theory/index.qmd
-        - nf-set-theory/topology-transclusion.qmd
-        - nf-set-theory/quine-math-logic.qmd
-        - nf-set-theory/hailperin-axioms.qmd
-        - nf-set-theory/specker-orey-jensen.qmd
-        - nf-set-theory/forster-holmes.qmd
-        - nf-set-theory/mac-lane-lawvere.qmd
-        - nf-set-theory/lambek-scott.qmd
-        - nf-set-theory/mclarty-forster-stratified.qmd
+        - nf-set-theory/01-topology-transclusion.qmd
+        - nf-set-theory/02-quine-math-logic.qmd
+        - nf-set-theory/03-hailperin-axioms.qmd
+        - nf-set-theory/04-specker-orey-jensen.qmd
+        - nf-set-theory/05-forster-holmes.qmd
+        - nf-set-theory/06-mac-lane-lawvere.qmd
+        - nf-set-theory/07-lambek-scott.qmd
+        - nf-set-theory/08-mclarty-forster-stratified.qmd
     - id: computation-metalogic
       title: "Computational Metalogic"
       contents:
@@ -52,6 +59,30 @@ website:
         - computation-metalogic/05-translation.qmd
         - computation-metalogic/06-metalogic.qmd
         - computation-metalogic/07-conclusion.qmd
+    - id: material-logics-i
+      title: "Material Logics I"
+      contents:
+        - material-logics-i/index.qmd
+        - material-logics-i/01-syntax-material-basis.qmd
+        - material-logics-i/02-official-notation-semantics.qmd
+        - material-logics-i/03-proof-theory-direct.qmd
+        - material-logics-i/04-hypothetical-reasoning.qmd
+        - material-logics-i/05-indirect-derivations.qmd
+        - material-logics-i/06-normal-forms-machine.qmd
+        - material-logics-i/07-dimacs-constraint-mapping.qmd
+        - material-logics-i/08-sat-heuristics-synthesis.qmd
+    - id: material-logics-ii
+      title: "Material Logics II"
+      contents:
+        - material-logics-ii/index.qmd
+        - material-logics-ii/01-propositional-to-quantified.qmd
+        - material-logics-ii/02-definite-descriptions.qmd
+        - material-logics-ii/03-tarskian-semantics.qmd
+        - material-logics-ii/04-model-checking-counter.qmd
+        - material-logics-ii/05-natural-deduction-quantified.qmd
+        - material-logics-ii/06-relational-logic-identity.qmd
+        - material-logics-ii/07-metatheory-transition-lean4.qmd
+        - material-logics-ii/08-formalization-portfolio.qmd
 
 format:
   html:
