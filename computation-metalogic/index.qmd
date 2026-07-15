@@ -1,0 +1,88 @@
+---
+title: "Computational Metalogic"
+---
+
+## Abstract
+
+The intellectual landscape of the twenty-first century is witnessing a convergence of historically distinct disciplines. The rigorous formalism of mathematical logic is merging with the algorithmic pragmatism of computer science and the conceptual depth of analytic philosophy. This convergence extends beyond overlapping interests to represent a fundamental unification of methodology. This is best exemplified by the **Curry-Howard Correspondence**, which posits a structural isomorphism between logical proofs and computer programs. As these fields merge, traditional methods of pedagogical transmission like static textbooks and detached lectures are proving insufficient. There is an urgent demand for a new class of educational resources that are at once rigorous, executable, and narratively rich.
+
+This guide organizes a reading pathway to prepare for **Intermediate Logic** at the graduate level. It bridges the gap between undergraduate logic, which typically focuses on doing proofs in a single system, and graduate metalogic, which focuses on proving theorems *about* those systems. Unlike traditional single-department reading lists, this guide adopts a **Computational Metalogic** approach. We approach logic as a programmable specification (Computer Science), avoiding the limitations of treating it solely as a linguistic tool (Philosophy) or a discrete structure (Math).
+
+### The "Trading Zone" Audience
+
+This guide is built for the **"Trading Zone"**—students operating at the intersection of Philosophy, Mathematics, and Computer Science. If you are comfortable in one of these fields but feel like an impostor in the others, this guide is for you.
+
+* **For the Philosophy Student:** You have mastered Natural Deduction (Fitch style) but hit a "Math Ceiling." We use **Enderton** to build your set-theoretic machinery and **Haskell** type definitions to clarify ontological concepts that are often ambiguous in English prose. (Note: While we use Haskell for its clean syntax in this guide, Pierce's *TAPL* uses **OCaml**, a related ML-family language with strict evaluation).
+* **For the Computer Science Student:** You can write a recursive tree-walker in your sleep but lack the historical and theoretical context of logic. We use **Sider** and **LPL** to ground your coding skills in deep metalogical theory, reframing recursion as **Induction** and types as **Ontology**.
+* **For the Mathematics Student:** You are comfortable with proofs but may lack the "Meta-Perspective." We use **computational pseudocode** to enforce a strict separation between the Object Language (Data) and the Metalanguage (Functions), effectively solving the Use/Mention problem structurally.
+
+### Methodology: Literate Programming
+
+This guide follows Donald Knuth's philosophy of **Literate Programming**. Throughout the text, you will encounter code snippets in **Haskell** (for defining static structures) and **Clojure** (for defining dynamic processes).
+
+* **Do not compile this code.**
+* **Read it as literature.**
+
+These snippets exist to provide unambiguous, formal definitions of concepts that are often slippery in natural language. They are designed for **mental execution**—to help you trace the precise logic of a definition or a proof strategy. By asking you to "mentally execute" this code, we are adopting the philosophical stance of **Intuitionism** (Brouwer) and **Constructivism** (Bishop). Rejecting the view of mathematical truth as a static fact awaiting discovery, these schools argue it is a dynamic mental construction. When you trace the recursion of a valuation function in your mind, you are not just learning *about* logic; you are *constructing* the proof in the only place it truly exists—your own intellect.
+
+---
+
+## Reading List
+
+By integrating resources from **Theodore Sider**, **Herbert Enderton**, and **Donald Knuth**, we aim to build a rigorous mental model of Soundness, Completeness, and Computability that is native to the modern interdisciplinary researcher. We move from the construction of the system (Syntax and Deduction) to its application (Translation) and finally to its mathematical analysis (Metalogic). We recommend a linear reading strategy that mirrors this structure: `1. Concepts` $\to$ `2. Syntax` $\to$ `3. Deduction` $\to$ `4. Semantics` $\to$ `5. Translation` $\to$ `6. Metalogic`.
+
+### The Philosophical Core
+
+* **[Sider]** Theodore Sider - *Logic for Philosophy*. 2010.
+    * *Role:* The primary textbook for the "Meta" perspective. Sider excels at defining the precise difference between $\vdash$ and $\vDash$.
+* **[LPL]** Barker-Plummer, Barwise, & Etchemendy - *Language, Proof and Logic* (2nd Edition). 2011.
+    * *Role:* The "Lab Manual" for deduction. We use it to master the Fitch system and the mechanics of translation.
+* **[TLB]** Bergmann et al. - *The Logic Book* (6th Edition). 2014.
+    * *Role:* The "Syntax Reference." Its recursive definitions of WFFs are more mathematically rigorous than other texts.
+* **[Negri]** Sara Negri & Jan von Plato - *Structural Proof Theory*. 2001.
+    * *Role:* The "Bridge." We use Negri to connect the student's prior knowledge of Natural Deduction (Fitch style) to the rigorous Sequent Calculus ($\Gamma \vdash \phi$) used in advanced metalogic. Note that while Negri focuses on Gentzen-style derivation trees rather than Fitch's vertical bars, the structural concepts are isomorphic.
+
+### The Mathematical Substrate
+
+* **[Enderton]** Herbert B. Enderton - *Elements of Set Theory*. 1977.
+    * *Role:* The foundation. We use it to build the set-theoretic machinery (Relations, Functions, Cardinality) required for Model Theory.
+* **[Velleman]** Daniel J. Velleman - *How to Prove It: A Structured Approach* (3rd Edition). 2019.
+    * *Role:* The "Debugger." Velleman’s structured approach to proof strategy is essentially a recursive search algorithm (p. ix).
+
+### The Computational Bridge
+
+* **[SICP]** Abelson, Sussman, & Sussman - *Structure and Interpretation of Computer Programs*. 1996.
+    * *Role:* The "Old Testament" of Computational Logic. It justifies our "Procedural Epistemology"—the idea that we learn logic by building the machinery of logic.
+* **[TAPL]** Benjamin C. Pierce - *Types and Programming Languages*. 2002.
+    * *Role:* The "New Testament" of Type Theory. It bridges the gap between **Logical Syntax** and **Computer Science Types**, providing the rigorous vocabulary required to discuss syntax trees.
+
+### Supplemental
+
+* **[forallx]** Zach et al. - *forallx: Calgary*. 2025.
+    * *Role:* The "Safety Net." A high-quality open-source supplement. If Sider's density proves too difficult, read the corresponding chapter in *forallx* first.
+
+#### Expanded Computer Science Coverage
+
+* **[SICP] Structure and Interpretation of Computer Programs**
+    * It provides the deep theory behind our treatment of **Semantics** and **Valuation**.
+    * **Key Concepts:**
+        * **Symbolic Data:** The structural analogue to "Logical Derivation" (Abelson & Sussman, pp. 192–228).
+        * **Metalinguistic Abstraction:** The explicit instruction on how to write an eval function, which corresponds to the "Valuation Function" in metalogic (Abelson & Sussman, pp. 492–518).
+        * **Data as Programs:** This grounds the Lisp concept of "homoiconicity" (code is data), the computational equivalent of the Gödelian insight that logical formulas are mathematical objects that can be manipulated (Abelson & Sussman, pp. 522–526).
+
+* **[TAPL] Types and Programming Languages**
+    * It serves as the authority for our type definitions. *Note: Pierce implements these in **OCaml** (Strict/Call-by-Value), whereas this guide uses **Haskell** (Lazy/Call-by-Need) for its cleaner conceptual syntax. We abstract away these evaluation differences to focus on the static type structure.*
+    * **Key Concepts:**
+        * **Inductive Definitions:** The definitive treatment of defining terms inductively, proving why `data WFF = ...` is a rigorous mathematical definition (Pierce, pp. 23–44).
+        * **Safety = Progress + Preservation:** The modern computational parallel to logical "Soundness" (Pierce, pp. 95–98).
+        * **The Curry-Howard Correspondence:** The essential concept for interdisciplinary students, demonstrating that "Proof Theory" in logic is isomorphic to "Type Checking" in Computer Science (Pierce, pp. 108–109).
+
+---
+
+## Guide
+
+
+## Project: The Formal Systems Specification
+Over the next 7 chapters, you will build your own toy formal language and deductive engine from scratch. At the end of this curriculum, your answers will compile into a complete architectural manifesto.
+
+[Begin the Project $\rightarrow$](01-conceptual-foundations.qmd)

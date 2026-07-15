@@ -24,6 +24,21 @@ However, the idealized vision of hypertext—pioneered by figures like Ted Nelso
 
 Transclusion dictates that a single instance of data exists in one location, while projecting its content seamlessly into multiple external contexts. You do not download a copy. The link serves as an unmediated window. You look *through* the text directly onto the target object.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Transitive Inheritance
+</div>
+<div class="guided-example-content">
+Examine this logical syllogism mapping transclusion:
+
+* **Premise 1:** Document A contains a transcluded link pointing to Document B.
+* **Premise 2:** User X duplicates Document A to create an exact structural copy, Document A'.
+* **Conclusion:** Therefore, Document A' contains ______________.
+
+*(Hint: Because transclusion does not copy physical data, what exactly does the duplicate inherit?)*
+</div>
+:::
+
 ## Abstracting Spatial Containment
 
 How can a document be completely embedded inside another document without physically copying the bytes? 
@@ -60,6 +75,8 @@ Throughout this curriculum, you will be asked to provide "logical arguments." We
 Use this structured format (Premises leading to a Conclusion) when answering the abstract problems below.
 
 ---
+
+
 
 ## Problem Set: Foundational Ontology
 

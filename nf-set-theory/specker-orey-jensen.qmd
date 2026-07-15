@@ -47,9 +47,27 @@ $\forall x \forall y (\forall z (z \in x \iff z \in y) \implies x = y)$
 *(Translation: For all sets $x$ and $y$, if they contain the exact same elements $z$, then $x$ and $y$ are identical.)*
 When Urelements are introduced, this strict axiom must be modified because Urelements have no members, but are *not* identical to the empty set.
 
-## Problem Set: Categorical Sacrifices
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: The Empty Set vs Urelement
+</div>
+<div class="guided-example-content">
+If we permit Urelements, both they and the empty set share the property of having *no members*: $\forall y (y \notin x)$. 
 
-In your JSON ontology, you must account for the topological realities of the host system you are building.
+To distinguish them, some formalizations state that a Urelement is uniquely identical to its own singleton set, while the empty set is not.
+
+Empty Set: $x = \emptyset \iff \forall y (y \notin x) \land x \neq \{x\}$
+Urelement: $x \in U \iff \forall y (y \notin x) \land \_\_\_\_\_\_\_\_\_\_$
+
+*(Hint: How would you express the condition that the Urelement IS identical to its own singleton?)*
+</div>
+:::
+
+---
+
+
+
+## Problem Set: Categorical Sacrifices
 ## Problem Set: Logical Construction of Urelements
 
 ::: {.card .mb-3}

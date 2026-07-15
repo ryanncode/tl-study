@@ -1,0 +1,348 @@
+---
+title: "The Deduction System"
+---
+
+## The Deduction System: Tracking Support Relations and Proofs as Programs
+
+**Scope:** This section synthesizes the mechanical framework of deduction. We detail the specific rules of inference for the **Fitch** natural deduction system (as specified in the syllabus) and contrast them with the **Sequent Calculus** and **Axiomatic** systems defined by Sider. We assume you are familiar with Fitch (vertical lines), but we reframe it here as a **Type Checking** process. In Graduate Logic, the "Turnstile" (⊢) represents more than just "provability"; it functions as the compilation step in a program. Our focus is on the rigorous manipulation of syntax to establish validity, specifically handling the constraints on subproofs and arbitrary objects.
+
+* **Reading:** [LPL] 6, 8, 13; [TAPL] 9; [SICP] 2.3; [forallx] 17, 36, 40; [TLB] 10.1, 10.4; [Sider] 2.5, 4.2, 4.4; [Velleman] 3; [Negri] 1
+* **Primary Focus:** **[LPL] Chapters 6, 13, & 14**. Use LPL to master the **Fitch deduction system**, focusing on "arbitrary object" constraints and Definite Descriptions.
+* **Bridge:** Read **[Negri] Chapter 1** to connect vertical lines (Fitch) to Sequents ($\Gamma \vdash \phi$).
+* **CS Perspective:** Read **[SICP] 4.1** (Metacircular Evaluator) to see how a proof system "crawls" over the syntax tree to determine validity.
+
+#### 3.1. The Curry-Howard Correspondence
+
+The deepest insight you will carry from Computer Science into Logic is the **Curry-Howard Correspondence**. This principle states that logical propositions are isomorphic to **Data Types**, and proofs are isomorphic to **Programs**.
+
+* **Proposition (P→Q):** This is a Function Type (P -> Q).
+* **Proof:** This is a Program (function) that takes an argument of type P and returns a value of type Q.
+* **Validity:** If the program "compiles" (type-checks), the logic is valid.
+
+When you construct a Fitch proof, you are literally writing a program in a purely functional language. The "Rules of Inference" are simply the valid moves for constructing these programs (Pierce 2002, pp. 108–109).
+
+#### 3.2. From Vertical Lines to Sequents (The State)
+
+While students often find the "Vertical Lines" in Fitch systems intuitive and "Sequents" in Metalogic abstract, they are isomorphic representations of the same logical concept: **dependency management**.
+
+* **The Problem:** In a proof, you must track *what depends on what*. If you assume $P$ to prove $Q$, the result $Q$ is contingent on $P$.
+* **Solution A (Smith/Fitch):** Draw a vertical line. Anything to the right of the line is within the **scope** of the assumption at the top.
+* **Solution B (Negri/Sequents):** Carry the dependencies explicitly in a "context set" ($\Gamma$).
+
+> **Key Insight:** A single line in a Fitch proof corresponds to an entire Sequent.
+> * Fitch: Line 10 is $Q$, sitting inside a vertical bar started by assumption $P$.
+> * Sequent: $\{P\} \Rightarrow Q$.
+
+> **Note on Sider:** Sider introduces "Sequent Notation" ($\Gamma \vdash \phi$) early in **Chapter 2** to define classical validity, so you will encounter this immediately. Later, in **Chapter 6** (Modal Logic), he adapts this notation to track "Accessibility Relations" between worlds. Do not confuse the two uses. For now (Logic I), treat a sequent as a snapshot of a line in a Fitch proof: $\Gamma$ is the set of active assumptions (vertical lines), and $\phi$ is the current line.
+
+Deduction systems model logical consequence as **provability** (⊢). We distinguish them by how they model the "State" of a proof.
+
+* **Fitch:** A vertical line represents a **Lexical Scope**. Variables defined inside (like assumptions) are local to that scope.
+* **Sequent (Γ⊢ϕ):** The Greek letter Γ (Gamma) is simply the **Environment**—the list of all active variable bindings and assumptions currently in scope (Abelson & Sussman 1996, pp. 320–327).
+
+```haskell
+-- The Isomorphism: Proof State = Compiler State
+-- 1. Fitch Style (Visual Scope)
+data FitchState = Scope {
+    assumptions :: [Formula], -- The head of the subproof
+    lines       :: [Formula]  -- The body of the code
+}
+
+-- 2. Sequent Style (Explicit Environment)
+-- This matches the standard Typing Relation: Gamma |- t : T
+data Sequent = Sequent {
+    context    :: [Formula], -- Gamma (The Environment)
+    conclusion :: Formula    -- Phi   (The Type)
+}
+```
+
+*Notation: We use Haskell's **Record Syntax** (`data Name = Constructor { field :: Type }`) to make the structure explicit.*
+
+##### 3.2.1. Natural Deduction (Fitch System)
+
+The Fitch system, standard in undergraduate curricula, relies on **subproofs** to manage assumptions. As modeled by `FitchState`, the proof is a sequence of formulas where validity depends on the `Context` (the vertical lines).
+
+* **Structure:** The system uses graphical devices (vertical lines or "bars") to indicate the **scope** of an assumption. A formula within a subproof depends on the assumption at the head of that subproof (Barker-Plummer et al., pp. 576).
+* **Dependency:** Derivation validity hinges on correctly opening and discharging these subproofs.
+
+##### 3.2.2. Sequent Calculus (Sider's Approach)
+
+Sider constructs a proof system using **sequents** to track dependencies explicitly, replacing the vertical bars found in Fitch systems.
+
+* **Definition:** A sequent is an expression of the form $ \Gamma \Rightarrow \phi $, where Γ is a set of formulas (premises) and ϕ is a conclusion. This explicitly states that ϕ follows from assumptions Γ (Sider, p. 49).
+* **Mechanism:** Instead of nesting vertical lines, sequent rules manipulate the sets on the left-hand side. For example, "Assumptions" are introduced via the rule of assumption (RA): $\phi \Rightarrow \phi$ (Sider, p. 52).
+
+#### 3.3. Structural Formalization
+Before learning the specific rules (Rules of Inference), understand the **Structure** (Rules of Framework). This is what [Negri] calls "Structural Proof Theory."
+
+We are defining a data type for "Proof."
+
+```haskell
+-- Notation: Haskell (Structural)
+-- Comparing the two ways of tracking context.
+
+-- 1. The Fitch Block (Smith)
+-- Context is implicit in the nesting level.
+data FitchProof =
+    Line Formula
+  | SubProof Formula [FitchProof] -- An assumption and a list of lines inside it
+
+-- 2. The Sequent (Negri/Sider)
+-- Context is explicit in the Antecedent list.
+data Sequent = Sequent {
+    antecedent :: [Formula], -- The "Bag" of assumptions (Gamma)
+    succedent  :: Formula    -- The conclusion (Phi)
+}
+
+-- The "Turnstile" (|- or =>) is just the constructor for this data type.
+```
+
+#### 3.4. Propositional Rules as Data Constructors
+
+Manipulating connectives requires introduction and elimination rules. These rules formalize intuitive reasoning patterns like hypothetical derivation and proof by cases. We can now reframe the "Rules of Inference" as **Constructors** for proof terms, rather than arbitrary moves.
+
+##### 3.4.1. Conditional Proof (→ Intro)
+
+This rule mirrors the "Deduction Theorem" in metalogic: 
+
+* **Logic View ($\to$ Intro):** To derive $P \to Q$, assume $P$ and derive $Q$ within that subproof.
+* **CS View (Lambda Abstraction):** To construct a function of type `P -> Q`, we define a lambda term `\p -> q`. The assumption $P$ acts as the function argument, and the subproof constitutes the function body. This corresponds to the typing rule **T-Abs** (Rule 9-1, p. 103).
+
+```clojure
+;; Rule: Conditional Introduction
+;; Input: A subproof transforming P into Q
+;; Output: A function (P -> Q)
+(define (conditional-intro subproof)
+  (let ((assumption (first subproof))  ;; The argument 'x'
+        (conclusion (last subproof)))  ;; The return value 'M'
+    (lambda (assumption) conclusion))) ;; Result: \x.M
+```
+
+*Notation: `(lambda (arg) body)` creates an anonymous function. This represents the proof object itself.*
+
+* **Fitch Mechanism:** As shown in the function above, one `open-subproof` with the assumption $P$. If $Q$ is derived within that scope, the subproof is closed and $P \to Q$ is asserted in the main proof line. The vertical bar indicates that $P$ is discharged (Barker-Plummer et al., pp. 208–209).
+* **Sequent Mechanism ($ \rightarrow I $):** If one has established the sequent $\Gamma, \phi \Rightarrow \psi$ (meaning $\psi$ follows from assumptions $\Gamma$ and $\phi$), one allows the inference of $\Gamma \Rightarrow \phi \to \psi$. This creates a conditional conclusion while removing the dependency on $\phi$ from the premise set (Sider, p. 52).
+
+**Example:** To prove $P \to Q$, we assume $P$. If we can derive $Q$ (e.g., from premises $P \to R$ and $R \to Q$), we discharge the assumption and assert $P \to Q$.
+
+##### 3.4.2. Conditional Elimination (→ Elim / Modus Ponens)
+
+* **Logic View:** From $P \to Q$ and $P$, derive $Q$.
+* **CS View (Function Application):** If you have a function $f$ of type $P \to Q$ and a value $x$ of type $P$, you can apply $f$ to $x$ ($f(x)$) to get a result of type $Q$. This corresponds to the typing rule **T-App** (Rule 9-1, p. 103).
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Missing Justification
+</div>
+<div class="guided-example-content">
+Examine this partial proof:
+
+1. $P \to Q$ [Premise]
+2. $P$ [Premise]
+3. $Q$ [_____________, 1, 2]
+
+Which deductive rule of inference justifies the transition to step 3? 
+
+*(Hint: It is the most famous rule in logic, sometimes known as "Eliminating the Arrow" or "Affirming the Antecedent".)*
+</div>
+:::
+
+##### 3.4.2. Disjunction Elimination (∨ Elim)
+
+This rule formalizes "Proof by Cases." To prove a conclusion $S$ from a disjunction $P \vee Q$, we must show that $S$ follows from $P$ and also from $Q$.
+
+* **Fitch Mechanism:** This requires two separate subproofs: one assuming $P$ deriving $S$, and another assuming $Q$ deriving $S$. If both yield $S$, then $S$ is asserted (Barker-Plummer et al., pp. 149–152).
+* **Sequent Mechanism ($ \vee E $):** The rule takes three input sequents: $\Gamma \Rightarrow \phi \lor \psi$ (the disjunction), $\Delta_1, \phi \Rightarrow \chi$ (case 1), and $\Delta_2, \psi \Rightarrow \chi$ (case 2). It allows the derivation of $\Gamma, \Delta_1, \Delta_2 \Rightarrow \chi$ (Sider, p. 51).
+
+##### 3.4.3. Proof by Contradiction (¬ Intro)
+
+This rule (Reductio Ad Absurdum) establishes a negation by showing that an assumption leads to absurdity (falsum, ⊥).
+
+* **Fitch Mechanism:** To prove $\neg P$, one assumes $P$ in a subproof. If one derives a contradiction ($\bot$), the subproof is closed, and $\neg P$ is asserted (Barker-Plummer et al., pp. 159–160).
+* **Sequent Mechanism (RAA):** If $\Gamma, \phi \Rightarrow \psi \land \neg \psi$ (a contradiction), one infers $\Gamma \Rightarrow \neg \phi$ (Sider, p. 52).
+
+#### 3.5. Quantifier Rules & Restrictions ("The Danger Zone")
+
+Quantifier rules introduce strict constraints to prevent fallacious inferences (e.g., inferring "everything is F" from "one specific thing is F"). These restrictions ensure that variables refer to **arbitrary objects**, preventing reference to specific ones.
+
+##### 3.5.1. Universal Introduction (∀ Intro)
+
+This rule permits inferring $\forall x P(x)$ from $P(c)$, provided $c$ is an "arbitrary" name.
+
+* **The Constraint (Eigenvariable Condition):** You can infer $\forall x P(x)$ from $P(c)$ only if the constant $c$ does not appear in any open assumption on which $P(c)$ depends (Zach et al., p. 317).
+* **CS View (Type Abstraction):** This is equivalent to defining a **Generic Function** (e.g., `<T> void func()`). The variable $c$ acts as a type parameter. If the function body assumes specific properties of $T$ (beyond it being a type), it fails to type-check. This corresponds to **System F** (Universal Polymorphism) and the rule of Type Abstraction (Pierce 2002, pp. 339–344).
+* **SICP Connection:** This mirrors the rule for **bound variables**. The arbitrary name c must be "fresh" to avoid variable capture, ensuring the logic holds for *any* input (Abelson & Sussman 1996, pp. 36–38).
+
+```clojure
+(define (universal-intro proof line-num)
+  (let ((c (get-constant-at line-num))   ;; The "Eigenvariable"
+        (phi (get-formula-at line-num))) ;; The Body
+    ;; Safety Check: Is 'c' truly local to this scope?
+    (if (is-free-in-context? c (proof-context proof))
+        (error "Compilation Error: Variable Capture Detected")
+        (derive (ForAll x (substitute phi c x))))))
+```
+
+*Notation: `(error ...)` halts the program, simulating a logical contradiction or rule violation.*
+
+* **The "Arbitrary Object" Constraint:** The function `universal-intro` enforces a strict condition: the name `c` must not appear in any undischarged assumption. If this check passes, `c` functions as a generic placeholder, permitting the transition to the universal quantifier.
+* **Fitch Mechanism:** The system uses a **boxed constant**. One opens a subproof declaring a new constant $c$ (boxed at the top). Deriving $P(c)$ within this subproof—where $c$ is isolated from outside premises—allows the export of $\forall x P(x)$ (Barker-Plummer et al., pp. 352–353).
+* **Axiomatic Restriction (UG):** In axiomatic systems, the rule is **Universal Generalization (UG)**: From $\phi$, infer $\forall \alpha \phi$. The strict restriction is that the variable $\alpha$ must not be **free** in any premise upon which $\phi$ depends (Sider, p. 127).
+
+**Example of Error:** Suppose we know $Cube(a)$. We cannot infer $\forall x Cube(x)$ because $a$ is specific. However, if we assume a generic object $c$ about which we know nothing, and prove $Cube(c)$, we can infer $\forall x Cube(x)$.
+
+##### 3.5.2. Existential Elimination (∃ Elim)
+
+This rule formalizes reasoning from an existential claim: "We know *something* is F; let's call it c."
+
+```clojure
+(define (existential-elim proof exists-stmt target-stmt)
+  (let ((c (generate-fresh-name))) ;; Must be NEW
+    (open-subproof proof assumption: (substitute exists-stmt c))
+    (if (and (derives? subproof target-stmt)
+             (not (contains? target-stmt c))) ;; Escape Check
+        (assert target-stmt)
+        (error "Temporary name leaked"))))
+```
+
+*Notation: `(generate-fresh-name)` represents a side-effecting operation that creates a unique symbol, ensuring the new name $c$ has never been used before.*
+
+* **The "Temporary Name" Constraint:** As modeled by `generate-fresh-name`, the name `c` must be new. Furthermore, the `Escape Check` ensures that `c` does not appear in the final `target-stmt`. This prevents the error of assuming we know *which* specific object satisfies the predicate.
+* **Fitch Mechanism:** From a premise $\exists x S(x)$, one opens a subproof assuming $S(c)$ for a *new* name $c$. If one can derive a sentence $Q$ (which does not contain $c$), one can assert $Q$ in the main proof (Barker-Plummer et al., p. 358).
+* **Sequent/Axiomatic Approach:** Sider defines the existential quantifier in terms of the universal: $\exists \alpha \phi$ is an abbreviation for $\neg \forall \alpha \neg \phi$. Consequently, rules for $\exists$ are derived from the rules for $\forall$ and negation, rather than having a distinct subproof rule (Sider, p. 117).
+
+#### 3.6. Identity and Derived Rules
+
+##### 3.6.1. Identity Rules
+
+Identity (=) rules characterize the logical behavior of equality.
+
+* **Identity Introduction ($= Intro$):** One can always assert $n = n$ for any term $n$. This is a logical truth requiring no premises (Bergmann et al., p. 526).
+* **Identity Elimination ($= Elim$):** This is the "Indiscernibility of Identicals." If $a = b$ and $P(a)$ are established, one can derive $P(b)$. This allows the substitution of co-referring terms (Bergmann et al., pp. 527–529).
+
+##### 3.6.2. Derived Rules (The "Toolkit")
+
+Advanced proof construction utilizes **derived rules**—shortcuts established by metalogic to expedite the process.
+
+* **Conversion of Quantifiers (CQ):** These rules allow the mechanical movement of negation across quantifiers, akin to De Morgan's laws. For example, $\neg \forall x P(x)$ is equivalent to $\exists x \neg P(x)$. Mastering these equivalences allows for the transformation of formulas into convenient forms for proof (Zach et al., pp. 317–319).
+* **Deduction Theorem:** In axiomatic systems, since there are no subproofs, Conditional Proof is not a primary rule. Instead, the **Deduction Theorem** is a meta-theorem proved about the system: If $\Gamma \cup \{ \phi \} \vdash \psi$, then $\Gamma \vdash \phi \to \psi$. This validates the strategy of "assuming the antecedent" even in systems that technically lack subproofs (Sider, p. 74).
+
+#### 3.7. Strategic Heuristics: The "Debugger" Mindset
+
+**Reference:** [Velleman] Chapter 3; [SICP] 4.4
+
+Velleman’s "Structured Approach" to finding proofs is essentially a **recursive search algorithm**. This is conceptually distinct from a linear search for "the next step." When you get stuck, do not guess. treat the proof state as a bug in a program that won't compile.
+
+* **Goal-Directed Search:**
+    * Look at your **Goal** (the Return Type).
+    * If the return type is P -> Q, you *must* write a function (open a subproof).
+    * If the return type is P & Q, you *must* construct a pair (prove P, then prove Q).
+
+* **Backward Chaining:**
+    * This is the strategy used in Logic Programming (like Prolog or the logic evaluator in **SICP**). Start with the conclusion and ask, "Which rule could have produced this?" (Abelson & Sussman 1996, pp. 615–627).
+
+In this framework, you do not just "look for a move." You analyze the **Logical Form** of your **Goal** (Conclusion) and your **Givens** (Premises) to determine the structural architecture of the proof.
+
+##### 3.7.1. The Fundamental State
+
+At any point in a proof, your state is defined by two lists:
+
+1. **Givens:** What you currently know (Premises + active assumptions).
+2. **Goal:** What you need to verify right now.
+
+The proof ends when the **Goal** is identical to one of the **Givens**.
+
+```haskell
+-- The Proof State
+data State = State {
+    givens :: [Formula], -- Available resources (P, P -> Q, etc.)
+    goal   :: Formula    -- The current target
+}
+```
+
+*Notation: This uses Haskell's **Record Syntax**. It defines a `State` data type with named fields (`givens` and `goal`), making the structure explicit.*
+
+##### 3.7.2. Goal-Directed Strategies (Introduction Rules)
+
+**Priority:** Always analyze your **Goal** first. If the Goal is a complex sentence, the "Intro" rule for its main connective dictates the structure of your subproof.
+
+* **Strategy A: Conditional Goals ($P \to Q$)**
+    * **Trigger:** The Goal is an implication.
+    * **Velleman’s Tactic:** "Assume $P$ is true and then prove $Q$."
+    * **Fitch Implementation:** Open a new subproof.
+        1. **Assume:** $P$
+        2. **New Goal:** $Q$
+        3. **Close:** When $Q$ is reached, discharge the subproof to infer $P \to Q$.
+
+* **Strategy B: Negative Goals ($\neg P$)**
+    * **Trigger:** The Goal is a negation.
+    * **Velleman’s Tactic:** "Assume $P$ is true and try to reach a contradiction."
+    * **Fitch Implementation:** Open a new subproof (Proof by Contradiction).
+        1. **Assume:** $P$
+        2. **New Goal:** $\bot$ (Contradiction)
+        3. **Close:** When $\bot$ is reached, discharge to infer $\neg P$.
+
+* **Strategy C: Universal Goals ($\forall x P(x)$)**
+    * **Trigger:** The Goal is a universal quantifier.
+    * **Velleman’s Tactic:** "Let $x$ be an arbitrary object and prove $P(x)$."
+    * **Fitch Implementation:** Open a new subproof with a boxed constant (e.g., $c$).
+        1. **Introduce:** Boxed constant $c$ (arbitrary)
+        2. **New Goal:** $P(c)$
+        3. **Close:** When $P(c)$ is reached, discharge to infer $\forall x P(x)$.
+
+##### 3.7.3. Given-Directed Strategies (Elimination Rules)
+
+**Priority:** If the Goal cannot be broken down further (e.g., it is an atomic sentence), look at your **Givens**. Complex Givens must be dismantled to extract useful data.
+
+* **Strategy D: Disjunctive Givens ($P \lor Q$)**
+    * **Trigger:** You have $P \lor Q$ as a Given, but your Goal is $R$.
+    * **Velleman’s Tactic:** "Break your proof into cases... Case 1: Assume $P$... Case 2: Assume $Q$."
+    * **Fitch Implementation:** Proof by Cases ($\lor$ Elim).
+        * *Subproof 1:* Assume $P$, derive $R$.
+        * *Subproof 2:* Assume $Q$, derive $R$.
+        * *Result:* assert $R$ in the main line.
+        * *Note:* The cases must be **exhaustive** (cover all possibilities provided by the disjunction).
+
+* **Strategy E: Existential Givens ($\exists x P(x)$)**
+    * **Trigger:** You have $\exists x P(x)$ as a Given.
+    * **Velleman’s Tactic:** Choose a new name (say, $x_0$) for the object that makes $P$ true.
+    * **Fitch Implementation:** Existential Elimination.
+        * Open a subproof with a boxed constant $c$ AND the assumption $P(c)$.
+        * Derive your goal (which must not contain $c$).
+
+##### 3.7.4. Summary of Heuristics (The Velleman Protocol)
+
+| Goal State (Type) | CS Analog | Recommended Action |
+| :--- | :--- | :--- |
+| Goal: $P \to Q$ | Function Type | Assume $P$, Target $Q$ (Write a lambda) |
+| Goal: $\neg P$ | Continuation | Assume $P$, Target $\bot$ |
+| Goal: $P \land Q$ | Product Type | Build a tuple: (Proof of $P$, Proof of $Q$) |
+| Goal: $P \lor Q$ | Sum Type | Construct a variant: Left($P$) or Right($Q$) |
+| Goal: $\forall x P(x)$ | Generic Type | Box $c$, Target $P(c)$ |
+| Given: $P \lor Q$ | Case Analysis | Split into Cases ($P \to G$, $Q \to G$) |
+| Given: $\exists x P(x)$ | Destructuring | Instantiate dummy name $c$ where $P(c)$ |
+
+##### 3.7.5. Note: Deduction vs. Induction
+
+It is critical to distinguish between **Deductive Strategies** (Section 3) and **Inductive Strategies** (Section 6).
+* **Deduction (Section 3):** We use Velleman's heuristics to *enact* the system (deriving formulas). Here, we rarely use Mathematical Induction unless the specific theory (like Peano Arithmetic) includes an induction schema.
+* **Metalogic (Section 6):** We use Velleman's "Structured Approach" to *analyze* the system (proving Soundness/Completeness). Here, Mathematical Induction is the primary engine of proof.
+
+We will revisit Velleman's protocol in **Section 6.1.2**, adapting it from a tool for finding derivations to a tool for proving theorems about the language itself.
+
+[Continue to Part 3: Semantics and Translation →](04-semantics.qmd)
+
+---
+
+
+:::{.card .mb-4}
+<div class="card-header bg-primary text-white">
+**Problem: Rules of Inference**
+</div>
+<div class="card-body">
+Define the axioms and inference rules (e.g., Modus Ponens equivalent) that allow your system to "compute" proofs. How does one statement legally transition into the next?
+
+<textarea id="03-deduction-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
+<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
+</div>
+:::

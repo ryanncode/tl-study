@@ -101,6 +101,20 @@ If a compiler wants to extract the domain of a relation and then combine it with
 2. **Apply P1 (Union)** to combine class $\alpha$ with an existing class $\gamma$.
 The output of P5 serves directly as the input for P1.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Axiomatic Combination
+</div>
+<div class="guided-example-content">
+Suppose we want to extract the Domain from a relation (using P5), and then immediately construct its absolute complement (using P2).
+
+1. Execute **P5** on relation $\alpha \rightarrow$ Yields Domain $\beta$
+2. Execute **P2** on $\beta \rightarrow$ Yields _________
+
+*(Hint: What is the logical inverse of the Domain $\beta$?)*
+</div>
+:::
+
 ---
 
 <script src="/js/syntax-sandbox.js"></script>
@@ -122,6 +136,8 @@ The output of P5 serves directly as the input for P1.
 ]'></syntax-sandbox>
 
 ---
+
+
 
 ## Problem Set: Mechanical Formalization
 

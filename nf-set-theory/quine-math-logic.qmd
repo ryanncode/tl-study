@@ -111,7 +111,25 @@ To prove this formula is stratified, we must assign an integer to every variable
 
 We successfully mapped integers to all variables ($x=1, y=2, z=3$) without any contradictions. This formula is **strictly stratified**.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Stratification Types
+</div>
+<div class="guided-example-content">
+Examine the formula: $x \in y \land y \in z$
+
+If we declare that $type(x) = 1$, then by the rule of stratification:
+$type(y) = 1 + 1 = 2$
+
+What must $type(z)$ be for this entire formula to remain strictly stratified? 
+
+$type(z) = \_\_\_\_\_$
+</div>
+:::
+
 ---
+
+
 
 ## Problem Set: Stratification in First-Order Logic
 

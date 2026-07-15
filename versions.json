@@ -1,8 +1,10 @@
 {
   "documents": {
     "nf-set-theory/forster-holmes.qmd": {
-      "document_hash": "179b4bc4",
-      "historical_hashes": [],
+      "document_hash": "965f06b2",
+      "historical_hashes": [
+        "179b4bc4"
+      ],
       "problems": {
         "holmes-5-1": {
           "title": "Problem 5.1: Tracking the T-Operation",
@@ -11,12 +13,13 @@
       }
     },
     "nf-set-theory/hailperin-axioms.qmd": {
-      "document_hash": "dcf291a9",
+      "document_hash": "ffbd4b0a",
       "historical_hashes": [
         "f52b1af1",
         "5364b67f",
         "eb595b8e",
-        "027c52a2"
+        "027c52a2",
+        "dcf291a9"
       ],
       "problems": {
         "hailperin-3-1": {
@@ -35,8 +38,10 @@
       "problems": {}
     },
     "nf-set-theory/lambek-scott.qmd": {
-      "document_hash": "da2ffc0b",
-      "historical_hashes": [],
+      "document_hash": "ffab2409",
+      "historical_hashes": [
+        "da2ffc0b"
+      ],
       "problems": {
         "lambek-7-1": {
           "title": "Problem 7.1: Modeling Modus Ponens",
@@ -49,8 +54,10 @@
       }
     },
     "nf-set-theory/mac-lane-lawvere.qmd": {
-      "document_hash": "c71b53ad",
-      "historical_hashes": [],
+      "document_hash": "00f85dab",
+      "historical_hashes": [
+        "c71b53ad"
+      ],
       "problems": {
         "maclane-6-1": {
           "title": "Problem 6.1: Morphisms vs Elements",
@@ -63,8 +70,10 @@
       }
     },
     "nf-set-theory/mclarty-forster-stratified.qmd": {
-      "document_hash": "cb42030c",
-      "historical_hashes": [],
+      "document_hash": "d045c78d",
+      "historical_hashes": [
+        "cb42030c"
+      ],
       "problems": {
         "mclarty-8-1": {
           "title": "Problem 8.1: The T-Functor JSON Property",
@@ -77,8 +86,10 @@
       }
     },
     "nf-set-theory/quine-math-logic.qmd": {
-      "document_hash": "37b8f564",
-      "historical_hashes": [],
+      "document_hash": "183451fa",
+      "historical_hashes": [
+        "37b8f564"
+      ],
       "problems": {
         "quine-2-1": {
           "title": "Problem 2.1: Resolving Russell's Paradox",
@@ -91,8 +102,10 @@
       }
     },
     "nf-set-theory/specker-orey-jensen.qmd": {
-      "document_hash": "404375cf",
-      "historical_hashes": [],
+      "document_hash": "510a0279",
+      "historical_hashes": [
+        "404375cf"
+      ],
       "problems": {
         "jensen-4-1": {
           "title": "Problem 4.1: Urelements vs The Empty Set",
@@ -105,8 +118,10 @@
       }
     },
     "nf-set-theory/topology-transclusion.qmd": {
-      "document_hash": "ae6b9d0b",
-      "historical_hashes": [],
+      "document_hash": "dbb5af0f",
+      "historical_hashes": [
+        "ae6b9d0b"
+      ],
       "problems": {
         "topology-1-1": {
           "title": "Problem 1.1: The Failure of the Shallow Copy",
@@ -119,43 +134,56 @@
       }
     },
     "computation-metalogic/01-conceptual-foundations.qmd": {
-      "document_hash": "e365ea45",
-      "historical_hashes": [],
+      "document_hash": "73e62b02",
+      "historical_hashes": [
+        "e365ea45"
+      ],
       "problems": {}
     },
     "computation-metalogic/02-syntax.qmd": {
-      "document_hash": "5e13f085",
+      "document_hash": "b1b41093",
       "historical_hashes": [
         "d79f8005",
         "80faa72b",
         "2127b714",
-        "01d3f605"
+        "01d3f605",
+        "5e13f085"
       ],
       "problems": {}
     },
     "computation-metalogic/03-deduction.qmd": {
-      "document_hash": "4b548c47",
-      "historical_hashes": [],
+      "document_hash": "4a1c4121",
+      "historical_hashes": [
+        "4b548c47"
+      ],
       "problems": {}
     },
     "computation-metalogic/04-semantics.qmd": {
-      "document_hash": "b7be45a3",
-      "historical_hashes": [],
+      "document_hash": "e6f32d2e",
+      "historical_hashes": [
+        "b7be45a3"
+      ],
       "problems": {}
     },
     "computation-metalogic/05-translation.qmd": {
-      "document_hash": "7af743dc",
-      "historical_hashes": [],
+      "document_hash": "0e2bd024",
+      "historical_hashes": [
+        "7af743dc"
+      ],
       "problems": {}
     },
     "computation-metalogic/06-metalogic.qmd": {
-      "document_hash": "5e32607b",
-      "historical_hashes": [],
+      "document_hash": "cb25f8c3",
+      "historical_hashes": [
+        "5e32607b"
+      ],
       "problems": {}
     },
     "computation-metalogic/07-conclusion.qmd": {
-      "document_hash": "0b877aa5",
-      "historical_hashes": [],
+      "document_hash": "76cabdbe",
+      "historical_hashes": [
+        "0b877aa5"
+      ],
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
@@ -164,5 +192,5 @@
       "problems": {}
     }
   },
-  "generated_at": "2026-07-15T16:54:50.955Z"
+  "generated_at": "2026-07-15T17:18:23.929Z"
 }

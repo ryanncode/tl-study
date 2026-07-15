@@ -36,6 +36,25 @@ Because of the typing differentials between morphisms and objects, the classical
 
 $$Nat(C(U,-),F) \cong T(F(U))$$
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Functorial Mapping
+</div>
+<div class="guided-example-content">
+A functor $F$ maps objects to objects, and morphisms to morphisms, preserving structure.
+
+```json
+{
+  "functor": "T",
+  "maps_object": { "from": "A", "to": "T(A)" },
+  "maps_morphism": { "from": "f", "to": "_____" }
+}
+```
+
+*(Hint: If the functor is $T$, and it maps morphism $f$, what is the standard notation for the resulting mapped morphism?)*
+</div>
+:::
+
 ### The Stratified Pseudo Elephant (SPE)
 
 The resulting categorical environment is called a **Stratified Pseudo Elephant (SPE)**. It operates as a regular category with finite coproducts, a subobject classifier, and a full embedding endofunctor $T$. Within an SPE, only the subcategory of *Strongly Cantorian sets* forms a true elementary topos.
@@ -52,6 +71,8 @@ When modeling this environment, you will use the following JSON metadata structu
 Use these exact keys when completing the problem sets to ensure your model mathematically aligns with Forster's resolution.
 
 ---
+
+
 
 ::: {.card .mb-3}
 ::: {.card-header}

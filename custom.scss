@@ -170,3 +170,23 @@ textarea.form-control:focus, input.form-control:focus {
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Guided Example Component */
+.guided-example {
+  background-color: #f7fafc;
+  border-left: 4px solid #4a5568;
+  border-radius: 4px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.guided-example-title {
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+.guided-example-content {
+  color: #2d3748;
+  font-size: 0.95rem;
+}

@@ -27,6 +27,20 @@ In standard math, the size of a set $x$ is trivially equal to the size of its si
 **Mechanical Implications for Software Engines:**
 Because a Strongly Cantorian set has a natural bijection with its singletons, you can safely ignore the strict $+1$ typing flags (like Hailperin's Axiom P2) when evaluating variables bounded strictly within that set. It allows your ontological framework to treat the set as a perfectly stable type across all boundaries.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: T-Operation Shift
+</div>
+<div class="guided-example-content">
+The $T$-operation raises the type of a set by mapping it to its singletons. 
+
+If we have a base set $A = \{1, 2, 3\}$, then applying the $T$-operation yields:
+$T(A) = \{\{1\}, \{2\}, \_\_\_\_\_\}$
+
+*(Hint: What is the singleton of the final element in set A?)*
+</div>
+:::
+
 ## NFU as an "Elementary" Foundation (Holmes)
 
 M. Randall Holmes utilized Jensen's NFU to build a comprehensive foundation for mathematics in his text *Elementary Set Theory with a Universal Set*. Because NFU permits a universal set, absolute complements, and Boolean algebra, it supports the natural, intuitive constructions found in Frege's "naive" set theory without triggering paradoxes.
@@ -43,6 +57,10 @@ Holmes successfully implements:
 For nearly 90 years, pure NF (without Urelements) remained an open consistency problem. In 2024/2025, M. Randall Holmes and Sky Wilshaw finalized the absolute proof that **NF is Consistent**. 
 
 They proved that NF is consistent if and only if **Tangled Type Theory (TTT)** is consistent. TTT functions as a multi-sorted first-order theory parametrized by a limit ordinal $\lambda$. By establishing the "Freedom of Action" theorem (proving every coherent structural approximation approximates a valid allowable permutation), they formalized the multi-sorted construction computationally in the Lean theorem prover, permanently vindicating Quine's original 1937 architecture.
+
+---
+
+
 
 ## Problem Set: Categorical Mapping
 

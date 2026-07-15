@@ -1,0 +1,65 @@
+---
+title: "Conclusion"
+---
+
+## Conclusion: The Transition to Metalogic
+
+This guide traces the logical progression from the basic **grammar** of formal languages (Syntax), through the **mechanisms** of proof (Deduction), to the abstract **meaning** of these structures (Semantics).
+
+We summarize this trajectory as the construction and analysis of a single system. It also reveals that "Logic" is a family of systems defined by trade-offs, rather than a monolithic entity. The dominance of First-Order Logic in philosophy reflects an institutional preference for **epistemic security** (Completeness) over the **constructive strictness** prized in computer science and type theory.
+
+#### 7.1. The Computational Perspective
+
+By using computational tools (Haskell/Clojure) to study classical logic (Sider/Enderton), this guide adopts a specific pedagogical stance that differs from standard textbooks.
+
+* **The Standard View:** Most logic courses introduce Classical Logic as the default reality, treating Constructivism as a "limited" sub-system (Classical Logic minus the Law of Excluded Middle).
+* **The Computational View:** We have reversed this hierarchy. We treat Computable Functions as the ground truth ("If it runs, it exists"). From this perspective, Classical Logic appears as an **augmented system**—one that assumes ideal powers (like verifying truth over infinite domains) that no physical computer possesses.
+
+#### 7.2. Where the Systems Diverge
+
+This approach clarifies exactly where the "Metaphysics" of logic begins, resolving the tension between the two definitions of validity introduced in Section 1.
+
+* **The Safe Zone (Syntax & Deduction):** In Sections 2 and 3, the computational and classical views align. A formula is a finite tree; a proof is a finite list. These are constructive objects.
+* **The Divergence (Semantics):** In Section 4, the views part ways. As noted in the "Warning from the Constructivists," we cannot write a program to verify semantic validity for infinite domains. This demonstrates that **Classical Truth** is a non-computational concept, relying on a leap of faith beyond what can be mechanically checked.
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Ontological Commitment
+</div>
+<div class="guided-example-content">
+Think about the philosophical stakes of choosing a logic system. If you choose standard First-Order Logic, you are committing to a specific, rigid view of truth (Completeness) while sacrificing the ability to distinguish between different sizes of ________ (due to the Löwenheim-Skolem Theorem).
+
+*(Hint: What mathematically huge structure can FOL not uniquely pinpoint?)*
+</div>
+:::
+
+#### 7.3. Final Summary
+
+```haskell
+-- The Metalogical Trajectory
+type Syntax    = WFF                  -- The Data Structure (Finitary)
+type Deduction = (⊢) :: WFF -> Bool   -- The Mechanical Process (Constructive)
+type Semantics = (⊨) :: WFF -> Bool   -- The Truth Function (Classical)
+
+-- The Goal of Graduate Logic
+theorem :: Soundness_and_Completeness
+theorem = (⊢) <-> (⊨) -- The Bridge is Built
+```
+
+Undergraduate logic typically focuses on *competence*: constructing correct proofs and accurate translations. Graduate logic shifts focus to *understanding*: proving theorems *about* the logical systems themselves. The concepts covered here—Soundness, Completeness, Compactness, and Undecidability—form the pillars of this "metalogical" perspective.
+
+Mastering these foundations enables students to move beyond simply "following the rules" to investigating the deep mathematical structures validating them. This shift from user to analyst defines advanced philosophical logic.
+
+
+
+:::{.card .mb-4}
+<div class="card-header bg-primary text-white">
+**Problem: The Manifesto**
+</div>
+<div class="card-body">
+Synthesize your design into a final philosophical defense of your custom computational metalogic system. Publish this manifesto to the Public Cohort Discussion to defend your structural choices against peer critique.
+
+<textarea id="07-conclusion-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
+<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
+</div>
+:::

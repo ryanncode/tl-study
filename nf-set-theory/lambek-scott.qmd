@@ -42,6 +42,20 @@ Barr and Wells contextualized these categorical mappings directly into functiona
 * **Types as Objects**: Data types (Booleans, Integers, complex structs) function as the objects defining the domain and codomain boundaries.
 * **State Machines as Monoids**: A classical automaton operating on an input alphabet acts algebraically as a Monoid (a single object category) where the input string evaluates as a directed path navigating through a free category.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Categorical Modus Ponens
+</div>
+<div class="guided-example-content">
+In a Cartesian Closed Category, logical deduction is a geometric mapping. 
+If we have an exponential object $B^A$ (representing $A \to B$) and the domain object $A$, the "Evaluation" morphism ($eval$) maps their product to the target.
+
+$eval : B^A \times A \to \_\_\_\_\_$
+
+*(Hint: What is the resulting object when you successfully apply a function to its required input?)*
+</div>
+:::
+
 ### Translating to JSON: Products and Limits
 When building your JSON ontology, you must translate these Cartesian elements into explicit properties:
 
@@ -49,6 +63,8 @@ When building your JSON ontology, you must translate these Cartesian elements in
 *   **The `topology_limits` Constraint**: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding `"topology_limits": ["no_terminal_object"]` to your morphism's `constraints` array establishes the structural boundary your future proofs must rely on to prevent recursive paradoxes when tracing compositions.
 
 ---
+
+
 
 ::: {.card .mb-3}
 ::: {.card-header}

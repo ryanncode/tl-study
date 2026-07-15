@@ -62,7 +62,29 @@ Before solving the following problems, review the core schema format we will use
 *   `source` / `target`: The domains and codomains (can be single strings or arrays of strings for products).
 *   `constraints`: A list of rules ensuring this entity obeys specific axioms.
 
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: JSON Morphism Anatomy
+</div>
+<div class="guided-example-content">
+If you want to represent the morphism $f: A \to B$ in JSON, you need to specify its domain and codomain explicitly.
+
+```json
+{
+  "id": "Morphism_f",
+  "type": "morphism",
+  "source": "_____",
+  "target": "_____"
+}
+```
+
+*(Hint: What are the ID strings for the objects representing the domain and codomain in $f: A \to B$?)*
+</div>
+:::
+
 ---
+
+
 
 ## Problem Set: JSON Relational Morphisms
 
