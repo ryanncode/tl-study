@@ -114,4 +114,4 @@ How will you represent the Subobject Classifier ($\Omega$) in your JSON ontology
 
 ---
 
-[Next: Higher-Order Logic: Lambek and Scott ➔](lambek-scott.qmd)
+[Next: Higher-Order Logic: Lambek and Scott ➔](07-lambek-scott.qmd)

@@ -161,4 +161,4 @@ The Universal Set ($V$) is defined by the formula $x = x$. Using Quine's definit
 
 ---
 
-[Next: Hailperin's Finite Axiomatization ➔](hailperin-axioms.qmd)
+[Next: Hailperin's Finite Axiomatization ➔](03-hailperin-axioms.qmd)

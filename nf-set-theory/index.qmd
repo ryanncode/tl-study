@@ -49,15 +49,15 @@ To securely save your progress, this curriculum uses a dedicated GitHub App. It 
 ## Chapter Progression
 
 ### The Epistemology of the Web
-1. [Topology and Transclusion](topology-transclusion.qmd)
+1. [Topology and Transclusion](01-topology-transclusion.qmd)
 
 ### Quinean Foundations
-2. [Quine's Mathematical Logic and Stratification](quine-math-logic.qmd)
-3. [Hailperin's Finite Axiomatization](hailperin-axioms.qmd)
-4. [The Axiom of Choice Crisis](specker-orey-jensen.qmd)
-5. [Untyped Universes (Forster & Holmes)](forster-holmes.qmd)
+2. [Quine's Mathematical Logic and Stratification](02-quine-math-logic.qmd)
+3. [Hailperin's Finite Axiomatization](03-hailperin-axioms.qmd)
+4. [The Axiom of Choice Crisis](04-specker-orey-jensen.qmd)
+5. [Untyped Universes (Forster & Holmes)](05-forster-holmes.qmd)
 
 ### Categorical Semantics
-6. [Mac Lane, Lawvere, and Foundational Mappings](mac-lane-lawvere.qmd)
-7. [Higher-Order Logic (Lambek & Scott)](lambek-scott.qmd)
-8. [Stratified Semantics (McLarty & Forster)](mclarty-forster-stratified.qmd)
+6. [Mac Lane, Lawvere, and Foundational Mappings](06-mac-lane-lawvere.qmd)
+7. [Higher-Order Logic (Lambek & Scott)](07-lambek-scott.qmd)
+8. [Stratified Semantics (McLarty & Forster)](08-mclarty-forster-stratified.qmd)

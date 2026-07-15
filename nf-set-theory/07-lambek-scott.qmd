@@ -96,4 +96,4 @@ Since a C-Monoid lacks a terminal object (to prevent paradoxes), how will you de
 
 ---
 
-[Next: Stratified Semantics ➔](mclarty-forster-stratified.qmd)
+[Next: Stratified Semantics ➔](08-mclarty-forster-stratified.qmd)

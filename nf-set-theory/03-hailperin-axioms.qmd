@@ -171,4 +171,4 @@ Given the task of isolating the domain of an inverted relation and elevating its
 
 ---
 
-[Next: The Axiom of Choice Crisis ➔](specker-orey-jensen.qmd)
+[Next: The Axiom of Choice Crisis ➔](04-specker-orey-jensen.qmd)

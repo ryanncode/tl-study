@@ -80,4 +80,4 @@ Conceptually, how does tracking the $T$-operation allow an automated system to b
 
 ---
 
-[Next: Mac Lane, Lawvere, and Foundational Mappings ➔](mac-lane-lawvere.qmd)
+[Next: Mac Lane, Lawvere, and Foundational Mappings ➔](06-mac-lane-lawvere.qmd)

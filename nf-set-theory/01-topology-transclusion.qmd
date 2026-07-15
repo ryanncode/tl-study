@@ -108,4 +108,4 @@ Explain the mechanic of "Syntactic Authorization" in the context of Transclusion
 
 ---
 
-[Next: Quine's Mathematical Logic and Stratification ➔](quine-math-logic.qmd)
+[Next: Quine's Mathematical Logic and Stratification ➔](02-quine-math-logic.qmd)
