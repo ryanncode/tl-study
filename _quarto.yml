@@ -90,3 +90,7 @@ format:
       - cosmo
       - custom.scss
     toc: true
+    include-in-header:
+      - text: |
+          <script src="/js/cohort.js"></script>
+          <script src="/js/priority-nav.js"></script>
