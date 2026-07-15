@@ -34,6 +34,7 @@ Instead, this platform acts as a **Stateful Socratic Environment**:
 1. **Your Repo is a Digital Garden:** Your creative proofs, essays, and ontological designs are serialized directly to a private GitHub repository that you own. As you progress, these files are synthesized into a personal, publishable artifact.
 2. **Stateful Narrative Progression:** Your creative inputs are highly consequential. The logic you construct in early chapters will be dynamically injected into later prompts, forcing you to live with and defend your own axioms against systemic paradoxes.
 3. **Public Cohort Discussion:** True mathematical proofs are validated by the community, not a machine. When you construct a novel proof, you will have the option to "Publish to Cohort" to debate your logic in the centralized community forum, ensuring your personal repository remains pristine.
+
 ::: {.callout-important}
 ### Authentication Required
 To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.

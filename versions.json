@@ -1,8 +1,8 @@
 {
-  "curriculum_master_hash": "9e08f60e",
   "documents": {
     "forster-holmes.qmd": {
-      "document_hash": "7884897c",
+      "document_hash": "179b4bc4",
+      "historical_hashes": [],
       "problems": {
         "holmes-5-1": {
           "title": "Problem 5.1: Tracking the T-Operation",
@@ -12,6 +12,7 @@
     },
     "hailperin-axioms.qmd": {
       "document_hash": "f52b1af1",
+      "historical_hashes": [],
       "problems": {
         "hailperin-3-1": {
           "title": "Problem 3.1: The Kuratowski Contradiction",
@@ -24,11 +25,13 @@
       }
     },
     "index.qmd": {
-      "document_hash": "d3dfea79",
+      "document_hash": "fce8e5f3",
+      "historical_hashes": [],
       "problems": {}
     },
     "lambek-scott.qmd": {
-      "document_hash": "5d6b6a4a",
+      "document_hash": "da2ffc0b",
+      "historical_hashes": [],
       "problems": {
         "lambek-7-1": {
           "title": "Problem 7.1: Modeling Modus Ponens",
@@ -36,12 +39,13 @@
         },
         "lambek-7-2": {
           "title": "Problem 7.2: The C-Monoid Topology",
-          "hash": "9341efea"
+          "hash": "1b65ce2f"
         }
       }
     },
     "mac-lane-lawvere.qmd": {
       "document_hash": "c71b53ad",
+      "historical_hashes": [],
       "problems": {
         "maclane-6-1": {
           "title": "Problem 6.1: Morphisms vs Elements",
@@ -54,7 +58,8 @@
       }
     },
     "mclarty-forster-stratified.qmd": {
-      "document_hash": "34948e0e",
+      "document_hash": "cb42030c",
+      "historical_hashes": [],
       "problems": {
         "mclarty-8-1": {
           "title": "Problem 8.1: The T-Functor JSON Property",
@@ -62,12 +67,13 @@
         },
         "mclarty-8-2": {
           "title": "Problem 8.2: Topos Boundaries",
-          "hash": "8a4d0ce9"
+          "hash": "aaa193b3"
         }
       }
     },
     "quine-math-logic.qmd": {
       "document_hash": "37b8f564",
+      "historical_hashes": [],
       "problems": {
         "quine-2-1": {
           "title": "Problem 2.1: Resolving Russell's Paradox",
@@ -81,6 +87,7 @@
     },
     "specker-orey-jensen.qmd": {
       "document_hash": "404375cf",
+      "historical_hashes": [],
       "problems": {
         "jensen-4-1": {
           "title": "Problem 4.1: Urelements vs The Empty Set",
@@ -94,6 +101,7 @@
     },
     "topology-transclusion.qmd": {
       "document_hash": "ae6b9d0b",
+      "historical_hashes": [],
       "problems": {
         "topology-1-1": {
           "title": "Problem 1.1: The Failure of the Shallow Copy",
@@ -106,5 +114,5 @@
       }
     }
   },
-  "generated_at": "2026-07-15T02:26:01.604Z"
+  "generated_at": "2026-07-15T16:09:45.676Z"
 }

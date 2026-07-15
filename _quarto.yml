@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: _site
   pre-render: "node scripts/generate_hashes.js"
+  post-render: "node scripts/archive_html.js"
   resources:
     - "versions.json"
 

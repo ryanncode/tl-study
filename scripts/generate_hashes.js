@@ -12,11 +12,15 @@ function generateHash(content) {
 
 function processDirectory() {
     const versions = {
-        curriculum_master_hash: '',
         documents: {}
     };
 
-    let totalCurriculumContent = '';
+    let existing = null;
+    if (fs.existsSync(OUTPUT_FILE)) {
+        try {
+            existing = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8'));
+        } catch (e) {}
+    }
 
     const files = fs.readdirSync(NF_SET_THEORY_DIR);
     const qmdFiles = files.filter(f => f.endsWith('.qmd'));
@@ -28,24 +32,30 @@ function processDirectory() {
         // Hash for the entire document
         const docHash = generateHash(content);
         
+        let historicalHashes = [];
+        if (existing && existing.documents && existing.documents[file]) {
+            historicalHashes = existing.documents[file].historical_hashes || [];
+            const oldHash = existing.documents[file].document_hash;
+            if (oldHash && oldHash !== docHash) {
+                if (!historicalHashes.includes(oldHash)) {
+                    historicalHashes.push(oldHash);
+                }
+            }
+        }
+
         versions.documents[file] = {
             document_hash: docHash,
+            historical_hashes: historicalHashes,
             problems: {}
         };
 
-        totalCurriculumContent += content;
-
         // Extract individual problems and their hashes
-        // We look for a card-header with the problem title, then the body up to the textarea
         const problemRegex = /\*\*(Problem [^*]+)\*\*[\s\S]*?<textarea id="([^"]+)"/g;
         let match;
         
         while ((match = problemRegex.exec(content)) !== null) {
             const problemTitle = match[1].trim();
             const problemId = match[2].trim();
-            
-            // The matched block contains the title and the body up to the textarea.
-            // This is perfect for hashing, as any change in the prompt will change the hash.
             const problemBlock = match[0].trim();
             versions.documents[file].problems[problemId] = {
                 title: problemTitle,
@@ -54,12 +64,10 @@ function processDirectory() {
         }
     });
 
-    // Generate a master hash for the entire curriculum state
-    versions.curriculum_master_hash = generateHash(totalCurriculumContent);
     versions.generated_at = new Date().toISOString();
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(versions, null, 2));
-    console.log(`[Version Sync] Successfully generated versions.json with Master Hash: ${versions.curriculum_master_hash}`);
+    console.log(`[Version Sync] Successfully generated file-level versions.json`);
 }
 
 processDirectory();
