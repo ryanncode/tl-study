@@ -58,11 +58,11 @@ Shift from element-based structures to arrow-based categorical semantics. Invest
 ::: {.card .h-100}
 ::: {.card-body}
 <h4 class="card-title">Logic & Computation</h4>
-<h6 class="card-subtitle mb-2 text-muted">External Links</h6>
+<h6 class="card-subtitle mb-2 text-muted">Curriculum Module</h6>
 <p class="card-text">
-Review our broader theoretical frameworks, including Computation Metalogic and formal ontological reasoning.
+Build your own formal language and deductive engine from scratch. A continuous 7-part project covering syntax, semantics, and metalogic.
 </p>
-<a href="https://thing.rodeo/computation-metalogic/" class="card-link">Computation Metalogic</a>
+<a href="computation-metalogic/index.qmd" class="card-link">Start the Project</a>
 <br>
 <a href="https://thing.rodeo/monism/" class="card-link">Monism Framework</a>
 :::

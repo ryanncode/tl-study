@@ -10,13 +10,10 @@ const SYNC_CONFIG = {
     tokenRelayUrl: 'https://oauth-relay.thing.rodeo/api/token',
     tokenKey: 'tl_study_github_token',
     repoKey: 'tl_study_github_repo',
-    ownerKey: 'tl_study_github_owner',
-    dataFilePath: 'nf-set-theory/data.json',
-    markdownFilePath: 'nf-set-theory/Solutions.md',
-    readmeFilePath: 'nf-set-theory/README.md'
+    ownerKey: 'tl_study_github_owner'
 };
 
-const STUDENT_README = `# NF Set Theory & Categorical Semantics\n\nWelcome to your personal study repository for the **Thinghood Limited: NF Set Theory** curriculum.\n\nThis folder contains your serialized problem set solutions and active state data for the 8-part deep dive into Quine's New Foundations (NF) and Categorical Logic.\n\n## The Monistic Universe\n\nTraditional, standard ontologies (built on Zermelo-Fraenkel set theory) rely on strict, top-down hierarchies. They mathematically forbid a "universal set" (a category that contains itself) because of the Axiom of Foundation and Russell's Paradox. \n\nIn this curriculum, you are learning the structural mechanics of a **Monistic Universe**—a single, flat, self-containing totality where the Universal Set ($V \\in V$) is mathematically permitted.\n\n## Your Files\n\nThis directory is automatically managed by the Thinghood Limited study application. It contains two primary files generated from your problem sets:\n\n1. **\`Solutions.md\`**: A human-readable Markdown file containing your written solutions to the problem sets. You can read this file directly on GitHub, and it will render beautifully in the web interface.\n2. **\`data.json\`**: A machine-readable state file. This allows the study web application to reload your answers into the text fields if you return to the curriculum on a new device.\n\n> **Note:** Any manual edits made to \`data.json\` will be reflected in the web application upon your next login. However, manual edits to \`Solutions.md\` will be overwritten the next time you click "Save to GitHub" from the web interface.\n`;
+const STUDENT_README = `# Thinghood Limited Curriculum\n\nWelcome to your personal study repository.\n\nThis directory is automatically managed by the Thinghood Limited study application. It contains two primary files generated from your problem sets for each curriculum topic:\n\n1. **\`Solutions.md\`**: A human-readable Markdown file containing your written solutions to the problem sets.\n2. **\`data.json\`**: A machine-readable state file to reload your answers.\n`;
 
 class GitHubSync {
     constructor() {
@@ -35,23 +32,35 @@ class GitHubSync {
         return this.isAuthenticated() && !!this.repo && !!this.owner;
     }
 
+    getCurrentTopic() {
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        
+        // If we are on an archive page: /archive/topic_basename_hash.html
+        if (pathSegments[0] === 'archive' && pathSegments.length > 1) {
+            const archiveMatch = pathSegments[1].match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
+            if (archiveMatch) return archiveMatch[1];
+        }
+        
+        // Otherwise, the first directory in the path is the topic (e.g. /nf-set-theory/index.html)
+        return pathSegments[0] || 'unknown-topic';
+    }
+
     getCurrentBasename() {
-        const pathSegments = window.location.pathname.split('/');
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
         let filename = pathSegments[pathSegments.length - 1] || 'index.html';
         
-        // Check if we're in an archive page (e.g. lambek-scott_a1b2c3d4.html)
-        const archiveMatch = filename.match(/^([^_]+)_([a-f0-9]+)\.html$/);
+        const archiveMatch = filename.match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
         if (archiveMatch) {
-            return archiveMatch[1];
+            return archiveMatch[2]; // basename
         }
         return filename.replace('.html', '');
     }
 
     getArchiveHash() {
-        const pathSegments = window.location.pathname.split('/');
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
         let filename = pathSegments[pathSegments.length - 1] || 'index.html';
-        const archiveMatch = filename.match(/^([^_]+)_([a-f0-9]+)\.html$/);
-        return archiveMatch ? archiveMatch[2] : null;
+        const archiveMatch = filename.match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
+        return archiveMatch ? archiveMatch[3] : null; // hash
     }
 
     startAuthFlow() {
@@ -156,11 +165,12 @@ class GitHubSync {
 
         const archiveHash = this.getArchiveHash();
         const basename = this.getCurrentBasename();
+        const topic = this.getCurrentTopic();
         
-        let jsonPath = SYNC_CONFIG.dataFilePath;
+        let jsonPath = `${topic}/data.json`;
         if (archiveHash) {
-            jsonPath = `nf-set-theory/archive/${basename}/${archiveHash}/data.json`;
-            console.log(`Running in Archive Mode for ${basename} (hash: ${archiveHash})`);
+            jsonPath = `${topic}/archive/${basename}/${archiveHash}/data.json`;
+            console.log(`Running in Archive Mode for ${topic}/${basename} (hash: ${archiveHash})`);
         }
 
         const jsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${jsonPath}`;
@@ -181,7 +191,7 @@ class GitHubSync {
             console.error("Error loading JSON data:", error);
         }
 
-        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.markdownFilePath}`;
+        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${topic}/Solutions.md`;
         try {
             const mdRes = await fetch(mdUrl, { headers });
             if (mdRes.status === 200) {
@@ -190,7 +200,7 @@ class GitHubSync {
             }
         } catch (error) {}
 
-        const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.readmeFilePath}`;
+        const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/README.md`;
         try {
             const readmeRes = await fetch(readmeUrl, { headers });
             if (readmeRes.status === 200) {
@@ -206,12 +216,13 @@ class GitHubSync {
     }
 
     checkVersionDrift() {
+        const topic = this.getCurrentTopic();
         const basename = this.getCurrentBasename();
-        const qmdName = basename + ".qmd";
+        const docKey = `${topic}/${basename}.qmd`;
         
-        if (this.curriculumVersions && this.curriculumVersions.documents[qmdName] && this.data._metadata && this.data._metadata.document_hashes) {
-            const liveHash = this.curriculumVersions.documents[qmdName].document_hash;
-            const savedHash = this.data._metadata.document_hashes[qmdName];
+        if (this.curriculumVersions && this.curriculumVersions.documents[docKey] && this.data._metadata && this.data._metadata.document_hashes) {
+            const liveHash = this.curriculumVersions.documents[docKey].document_hash;
+            const savedHash = this.data._metadata.document_hashes[docKey];
             
             if (savedHash && liveHash !== savedHash) {
                 this.showOutdatedWarning();
@@ -232,9 +243,10 @@ class GitHubSync {
     buildVersionSwitcher() {
         if (!this.curriculumVersions) return;
         
+        const topic = this.getCurrentTopic();
         const basename = this.getCurrentBasename();
-        const qmdName = basename + ".qmd";
-        const docData = this.curriculumVersions.documents[qmdName];
+        const docKey = `${topic}/${basename}.qmd`;
+        const docData = this.curriculumVersions.documents[docKey];
         
         if (!docData || (!docData.historical_hashes || docData.historical_hashes.length === 0)) {
             return; // No history for this file
@@ -270,32 +282,35 @@ class GitHubSync {
     }
 
     loadArchivedVersion(hash) {
+        const topic = this.getCurrentTopic();
         const basename = this.getCurrentBasename();
+        
         if (hash === 'latest') {
-            window.location.href = `../nf-set-theory/${basename}.html`;
+            window.location.href = `../${topic}/${basename}.html`;
             return;
         }
         
         const isArchivedPage = window.location.pathname.includes('/archive/');
         if (isArchivedPage) {
-            window.location.href = `${basename}_${hash}.html`;
+            window.location.href = `${topic}_${basename}_${hash}.html`;
         } else {
-            window.location.href = `../archive/${basename}_${hash}.html`;
+            window.location.href = `../archive/${topic}_${basename}_${hash}.html`;
         }
     }
 
     async saveData() {
         this.collectFields();
         
+        const topic = this.getCurrentTopic();
         const basename = this.getCurrentBasename();
-        const qmdName = basename + ".qmd";
+        const docKey = `${topic}/${basename}.qmd`;
 
         if (!this.data._metadata) this.data._metadata = { document_hashes: {} };
         if (!this.data._metadata.document_hashes) this.data._metadata.document_hashes = {};
         
         this.data._metadata.last_saved = new Date().toISOString();
-        if (this.curriculumVersions && this.curriculumVersions.documents[qmdName]) {
-            this.data._metadata.document_hashes[qmdName] = this.curriculumVersions.documents[qmdName].document_hash;
+        if (this.curriculumVersions && this.curriculumVersions.documents[docKey]) {
+            this.data._metadata.document_hashes[docKey] = this.curriculumVersions.documents[docKey].document_hash;
         }
 
         if (!this.isFullyConfigured()) {
@@ -310,9 +325,9 @@ class GitHubSync {
             'Content-Type': 'application/json'
         };
 
-        const jsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.dataFilePath}`;
+        const jsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${topic}/data.json`;
         const jsonBody = {
-            message: `Auto-sync JSON from TL Study (${basename})`,
+            message: `Auto-sync JSON from TL Study (${docKey})`,
             content: btoa(unescape(encodeURIComponent(JSON.stringify(this.data, null, 2))))
         };
         if (this.fileSha) jsonBody.sha = this.fileSha;
@@ -327,14 +342,14 @@ class GitHubSync {
             console.error("Error saving JSON to GitHub:", error);
         }
 
-        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.markdownFilePath}`;
-        let markdownContent = `# NF Set Theory - My Solutions\n\n*These solutions were automatically synced from the TL Study platform.*\n\n---\n\n`;
+        const mdUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${topic}/Solutions.md`;
+        let markdownContent = `# ${topic} - My Solutions\n\n*These solutions were automatically synced from the TL Study platform.*\n\n---\n\n`;
         for (const [key, value] of Object.entries(this.data)) {
             if (key === '_metadata') continue;
             markdownContent += `### Problem ID: \`${key}\`\n${value}\n\n`;
         }
         const mdBody = {
-            message: "Auto-sync Markdown from TL Study",
+            message: `Auto-sync Markdown for ${topic}`,
             content: btoa(unescape(encodeURIComponent(markdownContent)))
         };
         if (this.mdFileSha) mdBody.sha = this.mdFileSha;
@@ -348,9 +363,9 @@ class GitHubSync {
         } catch (error) {}
 
         if (!this.readmeFileSha) {
-            const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${SYNC_CONFIG.readmeFilePath}`;
+            const readmeUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/README.md`;
             const readmeBody = {
-                message: "Initialize NF Set Theory README",
+                message: "Initialize README",
                 content: btoa(unescape(encodeURIComponent(STUDENT_README)))
             };
             try {
@@ -362,9 +377,9 @@ class GitHubSync {
             } catch (error) {}
         }
 
-        if (this.curriculumVersions && this.curriculumVersions.documents[qmdName]) {
-            const hash = this.curriculumVersions.documents[qmdName].document_hash;
-            const archiveJsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/nf-set-theory/archive/${basename}/${hash}/data.json`;
+        if (this.curriculumVersions && this.curriculumVersions.documents[docKey]) {
+            const hash = this.curriculumVersions.documents[docKey].document_hash;
+            const archiveJsonUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/contents/${topic}/archive/${basename}/${hash}/data.json`;
             const getJsonRes = await fetch(archiveJsonUrl, { headers });
             if (getJsonRes.status === 200) {
                 const existing = await getJsonRes.json();

@@ -1,6 +1,6 @@
 {
   "documents": {
-    "forster-holmes.qmd": {
+    "nf-set-theory/forster-holmes.qmd": {
       "document_hash": "179b4bc4",
       "historical_hashes": [],
       "problems": {
@@ -10,9 +10,14 @@
         }
       }
     },
-    "hailperin-axioms.qmd": {
-      "document_hash": "f52b1af1",
-      "historical_hashes": [],
+    "nf-set-theory/hailperin-axioms.qmd": {
+      "document_hash": "dcf291a9",
+      "historical_hashes": [
+        "f52b1af1",
+        "5364b67f",
+        "eb595b8e",
+        "027c52a2"
+      ],
       "problems": {
         "hailperin-3-1": {
           "title": "Problem 3.1: The Kuratowski Contradiction",
@@ -24,12 +29,12 @@
         }
       }
     },
-    "index.qmd": {
+    "nf-set-theory/index.qmd": {
       "document_hash": "fce8e5f3",
       "historical_hashes": [],
       "problems": {}
     },
-    "lambek-scott.qmd": {
+    "nf-set-theory/lambek-scott.qmd": {
       "document_hash": "da2ffc0b",
       "historical_hashes": [],
       "problems": {
@@ -43,7 +48,7 @@
         }
       }
     },
-    "mac-lane-lawvere.qmd": {
+    "nf-set-theory/mac-lane-lawvere.qmd": {
       "document_hash": "c71b53ad",
       "historical_hashes": [],
       "problems": {
@@ -57,7 +62,7 @@
         }
       }
     },
-    "mclarty-forster-stratified.qmd": {
+    "nf-set-theory/mclarty-forster-stratified.qmd": {
       "document_hash": "cb42030c",
       "historical_hashes": [],
       "problems": {
@@ -71,7 +76,7 @@
         }
       }
     },
-    "quine-math-logic.qmd": {
+    "nf-set-theory/quine-math-logic.qmd": {
       "document_hash": "37b8f564",
       "historical_hashes": [],
       "problems": {
@@ -85,7 +90,7 @@
         }
       }
     },
-    "specker-orey-jensen.qmd": {
+    "nf-set-theory/specker-orey-jensen.qmd": {
       "document_hash": "404375cf",
       "historical_hashes": [],
       "problems": {
@@ -99,7 +104,7 @@
         }
       }
     },
-    "topology-transclusion.qmd": {
+    "nf-set-theory/topology-transclusion.qmd": {
       "document_hash": "ae6b9d0b",
       "historical_hashes": [],
       "problems": {
@@ -112,7 +117,52 @@
           "hash": "0c8fd466"
         }
       }
+    },
+    "computation-metalogic/01-conceptual-foundations.qmd": {
+      "document_hash": "e365ea45",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/02-syntax.qmd": {
+      "document_hash": "5e13f085",
+      "historical_hashes": [
+        "d79f8005",
+        "80faa72b",
+        "2127b714",
+        "01d3f605"
+      ],
+      "problems": {}
+    },
+    "computation-metalogic/03-deduction.qmd": {
+      "document_hash": "4b548c47",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/04-semantics.qmd": {
+      "document_hash": "b7be45a3",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/05-translation.qmd": {
+      "document_hash": "7af743dc",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/06-metalogic.qmd": {
+      "document_hash": "5e32607b",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/07-conclusion.qmd": {
+      "document_hash": "0b877aa5",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/index.qmd": {
+      "document_hash": "2e6af052",
+      "historical_hashes": [],
+      "problems": {}
     }
   },
-  "generated_at": "2026-07-15T16:09:45.676Z"
+  "generated_at": "2026-07-15T16:54:50.955Z"
 }

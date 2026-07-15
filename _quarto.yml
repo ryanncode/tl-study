@@ -40,6 +40,17 @@ website:
         - nf-set-theory/mac-lane-lawvere.qmd
         - nf-set-theory/lambek-scott.qmd
         - nf-set-theory/mclarty-forster-stratified.qmd
+    - id: computation-metalogic
+      title: "Computational Metalogic"
+      contents:
+        - computation-metalogic/index.qmd
+        - computation-metalogic/01-conceptual-foundations.qmd
+        - computation-metalogic/02-syntax.qmd
+        - computation-metalogic/03-deduction.qmd
+        - computation-metalogic/04-semantics.qmd
+        - computation-metalogic/05-translation.qmd
+        - computation-metalogic/06-metalogic.qmd
+        - computation-metalogic/07-conclusion.qmd
 
 format:
   html:

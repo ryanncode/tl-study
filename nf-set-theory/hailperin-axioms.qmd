@@ -103,6 +103,26 @@ The output of P5 serves directly as the input for P1.
 
 ---
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["x", "y", "z", "α", "β"], 
+  ["∈", "∉", "≡", "∨", "∧"], 
+  [
+    {"val": "ι", "spaceAfter": false}, 
+    "∪", 
+    {"val": "∀", "spaceAfter": false}, 
+    {"val": "∃", "spaceAfter": false}
+  ], 
+  [
+    {"val": "(", "spaceAfter": false}, 
+    {"val": ")", "spaceBefore": false}, 
+    {"val": "⟨", "spaceAfter": false}, 
+    {"val": "⟩", "spaceBefore": false}
+  ]
+]'></syntax-sandbox>
+
+---
+
 ## Problem Set: Mechanical Formalization
 
 ::: {.card .mb-3}

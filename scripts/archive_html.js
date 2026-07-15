@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const VERSIONS_FILE = path.join(__dirname, '../versions.json');
-const CONTENT_DIR = path.join(__dirname, '../_site/nf-set-theory');
+const SITE_DIR = path.join(__dirname, '../_site');
 const ARCHIVE_BASE_DIR = path.join(__dirname, '../_site/archive');
 
 function archiveSite() {
@@ -17,16 +17,19 @@ function archiveSite() {
         fs.mkdirSync(ARCHIVE_BASE_DIR, { recursive: true });
     }
 
-    for (const [filename, data] of Object.entries(versions.documents)) {
-        const basename = filename.replace('.qmd', '');
+    // docKey is "topic/file.qmd"
+    for (const [docKey, data] of Object.entries(versions.documents)) {
+        const parts = docKey.split('/');
+        const topic = parts[0];
+        const basename = parts[1].replace('.qmd', '');
         const hash = data.document_hash;
         
-        const sourceHtml = path.join(CONTENT_DIR, `${basename}.html`);
-        const targetHtml = path.join(ARCHIVE_BASE_DIR, `${basename}_${hash}.html`);
+        const sourceHtml = path.join(SITE_DIR, topic, `${basename}.html`);
+        const targetHtml = path.join(ARCHIVE_BASE_DIR, `${topic}_${basename}_${hash}.html`);
         
         if (fs.existsSync(sourceHtml)) {
             if (!fs.existsSync(targetHtml)) {
-                console.log(`[HTML Archiver] Archiving ${basename}.html to ${basename}_${hash}.html`);
+                console.log(`[HTML Archiver] Archiving ${topic}/${basename}.html to ${topic}_${basename}_${hash}.html`);
                 fs.copyFileSync(sourceHtml, targetHtml);
             }
         } else {
