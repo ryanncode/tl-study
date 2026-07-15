@@ -1,0 +1,47 @@
+---
+title: "8. SAT Heuristics and Synthesis"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Conclude the historical arc by evaluating how DPLL and CDCL heuristics navigate immense state spaces, acting as algorithmic proxies for administrative planning.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain how DPLL and modern CDCL heuristics dynamically navigate massive state spaces to find valid variable assignments. Introduce the final SAT Solver Challenge: isolating structural constraints from a combinatorial puzzle and translating them into DIMACS CNF for computational verification.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: The SAT Solver Challenge
+</div>
+<div class="guided-example-content">
+**The Problem:** You must schedule three workers (A, B, C) across two shifts (1, 2).
+Constraints:
+1. Every worker must work exactly one shift.
+2. Worker A cannot work the same shift as Worker B.
+
+You will translate these constraints into propositional logic, normalize them to CNF, generate the DIMACS mapping, and execute the solution using an online SAT solver.
+</div>
+:::
+
+## Problem Set
+
+### Final Project: The SAT Solver Challenge
+Document your entire workflow for the SAT Solver Challenge. List the formal constraints, your CNF normalization steps, the final DIMACS file content, and the verified model output from the SAT solver.
+
+<textarea id="matlog-1-8" class="form-control problem-input" rows="12" placeholder="Document your complete SAT Solver Challenge workflow here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For DPLL and CDCL heuristics: *Logic in Computer Science* (Huth & Ryan 2004, Sec. 1.5.3–1.6.2)
+- For advanced SAT solving techniques: *Handbook of Satisfiability* (Biere et al. 2021, Sec. 3.2)
+
+---
+
+[Return to Course Outline ➔](index.qmd)

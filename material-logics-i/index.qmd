@@ -1,0 +1,44 @@
+---
+title: "Logic 101: Symbolic Logic & Automated Reasoning"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## The Material Basis of Computation
+
+Welcome to **Logic 101: Symbolic Logic & Automated Reasoning**. This course bridges the material basis of computation with abstract formal logic. You will learn how abstract reasoning is physically realized in digital circuits and hardware, covering syntax, semantics, and the foundational elements of automated verification.
+
+The course employs a historical materialist framework. The development of formal logic is understood not as the descent of platonic forms from an abstract ether, but as the intellectual artifact of specific social formations, technological epochs, and shifting labor processes.
+
+## Course Progression
+
+### Core Logic
+1. [Syntax and the Material Basis of Formalism](01-syntax-material-basis.qmd)
+2. [Official Notation and Algorithmic Semantics](02-official-notation-semantics.qmd)
+3. [Proof Theory and Direct Derivations](03-proof-theory-direct.qmd)
+4. [Hypothetical Reasoning and Deduction Architecture](04-hypothetical-reasoning.qmd)
+5. [Indirect Derivations and Systematic Processing](05-indirect-derivations.qmd)
+6. [Normal Forms and Machine-Readable Structures](06-normal-forms-machine.qmd)
+
+### Algorithmic Verification
+7. [The DIMACS Protocol and Constraint Mapping](07-dimacs-constraint-mapping.qmd)
+8. [SAT Heuristics and Synthesis](08-sat-heuristics-synthesis.qmd)
+
+## Connect Your Execution Environment
+
+To participate in the problem-posing exercises and the final SAT Solver Challenge, you must connect your GitHub account. 
+
+::: {.callout-important}
+### Authentication Required
+To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
+
+<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
+:::
+
+---
+
+[Begin Week 1 ➔](01-syntax-material-basis.qmd)

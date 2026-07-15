@@ -5,6 +5,7 @@ project:
   post-render: "node scripts/archive_html.js"
   resources:
     - "versions.json"
+    - "archive/"
 
 website:
   title: "Thinghood Limited"

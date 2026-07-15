@@ -1,0 +1,66 @@
+---
+title: "1. From Propositional Logic to Quantified Structures"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: The introduction of quantified structures and predicates is situated within the broader materialist history of science. Utilize Boris Hessen's The Social and Economic Roots of Newton's Principia to establish how highly abstract scientific and logical theories are driven directly by the technological and economic needs of the capitalist class.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain the transition from simple sentence letters to the internal architecture of atomic sentences. Introduce the recursive syntax of universal (∀) and existential (∃) quantifiers, alongside the distinct roles of constants, predicates, and arity.]
+
+## Sandbox Exploration
+
+Experiment with quantified syntax before attempting the problem sets. Note the difference between a constant `a` and a variable `x`.
+
+<div class="mb-3">
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ∀x ')">∀x</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ∃x ')">∃x</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ∀y ')">∀y</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ∃y ')">∃y</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' Fx ')">Fx</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' Rxy ')">Rxy</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' a ')">a</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' b ')">b</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ( ')">( </button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-quant', ' ) ')"> )</button>
+  <button class="btn btn-outline-danger btn-sm" onclick="clearSandbox('sandbox-quant')">Clear</button>
+  <button class="btn btn-outline-warning btn-sm" onclick="backspaceSandbox('sandbox-quant')">Backspace</button>
+</div>
+<div id="sandbox-quant" class="p-3 mb-4 bg-light border rounded" style="min-height: 50px; font-family: monospace;"></div>
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Arity and Quantifiers
+</div>
+<div class="guided-example-content">
+Translating "Everything is connected":
+Let Cxy = x is connected to y.
+
+Translation: `∀x ∀y Cxy`
+</div>
+:::
+
+## Problem Set
+
+### Exercise 1.1
+Define a domain of discourse and two predicates (one 1-place, one 2-place). Write a first-order formula that utilizes both universal and existential quantifiers.
+
+<textarea id="matlog-2-1" class="form-control problem-input" rows="4" placeholder="Enter your quantified formula..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For quantified syntax: *forall x Calgary* (Magnus et al. 2025, 172-195)
+- For computational structures: *Logic in Computer Science* (Huth & Ryan 2004, 93-109)
+
+---
+
+[Next: Definite Descriptions and Complex Translations ➔](02-definite-descriptions.qmd)

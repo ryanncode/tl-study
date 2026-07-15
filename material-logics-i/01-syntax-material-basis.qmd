@@ -1,0 +1,65 @@
+---
+title: "1. Syntax and the Material Basis of Formalism"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: The curriculum frames the formalization of propositional logic as the cognitive parallel to the industrial mechanization of physical labor. Utilize Karl Marx and Friedrich Engels's The German Ideology to establish the baseline mode of production and the division of labor that necessitated a new economy of thought. Use Alfred Sohn-Rethel's Intellectual and Manual Labour to analyze how purely syntactic rules structurally mirror the commodity form.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Establish the foundational mechanics of symbolic representation. Analyze the use/mention distinction alongside the precise architectural construction of arguments. Detail the structural rules for generating well-formed formulas (wffs) in truth-functional logic (TFL).]
+
+## Sandbox Exploration
+
+Experiment with the basic syntax of propositional logic before attempting the problem sets.
+
+<div class="mb-3">
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' P ')">P</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' Q ')">Q</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' R ')">R</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' /\\ ')">/\</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' \\/ ')">\/</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' -> ')">-></button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' ~ ')">~</button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' ( ')">( </button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="appendToSandbox('sandbox-syntax', ' ) ')"> )</button>
+  <button class="btn btn-outline-danger btn-sm" onclick="clearSandbox('sandbox-syntax')">Clear</button>
+  <button class="btn btn-outline-warning btn-sm" onclick="backspaceSandbox('sandbox-syntax')">Backspace</button>
+</div>
+<div id="sandbox-syntax" class="p-3 mb-4 bg-light border rounded" style="min-height: 50px; font-family: monospace;"></div>
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Well-Formed Formulas
+</div>
+<div class="guided-example-content">
+A well-formed formula (WFF) strictly follows recursive rules.
+
+Example of a WFF: `(P /\ (Q -> ~R))`
+Example of a non-WFF: `P /\ Q -> R` (ambiguous scope)
+</div>
+:::
+
+## Problem Set
+
+### Exercise 1.1
+Define three sentence letters representing physical material actions, then write a well-formed formula that asserts a complex relationship between them.
+
+<textarea id="matlog-1-1" class="form-control problem-input" rows="4" placeholder="Enter your logic..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For strict rules on recursive syntax: *forall x Calgary* (Magnus et al. 2025, Ch. 1–8)
+- For Carnap keyboard shorthands: *The Carnap Book* (2025, Ch. 1)
+
+---
+
+[Next: Official Notation and Algorithmic Semantics ➔](02-official-notation-semantics.qmd)

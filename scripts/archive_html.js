@@ -3,7 +3,7 @@ const path = require('path');
 
 const VERSIONS_FILE = path.join(__dirname, '../versions.json');
 const SITE_DIR = path.join(__dirname, '../_site');
-const ARCHIVE_BASE_DIR = path.join(__dirname, '../_site/archive');
+const ARCHIVE_BASE_DIR = path.join(__dirname, '../archive');
 
 function archiveSite() {
     if (!fs.existsSync(VERSIONS_FILE)) {
@@ -20,16 +20,22 @@ function archiveSite() {
     // docKey is "topic/file.qmd"
     for (const [docKey, data] of Object.entries(versions.documents)) {
         const parts = docKey.split('/');
-        const topic = parts[0];
-        const basename = parts[1].replace('.qmd', '');
+        const topic = parts.length > 1 ? parts[0] : '';
+        const basename = parts.length > 1 ? parts[1].replace('.qmd', '') : parts[0].replace('.qmd', '');
         const hash = data.document_hash;
         
-        const sourceHtml = path.join(SITE_DIR, topic, `${basename}.html`);
-        const targetHtml = path.join(ARCHIVE_BASE_DIR, `${topic}_${basename}_${hash}.html`);
+        const topicDir = path.join(ARCHIVE_BASE_DIR, topic);
+        if (!fs.existsSync(topicDir)) {
+            fs.mkdirSync(topicDir, { recursive: true });
+        }
+
+        const sourceHtml = topic ? path.join(SITE_DIR, topic, `${basename}.html`) : path.join(SITE_DIR, `${basename}.html`);
+        const targetHtml = path.join(topicDir, `${basename}_${hash}.html`);
         
         if (fs.existsSync(sourceHtml)) {
             if (!fs.existsSync(targetHtml)) {
-                console.log(`[HTML Archiver] Archiving ${topic}/${basename}.html to ${topic}_${basename}_${hash}.html`);
+                const targetRelative = topic ? `${topic}/${basename}_${hash}.html` : `${basename}_${hash}.html`;
+                console.log(`[HTML Archiver] Archiving ${docKey.replace('.qmd', '.html')} to ${targetRelative}`);
                 fs.copyFileSync(sourceHtml, targetHtml);
             }
         } else {

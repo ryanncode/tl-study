@@ -1,0 +1,54 @@
+---
+title: "6. Relational Logic and Identity Proofs"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Bridge deduction theory with capitalist economics using Jean-Yves Girard's Linear Logic to show how restricting structural rules transforms logical implication into a system of strict resource accounting and thermodynamic consumption.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain how proofs scale in difficulty as relationships between multiple distinct entities are verified. Discuss the navigation of proofs requiring multi-place predicates and symmetric, transitive identity substitutions.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Identity Substitution
+</div>
+<div class="guided-example-content">
+Proving symmetry of identity:
+```Plaintext
+1. a = b       : PR
+2. a = a       : =I
+3. b = a       : =E 1, 2
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 6.1
+Prove the transitivity of identity in the Carnap checking environment.
+
+~~~{.ProofChecker.ZachTFL}
+1. a = b : PR
+2. b = c : PR
+3. a = c : =E 2, 1
+~~~
+
+<textarea id="matlog-2-6" class="form-control problem-input" rows="6" placeholder="Document your proof strategy..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For identity and relational proofs: *forall x Calgary* (Magnus et al. 2025, 296-320)
+- For advanced structural rules: *Logic in Computer Science* (Huth & Ryan 2004, 109-127)
+
+---
+
+[Next: Metatheory and the Transition to Lean 4 ➔](07-metatheory-transition-lean4.qmd)

@@ -15,7 +15,7 @@ This project delivers a completely static web application where students can wri
 
 ---
 
-## 🔒 Intensive Security Description: GitHub Usage
+## GitHub Usage
 
 Because this application operates without a traditional backend database, all user data (problem set solutions, active state) is saved directly to the student's personal GitHub account via the GitHub REST API.
 

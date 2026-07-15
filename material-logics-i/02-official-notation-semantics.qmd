@@ -1,0 +1,56 @@
+---
+title: "2. Official Notation and Algorithmic Semantics"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Connect the rigorous definitions of semantics and the mechanical testing for validity (truth tables) to the broader rationalization of intellectual labor. Truth becomes a mechanically testable output rather than a subjective intuition.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Detail the mechanics of recursive definitions and natural language translation. Introduce a systematized computational approach to truth tables, establishing how the truth of a complex sentence depends entirely on its constituent parts.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Carnap Translation
+</div>
+<div class="guided-example-content">
+Translating natural language to truth-functional logic:
+"If production increases, then either wages fall or profits rise."
+
+Let P = Production increases
+Let W = Wages fall
+Let R = Profits rise
+
+Translation: `(P -> (W \/ R))`
+</div>
+:::
+
+## Problem Set
+
+### Exercise 2.1
+Translate the following statement into logical syntax: "Automation succeeds if and only if both human labor is deskilled and throughput increases."
+
+~~~{.Translate.Prop}
+1. (A <-> (D /\ T))
+~~~
+
+*(Note: The above Carnap environment auto-checks your logic when configured properly).*
+
+<textarea id="matlog-1-2" class="form-control problem-input" rows="4" placeholder="Draft your translation here before verifying..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For algorithmic semantics: *forall x Calgary* (Magnus et al. 2025, Ch. 9–14)
+- For auto-graded translations: *The Carnap Book* (2025, Ch. 2, 10)
+
+---
+
+[Next: Proof Theory and Direct Derivations ➔](03-proof-theory-direct.qmd)

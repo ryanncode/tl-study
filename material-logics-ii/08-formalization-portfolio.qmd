@@ -1,0 +1,44 @@
+---
+title: "8. Final Project Synthesis"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Utilize Evald Ilyenkov's Dialectical Logic and A.N. Kolmogorov's work to supply the Soviet materialist critique of static classical truth, demonstrating how intuitionism was pragmatically reframed as a labor-centric logic of problems.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Introduce the Formalization Portfolio. Students must translate historically significant philosophical or mathematical arguments into first-order syntax and execute a flawless, computer-verified proof inside the Carnap framework to demonstrate objective validity.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: The Formalization Portfolio
+</div>
+<div class="guided-example-content">
+**The Goal:** Select a classic argument (e.g., Anselm's Ontological Argument, or a fragment of Euclid's Elements).
+**Step 1:** Translate the natural language premises into strict First-Order Logic.
+**Step 2:** Construct a full Fitch-style derivation in Carnap to prove the conclusion follows from the premises.
+**Step 3:** Document any semantic ambiguities you encountered during translation.
+</div>
+:::
+
+## Problem Set
+
+### Final Project: Formalization Portfolio
+Select your text, translate it, and provide the Carnap-verified proof below.
+
+<textarea id="matlog-2-8" class="form-control problem-input" rows="15" placeholder="Document your Formalization Portfolio here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For final review of first-order syntax: *forall x Calgary* (Magnus et al. 2025)
+
+---
+
+[Return to Course Outline ➔](index.qmd)

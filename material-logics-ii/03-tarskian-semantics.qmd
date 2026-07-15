@@ -1,0 +1,48 @@
+---
+title: "3. Tarskian Semantics and Set-Theoretic Models"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Analyze the shift to set-theoretic models and the strict separation of object language and metalanguage through the lens of state-building. Utilize Alfred Tarski's The Concept of Truth in Formalized Languages to mirror the rational-legal bureaucratic optimization required by the interwar Polish state to integrate disparate legal and economic systems.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Define objective mapping processes using Tarskian Semantics. Detail how to establish formal set-theoretic interpretations by defining domains of discourse and mapping relations and properties to those specific domains.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Defining a Model
+</div>
+<div class="guided-example-content">
+To evaluate `∀x Fx -> Gx`:
+
+Domain: `{1, 2, 3}`
+Extension of F: `{1, 2}`
+Extension of G: `{1, 2, 3}`
+
+In this model, the formula evaluates to **True**.
+</div>
+:::
+
+## Problem Set
+
+### Exercise 3.1
+Explicitly define a domain with at least 4 elements. Define two predicate extensions such that the formula `∃x (Fx /\ ~Gx)` evaluates to true.
+
+<textarea id="matlog-2-3" class="form-control problem-input" rows="8" placeholder="Define your Domain, F, and G extensions here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For set-theoretic truth definitions: *forall x Calgary* (Magnus et al. 2025, 225-245)
+
+---
+
+[Next: Model Checking and Counter-Examples ➔](04-model-checking-counter.qmd)

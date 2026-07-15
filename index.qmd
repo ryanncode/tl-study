@@ -49,7 +49,7 @@ Explore the foundational axioms of Quine's New Foundations, the algebraic mechan
 <p class="card-text">
 Shift from element-based structures to arrow-based categorical semantics. Investigate Lawvere's ETAC, Cartesian Closed Categories, and the translation of logical deductions into morphisms.
 </p>
-<a href="nf-set-theory/mac-lane-lawvere.qmd" class="card-link">View Module</a>
+<a href="nf-set-theory/06-mac-lane-lawvere.qmd" class="card-link">View Module</a>
 :::
 :::
 :::
@@ -80,6 +80,32 @@ Stay updated on the evolving structure of our educational programs and version-c
 <a href="https://thing.rodeo/living-syllabus/" class="card-link">Living Syllabus</a>
 <br>
 <a href="https://thing.rodeo/git/" class="card-link">Git Practices</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">Logic 101: Material Logics I</h4>
+<h6 class="card-subtitle mb-2 text-muted">Symbolic Logic & Automated Reasoning</h6>
+<p class="card-text">
+Bridge the material basis of computation with abstract formal logic. Learn how reasoning is physically realized in digital circuits and hardware, covering syntax, semantics, and SAT solvers.
+</p>
+<a href="material-logics-i/index.qmd" class="card-link">View Course</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .mb-4}
+::: {.card .h-100}
+::: {.card-body}
+<h4 class="card-title">Logic 102: Material Logics II</h4>
+<h6 class="card-subtitle mb-2 text-muted">First-Order Logic & Formal Semantics</h6>
+<p class="card-text">
+Dive deep into Tarskian models and objective reality. Learn how formal languages map onto the real world and how machines interpret these data structures.
+</p>
+<a href="material-logics-ii/index.qmd" class="card-link">View Course</a>
 :::
 :::
 :::

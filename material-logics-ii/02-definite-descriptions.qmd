@@ -1,0 +1,52 @@
+---
+title: "2. Definite Descriptions and Complex Translations"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Connect the precise mapping of logical syntax to unique entities in reality (definite descriptions) to the need for clear property rights and standardized legal subjects within a developing market economy.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Cover Bertrand Russell's theory of definite descriptions, the logic of identity (=), and techniques for translating overlapping multiple quantifiers without introducing ambiguity. Differentiate between numerical identity and qualitative similarity.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: The King of France is Bald
+</div>
+<div class="guided-example-content">
+Russell's famous example translated into FOL:
+There is exactly one present King of France, and he is bald.
+
+Let Kx = x is a present King of France.
+Let Bx = x is bald.
+
+Translation: `∃x (Kx /\ ∀y (Ky -> y = x) /\ Bx)`
+</div>
+:::
+
+## Problem Set
+
+### Exercise 2.1
+Translate the phrase: "The one person who solves the problem will receive the prize." Ensure you use the identity predicate (`=`) correctly to handle the uniqueness constraint.
+
+~~~{.Translate.FOL}
+1. ∃x (Sx /\ ∀y (Sy -> y = x) /\ Px)
+~~~
+
+<textarea id="matlog-2-2" class="form-control problem-input" rows="4" placeholder="Draft your translation here before verifying..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For identity and definite descriptions: *forall x Calgary* (Magnus et al. 2025, 196-224)
+
+---
+
+[Next: Tarskian Semantics and Set-Theoretic Models ➔](03-tarskian-semantics.qmd)

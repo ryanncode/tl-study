@@ -1,0 +1,53 @@
+---
+title: "7. The DIMACS Protocol and Constraint Mapping"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Utilize Donald MacKenzie's Mechanizing Proof to ground the discussion on SAT solvers, demonstrating how the National Security Agency and corporate entities subsidized automated theorem proving to mitigate the catastrophic risks of nuclear infrastructure and software bugs. Relate this directly to standardizing data protocols.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain how to bridge the gap between abstract CNF and the industry-standard DIMACS text format. Detail the mapping of propositional variables to integer sets and the structural requirements of the .cnf file header.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: DIMACS Format
+</div>
+<div class="guided-example-content">
+Mapping variables to integers:
+Let P = 1, Q = 2, R = 3.
+
+Formula: `(~P \/ Q) /\ (~Q \/ R) /\ (~R \/ ~P)`
+
+DIMACS `.cnf` file representation:
+```Plaintext
+p cnf 3 3
+-1 2 0
+-2 3 0
+-3 -1 0
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 7.1
+Map a set of five physical constraints to an integer mapping map, and manually draft the DIMACS formatted text that you would pass into a SAT solver.
+
+<textarea id="matlog-1-7" class="form-control problem-input" rows="8" placeholder="Draft your DIMACS mapping here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For DIMACS specification: *Handbook of Satisfiability* (Biere et al. 2021, Sec. 2.1)
+- For constraint mapping: *Logic in Computer Science* (Huth & Ryan 2004, Sec. 1.6.2)
+
+---
+
+[Next: SAT Heuristics and Synthesis ➔](08-sat-heuristics-synthesis.qmd)

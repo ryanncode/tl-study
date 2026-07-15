@@ -1,0 +1,57 @@
+---
+title: "5. Natural Deduction for Quantified Logic"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Draw upon Gerhard Gentzen's Untersuchungen über das logische Schließen to rigorously contextualize the algorithmic optimization of logic within his active participation in the Nazi military-industrial apparatus and the V-2 rocket project.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Expand the Fitch system from Logic 101 to handle infinite domains. Detail the rules for instantiation and generalization, and the rigorous constraints required to introduce or eliminate variables within active subproofs. Focus on managing "arbitrary" versus "specific" names.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Universal Elimination and Existential Introduction
+</div>
+<div class="guided-example-content">
+```Plaintext
+1. ∀x Fx       : PR
+2. Fa          : ∀E 1
+3. ∃x Fx       : ∃I 2
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 5.1
+Execute a derivation in the Carnap checker using Universal Introduction.
+
+~~~{.ProofChecker.ZachTFL}
+1. ∀x (Fx -> Gx) : PR
+2. ∀x Fx : PR
+3. | a : AS
+4. | Fa -> Ga : ∀E 1
+5. | Fa : ∀E 2
+6. | Ga : ->E 4, 5
+7. ∀x Gx : ∀I 3-6
+~~~
+
+<textarea id="matlog-2-5" class="form-control problem-input" rows="6" placeholder="Document your proof strategy..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For quantified derivation rules: *forall x Calgary* (Magnus et al. 2025, 266-295)
+- For Carnap quantified proofs: *The Carnap Book* (2025, Ch. 12)
+
+---
+
+[Next: Relational Logic and Identity Proofs ➔](06-relational-logic-identity.qmd)

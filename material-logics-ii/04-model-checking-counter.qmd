@@ -1,0 +1,55 @@
+---
+title: "4. Model Checking and Counter-Examples"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Discuss the pragmatic need to invalidate arguments systematically without exhaustive verification. Connect the mathematical counter-model to the stress-testing of economic projections.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: In FOL, truth is relative to the model. Using computational counter-modeling, explain how to explicitly invalidate arguments by constructing custom domains where premises evaluate to true while the conclusion evaluates to false. Reinforce the distinction between syntactic provability and semantic validity.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Invalidating an Argument
+</div>
+<div class="guided-example-content">
+Argument: `∃x Fx`, `∃x Gx` $\vDash$ `∃x (Fx /\ Gx)`
+
+Counter-Model:
+Domain: `{1, 2}`
+Extension of F: `{1}`
+Extension of G: `{2}`
+
+Premise 1 is True (1 is F). Premise 2 is True (2 is G). Conclusion is False (Nothing is both F and G). The argument is invalid.
+</div>
+:::
+
+## Problem Set
+
+### Exercise 4.1
+Construct a counter-model to prove the following argument is invalid: `∀x (Fx \/ Gx)` $\vDash$ `∀x Fx \/ ∀x Gx`.
+
+~~~{.CounterModeler.ZachFOL}
+1. ∀x (Fx \/ Gx)
+2. ∀x Fx \/ ∀x Gx
+~~~
+
+<textarea id="matlog-2-4" class="form-control problem-input" rows="8" placeholder="Document your counter-model structure here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For model checking theory: *Logic in Computer Science* (Huth & Ryan 2004, 128-140)
+- For invalidating arguments: *forall x Calgary* (Magnus et al. 2025, 246-265)
+
+---
+
+[Next: Natural Deduction for Quantified Logic ➔](05-natural-deduction-quantified.qmd)

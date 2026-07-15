@@ -1,0 +1,48 @@
+---
+title: "6. Normal Forms and Machine-Readable Structures"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Anchor automated reasoning hardware in the military-industrial complex and corporate actuarial administration. Utilize Paul N. Edwards's The Closed World to contextualize the materialization of logic into physical switching circuits meant to manage global surveillance and defense logistics.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain Conjunctive Normal Form (CNF), the universal input protocol for automated reasoning. Detail the formal algorithms and distributive laws required to normalize complex abstract formulas into standardized literal-and-clause structures.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Translating to CNF
+</div>
+<div class="guided-example-content">
+Original Formula: `~(P /\ Q) \/ R`
+
+Step 1 (De Morgan's): `(~P \/ ~Q) \/ R`
+Step 2 (Associativity): `~P \/ ~Q \/ R`
+
+The result is a single clause, which is trivially in CNF.
+</div>
+:::
+
+## Problem Set
+
+### Exercise 6.1
+Convert the given propositional formula into Conjunctive Normal Form. Write the steps you took to achieve this normalization.
+
+<textarea id="matlog-1-6" class="form-control problem-input" rows="8" placeholder="Draft your CNF conversion steps here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For normalization algorithms: *Logic in Computer Science* (Huth & Ryan 2004, Sec. 1.5.1–1.5.2)
+- For CNF formalisms: *Handbook of Satisfiability* (Biere et al. 2021, Sec. 2.1–2.2.4)
+
+---
+
+[Next: The DIMACS Protocol and Constraint Mapping ➔](07-dimacs-constraint-mapping.qmd)

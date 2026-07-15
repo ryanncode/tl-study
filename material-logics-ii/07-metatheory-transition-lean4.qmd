@@ -1,0 +1,46 @@
+---
+title: "7. Metatheory and the Transition to Lean 4"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Map the absolute mathematical boundaries of formal systems. Utilize Alan Turing's On Computable Numbers to establish the limits of mechanical computation and highlight its immediate weaponization in cryptographic warfare. Address the political economy of these limits with Don Lavoie's Rivalry and Central Planning.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Establish the ultimate theoretical bridge between syntax and semantics by introducing Soundness and Completeness. Introduce Dependent Type Theory via the Lean 4 proof assistant. Explain how to view logical proofs as programs, authoring basic functional scripts where "tactics" serve as algorithmically verifiable mathematical proofs.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Lean 4 Syntax
+</div>
+<div class="guided-example-content">
+Proving a simple theorem in Lean:
+```lean
+theorem modus_ponens (P Q : Prop) (h1 : P → Q) (h2 : P) : Q :=
+  h1 h2
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 7.1
+Draft a pseudo-code outline of a soundness proof. How does the structure of the syntax tree map onto the steps of the proof?
+
+<textarea id="matlog-2-7" class="form-control problem-input" rows="8" placeholder="Draft your soundness outline here..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For metatheory (Soundness/Completeness): *forall x Calgary* (Magnus et al. 2025, 340-365)
+- For introduction to Lean 4: *Theorem Proving in Lean 4* (Avigad et al. 2024, 20-85)
+
+---
+
+[Next: Final Project Synthesis ➔](08-formalization-portfolio.qmd)

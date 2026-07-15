@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 const BASE_DIR = path.join(__dirname, '../');
 const OUTPUT_FILE = path.join(__dirname, '../versions.json');
-const TOPICS = ['nf-set-theory', 'computation-metalogic']; // Easily extensible
+const TOPICS = ['nf-set-theory', 'computation-metalogic', 'material-logics-i', 'material-logics-ii']; // Easily extensible
 
 // Helper to generate a short 8-character hex hash
 function generateHash(content) {

@@ -1,0 +1,57 @@
+---
+title: "3. Proof Theory and Direct Derivations"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Frame the transition to the rigorous rules of the Fitch system around the bureaucratic necessity for standardized, interchangeable intellectual labor. Utilize Theodore M. Porter's Trust in Numbers to explain how mechanical objectivity functions as a technology of distance, and incorporate Dirk J. Struik's A Concise History of Mathematics.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain the Fitch system of natural deduction. Discuss how to manipulate logical strings independently of semantic meaning. Detail the strict introduction and elimination rules required to rigorously transform premises into verified conclusions.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Direct Derivation
+</div>
+<div class="guided-example-content">
+A direct derivation using Modus Ponens (Conditional Elimination) and Conjunction Introduction:
+
+```Plaintext
+1. P -> Q      : PR
+2. P           : PR
+3. Q           : ->E 1, 2
+4. P /\ Q      : /\I 2, 3
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 3.1
+Execute a direct derivation in the Carnap checker.
+
+~~~{.ProofChecker.ZachTFL}
+1. (P /\ Q) : PR
+2. P -> R : PR
+3. P : /\E 1
+4. R : ->E 2, 3
+~~~
+
+<textarea id="matlog-1-3" class="form-control problem-input" rows="6" placeholder="Document your proof strategy..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For Fitch deduction mechanics: *forall x Calgary* (Magnus et al. 2025, Ch. 16–17)
+- For Carnap proof checking: *The Carnap Book* (2025, Ch. 3)
+
+---
+
+[Next: Hypothetical Reasoning and Deduction Architecture ➔](04-hypothetical-reasoning.qmd)

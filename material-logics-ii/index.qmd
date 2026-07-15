@@ -1,0 +1,44 @@
+---
+title: "Logic 102: First-Order Logic & Formal Semantics"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Objective Semantics and First-Order Logic
+
+Welcome to **Logic 102: First-Order Logic & Formal Semantics**. This course bridges the gap between philosophy of language and computer science by diving deep into Tarskian models and objective reality. You will learn how formal languages map onto the real world and how machines interpret these data structures.
+
+This sequence utilizes a historical materialist reference frame to contextualize quantified logic, exploring how abstract scientific and logical theories are driven directly by the technological and economic needs of society.
+
+## Course Progression
+
+### The Ontology of FOL
+1. [From Propositional Logic to Quantified Structures](01-propositional-to-quantified.qmd)
+2. [Definite Descriptions and Complex Translations](02-definite-descriptions.qmd)
+3. [Tarskian Semantics and Set-Theoretic Models](03-tarskian-semantics.qmd)
+4. [Model Checking and Counter-Examples](04-model-checking-counter.qmd)
+
+### Advanced Deduction
+5. [Natural Deduction for Quantified Logic](05-natural-deduction-quantified.qmd)
+6. [Relational Logic and Identity Proofs](06-relational-logic-identity.qmd)
+7. [Metatheory and the Transition to Lean 4](07-metatheory-transition-lean4.qmd)
+8. [Final Project Synthesis](08-formalization-portfolio.qmd)
+
+## Connect Your Execution Environment
+
+To participate in the problem-posing exercises and build your Formalization Portfolio, you must connect your GitHub account. 
+
+::: {.callout-important}
+### Authentication Required
+To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
+
+<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
+:::
+
+---
+
+[Begin Week 1 ➔](01-propositional-to-quantified.qmd)

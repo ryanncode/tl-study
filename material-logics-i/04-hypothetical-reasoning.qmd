@@ -1,0 +1,60 @@
+---
+title: "4. Hypothetical Reasoning and Deduction Architecture"
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="/js/github-sync.js"></script>
+          <script src="/js/syntax-sandbox.js"></script>
+---
+
+## Historical Materialist Hook
+
+[RESEARCH REQUIRED: Discuss the expansion of bureaucratic logic models to incorporate hypotheticals, testing assumptions without committing to their truth value. Relate this to state administration and actuarial projection.]
+
+## Core Technical Synthesis
+
+[RESEARCH REQUIRED: Explain the mechanics of subproofs and conditional introduction. Detail the process of algorithmic tracking—assuming premises temporarily and discharging them correctly without violating the system architecture.]
+
+:::{.guided-example}
+<div class="guided-example-title">
+Guided Example: Conditional Introduction
+</div>
+<div class="guided-example-content">
+A derivation utilizing a subproof:
+
+```Plaintext
+1. P -> Q      : PR
+2. Q -> R      : PR
+3. | P         : AS
+4. | Q         : ->E 1, 3
+5. | R         : ->E 2, 4
+6. P -> R      : ->I 3-5
+```
+</div>
+:::
+
+## Problem Set
+
+### Exercise 4.1
+Prove hypothetical transitivity using a subproof in Carnap.
+
+~~~{.ProofChecker.ZachTFL}
+1. (A \/ B) -> C : PR
+2. | A : AS
+3. | A \/ B : \/I 2
+4. | C : ->E 1, 3
+5. A -> C : ->I 2-4
+~~~
+
+<textarea id="matlog-1-4" class="form-control problem-input" rows="6" placeholder="Document your proof strategy..."></textarea>
+<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+
+## Dictionary Reference Map
+
+- For conditional frameworks and subproofs: *forall x Calgary* (Magnus et al. 2025, Ch. 18)
+- For Carnap subproof syntax: *The Carnap Book* (2025, Ch. 4)
+
+---
+
+[Next: Indirect Derivations and Systematic Processing ➔](05-indirect-derivations.qmd)
