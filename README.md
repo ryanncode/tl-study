@@ -12,6 +12,7 @@ This project delivers a completely static web application where students can wri
 - **Storage:** Student's personal private GitHub repository (via GitHub REST API)
 - **Version Control:** Automated file-level version hashing. The system archives exact snapshots of individual `.html` files when they change into `archive/<topic>/`, preserving the historical context of a student's answer with zero repository bloat.
 - **Pedagogy (Zero-Cost Constructivism):** Uses stateful DOM interpolation to pull old answers forward into future prompts, forcing students to defend their own axioms without relying on centralized databases or LLM validation.
+- **Seasonal Cohorts:** A static, file-based community hub where students can publish solutions and engage in peer review via a central repository, without relying on external issue trackers or discussion boards.
 
 ---
 
