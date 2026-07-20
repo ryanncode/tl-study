@@ -52,7 +52,7 @@ Client-side JavaScript cannot securely hold the GitHub App's `CLIENT_SECRET` (wh
 To resolve this, the architecture utilizes an isolated **Cloudflare Worker** that serves two critical purposes:
 
 1. **OAuth Relay:** It holds the `CLIENT_SECRET` securely in its environment variables, receives the temporary `code` from the frontend, validates it against GitHub, and returns the short-lived access token to the browser.
-2. **Cohort API Gateway:** It acts as a secure proxy for the seasonal cohorts. It enforces strict repository and path constraints (`cohort_data/{topic}/{cohortId}/{problemId}`) and performs optional server-side AES-GCM encryption before writing peer review data to the central repo using a hidden PAT.
+2. **Cohort API Gateway:** It acts as a secure proxy for the seasonal cohorts. It enforces strict repository and path constraints (`cohort_data/{topic}/{cohortId}/{problemId}`), cryptographically binds the user's GitHub identity to their submissions, performs atomic fetch-and-merge operations for cohort data, and enforces conditional writes using SHA locking to prevent stale overwrites.
 
 - **Spam Prevention:** The Cloudflare worker implements an in-memory IP rate limiter to prevent automated scripts from draining the daily free tier allowance.
 
