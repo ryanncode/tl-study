@@ -92,6 +92,15 @@ This recursive structure enables metalogicians to prove theorems about *all* for
 2. $\neg Cube(a)$ is a WFF (Recursive clause 2).
 3. $\exists x \neg Cube(x)$ is a WFF (Recursive clause 3).
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["x", "y", "z", "a", "b", "c"], 
+  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+]'></syntax-sandbox>
+
 :::{.guided-example}
 <div class="guided-example-title">
 Guided Example: WFF Verification
@@ -141,41 +150,19 @@ We rigorously define a **sentence** (or closed formula) as a WFF containing **no
 
 ---
 
-<script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [
-    {"val": "F", "spaceAfter": false}, 
-    {"val": "G", "spaceAfter": false}, 
-    {"val": "R", "spaceAfter": false}
-  ], 
-  [
-    {"val": "¬", "spaceAfter": false}, 
-    "∧", "∨", "→", "↔"
-  ], 
-  [
-    {"val": "∀", "spaceAfter": false}, 
-    {"val": "∃", "spaceAfter": false}
-  ], 
-  [
-    {"val": "(", "spaceAfter": false}, 
-    {"val": ")", "spaceBefore": false}, 
-    {"val": ",", "spaceBefore": false}
-  ]
-]'></syntax-sandbox>
-
 ---
 
+## Problem Sets
 
+<syntax-sandbox problem-id="02-syntax-prob1" title="Problem 1: Grammatical Architecture" description="Write the recursive formation rules and formal alphabet for your system. What symbols are allowed? How do you form a 'well-formed formula' (wff) in your universe?" data-groups='[]'></syntax-sandbox>
 
-:::{.card .mb-4}
-<div class="card-header bg-primary text-white">
-**Problem: Grammatical Architecture**
-</div>
-<div class="card-body">
-Write the recursive formation rules and formal alphabet for your system. What symbols are allowed? How do you form a "well-formed formula" (wff) in your universe?
+<syntax-sandbox problem-id="02-syntax-prob2" title="Problem 2: WFF Construction" description="Construct a syntactically valid First-Order Logic formula that uses a 2-place predicate, a universal quantifier, and a conditional (→)." data-groups='[
+  ["x", "y", "z", "a", "b", "c"], 
+  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+]'></syntax-sandbox>
 
-<textarea id="02-syntax-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
-<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
-</div>
-:::
+[Continue to Part 3: Deduction →](03-deduction.qmd)
+

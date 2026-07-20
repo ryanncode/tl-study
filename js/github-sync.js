@@ -64,22 +64,33 @@ class GitHubSync {
     }
 
     startAuthFlow() {
+        const state = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2);
+        sessionStorage.setItem('oauth_state', state);
         const redirectUri = window.location.origin + window.location.pathname;
-        const authUrl = `https://github.com/login/oauth/authorize?client_id=${SYNC_CONFIG.clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+        const authUrl = `https://github.com/login/oauth/authorize?client_id=${SYNC_CONFIG.clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
         window.location.href = authUrl;
     }
 
     async handleOAuthCallback() {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
+        const state = urlParams.get('state');
         
         if (code) {
+            const savedState = sessionStorage.getItem('oauth_state');
+            sessionStorage.removeItem('oauth_state');
+            if (!state || state !== savedState) {
+                console.error("OAuth state mismatch. Possible CSRF attack.");
+                alert("Security check failed during login. Please try again.");
+                return;
+            }
+
             window.history.replaceState({}, document.title, window.location.pathname);
             try {
                 const res = await fetch(SYNC_CONFIG.tokenRelayUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code: code })
+                    body: JSON.stringify({ action: 'oauth', code: code })
                 });
 
                 if (res.status === 200) {
@@ -124,7 +135,19 @@ class GitHubSync {
                 return;
             }
             
-            const repo = repoData.repositories[0];
+            let repo;
+            if (repoData.repositories.length === 1) {
+                repo = repoData.repositories[0];
+            } else {
+                const names = repoData.repositories.map(r => r.full_name).join("\n");
+                const chosen = prompt(`You have multiple repositories selected. Which one should we use?\n\n${names}`);
+                repo = repoData.repositories.find(r => r.full_name === chosen || r.name === chosen);
+                if (!repo) {
+                    alert("Invalid repository selected.");
+                    return;
+                }
+            }
+            
             this.owner = repo.owner.login;
             this.repo = repo.name;
             

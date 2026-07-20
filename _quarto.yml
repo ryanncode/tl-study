@@ -5,6 +5,7 @@ project:
   post-render: "node scripts/archive_html.js"
   resources:
     - "versions.json"
+    - "cohort_config.json"
     - "archive/"
 
 website:
@@ -13,9 +14,6 @@ website:
   search: false
   navbar:
     left:
-      - text: "Home"
-        href: "https://thing.rodeo/"
-        target: _self
       - text: "Study"
         href: "https://study.thing.rodeo/"
         target: _self
@@ -24,6 +22,9 @@ website:
         target: _self
       - text: "Living Syllabus"
         href: "https://thing.rodeo/living-syllabus/"
+        target: _self
+      - text: "Git"
+        href: "https://thing.rodeo/git/"
         target: _self
       - text: "About"
         href: "https://thing.rodeo/about/"
@@ -92,5 +93,8 @@ format:
     toc: true
     include-in-header:
       - text: |
+          <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.ryann.workers.dev; object-src 'none';">
+          <meta name="referrer" content="no-referrer">
           <script src="/js/cohort.js"></script>
           <script src="/js/priority-nav.js"></script>
+          <script src="/js/home-cohorts.js"></script>

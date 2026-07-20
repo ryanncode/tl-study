@@ -1,5 +1,5 @@
 ---
-title: "Thinghood Limited: Study Environment"
+title: "TL Study Environment"
 toc: false
 ---
 
@@ -7,107 +7,77 @@ Welcome to the **Thinghood Limited** interactive studies environment. This platf
 
 ---
 
-## 🚀 Newly Added Topics
+```{=html}
+<div class="active-cohorts-section d-none" id="active-cohorts-container">
+  <h2 class="section-title">Active Cohorts</h2>
+  <ul class="course-list" id="active-cohorts-list">
+    <!-- Populated by JS -->
+  </ul>
+  <hr>
+</div>
 
-::: {.card .text-white .bg-primary .mb-4}
-::: {.card-header}
-**Latest Curriculum Update**
-:::
-::: {.card-body}
-<h3 class="card-title text-white">NF Set Theory & Categorical Semantics</h3>
-<p class="card-text">
-A granular, 7-part exhaustive deep dive into Quine's New Foundations (NF) and Categorical Logic. This module explores the structural mechanics of a Monistic Universe (where the universal set $V$ exists), the failure of Cartesian Closedness, and the mapping of these realities to JSON ontologies using Stratified Pseudo Elephants and C-Monoids.
-</p>
-<a href="nf-set-theory/index.qmd" class="btn btn-light text-primary fw-bold">Start the Deep Dive ➔</a>
-:::
-:::
+<h2 class="section-title">Foundations of Logic</h2>
+<ul class="course-list">
+  <li class="course-item" data-topic="material-logics-i">
+    <div class="course-meta">
+      <span class="fw-bold text-secondary" style="font-size: 1.2rem;">Material Logics I: Symbolic Logic & Automated Reasoning <span class="badge bg-secondary ms-2 align-middle" style="font-size: 0.75rem;">Coming Soon</span></span>
+      <div class="cohort-status-container"></div>
+    </div>
+    <div class="course-desc">Bridge the material basis of computation with abstract formal logic. Learn how reasoning is physically realized in digital circuits and hardware, covering syntax, semantics, and SAT solvers.</div>
+  </li>
+  <li class="course-item" data-topic="material-logics-ii">
+    <div class="course-meta">
+      <span class="fw-bold text-secondary" style="font-size: 1.2rem;">Material Logics II: First-Order Logic & Formal Semantics <span class="badge bg-secondary ms-2 align-middle" style="font-size: 0.75rem;">Coming Soon</span></span>
+      <div class="cohort-status-container"></div>
+    </div>
+    <div class="course-desc">Dive deep into Tarskian models and objective reality. Learn how formal languages map onto the real world and how machines interpret these data structures.</div>
+  </li>
+  <li class="course-item" data-topic="computation-metalogic">
+    <div class="course-meta">
+      <a href="computation-metalogic/index.qmd" class="course-title">Computational Metalogic</a>
+      <div class="cohort-status-container"></div>
+    </div>
+    <div class="course-desc">Build your own formal language and deductive engine from scratch. A continuous 7-part project covering syntax, semantics, and metalogic.</div>
+  </li>
+</ul>
 
----
+<h2 class="section-title">Advanced Mathematics</h2>
+<ul class="course-list">
+  <li class="course-item" data-topic="nf-set-theory">
+    <div class="course-meta">
+      <a href="nf-set-theory/index.qmd" class="course-title">NF Set Theory: Foundations & Topology</a>
+      <div class="cohort-status-container"></div>
+    </div>
+    <div class="course-desc">Explore the foundational axioms of Quine's New Foundations, the algebraic mechanization by Hailperin, and the topological crises identified by Specker and Orey.</div>
+  </li>
+  <li class="course-item" data-topic="categorical-semantics">
+    <div class="course-meta">
+      <a href="nf-set-theory/06-mac-lane-lawvere.qmd" class="course-title">Categorical Semantics: Morphisms & Logic</a>
+      <div class="cohort-status-container"></div>
+    </div>
+    <div class="course-desc">Shift from element-based structures to arrow-based categorical semantics. Investigate Lawvere's ETAC, Cartesian Closed Categories, and the translation of logical deductions into morphisms.</div>
+  </li>
+</ul>
 
-## 📚 Study Categories
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">NF Set Theory</h4>
-<h6 class="card-subtitle mb-2 text-muted">Foundations & Topology</h6>
-<p class="card-text">
-Explore the foundational axioms of Quine's New Foundations, the algebraic mechanization by Hailperin, and the topological crises identified by Specker and Orey.
-</p>
-<a href="nf-set-theory/index.qmd" class="card-link">View Module</a>
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">Categorical Semantics</h4>
-<h6 class="card-subtitle mb-2 text-muted">Morphisms & Logic</h6>
-<p class="card-text">
-Shift from element-based structures to arrow-based categorical semantics. Investigate Lawvere's ETAC, Cartesian Closed Categories, and the translation of logical deductions into morphisms.
-</p>
-<a href="nf-set-theory/06-mac-lane-lawvere.qmd" class="card-link">View Module</a>
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">Logic & Computation</h4>
-<h6 class="card-subtitle mb-2 text-muted">Curriculum Module</h6>
-<p class="card-text">
-Build your own formal language and deductive engine from scratch. A continuous 7-part project covering syntax, semantics, and metalogic.
-</p>
-<a href="computation-metalogic/index.qmd" class="card-link">Start the Project</a>
-<br>
-<a href="https://thing.rodeo/monism/" class="card-link">Monism Framework</a>
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">Living Syllabus</h4>
-<h6 class="card-subtitle mb-2 text-muted">External Links</h6>
-<p class="card-text">
-Stay updated on the evolving structure of our educational programs and version-controlled learning objectives.
-</p>
-<a href="https://thing.rodeo/living-syllabus/" class="card-link">Living Syllabus</a>
-<br>
-<a href="https://thing.rodeo/git/" class="card-link">Git Practices</a>
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">Logic 101: Material Logics I</h4>
-<h6 class="card-subtitle mb-2 text-muted">Symbolic Logic & Automated Reasoning</h6>
-<p class="card-text">
-Bridge the material basis of computation with abstract formal logic. Learn how reasoning is physically realized in digital circuits and hardware, covering syntax, semantics, and SAT solvers.
-</p>
-<a href="material-logics-i/index.qmd" class="card-link">View Course</a>
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6 .mb-4}
-::: {.card .h-100}
-::: {.card-body}
-<h4 class="card-title">Logic 102: Material Logics II</h4>
-<h6 class="card-subtitle mb-2 text-muted">First-Order Logic & Formal Semantics</h6>
-<p class="card-text">
-Dive deep into Tarskian models and objective reality. Learn how formal languages map onto the real world and how machines interpret these data structures.
-</p>
-<a href="material-logics-ii/index.qmd" class="card-link">View Course</a>
-:::
-:::
-:::
-
-:::
+<h2 class="section-title">Meta & Resources</h2>
+<ul class="course-list">
+  <li class="course-item">
+    <div class="course-meta">
+      <a href="https://thing.rodeo/monism/" class="course-title">Monism Framework</a>
+    </div>
+    <div class="course-desc">The core philosophical architecture that informs our translation of metaphysics into computational theory.</div>
+  </li>
+  <li class="course-item">
+    <div class="course-meta">
+      <a href="https://thing.rodeo/living-syllabus/" class="course-title">Living Syllabus</a>
+    </div>
+    <div class="course-desc">Stay updated on the evolving structure of our educational programs and version-controlled learning objectives.</div>
+  </li>
+  <li class="course-item">
+    <div class="course-meta">
+      <a href="https://thing.rodeo/git/" class="course-title">Git Practices</a>
+    </div>
+    <div class="course-desc">A brief overview of how to manage your private sovereign repository and push solutions up securely.</div>
+  </li>
+</ul>
+```

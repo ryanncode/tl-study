@@ -69,6 +69,13 @@ We define the valuation function VI​ recursively. For any PL-interpretation I 
 * $P \lor Q$ is 1.
 * $P \to Q$ is 0.
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["P", "Q", "R"], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+]'></syntax-sandbox>
+
 #### 4.3. First-Order Semantics (FOL)
 
 First-Order Logic semantics requires a richer ontology than Propositional Logic. We cannot simply assign truth values to atomic sentences; we must derive them from the relationships between objects in a **Domain of Discourse**.
@@ -160,6 +167,14 @@ Is the sentence $\exists x Even(x)$ True or False in $\mathfrak{M}$?
 </div>
 :::
 
+<syntax-sandbox data-groups='[
+  ["x", "y", "z", "a", "b", "c"], 
+  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+]'></syntax-sandbox>
+
 #### 4.4. Soundness and Completeness
 
 Metalogic investigates the relationship between the **semantic** notion of validity (⊨) and the **proof-theoretic** notion of derivability (⊢).
@@ -180,16 +195,13 @@ Metalogic investigates the relationship between the **semantic** notion of valid
 
 Having established the core definitions of truth and provability, we now turn to the language's expressive capacity. Before we prove the system's limits (Metalogic), we must master its full descriptive power (Translation).
 
+---
 
+## Problem Sets
 
-:::{.card .mb-4}
-<div class="card-header bg-primary text-white">
-**Problem: Model Theory**
-</div>
-<div class="card-body">
-Construct a mathematical model or "world" where your syntax maps to actual truth-values. What objects exist in your domain, and how do predicates assign meaning to them?
+<syntax-sandbox problem-id="04-semantics-prob1" title="Problem 1: Model Theory" description="Construct a mathematical model or 'world' where your syntax maps to actual truth-values. What objects exist in your domain, and how do predicates assign meaning to them?" data-groups='[]'></syntax-sandbox>
 
-<textarea id="04-semantics-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
-<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
-</div>
-:::
+<syntax-sandbox problem-id="04-semantics-prob2" title="Problem 2: Soundness and Completeness" description="In your own words, define Soundness and Completeness in logic. Why are these properties crucial for a formal system?" data-groups='[]'></syntax-sandbox>
+
+[Continue to Part 5: Translation →](05-translation.qmd)
+

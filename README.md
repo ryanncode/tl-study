@@ -8,7 +8,7 @@ This project delivers a completely static web application where students can wri
 
 - **Frontend:** Quarto (Static HTML/JS generation)
 - **Authentication:** GitHub App Web Flow
-- **Serverless Token Relay:** Cloudflare Workers (Handling OAuth token exchange)
+- **Serverless Relay & API Gateway:** Cloudflare Workers (Handling OAuth token exchange and secure Cohort proxying)
 - **Storage:** Student's personal private GitHub repository (via GitHub REST API)
 - **Version Control:** Automated file-level version hashing. The system archives exact snapshots of individual `.html` files when they change into `archive/<topic>/`, preserving the historical context of a student's answer with zero repository bloat.
 - **Pedagogy (Zero-Cost Constructivism):** Uses stateful DOM interpolation to pull old answers forward into future prompts, forcing students to defend their own axioms without relying on centralized databases or LLM validation.
@@ -43,13 +43,13 @@ To resolve this, our client-side JavaScript (`js/github-sync.js`) uses the **Git
 2. It targets that repository automatically.
 3. The student never types a repository name, eliminating accidental path overwrites entirely.
 
-### Cloudflare Worker Token Relay
+### Serverless Relay & API Gateway
 
-Client-side JavaScript cannot securely hold the GitHub App's `CLIENT_SECRET` (which is required to exchange an OAuth code for an Access Token).
+Client-side JavaScript cannot securely hold the GitHub App's `CLIENT_SECRET` (which is required to exchange an OAuth code for an Access Token), nor can it enforce strict path boundaries when writing to a centralized community repository.
 
-- To resolve this, the exchange happens within an isolated **Cloudflare Worker**.
-- The worker holds the `CLIENT_SECRET` securely in its environment variables.
-- It receives the temporary `code` from the frontend, validates it against GitHub, and returns the short-lived access token to the browser.
+To resolve this, the architecture utilizes an isolated **Cloudflare Worker** that serves two critical purposes:
+1. **OAuth Relay:** It holds the `CLIENT_SECRET` securely in its environment variables, receives the temporary `code` from the frontend, validates it against GitHub, and returns the short-lived access token to the browser.
+2. **Cohort API Gateway:** It acts as a secure proxy for the seasonal cohorts. It enforces strict repository and path constraints (`cohort_data/{topic}/{cohortId}/{problemId}`) and performs optional server-side AES-GCM encryption before writing peer review data to the central repo using a hidden PAT.
 - **Spam Prevention:** The Cloudflare worker implements an in-memory IP rate limiter to prevent automated scripts from draining the daily free tier allowance.
 
 ---

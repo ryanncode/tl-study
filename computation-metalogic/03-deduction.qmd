@@ -161,6 +161,13 @@ This rule (Reductio Ad Absurdum) establishes a negation by showing that an assum
 * **Fitch Mechanism:** To prove $\neg P$, one assumes $P$ in a subproof. If one derives a contradiction ($\bot$), the subproof is closed, and $\neg P$ is asserted (Barker-Plummer et al., pp. 159–160).
 * **Sequent Mechanism (RAA):** If $\Gamma, \phi \Rightarrow \psi \land \neg \psi$ (a contradiction), one infers $\Gamma \Rightarrow \neg \phi$ (Sider, p. 52).
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["P", "Q", "R", "S"], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔", "⊥"], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+]'></syntax-sandbox>
+
 #### 3.5. Quantifier Rules & Restrictions ("The Danger Zone")
 
 Quantifier rules introduce strict constraints to prevent fallacious inferences (e.g., inferring "everything is F" from "one specific thing is F"). These restrictions ensure that variables refer to **arbitrary objects**, preventing reference to specific ones.
@@ -330,19 +337,13 @@ It is critical to distinguish between **Deductive Strategies** (Section 3) and *
 
 We will revisit Velleman's protocol in **Section 6.1.2**, adapting it from a tool for finding derivations to a tool for proving theorems about the language itself.
 
-[Continue to Part 3: Semantics and Translation →](04-semantics.qmd)
-
 ---
 
+## Problem Sets
 
-:::{.card .mb-4}
-<div class="card-header bg-primary text-white">
-**Problem: Rules of Inference**
-</div>
-<div class="card-body">
-Define the axioms and inference rules (e.g., Modus Ponens equivalent) that allow your system to "compute" proofs. How does one statement legally transition into the next?
+<syntax-sandbox problem-id="03-deduction-prob1" title="Problem 1: Rules of Inference" description="Define the axioms and inference rules (e.g., Modus Ponens equivalent) that allow your system to 'compute' proofs. How does one statement legally transition into the next?" data-groups='[]'></syntax-sandbox>
 
-<textarea id="03-deduction-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
-<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
-</div>
-:::
+<syntax-sandbox problem-id="03-deduction-prob2" title="Problem 2: Proof Strategy" description="If your goal in a Fitch proof is to derive P → (Q ∨ R), what should your immediate first step be according to Velleman's goal-directed strategies?" data-groups='[]'></syntax-sandbox>
+
+[Continue to Part 4: Semantics and Translation →](04-semantics.qmd)
+

@@ -113,13 +113,86 @@ class CohortManager {
         return headers;
     }
 
-    async fetchProblemSubmissions(problemId, container) {
+    async deriveClientKey(passphrase) {
+        const enc = new TextEncoder();
+        const keyMaterial = await window.crypto.subtle.importKey("raw", enc.encode(passphrase), { name: "PBKDF2" }, false, ["deriveKey"]);
+        return await window.crypto.subtle.deriveKey(
+            { name: "PBKDF2", salt: enc.encode("tl-study-salt"), iterations: 100000, hash: "SHA-256" },
+            keyMaterial,
+            { name: "AES-GCM", length: 256 },
+            false,
+            ["encrypt", "decrypt"]
+        );
+    }
+
+    async getPassphrase() {
+        if (!this.passphrase) {
+            this.passphrase = prompt("This cohort uses client-side encryption. Please enter the cohort passphrase:");
+        }
+        return this.passphrase;
+    }
+
+    async encryptPayload(payloadObj) {
+        if (this.activeTopicConfig.encryption_mode !== 'client') return payloadObj;
+        
+        const passphrase = await this.getPassphrase();
+        if (!passphrase) throw new Error("Passphrase required");
+        const key = await this.deriveClientKey(passphrase);
+        const iv = window.crypto.getRandomValues(new Uint8Array(12));
+        const encoded = new TextEncoder().encode(JSON.stringify(payloadObj));
+        const encrypted = await window.crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, encoded);
+        return {
+            encrypted: true,
+            iv: btoa(String.fromCharCode(...iv)),
+            data: btoa(String.fromCharCode(...new Uint8Array(encrypted)))
+        };
+    }
+
+    async decryptPayload(contentStr) {
+        if (this.activeTopicConfig.encryption_mode !== 'client') return JSON.parse(contentStr);
+        
+        try {
+            const parsed = JSON.parse(contentStr);
+            if (!parsed.encrypted) return parsed; // Not encrypted fallback
+            
+            const passphrase = await this.getPassphrase();
+            if (!passphrase) throw new Error("Passphrase required");
+            
+            const key = await this.deriveClientKey(passphrase);
+            const iv = new Uint8Array(atob(parsed.iv).split("").map(c => c.charCodeAt(0)));
+            const data = new Uint8Array(atob(parsed.data).split("").map(c => c.charCodeAt(0)));
+            const decrypted = await window.crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, data);
+            return JSON.parse(new TextDecoder().decode(decrypted));
+        } catch (e) {
+            this.passphrase = null; // Clear bad passphrase
+            throw new Error("Invalid passphrase or corrupted data.");
+        }
+    }
+
+    getApiConfig(path) {
         const targetRepo = this.activeTopicConfig.target_repo;
-        const apiUrl = `https://api.github.com/repos/${targetRepo}/contents/cohort_data/${this.topic}/${problemId}`;
+        if (this.activeTopicConfig.proxy_url) {
+            const encMode = this.activeTopicConfig.encryption_mode || 'none';
+            const cohortIdParam = this.activeTopicConfig.cohort_id ? `&cohortId=${this.activeTopicConfig.cohort_id}` : '';
+            return {
+                url: `${this.activeTopicConfig.proxy_url}?action=cohort_read&targetRepo=${targetRepo}&path=${path}&encryptionMode=${encMode}${cohortIdParam}`,
+                useProxy: true
+            };
+        }
+        return {
+            url: `https://api.github.com/repos/${targetRepo}/contents/${path}`,
+            useProxy: false
+        };
+    }
+
+    async fetchProblemSubmissions(problemId, container) {
+        const cohortId = this.activeTopicConfig.cohort_id || 'default';
+        const path = `cohort_data/${this.topic}/${cohortId}/${problemId}`;
+        const api = this.getApiConfig(path);
         
         try {
             const headers = await this.getGitHubHeaders();
-            const res = await fetch(apiUrl, { headers });
+            const res = await fetch(api.url, { headers });
             
             if (res.status === 404) {
                 container.innerHTML = '<p class="text-muted mb-0">No solutions submitted yet. Be the first!</p>';
@@ -148,7 +221,14 @@ class CohortManager {
                 const userLink = document.createElement('a');
                 userLink.href = 'javascript:void(0)';
                 userLink.className = 'fw-bold text-dark text-decoration-none d-block p-2 bg-white rounded shadow-sm';
-                userLink.innerHTML = `👤 ${username} <span class="text-muted float-end text-sm">View Solution</span>`;
+                
+                const userText = document.createTextNode(`\uD83D\uDC64 ${username} `); // User emoji
+                const viewSpan = document.createElement('span');
+                viewSpan.className = 'text-muted float-end text-sm';
+                viewSpan.textContent = 'View Solution';
+                
+                userLink.appendChild(userText);
+                userLink.appendChild(viewSpan);
                 
                 const contentDiv = document.createElement('div');
                 contentDiv.className = 'd-none mt-2 p-3 bg-white rounded border';
@@ -158,7 +238,8 @@ class CohortManager {
                 userLink.onclick = async () => {
                     contentDiv.classList.toggle('d-none');
                     if (!loaded) {
-                        await this.loadSubmissionContent(file.download_url, contentDiv, problemId, username, file.sha);
+                        contentDiv.innerHTML = ''; // Clear spinner safely
+                        await this.loadSubmissionContent(contentDiv, problemId, username);
                         loaded = true;
                     }
                 };
@@ -174,44 +255,82 @@ class CohortManager {
         }
     }
 
-    async loadSubmissionContent(downloadUrl, container, problemId, targetUsername, fileSha) {
+    async loadSubmissionContent(container, problemId, targetUsername) {
         try {
             const headers = await this.getGitHubHeaders();
-            // Don't use Authorization header for raw.githubusercontent.com unless it's a private repo, 
-            // but for safety we will fetch the content API instead of downloadUrl to ensure token works if needed.
-            const targetRepo = this.activeTopicConfig.target_repo;
-            const apiUrl = `https://api.github.com/repos/${targetRepo}/contents/cohort_data/${this.topic}/${problemId}/${targetUsername}.json`;
+            const cohortId = this.activeTopicConfig.cohort_id || 'default';
+            const path = `cohort_data/${this.topic}/${cohortId}/${problemId}/${targetUsername}.json`;
+            const api = this.getApiConfig(path);
             
-            const res = await fetch(apiUrl, { headers });
+            const res = await fetch(api.url, { headers });
             if (!res.ok) throw new Error("Failed to load file content.");
             
             const fileData = await res.json();
-            const data = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+            const rawContent = decodeURIComponent(escape(atob(fileData.content)));
+            const data = await this.decryptPayload(rawContent);
             
-            let html = `<div><strong>Solution:</strong><br><pre class="bg-light p-2 rounded mt-2 text-wrap" style="font-family: inherit;">${data.solution}</pre></div>`;
+            container.innerHTML = ''; // Clear safely
+
+            const solutionDiv = document.createElement('div');
+            const strongSol = document.createElement('strong');
+            strongSol.textContent = 'Solution:';
+            solutionDiv.appendChild(strongSol);
+            solutionDiv.appendChild(document.createElement('br'));
             
-            html += `<div class="mt-4 border-top pt-3"><strong>Commentary:</strong>`;
-            if (data.comments && data.comments.length > 0) {
-                html += `<div class="mt-2">`;
-                data.comments.forEach(c => {
-                    html += `<div class="mb-2 p-2 bg-light rounded"><small class="fw-bold text-primary">${c.author}</small><p class="mb-0 mt-1 text-sm">${c.text}</p></div>`;
-                });
-                html += `</div>`;
-            } else {
-                html += `<p class="text-muted text-sm mt-2">No commentary yet.</p>`;
-            }
+            const pre = document.createElement('pre');
+            pre.className = 'bg-light p-2 rounded mt-2 text-wrap';
+            pre.style.fontFamily = 'inherit';
+            pre.textContent = data.solution;
             
-            html += `
-                <div class="mt-3">
-                    <textarea id="comment-input-${problemId}-${targetUsername}" class="form-control form-control-sm mb-2" rows="2" placeholder="Add commentary..."></textarea>
-                    <button class="btn btn-sm btn-secondary" onclick="window.cohortManager.submitCommentary('${problemId}', '${targetUsername}', '${fileData.sha}')">Post Comment</button>
-                </div>
-            </div>`;
+            solutionDiv.appendChild(pre);
+            container.appendChild(solutionDiv);
             
-            container.innerHTML = html;
+            // Note: Commenting has been temporarily disabled due to authorization constraints 
+            // identified in the security review.
         } catch (e) {
             console.error(e);
-            container.innerHTML = '<p class="text-danger">Failed to load solution.</p>';
+            container.innerHTML = '';
+            const errorMsg = document.createElement('p');
+            errorMsg.className = 'text-danger';
+            errorMsg.textContent = 'Failed to load solution. Check passphrase.';
+            container.appendChild(errorMsg);
+        }
+    }
+
+    async proxyPutRequest(problemId, path, payload, sha, message) {
+        const encryptedPayload = await this.encryptPayload(payload);
+        const headers = await this.getGitHubHeaders();
+        
+        if (this.activeTopicConfig.proxy_url) {
+            const body = {
+                action: 'cohort_publish',
+                topic: this.topic,
+                problemId: problemId,
+                payload: encryptedPayload,
+                encryptionMode: this.activeTopicConfig.encryption_mode || 'none',
+                cohortId: this.activeTopicConfig.cohort_id
+            };
+            if (sha) body.sha = sha;
+
+            return await fetch(this.activeTopicConfig.proxy_url, {
+                method: 'POST',
+                headers: { ...headers, 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+        } else {
+            // Direct GitHub API fallback
+            const putBody = {
+                message: message,
+                content: btoa(unescape(encodeURIComponent(JSON.stringify(encryptedPayload, null, 2))))
+            };
+            if (sha) putBody.sha = sha;
+            
+            const apiUrl = `https://api.github.com/repos/${this.activeTopicConfig.target_repo}/contents/${path}`;
+            return await fetch(apiUrl, {
+                method: 'PUT',
+                headers: { ...headers, 'Content-Type': 'application/json' },
+                body: JSON.stringify(putBody)
+            });
         }
     }
 
@@ -224,20 +343,21 @@ class CohortManager {
         const username = window.tlStudySync ? window.tlStudySync.owner : prompt("Enter your GitHub username to publish as:");
         if (!username) return;
 
-        const targetRepo = this.activeTopicConfig.target_repo;
-        const apiUrl = `https://api.github.com/repos/${targetRepo}/contents/cohort_data/${this.topic}/${problemId}/${username}.json`;
-        
+        const cohortId = this.activeTopicConfig.cohort_id || 'default';
+        const path = `cohort_data/${this.topic}/${cohortId}/${problemId}/${username}.json`;
         const headers = await this.getGitHubHeaders();
+        const api = this.getApiConfig(path);
         
-        // Check if exists to get SHA
+        // Check if exists to get SHA and existing comments
         let sha = null;
         let existingComments = [];
         try {
-            const checkRes = await fetch(apiUrl, { headers });
+            const checkRes = await fetch(api.url, { headers });
             if (checkRes.ok) {
                 const existingFile = await checkRes.json();
                 sha = existingFile.sha;
-                const existingData = JSON.parse(decodeURIComponent(escape(atob(existingFile.content))));
+                const rawContent = decodeURIComponent(escape(atob(existingFile.content)));
+                const existingData = await this.decryptPayload(rawContent);
                 if (existingData.comments) existingComments = existingData.comments;
             }
         } catch(e) {}
@@ -248,23 +368,13 @@ class CohortManager {
             comments: existingComments
         };
         
-        const body = {
-            message: `Publish solution for ${problemId} by ${username}`,
-            content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))))
-        };
-        if (sha) body.sha = sha;
-
         try {
             const btn = document.activeElement;
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Publishing...';
             btn.disabled = true;
 
-            const putRes = await fetch(apiUrl, {
-                method: 'PUT',
-                headers: { ...headers, 'Content-Type': 'application/json' },
-                body: JSON.stringify(body)
-            });
+            const putRes = await this.proxyPutRequest(problemId, path, payload, sha, `Publish solution for ${problemId} by ${username}`);
             
             if (putRes.ok) {
                 btn.innerHTML = 'Published \u2713';
@@ -274,7 +384,6 @@ class CohortManager {
                     btn.classList.replace('btn-success', 'btn-outline-primary');
                     btn.disabled = false;
                     
-                    // Refresh UI if expanded
                     const uiContainer = document.getElementById(`cohort-ui-${problemId}`);
                     if (uiContainer && !uiContainer.classList.contains('d-none')) {
                         this.fetchProblemSubmissions(problemId, uiContainer);
@@ -291,65 +400,6 @@ class CohortManager {
         }
     }
 
-    async submitCommentary(problemId, targetUsername, fileSha) {
-        const commentInput = document.getElementById(`comment-input-${problemId}-${targetUsername}`);
-        const commentText = commentInput.value;
-        
-        if (!commentText || commentText.trim() === '') return;
-        
-        const authorUsername = window.tlStudySync ? window.tlStudySync.owner : prompt("Enter your GitHub username to comment as:");
-        if (!authorUsername) return;
-
-        const targetRepo = this.activeTopicConfig.target_repo;
-        const apiUrl = `https://api.github.com/repos/${targetRepo}/contents/cohort_data/${this.topic}/${problemId}/${targetUsername}.json`;
-        
-        const headers = await this.getGitHubHeaders();
-        
-        try {
-            const btn = document.activeElement;
-            btn.disabled = true;
-            btn.innerHTML = 'Posting...';
-
-            // Fetch latest content to ensure we don't overwrite other concurrent comments
-            const getRes = await fetch(apiUrl, { headers });
-            if (!getRes.ok) throw new Error("Failed to fetch latest file state.");
-            const fileData = await getRes.json();
-            const data = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
-            
-            if (!data.comments) data.comments = [];
-            data.comments.push({
-                author: authorUsername,
-                text: commentText,
-                timestamp: new Date().toISOString()
-            });
-
-            const body = {
-                message: `Add commentary by ${authorUsername} on ${targetUsername}'s solution to ${problemId}`,
-                content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
-                sha: fileData.sha
-            };
-
-            const putRes = await fetch(apiUrl, {
-                method: 'PUT',
-                headers: { ...headers, 'Content-Type': 'application/json' },
-                body: JSON.stringify(body)
-            });
-            
-            if (putRes.ok) {
-                // Refresh the specific user's expansion panel
-                const contentDiv = commentInput.closest('.p-3.bg-white.rounded.border');
-                this.loadSubmissionContent(fileData.download_url, contentDiv, problemId, targetUsername, (await putRes.json()).content.sha);
-            } else {
-                throw new Error(await putRes.text());
-            }
-        } catch (e) {
-            console.error(e);
-            alert("Failed to post commentary.");
-            const btn = document.activeElement;
-            btn.disabled = false;
-            btn.innerHTML = 'Post Comment';
-        }
-    }
 }
 
 window.cohortManager = new CohortManager();

@@ -17,14 +17,31 @@ class SyntaxSandbox extends HTMLElement {
   }
 
   render(groups) {
+    const isProblem = this.hasAttribute('problem-id');
+    const problemId = this.getAttribute('problem-id');
+    const title = this.getAttribute('title') || (isProblem ? 'Problem' : 'Interactive Syntax Sandbox');
+    const description = this.getAttribute('description') || (isProblem ? '' : 'Experiment with constructing formal syntax strings. This area is for free exploration and will not be saved.');
+    
+    const cardClass = isProblem ? 'card mb-4' : 'card mb-4 bg-light';
+    const headerHtml = isProblem ? `<div class="card-header bg-primary text-white"><strong>${title}</strong></div>` : '';
+    const titleHtml = isProblem ? '' : `<h5 class="card-title">${title}</h5>`;
+    const descHtml = description ? `<p class="card-text ${isProblem ? 'mb-3' : 'text-muted small'}">${description}</p>` : '';
+    
+    const textareaId = isProblem ? `id="${problemId}"` : '';
+    const textareaClass = isProblem ? 'form-control mb-3 syntax-textarea problem-input' : 'form-control mb-3 syntax-textarea';
+    
+    const saveBtnHtml = isProblem ? `<button class="btn btn-success mt-3" onclick="window.tlStudySync.saveData()">Save to GitHub</button>` : '';
+
     this.innerHTML = `
-      <div class="card mb-4 bg-light">
+      <div class="${cardClass}">
+        ${headerHtml}
         <div class="card-body">
-          <h5 class="card-title">Interactive Syntax Sandbox</h5>
-          <p class="card-text text-muted small">Experiment with constructing formal syntax strings. This area is for free exploration and will not be saved.</p>
-          <textarea class="form-control mb-3 syntax-textarea" rows="3" placeholder="Construct your syntax here..."></textarea>
+          ${titleHtml}
+          ${descHtml}
+          <textarea ${textareaId} class="${textareaClass}" rows="3" placeholder="Enter your response here..."></textarea>
           <div class="d-flex flex-wrap gap-2 button-container">
           </div>
+          ${saveBtnHtml}
         </div>
       </div>
     `;

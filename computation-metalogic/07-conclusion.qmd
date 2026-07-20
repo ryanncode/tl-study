@@ -33,6 +33,15 @@ Think about the philosophical stakes of choosing a logic system. If you choose s
 </div>
 :::
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["x", "y", "z", "a", "b", "c"], 
+  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+]'></syntax-sandbox>
+
 #### 7.3. Final Summary
 
 ```haskell
@@ -50,16 +59,11 @@ Undergraduate logic typically focuses on *competence*: constructing correct proo
 
 Mastering these foundations enables students to move beyond simply "following the rules" to investigating the deep mathematical structures validating them. This shift from user to analyst defines advanced philosophical logic.
 
+---
 
+## Problem Sets
 
-:::{.card .mb-4}
-<div class="card-header bg-primary text-white">
-**Problem: The Manifesto**
-</div>
-<div class="card-body">
-Synthesize your design into a final philosophical defense of your custom computational metalogic system. Publish this manifesto to the Public Cohort Discussion to defend your structural choices against peer critique.
+<syntax-sandbox problem-id="07-conclusion-prob1" title="Problem 1: The Manifesto" description="Synthesize your design into a final philosophical defense of your custom computational metalogic system. Publish this manifesto to the Public Cohort Discussion to defend your structural choices against peer critique." data-groups='[]'></syntax-sandbox>
 
-<textarea id="07-conclusion-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
-<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
-</div>
-:::
+<syntax-sandbox problem-id="07-conclusion-prob2" title="Problem 2: Final Reflection" description="Reflect on how your understanding of 'Truth' and 'Proof' has evolved over this curriculum. How does viewing logic through a computational lens change your approach to philosophy?" data-groups='[]'></syntax-sandbox>
+

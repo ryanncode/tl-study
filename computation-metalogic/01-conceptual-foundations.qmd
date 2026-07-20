@@ -68,6 +68,14 @@ isValidSyntactic premises conclusion =
   existsDerivation rules premises conclusion
 ```
 
+<script src="/js/syntax-sandbox.js"></script>
+<syntax-sandbox data-groups='[
+  ["P", "Q", "R"], 
+  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
+  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+]'></syntax-sandbox>
+
+
 ##### 1.1.3. Logical Truth
 
 A **logical truth** is a sentence true solely by virtue of its form, requiring no premises to be asserted.
@@ -262,19 +270,13 @@ data Symbol
 
 The boundary between them is partly conventional. For example, the inference "Grant is a bachelor; therefore, Grant is unmarried" is valid based on word meaning, but it is **not** valid by virtue of *logical form* because "bachelor" is not treated as a logical constant in standard logic (Sider, pp. 12–13).
 
-[Continue to Part 2: Syntax and Deduction →](02-syntax.qmd)
-
 ---
 
+## Problem Sets
 
-:::{.card .mb-4}
-<div class="card-header bg-primary text-white">
-**Problem: Domain Definition**
-</div>
-<div class="card-body">
-Define the philosophical boundaries and intended use-case of the formal system you are about to design. What domain of "truth" or "computation" is your toy system attempting to model? (e.g. A logic for a vending machine, a logic for moral obligation, a logic for quantum states).
+<syntax-sandbox problem-id="01-conceptual-foundations-prob1" title="Problem 1: Domain Definition" description="Define the philosophical boundaries and intended use-case of the formal system you are about to design. What domain of 'truth' or 'computation' is your toy system attempting to model? (e.g. A logic for a vending machine, a logic for moral obligation, a logic for quantum states)." data-groups='[]'></syntax-sandbox>
 
-<textarea id="01-conceptual-foundations-prob" class="form-control problem-input" rows="8" placeholder="Enter your response here..."></textarea>
-<button class="btn btn-success mt-3" onclick="tlStudySync.saveData()">Save to GitHub</button>
-</div>
-:::
+<syntax-sandbox problem-id="01-conceptual-foundations-prob2" title="Problem 2: Use and Mention" description="Explain the Use/Mention distinction. Why is it important when we formalize logic computationally?" data-groups='[]'></syntax-sandbox>
+
+[Continue to Part 2: Syntax and Deduction →](02-syntax.qmd)
+
