@@ -1,8 +1,10 @@
 # Thinghood Limited Study Platform
 
-A static, serverless, and sovereign Quarto curriculum hosting various educational topics, including NF Set Theory, Computational Metalogic, Material Logics I, and Material Logics II.
+This is an experimental, browser-based learning environment that reimagines how educational data is stored and owned. Without a traditional database, it acts as a digital textbook where the institution hosts the curriculum, but the student retains sovereignty over their work.
 
-This project delivers a completely static web application where students can write solutions to problems, execute logic exercises, and securely sync their progress to their own private GitHub repositories—all without a database, server backend, or requiring command-line interaction.
+Rather than submitting answers to a central server, users log in via a GitHub App. The Quarto frontend then uses a static API (mediated by a Cloudflare Worker) to read, write, and version-control problem sets in the student's own private GitHub repository.
+
+This setup supports interactive exercises, stateful feedback loops, and private study groups, all without needing a dedicated backend.
 
 ## Architecture
 
@@ -48,8 +50,10 @@ To resolve this, our client-side JavaScript (`js/github-sync.js`) uses the **Git
 Client-side JavaScript cannot securely hold the GitHub App's `CLIENT_SECRET` (which is required to exchange an OAuth code for an Access Token), nor can it enforce strict path boundaries when writing to a centralized community repository.
 
 To resolve this, the architecture utilizes an isolated **Cloudflare Worker** that serves two critical purposes:
+
 1. **OAuth Relay:** It holds the `CLIENT_SECRET` securely in its environment variables, receives the temporary `code` from the frontend, validates it against GitHub, and returns the short-lived access token to the browser.
 2. **Cohort API Gateway:** It acts as a secure proxy for the seasonal cohorts. It enforces strict repository and path constraints (`cohort_data/{topic}/{cohortId}/{problemId}`) and performs optional server-side AES-GCM encryption before writing peer review data to the central repo using a hidden PAT.
+
 - **Spam Prevention:** The Cloudflare worker implements an in-memory IP rate limiter to prevent automated scripts from draining the daily free tier allowance.
 
 ---
