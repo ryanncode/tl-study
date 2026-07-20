@@ -34,12 +34,12 @@ Think about the philosophical stakes of choosing a logic system. If you choose s
 :::
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Ontological Commitments" description="Draft formal structures that reflect specific ontological commitments." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 7.3. Final Summary
@@ -63,7 +63,17 @@ Mastering these foundations enables students to move beyond simply "following th
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="07-conclusion-prob1" title="Problem 1: The Manifesto" description="Synthesize your design into a final philosophical defense of your custom computational metalogic system. Publish this manifesto to the Public Cohort Discussion to defend your structural choices against peer critique." data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="07-conclusion-prob1" title="Problem 1: The Manifesto" description="Synthesize your design into a final philosophical defense of your custom computational metalogic system. Publish this manifesto to the Public Cohort Discussion to defend your structural choices against peer critique." data-groups='[
+  { "label": "Philosophical Concepts", "buttons": ["Truth", "Proof", "Ontology", "Computation"] },
+  { "label": "Formal Systems", "buttons": ["Semantics", "Deduction", "Model", "Theory"] },
+  { "label": "Relations", "buttons": ["⊢", "⊨", "=>", "::"] },
+  { "label": "Types", "buttons": ["WFF", "Bool", "Set"] }
+]'></syntax-sandbox>
 
-<syntax-sandbox problem-id="07-conclusion-prob2" title="Problem 2: Final Reflection" description="Reflect on how your understanding of 'Truth' and 'Proof' has evolved over this curriculum. How does viewing logic through a computational lens change your approach to philosophy?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="07-conclusion-prob2" title="Problem 2: Final Reflection" description="Reflect on how your understanding of 'Truth' and 'Proof' has evolved over this curriculum. How does viewing logic through a computational lens change your approach to philosophy?" data-groups='[
+  { "label": "Philosophical Concepts", "buttons": ["Truth", "Proof", "Ontology", "Computation"] },
+  { "label": "Formal Systems", "buttons": ["Semantics", "Deduction", "Model", "Theory"] },
+  { "label": "Relations", "buttons": ["⊢", "⊨", "=>", "::"] },
+  { "label": "Types", "buttons": ["WFF", "Bool", "Set"] }
+]'></syntax-sandbox>
 

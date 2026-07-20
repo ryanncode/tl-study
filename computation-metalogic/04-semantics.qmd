@@ -70,10 +70,10 @@ We define the valuation function VI​ recursively. For any PL-interpretation I 
 * $P \to Q$ is 0.
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["P", "Q", "R"], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Propositional Valuation" description="Experiment with assigning truth values to complex propositions." data-groups='[
+  { "label": "Propositions", "buttons": ["P", "Q", "R"] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 4.3. First-Order Semantics (FOL)
@@ -167,12 +167,12 @@ Is the sentence $\exists x Even(x)$ True or False in $\mathfrak{M}$?
 </div>
 :::
 
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Quantifier Evaluation" description="Practice evaluating truth conditions for existential and universal quantifiers." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 4.4. Soundness and Completeness
@@ -199,9 +199,19 @@ Having established the core definitions of truth and provability, we now turn to
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="04-semantics-prob1" title="Problem 1: Model Theory" description="Construct a mathematical model or 'world' where your syntax maps to actual truth-values. What objects exist in your domain, and how do predicates assign meaning to them?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="04-semantics-prob1" title="Problem 1: Model Theory" description="Construct a mathematical model or 'world' where your syntax maps to actual truth-values. What objects exist in your domain, and how do predicates assign meaning to them?" data-groups='[
+  { "label": "Model Types", "buttons": ["Model", "Domain", "Interpretation", "Object", "Extension"] },
+  { "label": "Truth Values", "buttons": ["True", "False", "1", "0"] },
+  { "label": "Functions", "buttons": ["isValid", "evaluate"] },
+  { "label": "Syntax", "buttons": ["{", "}", "(", ")", "=>", "::"] }
+]'></syntax-sandbox>
 
-<syntax-sandbox problem-id="04-semantics-prob2" title="Problem 2: Soundness and Completeness" description="In your own words, define Soundness and Completeness in logic. Why are these properties crucial for a formal system?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="04-semantics-prob2" title="Problem 2: Soundness and Completeness" description="In your own words, define Soundness and Completeness in logic. Why are these properties crucial for a formal system?" data-groups='[
+  { "label": "Properties", "buttons": ["Soundness", "Completeness"] },
+  { "label": "Relations", "buttons": ["⊢", "⊨"] },
+  { "label": "Sets", "buttons": ["Γ", "Δ"] },
+  { "label": "Sentences", "buttons": ["ϕ", "ψ", "χ"] }
+]'></syntax-sandbox>
 
 [Continue to Part 5: Translation →](05-translation.qmd)
 

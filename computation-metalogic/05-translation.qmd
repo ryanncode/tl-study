@@ -55,12 +55,12 @@ Mechanically, this means that negating a universal claim ("Not everything is F")
 These rules allow the "pushing in" or "pulling out" of negation signs to normalize formulas for proof strategies (Zach et al., pp. 317–319).
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Negation Normalization" description="Practice pushing in or pulling out negation signs to normalize formulas." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 5.2. Multiple Quantifiers and Scope
@@ -120,12 +120,12 @@ AtLeastTwo :: Predicate -> Formula
 
 * *Formalization:* $\exists x (F(x) \land \forall y (F(y) \to x=y))$ (Zach et al., pp. 413).
 
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "=", "spaceAfter": false, "spaceBefore": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Numerical Translation" description="Experiment with translating numerical concepts ('At least n', 'At most n') into logic." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "=", "spaceAfter": false, "spaceBefore": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 5.4. Definite Descriptions
@@ -171,15 +171,20 @@ This completes our survey of the expressive power of First-Order Logic. By maste
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="05-translation-prob1" title="Problem 1: Expressive Power" description="Attempt to translate a complex natural language concept into the formal syntax you designed in Chapter 2. Where does your system succeed, and where does it break down?" data-groups='[]'></syntax-sandbox>
-
-<syntax-sandbox problem-id="05-translation-prob2" title="Problem 2: Definite Descriptions" description="Translate the sentence 'The current King of France is bald' using Russell's theory of descriptions." data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "K", "spaceAfter": false}, {"val": "B", "spaceAfter": false}, {"val": "=", "spaceAfter": false, "spaceBefore": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox problem-id="05-translation-prob1" title="Problem 1: Expressive Power" description="Attempt to translate a complex natural language concept into the formal syntax you designed in Chapter 2. Where does your system succeed, and where does it break down?" data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
+<syntax-sandbox problem-id="05-translation-prob2" title="Problem 2: Definite Descriptions" description="Translate the sentence 'The current King of France is bald' using Russell's theory of descriptions." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
+]'></syntax-sandbox>
 [Continue to Part 6: Metalogic and Conclusion →](06-metalogic.qmd)
 

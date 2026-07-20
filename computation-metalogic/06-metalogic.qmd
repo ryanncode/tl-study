@@ -78,12 +78,12 @@ Which metalogical property has your engine just violated?
 :::
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: False Positives" description="Explore scenarios where a logical engine might violate soundness or completeness." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 6.2. Completeness
@@ -147,12 +147,12 @@ Compactness limits FOL's expressive power, preventing it from distinguishing bet
 * **Latent Contradictions:** Compactness implies a contradiction cannot be "latent" in an infinite set—if a set is inconsistent, the contradiction must arise within a finite number of sentences (Sider, p. 134).
 * **The "Zombie" Numbers:** Because FOL cannot strictly define "finiteness," it cannot distinguish between the standard natural numbers and **non-standard models**—structures that contain "zombie numbers" (infinite elements) but still satisfy every first-order axiom of arithmetic. The logic is simply too weak to exclude these impostors (Sider, p. 135).
 
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Compactness & Non-Standard Models" description="Experiment with latent contradictions and the limits of First-Order Logic." data-groups='[
+  { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
+  { "label": "Predicates", "buttons": [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"] },
+  { "label": "Quantifiers", "buttons": [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 ##### 6.3.3. Overcoming Expressive Limitations
@@ -275,9 +275,19 @@ By inventing the **Turing Machine** to answer Hilbert, Turing effectively formal
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="06-metalogic-prob1" title="Problem 1: Soundness & Completeness" description="Analyze your toy system. Do you believe it is Sound (it only proves true things) and Complete (it can prove all true things within its domain)? Defend your architectural choices." data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="06-metalogic-prob1" title="Problem 1: Soundness & Completeness" description="Analyze your toy system. Do you believe it is Sound (it only proves true things) and Complete (it can prove all true things within its domain)? Defend your architectural choices." data-groups='[
+  { "label": "Properties", "buttons": ["Soundness", "Completeness"] },
+  { "label": "Relations", "buttons": ["⊢", "⊨"] },
+  { "label": "Sets", "buttons": ["Γ", "Δ", "Theory", "Model"] },
+  { "label": "Sentences", "buttons": ["ϕ", "ψ", "χ"] }
+]'></syntax-sandbox>
 
-<syntax-sandbox problem-id="06-metalogic-prob2" title="Problem 2: The Limits of Logic" description="Explain Compactness and the Löwenheim-Skolem theorems. How do these theorems limit the expressive power of First-Order Logic?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="06-metalogic-prob2" title="Problem 2: The Limits of Logic" description="Explain Compactness and the Löwenheim-Skolem theorems. How do these theorems limit the expressive power of First-Order Logic?" data-groups='[
+  { "label": "Theorems", "buttons": ["Compactness", "Löwenheim-Skolem"] },
+  { "label": "Functions", "buttons": ["isCountable", "hasInfiniteModel", "ExistsInfinite"] },
+  { "label": "Sets", "buttons": ["Set", "Theory", "Model", "ℵ₀"] },
+  { "label": "Relations", "buttons": ["<", ">", "=", "≤", "≥"] }
+]'></syntax-sandbox>
 
 [Continue to Part 7: Conclusion →](07-conclusion.qmd)
 

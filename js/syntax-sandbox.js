@@ -19,8 +19,8 @@ class SyntaxSandbox extends HTMLElement {
   render(groups) {
     const isProblem = this.hasAttribute('problem-id');
     const problemId = this.getAttribute('problem-id');
-    const title = this.getAttribute('title') || (isProblem ? 'Problem' : 'Interactive Syntax Sandbox');
-    const description = this.getAttribute('description') || (isProblem ? '' : 'Experiment with constructing formal syntax strings. This area is for free exploration and will not be saved.');
+    const title = this.getAttribute('title') || (isProblem ? 'Problem' : 'Interactive Sandbox');
+    const description = this.getAttribute('description') || (isProblem ? '' : 'This area is for free exploration and will not be saved.');
     
     const cardClass = isProblem ? 'card mb-4' : 'card mb-4 bg-light';
     const headerHtml = isProblem ? `<div class="card-header bg-primary text-white"><strong>${title}</strong></div>` : '';
@@ -70,11 +70,29 @@ class SyntaxSandbox extends HTMLElement {
     };
 
     // Render button groups
-    groups.forEach(group => {
+    groups.forEach(groupConfig => {
+      let groupArray = groupConfig;
+      let label = null;
+      if (typeof groupConfig === 'object' && !Array.isArray(groupConfig) && groupConfig.buttons) {
+        groupArray = groupConfig.buttons;
+        label = groupConfig.label;
+      }
+
+      const groupWrapper = document.createElement('div');
+      groupWrapper.className = 'd-flex flex-column align-items-center me-3 mb-2';
+
+      if (label) {
+        const labelEl = document.createElement('small');
+        labelEl.className = 'text-muted fw-bold mb-1';
+        labelEl.style.fontSize = '0.75rem';
+        labelEl.textContent = label.toUpperCase();
+        groupWrapper.appendChild(labelEl);
+      }
+
       const groupDiv = document.createElement('div');
-      groupDiv.className = 'btn-group';
+      groupDiv.className = 'btn-group shadow-sm';
       
-      group.forEach(item => {
+      groupArray.forEach(item => {
         // Normalize item to object format
         const tokenObj = typeof item === 'string' ? { val: item.trim() } : item;
         
@@ -87,7 +105,8 @@ class SyntaxSandbox extends HTMLElement {
         };
         groupDiv.appendChild(btn);
       });
-      btnContainer.appendChild(groupDiv);
+      groupWrapper.appendChild(groupDiv);
+      btnContainer.appendChild(groupWrapper);
     });
 
     // Add control buttons

@@ -118,7 +118,7 @@ Suppose we want to extract the Domain from a relation (using P5), and then immed
 ---
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
+<syntax-sandbox title="Interactive Sandbox: Hailperin Operations" description="Practice combining operations to yield new relations and sets." data-groups='[
   ["x", "y", "z", "α", "β"], 
   ["∈", "∉", "≡", "∨", "∧"], 
   [

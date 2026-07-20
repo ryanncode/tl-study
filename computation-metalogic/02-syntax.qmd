@@ -93,12 +93,11 @@ This recursive structure enables metalogicians to prove theorems about *all* for
 3. $\exists x \neg Cube(x)$ is a WFF (Recursive clause 3).
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: WFF Construction" description="Practice building Well-Formed Formulas using the recursive rules of syntax." data-groups='[
+  { "label": "Data Types", "buttons": ["WFF", "Predicate", "Term", "Variable", "Name"] },
+  { "label": "Base Constructors", "buttons": ["Atomic", "Constant"] },
+  { "label": "Recursive Constructors", "buttons": ["Not", "And", "Or", "Implies", "ForAll", "Exists"] },
+  { "label": "Syntax", "buttons": ["[", "]", "=", "|"] }
 ]'></syntax-sandbox>
 
 :::{.guided-example}
@@ -154,15 +153,18 @@ We rigorously define a **sentence** (or closed formula) as a WFF containing **no
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="02-syntax-prob1" title="Problem 1: Grammatical Architecture" description="Write the recursive formation rules and formal alphabet for your system. What symbols are allowed? How do you form a 'well-formed formula' (wff) in your universe?" data-groups='[]'></syntax-sandbox>
-
-<syntax-sandbox problem-id="02-syntax-prob2" title="Problem 2: WFF Construction" description="Construct a syntactically valid First-Order Logic formula that uses a 2-place predicate, a universal quantifier, and a conditional (→)." data-groups='[
-  ["x", "y", "z", "a", "b", "c"], 
-  [{"val": "F", "spaceAfter": false}, {"val": "G", "spaceAfter": false}, {"val": "R", "spaceAfter": false}], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "∀", "spaceAfter": false}, {"val": "∃", "spaceAfter": false}], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}]
+<syntax-sandbox problem-id="02-syntax-prob1" title="Problem 1: Grammatical Architecture" description="Write the recursive formation rules and formal alphabet for your system. What symbols are allowed? How do you form a 'well-formed formula' (wff) in your universe?" data-groups='[
+  { "label": "Data Types", "buttons": ["WFF", "Predicate", "Term", "Variable", "Name"] },
+  { "label": "Base Constructors", "buttons": ["Atomic", "Constant"] },
+  { "label": "Recursive Constructors", "buttons": ["Not", "And", "Or", "Implies", "ForAll", "Exists"] },
+  { "label": "Syntax", "buttons": ["[", "]", "=", "|"] }
 ]'></syntax-sandbox>
 
+<syntax-sandbox problem-id="02-syntax-prob2" title="Problem 2: WFF Construction" description="Construct a syntactically valid First-Order Logic formula that uses a 2-place predicate, a universal quantifier, and a conditional (→)." data-groups='[
+  { "label": "Data Types", "buttons": ["WFF", "Predicate", "Term", "Variable", "Name"] },
+  { "label": "Base Constructors", "buttons": ["Atomic", "Constant"] },
+  { "label": "Recursive Constructors", "buttons": ["Not", "And", "Or", "Implies", "ForAll", "Exists"] },
+  { "label": "Syntax", "buttons": ["[", "]", "=", "|"] }
+]'></syntax-sandbox>
 [Continue to Part 3: Deduction →](03-deduction.qmd)
 

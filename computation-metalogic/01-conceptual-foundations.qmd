@@ -69,10 +69,12 @@ isValidSyntactic premises conclusion =
 ```
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["P", "Q", "R"], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔"], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Type Signatures" description="Experiment with constructing Haskell type signatures for logical concepts." data-groups='[
+  { "label": "Concepts", "buttons": ["Premises", "Conclusion", "Validity"] },
+  { "label": "Types", "buttons": ["Set", "Formula", "Bool"] },
+  { "label": "Functions", "buttons": ["LogicalConsequence", "isValidSemantic", "isValidSyntactic"] },
+  { "label": "Control", "buttons": ["if", "then", "else"] },
+  { "label": "Syntax", "buttons": ["::", "->", "=", "--", "{", "}"] }
 ]'></syntax-sandbox>
 
 
@@ -274,9 +276,21 @@ The boundary between them is partly conventional. For example, the inference "Gr
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="01-conceptual-foundations-prob1" title="Problem 1: Domain Definition" description="Define the philosophical boundaries and intended use-case of the formal system you are about to design. What domain of 'truth' or 'computation' is your toy system attempting to model? (e.g. A logic for a vending machine, a logic for moral obligation, a logic for quantum states)." data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="01-conceptual-foundations-prob1" title="Problem 1: Domain Definition" description="Define the philosophical boundaries and intended use-case of the formal system you are about to design. What domain of 'truth' or 'computation' is your toy system attempting to model? (e.g. A logic for a vending machine, a logic for moral obligation, a logic for quantum states)." data-groups='[
+  { "label": "Concepts", "buttons": ["Premises", "Conclusion", "Validity"] },
+  { "label": "Types", "buttons": ["Set", "Formula", "Bool"] },
+  { "label": "Functions", "buttons": ["LogicalConsequence", "isValidSemantic", "isValidSyntactic"] },
+  { "label": "Control", "buttons": ["if", "then", "else"] },
+  { "label": "Syntax", "buttons": ["::", "->", "=", "--", "{", "}"] }
+]'></syntax-sandbox>
 
-<syntax-sandbox problem-id="01-conceptual-foundations-prob2" title="Problem 2: Use and Mention" description="Explain the Use/Mention distinction. Why is it important when we formalize logic computationally?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="01-conceptual-foundations-prob2" title="Problem 2: Use and Mention" description="Explain the Use/Mention distinction. Why is it important when we formalize logic computationally?" data-groups='[
+  { "label": "Concepts", "buttons": ["Premises", "Conclusion", "Validity"] },
+  { "label": "Types", "buttons": ["Set", "Formula", "Bool"] },
+  { "label": "Functions", "buttons": ["LogicalConsequence", "isValidSemantic", "isValidSyntactic"] },
+  { "label": "Control", "buttons": ["if", "then", "else"] },
+  { "label": "Syntax", "buttons": ["::", "->", "=", "--", "{", "}"] }
+]'></syntax-sandbox>
 
 [Continue to Part 2: Syntax and Deduction →](02-syntax.qmd)
 

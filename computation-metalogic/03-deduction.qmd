@@ -162,10 +162,12 @@ This rule (Reductio Ad Absurdum) establishes a negation by showing that an assum
 * **Sequent Mechanism (RAA):** If $\Gamma, \phi \Rightarrow \psi \land \neg \psi$ (a contradiction), one infers $\Gamma \Rightarrow \neg \phi$ (Sider, p. 52).
 
 <script src="/js/syntax-sandbox.js"></script>
-<syntax-sandbox data-groups='[
-  ["P", "Q", "R", "S"], 
-  [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔", "⊥"], 
-  [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}]
+<syntax-sandbox title="Interactive Sandbox: Reductio Ad Absurdum" description="Experiment with constructing proofs by contradiction (RAA)." data-groups='[
+  { "label": "Sentences", "buttons": ["P", "Q", "R", "S", "ϕ", "ψ", "χ"] },
+  { "label": "Context", "buttons": ["Γ", "Δ"] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔", "⊥"] },
+  { "label": "Turnstiles", "buttons": ["⊢", "⇒"] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
 #### 3.5. Quantifier Rules & Restrictions ("The Danger Zone")
@@ -341,9 +343,21 @@ We will revisit Velleman's protocol in **Section 6.1.2**, adapting it from a too
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="03-deduction-prob1" title="Problem 1: Rules of Inference" description="Define the axioms and inference rules (e.g., Modus Ponens equivalent) that allow your system to 'compute' proofs. How does one statement legally transition into the next?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="03-deduction-prob1" title="Problem 1: Rules of Inference" description="Define the axioms and inference rules (e.g., Modus Ponens equivalent) that allow your system to 'compute' proofs. How does one statement legally transition into the next?" data-groups='[
+  { "label": "Sentences", "buttons": ["P", "Q", "R", "S", "ϕ", "ψ", "χ"] },
+  { "label": "Context", "buttons": ["Γ", "Δ"] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔", "⊥"] },
+  { "label": "Turnstiles", "buttons": ["⊢", "⇒"] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
+]'></syntax-sandbox>
 
-<syntax-sandbox problem-id="03-deduction-prob2" title="Problem 2: Proof Strategy" description="If your goal in a Fitch proof is to derive P → (Q ∨ R), what should your immediate first step be according to Velleman's goal-directed strategies?" data-groups='[]'></syntax-sandbox>
+<syntax-sandbox problem-id="03-deduction-prob2" title="Problem 2: Proof Strategy" description="If your goal in a Fitch proof is to derive P → (Q ∨ R), what should your immediate first step be according to Velleman's goal-directed strategies?" data-groups='[
+  { "label": "Sentences", "buttons": ["P", "Q", "R", "S", "ϕ", "ψ", "χ"] },
+  { "label": "Context", "buttons": ["Γ", "Δ"] },
+  { "label": "Connectives", "buttons": [{"val": "¬", "spaceAfter": false}, "∧", "∨", "→", "↔", "⊥"] },
+  { "label": "Turnstiles", "buttons": ["⊢", "⇒"] },
+  { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
+]'></syntax-sandbox>
 
 [Continue to Part 4: Semantics and Translation →](04-semantics.qmd)
 
