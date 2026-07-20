@@ -94,9 +94,9 @@ export default {
         return await this.handleOAuth(body, env, corsHeaders);
       }
       
-      // Route: Publish to Cohort
-      if (postAction === "cohort_publish") {
-        return await this.handleCohortPublish(request, body, env, corsHeaders);
+      // Route: Publish to Cohort Solution
+      if (postAction === "cohort_publish_solution") {
+        return await this.handleCohortPublishSolution(request, body, env, corsHeaders);
       }
 
       return new Response("Unknown action.", { status: 400, headers: corsHeaders });
@@ -149,47 +149,57 @@ export default {
     return userData.login;
   },
 
-  async handleCohortPublish(request, body, env, corsHeaders) {
+  async handleCohortPublishSolution(request, body, env, corsHeaders) {
     if (!env.GITHUB_COHORT_PAT) throw new Error("Server not configured for cohort proxy.");
     if (!env.TARGET_REPO) throw new Error("Server missing TARGET_REPO configuration.");
-    
+
     const username = await this.verifyGithubIdentity(request.headers.get("Authorization"));
-    
-    let { topic, cohortId, problemId, payload, sha, encryptionMode } = body;
-    if (!topic || !problemId) throw new Error("Missing topic or problemId.");
-    
+
+    let { topic, cohortId, problemId, solution_data } = body;
+    if (!topic || !problemId || !solution_data) throw new Error("Missing required fields.");
+
     const safeCohortId = cohortId || 'default';
     if (/[^a-zA-Z0-9\-_]/.test(topic) || /[^a-zA-Z0-9\-_]/.test(safeCohortId) || /[^a-zA-Z0-9\-_]/.test(problemId)) {
         throw new Error("Invalid path components.");
     }
 
     const path = `cohort_data/${topic}/${safeCohortId}/${problemId}/${username}.json`;
-    let contentToStore = JSON.stringify(payload);
+    const githubApiUrl = `https://api.github.com/repos/${env.TARGET_REPO}/contents/${path}`;
+    
+    let sha = null;
+    let existingComments = [];
+    
+    // Fetch existing file to retrieve current SHA and preserve comments
+    const getRes = await fetch(githubApiUrl, {
+      headers: {
+        'Authorization': `Bearer ${env.GITHUB_COHORT_PAT}`,
+        'User-Agent': 'TL-Study-Proxy'
+      }
+    });
 
-    if (encryptionMode === "server") {
-      const cohortKeyName = safeCohortId ? "KEY_" + safeCohortId.toUpperCase().replace(/[^A-Z0-9]/g, '_') : "COHORT_ENCRYPTION_KEY";
-      const secret = env[cohortKeyName] || env.COHORT_ENCRYPTION_KEY;
-      if (!secret) throw new Error(`Server encryption key missing for cohort ${safeCohortId}.`);
-      
-      const key = await this.deriveKey(secret);
-      const iv = crypto.getRandomValues(new Uint8Array(12));
-      const encoded = new TextEncoder().encode(contentToStore);
-      const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, encoded);
-      
-      // Store as base64 JSON payload
-      contentToStore = JSON.stringify({
-        encrypted: true,
-        iv: btoa(String.fromCharCode(...iv)),
-        data: btoa(String.fromCharCode(...new Uint8Array(encrypted)))
-      });
+    if (getRes.ok) {
+        const existingFile = await getRes.json();
+        sha = existingFile.sha;
+        try {
+            const rawContent = decodeURIComponent(escape(atob(existingFile.content)));
+            const parsed = JSON.parse(rawContent);
+            if (parsed.comments) existingComments = parsed.comments;
+        } catch (e) {}
     }
 
-    const githubApiUrl = `https://api.github.com/repos/${env.TARGET_REPO}/contents/${path}`;
-    const putBody = {
-      message: `Cohort publish via proxy for ${username}`,
-      content: btoa(unescape(encodeURIComponent(contentToStore)))
+    // Merge logic: keep existing comments, update solution, add metadata envelope
+    const payload = {
+        author: username,
+        updated_at: new Date().toISOString(),
+        solution_data: solution_data,
+        comments: existingComments
     };
-    if (sha) putBody.sha = sha;
+
+    const putBody = {
+      message: `Cohort publish solution for ${problemId} by ${username}`,
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
+    };
+    if (sha) putBody.sha = sha; // Conditional write strictly enforced server-side
 
     const res = await fetch(githubApiUrl, {
       method: 'PUT',
@@ -250,27 +260,8 @@ export default {
        return new Response(JSON.stringify(fileData), { headers: { "Content-Type": "application/json", ...corsHeaders } });
     }
 
-    // It's a single file
+    // It's a single file, just return it directly. The client will parse the envelope and decrypt `solution_data`.
     let content = decodeURIComponent(escape(atob(fileData.content)));
-    
-    if (encryptionMode === "server") {
-      try {
-        const parsed = JSON.parse(content);
-        const cohortKeyName = cohortId ? "KEY_" + cohortId.toUpperCase().replace(/[^A-Z0-9]/g, '_') : "COHORT_ENCRYPTION_KEY";
-        const secret = env[cohortKeyName] || env.COHORT_ENCRYPTION_KEY;
-
-        if (parsed.encrypted && secret) {
-          const key = await this.deriveKey(secret);
-          const iv = new Uint8Array(atob(parsed.iv).split("").map(c => c.charCodeAt(0)));
-          const data = new Uint8Array(atob(parsed.data).split("").map(c => c.charCodeAt(0)));
-          const decrypted = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, data);
-          content = new TextDecoder().decode(decrypted);
-        }
-      } catch (e) {
-        // Fallback to raw if decryption fails or not encrypted
-      }
-    }
-
     fileData.content = btoa(unescape(encodeURIComponent(content)));
     return new Response(JSON.stringify(fileData), { headers: { "Content-Type": "application/json", ...corsHeaders } });
   }

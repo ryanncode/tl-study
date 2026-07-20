@@ -267,7 +267,10 @@ class CohortManager {
             
             const fileData = await res.json();
             const rawContent = decodeURIComponent(escape(atob(fileData.content)));
-            const data = await this.decryptPayload(rawContent);
+            const data = JSON.parse(rawContent);
+            
+            // The solution payload is nested inside data.solution_data now
+            const decryptedSolutionData = await this.decryptPayload(JSON.stringify(data.solution_data || data));
             
             container.innerHTML = ''; // Clear safely
 
@@ -280,7 +283,7 @@ class CohortManager {
             const pre = document.createElement('pre');
             pre.className = 'bg-light p-2 rounded mt-2 text-wrap';
             pre.style.fontFamily = 'inherit';
-            pre.textContent = data.solution;
+            pre.textContent = decryptedSolutionData.solution;
             
             solutionDiv.appendChild(pre);
             container.appendChild(solutionDiv);
@@ -297,20 +300,18 @@ class CohortManager {
         }
     }
 
-    async proxyPutRequest(problemId, path, payload, sha, message) {
-        const encryptedPayload = await this.encryptPayload(payload);
+    async proxyPutRequest(problemId, payload) {
+        const encryptedSolution = await this.encryptPayload(payload);
         const headers = await this.getGitHubHeaders();
         
         if (this.activeTopicConfig.proxy_url) {
             const body = {
-                action: 'cohort_publish',
+                action: 'cohort_publish_solution',
                 topic: this.topic,
                 problemId: problemId,
-                payload: encryptedPayload,
-                encryptionMode: this.activeTopicConfig.encryption_mode || 'none',
+                solution_data: encryptedSolution,
                 cohortId: this.activeTopicConfig.cohort_id
             };
-            if (sha) body.sha = sha;
 
             return await fetch(this.activeTopicConfig.proxy_url, {
                 method: 'POST',
@@ -318,19 +319,7 @@ class CohortManager {
                 body: JSON.stringify(body)
             });
         } else {
-            // Direct GitHub API fallback
-            const putBody = {
-                message: message,
-                content: btoa(unescape(encodeURIComponent(JSON.stringify(encryptedPayload, null, 2))))
-            };
-            if (sha) putBody.sha = sha;
-            
-            const apiUrl = `https://api.github.com/repos/${this.activeTopicConfig.target_repo}/contents/${path}`;
-            return await fetch(apiUrl, {
-                method: 'PUT',
-                headers: { ...headers, 'Content-Type': 'application/json' },
-                body: JSON.stringify(putBody)
-            });
+            throw new Error("Direct GitHub API publishing is disabled for security. Use Proxy.");
         }
     }
 
@@ -340,41 +329,15 @@ class CohortManager {
             return;
         }
         
-        const username = window.tlStudySync ? window.tlStudySync.owner : prompt("Enter your GitHub username to publish as:");
-        if (!username) return;
-
-        const cohortId = this.activeTopicConfig.cohort_id || 'default';
-        const path = `cohort_data/${this.topic}/${cohortId}/${problemId}/${username}.json`;
-        const headers = await this.getGitHubHeaders();
-        const api = this.getApiConfig(path);
-        
-        // Check if exists to get SHA and existing comments
-        let sha = null;
-        let existingComments = [];
-        try {
-            const checkRes = await fetch(api.url, { headers });
-            if (checkRes.ok) {
-                const existingFile = await checkRes.json();
-                sha = existingFile.sha;
-                const rawContent = decodeURIComponent(escape(atob(existingFile.content)));
-                const existingData = await this.decryptPayload(rawContent);
-                if (existingData.comments) existingComments = existingData.comments;
-            }
-        } catch(e) {}
-        
-        const payload = {
-            solution: content,
-            updated_at: new Date().toISOString(),
-            comments: existingComments
-        };
-        
         try {
             const btn = document.activeElement;
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Publishing...';
             btn.disabled = true;
 
-            const putRes = await this.proxyPutRequest(problemId, path, payload, sha, `Publish solution for ${problemId} by ${username}`);
+            // Notice we do NOT fetch the existing file or handle sha anymore.
+            // All merge and identity behavior is strictly server-side.
+            const putRes = await this.proxyPutRequest(problemId, { solution: content });
             
             if (putRes.ok) {
                 btn.innerHTML = 'Published \u2713';
