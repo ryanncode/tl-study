@@ -11,6 +11,17 @@ format:
 
 Categorical logic relies heavily on Cartesian Closed Categories (categories with products and exponentials) to provide semantics for the $\lambda$-calculus. Because Quine's New Foundations (NF) permits a universal set and avoids external class hierarchies, it seemed like the perfect foundation for a "Category of all Categories." However, evaluating NF through categorical semantics exposes a critical structural paradox.
 
+:::{.reading-assignment}
+**Suggested Reading: Stratified Semantics & Topos Boundaries**
+<ul>
+  <li>McLarty, C. (1992). <em>Failure of Cartesian closedness in NF</em>. Journal of Symbolic Logic, 57(2), pp. 1-25.</li>
+  <li>Forster, T., Lewicki, A., & Vidrine, A. (2019). <em>Category Theory with Stratified Set Theory</em>.</li>
+  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 3 (Boolean Operations), Ch. 17.1 (Exponentiation meets T), Ch. 19.2 (ZFC in Cantorian Ordinals).</li>
+  <li>Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Sections 1.4 (Avoiding paradoxes) and 2.2.2 (Closure properties of small sets).</li>
+  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.3, 5.4, 7.1, and 7.2 (Singletons, Recoding, and Proving Consistency).</li>
+</ul>
+:::
+
 ## McLarty: The Failure of Cartesian Closedness (1992)
 
 Colin McLarty definitively proved that **the category of sets within NF cannot constitute a topos**, and furthermore, it is not Cartesian Closed. 
@@ -94,6 +105,11 @@ To bypass stratification violations in evaluation maps, Forster uses the $T$-fun
 Because NF is not Cartesian Closed natively, only the subcategory of Strongly Cantorian sets forms a true Elementary Topos. 
 
 Write the JSON structural properties that establish the system as a `Stratified_Pseudo_Elephant`, while allowing the `true_topos_subcategory` to be extracted based on the `strongly_cantorian` property.
+
+<div class="interpolated-response mb-3 p-3 bg-light border rounded">
+  <strong>Your notes on Tracking the T-Operation (Chapter 5):</strong>
+  <div data-interpolate="holmes-5-1" class="fst-italic mt-2"></div>
+</div>
 
 <textarea id="mclarty-8-2" class="form-control problem-input" rows="4" placeholder="Enter your structural analysis here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>

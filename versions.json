@@ -17,9 +17,11 @@
       }
     },
     "nf-set-theory/02-quine-math-logic.qmd": {
-      "document_hash": "20c06cf93fdc3a32d6eaef6213474034",
+      "document_hash": "4dd5db77325dcc451dc1c38c817327da",
       "historical_hashes": [
-        "20c06cf9"
+        "20c06cf9",
+        "20c06cf93fdc3a32d6eaef6213474034",
+        "66de85a8f0597dd4b4824c1432d54215"
       ],
       "problems": {
         "quine-2-1": {
@@ -33,10 +35,11 @@
       }
     },
     "nf-set-theory/03-hailperin-axioms.qmd": {
-      "document_hash": "3111fa9bc5beb4883ad9cc06b7c62452",
+      "document_hash": "5c7522d63e886f269ca5b532e2465dce",
       "historical_hashes": [
         "31dc297f",
-        "31dc297f8fa7e06a56b6aeb580ef26aa"
+        "31dc297f8fa7e06a56b6aeb580ef26aa",
+        "3111fa9bc5beb4883ad9cc06b7c62452"
       ],
       "problems": {
         "hailperin-3-1": {
@@ -50,9 +53,10 @@
       }
     },
     "nf-set-theory/04-specker-orey-jensen.qmd": {
-      "document_hash": "6914489b543c551673e092f3e630007f",
+      "document_hash": "5f3e4638ab25c384f2f97cf02af6313d",
       "historical_hashes": [
-        "6914489b"
+        "6914489b",
+        "6914489b543c551673e092f3e630007f"
       ],
       "problems": {
         "jensen-4-1": {
@@ -66,9 +70,10 @@
       }
     },
     "nf-set-theory/05-forster-holmes.qmd": {
-      "document_hash": "6df4061b100095a51691909f38b02ea8",
+      "document_hash": "d6071e3f4884bf35fd46cc3bd2f8ad9a",
       "historical_hashes": [
-        "6df4061b"
+        "6df4061b",
+        "6df4061b100095a51691909f38b02ea8"
       ],
       "problems": {
         "holmes-5-1": {
@@ -78,14 +83,15 @@
       }
     },
     "nf-set-theory/06-mac-lane-lawvere.qmd": {
-      "document_hash": "fab1c22053abf7477421568059cda429",
+      "document_hash": "775d29c8ce7a890fc506df78612655b3",
       "historical_hashes": [
-        "fab1c220"
+        "fab1c220",
+        "fab1c22053abf7477421568059cda429"
       ],
       "problems": {
         "maclane-6-1": {
           "title": "Problem 6.1: Morphisms vs Elements",
-          "hash": "f86bafab8070965a632e650e7e52ed5e"
+          "hash": "fc5a0cb16e826b7b7e18d4cf28d204ec"
         },
         "maclane-6-2": {
           "title": "Problem 6.2: The Subobject Classifier",
@@ -94,9 +100,10 @@
       }
     },
     "nf-set-theory/07-lambek-scott.qmd": {
-      "document_hash": "14ef7ea806042546273cd0f425f548ce",
+      "document_hash": "cc856f11b416e8d83cc86297b2ed6ddf",
       "historical_hashes": [
-        "14ef7ea8"
+        "14ef7ea8",
+        "14ef7ea806042546273cd0f425f548ce"
       ],
       "problems": {
         "lambek-7-1": {
@@ -110,9 +117,10 @@
       }
     },
     "nf-set-theory/08-mclarty-forster-stratified.qmd": {
-      "document_hash": "cd27e3d9d455c64a2b59082f7ba5e1b6",
+      "document_hash": "02635df11df2d4225376fa8e23ef523c",
       "historical_hashes": [
-        "cd27e3d9"
+        "cd27e3d9",
+        "cd27e3d9d455c64a2b59082f7ba5e1b6"
       ],
       "problems": {
         "mclarty-8-1": {
@@ -121,7 +129,7 @@
         },
         "mclarty-8-2": {
           "title": "Problem 8.2: Topos Boundaries",
-          "hash": "aaa193b304aa0b111e1e0876ac3af392"
+          "hash": "bade17b13c084db372e922d21e1bc038"
         }
       }
     },
@@ -407,5 +415,5 @@
       "problems": {}
     }
   },
-  "generated_at": "2026-07-23T15:45:09.045Z"
+  "generated_at": "2026-07-23T16:52:24.002Z"
 }

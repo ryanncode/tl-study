@@ -13,6 +13,15 @@ To successfully map our NF ontology to JSON, we must understand how logical deri
 
 J. Lambek and P.J. Scott's *Introduction to Higher-Order Categorical Logic* (1986) demonstrated the fundamental mathematical equivalence between structural logic systems and specific category types. Barr and Wells' *Category Theory for Computer Science* (1990) extended these maps directly into computational state architecture.
 
+:::{.reading-assignment}
+**Suggested Reading: Higher-Order Logic & CCCs**
+<ul>
+  <li>Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§5), Ch. II (§3), Ch. III (§4–§6), Ch. IV (§6).</li>
+  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 11.1, 11.3 (Operations on Functions; Stratification), Ch. 23.1, 23.3 (Abstraction; State Machines & C-Monoids).</li>
+  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.1, 3.2 (Codes and Clouds) and Section 4.6 (Structural Actions).</li>
+</ul>
+:::
+
 ## The Equivalence of Logic and Category
 
 Lambek and Scott established a strict dictionary between formal deductive systems, $\lambda$-calculus, and Category Theory:

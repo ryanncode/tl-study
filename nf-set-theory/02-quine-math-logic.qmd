@@ -13,6 +13,13 @@ Willard Van Orman Quine proposed *New Foundations for Mathematical Logic* as a d
 
 Quine's objective was to translate pure mathematics into formal logic utilizing a **completely minimized primitive vocabulary**, abandoning hierarchical type theory to allow for the existence of a single, universal class ($V$). 
 
+:::{.reading-assignment}
+**Suggested Reading:**
+<ul>
+  <li>Quine, W. V. (1937). <em>New Foundations for Mathematical Logic</em>. The American Mathematical Monthly, 44(2), pp. 70-80.</li>
+</ul>
+:::
+
 ## The Primitives
 
 Imagine building an entire programming language from just three CPU instructions. Quine's language operates strictly on three primitive mathematical constructs:
@@ -79,7 +86,7 @@ This is the heart of Contextual Eliminability. Abstractions (like "the set of al
   $\{\alpha,\beta\} =_{def} \hat{\gamma}((\gamma=\alpha)\lor(\gamma=\beta))$
 * **D14: Ordered Couple (Kuratowski Pair)**  
   $(\alpha,\beta) =_{def} \{\{\alpha\},\{\alpha,\beta\}\}$
-  > **The Fatal Flaw:** Quine imported the standard Kuratowski ordered pair. As you will see in the next module, this decision creates massive stratification violations that Hailperin must fix.
+  > **The Fatal Flaw:** Quine imported the standard Kuratowski ordered pair. If element $\alpha$ is type $n$, the set $\{\alpha\}$ is type $n+1$, and the nested set $\{\{\alpha\}\}$ is type $n+2$. This means the resulting ordered pair is a full two integer levels higher than its constituents! As you will see in the next module, this $+2$ type-raising shift severely restricts relational mapping, creating massive stratification violations that Hailperin must fix using a "flat" or homogeneous ordered pair.
 * **D15: Relational Abstraction**  
   $\hat{\alpha}\hat{\beta}\phi =_{def} \hat{\gamma}(\exists\alpha)(\exists\beta)((\gamma=(\alpha,\beta))\cdot\phi)$
 

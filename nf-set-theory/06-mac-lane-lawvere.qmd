@@ -11,6 +11,14 @@ format:
 
 To formalize our NF Ontology computationally, we must transition from defining objects by their internal elements (standard set theory) to defining objects by their external structural relationships (morphisms). This is the domain of **Category Theory**.
 
+:::{.reading-assignment}
+**Suggested Reading: Category Theory Foundations**
+<ul>
+  <li>Lawvere, F. W. (1964). <em>The Category of Categories as a Foundation for Mathematics</em>.</li>
+  <li>Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§1–§4, §8), Ch. III (§1), Ch. IV (§1, §9).</li>
+</ul>
+:::
+
 ## Saunders Mac Lane: Arrow-Based Definitions
 
 In *Categories for the Working Mathematician* (1971), Saunders Mac Lane systematically replaces element-based definitions with arrow-based (morphism) definitions. 
@@ -27,6 +35,15 @@ A category is defined by objects and arrows (morphisms), governed by associativi
 In 1965, F. William Lawvere published *The Category of Categories as a Foundation for Mathematics*, proposing a radical departure from Zermelo-Fraenkel (ZFC). Lawvere eliminated sets and element membership entirely as foundational primitives.
 
 The Elementary Theory of Abstract Categories (ETAC) builds mathematics using only a first-order language with unary functions for domain/codomain and a ternary relation for composition. This framework perfectly supports structural mathematics without the ontological baggage of assuming everything is built from atomic sets inside spatial containers.
+
+:::{.reading-assignment}
+**Suggested Reading: Relational Morphisms & Flat Transclusion**
+<ul>
+  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 4 (Building Finite Structures), Ch. 5 (The Theory of Relations), Ch. 10 (Introducing Functions).</li>
+  <li>Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Section 2.1.2 (Boffa's lemma and automorphism).</li>
+  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 2.1, 2.3, 2.5 (The structural hierarchy and non-spatial model data).</li>
+</ul>
+:::
 
 ---
 
@@ -94,6 +111,11 @@ If you want to represent the morphism $f: A \to B$ in JSON, you need to specify 
 :::
 ::: {.card-body}
 In your NF JSON ontology, you cannot rely on looking "inside" a set to determine its properties. You must define it externally via morphisms. Write the JSON `morphism` structure that defines an abstract Universal Cone (Limit) connecting a vertex object `LimitVertex` to a target functor `BaseFunctor`.
+
+<div class="interpolated-response mb-3 p-3 bg-light border rounded">
+  <strong>Your definition of Syntactic Authorization (Chapter 1):</strong>
+  <div data-interpolate="topology-1-2" class="fst-italic mt-2"></div>
+</div>
 
 <textarea id="maclane-6-1" class="form-control problem-input" rows="5" placeholder="Enter your abstract JSON mapping here..."></textarea>
 <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>

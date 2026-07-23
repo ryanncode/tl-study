@@ -11,6 +11,15 @@ format:
 
 While Hailperin proved Quine's system could be finitely mechanized, the mid-century saw mathematical logicians stress-testing the *topological reality* of this Monistic Universe against the established boundaries of Zermelo-Fraenkel (ZF).
 
+:::{.reading-assignment}
+**Suggested Reading:**
+<ul>
+  <li>Specker, E. P. (1953). <em>The Axiom of Choice in Quine's New Foundations for Mathematical Logic</em>. Proceedings of the National Academy of Sciences, 39(9).</li>
+  <li>Orey, S. (1956). <em>On the Relative Consistency of Set Theory</em>. The Journal of Symbolic Logic, 21(3).</li>
+  <li>Jensen, R. B. (1969). <em>On the Consistency of a Slight Modification of Quine's New Foundations</em>. Synthese, 19(1/2), pp. 228-236.</li>
+</ul>
+:::
+
 The defining feature of New Foundations (NF) is its explicit permission of a universal set ($V \in V$). This structural rule directly collided with classical set-theoretic operations, sparking a foundational crisis.
 
 ## Specker: The Failure of the Axiom of Choice (1953)
@@ -65,9 +74,10 @@ Urelement: $x \in U \iff \forall y (y \notin x) \land \_\_\_\_\_\_\_\_\_\_$
 
 ---
 
+## The Pivot to JSON: Urelements as Atomic Primitives
 
+In our forthcoming JSON ontology, **Urelements represent atomic data primitives** (like strings, integers, or booleans). These atomic nodes do not structurally contain other elements (they have no members), yet they are fundamentally distinct from an empty container (like an empty JSON array `[]` or object `{}`). By allowing objects that are not sets, NFU perfectly mirrors the architecture of a standard computational database where sets/arrays eventually bottom out at raw, non-iterable data primitives.
 
-## Problem Set: Categorical Sacrifices
 ## Problem Set: Logical Construction of Urelements
 
 ::: {.card .mb-3}

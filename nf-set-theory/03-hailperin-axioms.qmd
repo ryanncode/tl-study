@@ -11,6 +11,13 @@ format:
 
 Willard Van Orman Quine's *New Foundations* relied on an "infinite schema" (Rule R3'). If a formula was grammatically stratified, Quine's system instantly generated the corresponding set. While elegant for human mathematicians, this is terrible for automated theorem provers, which require strict, mechanical boundaries.
 
+:::{.reading-assignment}
+**Suggested Reading:**
+<ul>
+  <li>Hailperin, T. (1944). <em>A Set of Axioms for Logic</em>. The Journal of Symbolic Logic, 9(1).</li>
+</ul>
+:::
+
 Theodore Hailperin fundamentally rejected this infinite schema. He proved that Quine's meta-rule could be entirely replaced by a **strictly finite, self-contained set of 9 deductive axioms (P1 through P9)**. 
 
 To build an NF Universe computationally, you must force all class generation through these nine axiomatic bottlenecks.

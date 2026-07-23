@@ -13,6 +13,13 @@ The modern era of New Foundations (NF) research, led by Thomas Forster and M. Ra
 
 In the logicist tradition, sets represent predicates-in-extension. Conscious experience and conceptual frameworks are unitary; imposing external hierarchies (like ZF) fragments this unitary perspective. Set theories with a universal set treat $V$ as a legitimate, manipulable object, creating a complete boolean algebra under set inclusion.
 
+:::{.reading-assignment}
+**Suggested Reading: The Logicist Tradition & NFU**
+<ul>
+  <li>Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Sections 1.2.1 (Sets as predicates-in-extension), 2.1 (NF), and 2.3.2 (NFU).</li>
+</ul>
+:::
+
 ## Cantorian and Strongly Cantorian Sets (Forster)
 
 In standard math, the size of a set $x$ is trivially equal to the size of its singletons $\{x\}$. In NF, mapping a set to its singletons changes its logical type, requiring the $T$-operation (type-raising).
@@ -58,9 +65,18 @@ For nearly 90 years, pure NF (without Urelements) remained an open consistency p
 
 They proved that NF is consistent if and only if **Tangled Type Theory (TTT)** is consistent. TTT functions as a multi-sorted first-order theory parametrized by a limit ordinal $\lambda$. By establishing the "Freedom of Action" theorem (proving every coherent structural approximation approximates a valid allowable permutation), they formalized the multi-sorted construction computationally in the Lean theorem prover, permanently vindicating Quine's original 1937 architecture.
 
+:::{.reading-assignment}
+**Suggested Reading: Mechanics of Untyped Universes**
+<ul>
+  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 15.2 (Burali-Forti meets T), Ch. 17.5 (Cantorian Sets), Ch. 19.1 (Subversion Theorem), Ch. 21 (Surreal Numbers), Ch. 23 (Stratified Lambda-Calculus).</li>
+  <li>Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Section 2.1.1 (The axiom of counting) and Section 2.2 (Cardinal and ordinal arithmetic).</li>
+  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 1.1 - 1.5 (Transitioning to TTT and finite axioms) and Section 4.4 (Freedom of Action).</li>
+</ul>
+
+> **Prerequisite Stratification Review:** If you struggle with the syntactic mechanics of the $T$-operation below, we recommend reviewing Holmes (2012) Chapter 7 (Stratified Comprehension) before proceeding.
+:::
+
 ---
-
-
 
 ## Problem Set: Categorical Mapping
 
