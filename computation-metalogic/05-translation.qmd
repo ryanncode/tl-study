@@ -24,11 +24,38 @@ Which connective belongs in the blank?
 </div>
 :::
 
-#### 5.1. Equivalence and Transformation
+#### 5.1. Translation as Parsing
+
+From a computational perspective, "translating" English into First-Order Logic is functionally identical to writing a **Parser**. You are taking an unstructured string of natural language and converting it into a rigorously structured Abstract Syntax Tree (the `WFF` data type defined in Chapter 2).
+
+```clojure
+;; Translation is Compilation
+;; We define a function that maps natural language strings to ASTs
+(define (parse english-string)
+  (match (lex english-string)
+    (("All" noun verb) 
+     (ForAll x (Implies ((to-predicate noun) x) 
+                        ((to-predicate verb) x))))
+    (("Some" noun verb)
+     (Exists x (And ((to-predicate noun) x) 
+                    ((to-predicate verb) x))))))
+
+;; (parse "All cats are mammals") 
+;; -> (ForAll x (Implies (Cat x) (Mammal x)))
+```
+
+*Notation: `lex` tokenizes the English string into words, and `match` maps those word patterns to their corresponding logical structures. Understanding translation as compiling into an AST prevents errors like using `And` instead of `Implies` for universal claims.*
+
+#### 5.2. Equivalence and Transformation
 
 Efficient proofs and translations often require the mechanical manipulation of logical forms. **Derived rules** allow for the transformation of formulas into logically equivalent strings without altering their truth conditions, serving as the "algebra" of the logical system.
 
-##### 5.1.1. Conversion of Quantifiers (CQ)
+##### 5.2.1. Conversion of Quantifiers (CQ)
+
+:::{.reading-assignment}
+- **Zach et al.**, pp. 317-319
+:::
+
 
 The **Conversion of Quantifiers** (CQ) rules function as De Morgan's Laws for predicate logic, permitting the movement of negation across quantifiers. We can model this as a syntactic transformation function `convert`:
 
@@ -52,7 +79,7 @@ Mechanically, this means that negating a universal claim ("Not everything is F")
 * $\forall x \phi \iff \neg \exists x \neg \phi$
 * $\exists x \phi \iff \neg \forall x \neg \phi$
 
-These rules allow the "pushing in" or "pulling out" of negation signs to normalize formulas for proof strategies (Zach et al., pp. 317–319).
+These rules allow the "pushing in" or "pulling out" of negation signs to normalize formulas for proof strategies.
 
 <script src="/js/syntax-sandbox.js"></script>
 <syntax-sandbox title="Interactive Sandbox: Negation Normalization" description="Practice pushing in or pulling out negation signs to normalize formulas." data-groups='[
@@ -63,11 +90,11 @@ These rules allow the "pushing in" or "pulling out" of negation signs to normali
   { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
-#### 5.2. Multiple Quantifiers and Scope
+#### 5.3. Multiple Quantifiers and Scope
 
 FOL's expressive power increases significantly with the use of **multiple quantifiers**. The semantic meaning of such sentences is determined strictly by the ordering and scope of the quantifiers involved.
 
-##### 5.2.1. Nested Quantifiers and Order
+##### 5.3.1. Nested Quantifiers and Order
 
 When a formula contains multiple quantifiers, their order dictates the logical relationship between the variables.
 
@@ -78,24 +105,41 @@ When a formula contains multiple quantifiers, their order dictates the logical r
 * $\forall x \exists y Loves(x, y)$: "Everyone loves someone" (Dependence: the loved one depends on the lover).
 * $\exists y \forall x Loves(x, y)$: "There is someone whom everyone loves" (Independence: one specific person is loved by all).
 
-##### 5.2.2. The Quantifier Shift Fallacy
+##### 5.3.2. The Quantifier Shift Fallacy
 
-A common logical error involves illicitly swapping the order of quantifiers. Reversing the order from ∀x∃y to ∃y∀x changes the meaning from a "many-many" relationship to a "one-many" relationship. Metalogic requires precise scope analysis to prevent these fallacious inferences (Zach et al., pp. 213–217).
+:::{.reading-assignment}
+- **Zach et al.**, pp. 213-217
+:::
 
-#### 5.3. Identity and Numerical Quantification
+
+A common logical error involves illicitly swapping the order of quantifiers. Reversing the order from ∀x∃y to ∃y∀x changes the meaning from a "many-many" relationship to a "one-many" relationship. Metalogic requires precise scope analysis to prevent these fallacious inferences.
+
+#### 5.4. Identity and Numerical Quantification
 
 Standard FOL is often augmented with the **identity predicate (=)** to form **Predicate Logic Extended (PLE)**. This addition allows the language to express numerical distinctions—counting objects solely through logical structure.
 
-##### 5.3.1. The Identity Predicate
+##### 5.4.1. The Identity Predicate
+
+:::{.reading-assignment}
+- **Bergmann et al.**, p. 381
+- **Sider**, pp. 137-140
+:::
+
 
 Identity is treated as a binary predicate with fixed semantic properties. (Recall the deduction rules for identity from **Section 3.6**).
 
-* **Logical Truth:** The statement $\forall x (x=x)$ is a logical truth; everything is self-identical (Bergmann et al., p. 381).
-* **Semantics:** The sentence $a=b$ is true if and only if the terms $a$ and $b$ refer to the exact same object in the domain (Sider, pp. 137–140).
+* **Logical Truth:** The statement $\forall x (x=x)$ is a logical truth; everything is self-identical.
+* **Semantics:** The sentence $a=b$ is true if and only if the terms $a$ and $b$ refer to the exact same object in the domain.
 
 **Example:** "Mark Twain is Samuel Clemens" translates to $m = s$. "Mark Twain is the author of Huck Finn" translates to $Author(m, h)$.
 
-##### 5.3.2. Expressing Numerical Quantities
+##### 5.4.2. Expressing Numerical Quantities
+
+:::{.reading-assignment}
+- **Barker-Plummer et al.**, pp. 375-377
+- **Zach et al.**, p. 413
+:::
+
 
 By combining quantifiers, negation, and identity, we can define precise numerical quantities without using numbers as primitive objects.
 
@@ -115,10 +159,10 @@ AtLeastTwo :: Predicate -> Formula
 * *Formalization:* As modeled above, `AtLeastTwo` requires finding two distinct witnesses `x` and `y` in the domain such that they are both `F` and not identical to each other. Formally: $\exists x \exists y (F(x) \land F(y) \land \neg (x=y))$ (Barker-Plummer et al., pp. 375–377; Bergmann et al., pp. 312–313).
 * **"At Most n":** To say "There is at most one F," one asserts that if any two objects are F, they must be identical.
 
-* *Formalization:* $\forall x \forall y ((F(x) \land F(y)) \to x=y)$ (Barker-Plummer et al., pp. 375–377).
+* *Formalization:* $\forall x \forall y ((F(x) \land F(y)) \to x=y)$.
 * **"Exactly n":** This is the conjunction of "at least n" and "at most n." To say "There is exactly one F," one asserts existence and uniqueness.
 
-* *Formalization:* $\exists x (F(x) \land \forall y (F(y) \to x=y))$ (Zach et al., pp. 413).
+* *Formalization:* $\exists x (F(x) \land \forall y (F(y) \to x=y))$.
 
 <syntax-sandbox title="Interactive Sandbox: Numerical Translation" description="Experiment with translating numerical concepts ('At least n', 'At most n') into logic." data-groups='[
   { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
@@ -128,11 +172,11 @@ AtLeastTwo :: Predicate -> Formula
   { "label": "Syntax", "buttons": [{"val": "(", "spaceAfter": false}, {"val": ")", "spaceBefore": false}, {"val": ",", "spaceBefore": false}] }
 ]'></syntax-sandbox>
 
-#### 5.4. Definite Descriptions
+#### 5.5. Definite Descriptions
 
 **Definite descriptions** are phrases of the form "The F" (e.g., "The King of France"). Formalizing these phrases requires addressing the implication of uniqueness and existence hidden within the article "the."
 
-##### 5.4.1. Russell's Theory of Descriptions
+##### 5.5.1. Russell's Theory of Descriptions
 
 Bertrand Russell analyzed definite descriptions as complex **existentially quantified conjunctions** rather than singular names.
 
@@ -158,12 +202,18 @@ $\exists x (K(x) \land \forall y (K(y) \to y=x) \land B(x))$
 
 This structure avoids the paradox of referring to non-existent objects by rendering the entire statement false if no such $x$ exists (Barker-Plummer et al., pp. 388–390; Bergmann et al., pp. 315–316; Sider, pp. 146–147).
 
-##### 5.4.2. Function Symbols and the Iota Operator
+##### 5.5.2. Function Symbols and the Iota Operator
+
+:::{.reading-assignment}
+- **Bergmann et al.**, pp. 319-322
+- **Sider**, pp. 146-147
+:::
+
 
 Advanced formalizations may use **function symbols** or the **iota operator (ι)** to represent descriptions.
 
-* **Function Symbols:** A function symbol maps $n$ terms to a unique term. Complex noun phrases can be formalized using function terms (e.g., $f(a)$ for "the father of $a$") (Bergmann et al., pp. 319–322).
-* **The Iota Operator:** Some systems introduce a variable-binding operator $\iota x \phi$ (read "the $x$ such that $\phi$"). While this simplifies notation, its semantics must still resolve the issue of "empty descriptions" (descriptions that fail to refer), typically by reverting to Russell's quantificational analysis (Sider, pp. 146–147).
+* **Function Symbols:** A function symbol maps $n$ terms to a unique term. Complex noun phrases can be formalized using function terms (e.g., $f(a)$ for "the father of $a$").
+* **The Iota Operator:** Some systems introduce a variable-binding operator $\iota x \phi$ (read "the $x$ such that $\phi$"). While this simplifies notation, its semantics must still resolve the issue of "empty descriptions" (descriptions that fail to refer), typically by reverting to Russell's quantificational analysis.
 
 This completes our survey of the expressive power of First-Order Logic. By mastering these translation schemas—from basic quantifiers to complex definite descriptions—we see that FOL transcends the status of a dry calculus; it is a flexible instrument capable of modeling nuanced philosophical claims. However, the true power of logic lies beyond translation; it is found in understanding the mathematical properties of the system itself.
 

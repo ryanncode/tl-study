@@ -434,10 +434,20 @@ class GitHubSync {
         for (const [key, value] of Object.entries(this.data)) {
             if (key === '_metadata') continue;
             const el = document.getElementById(key);
-            if (el) {
+            if (el && 'value' in el) {
                 el.value = value;
             }
         }
+
+        const interpolateElements = document.querySelectorAll('[data-interpolate]');
+        interpolateElements.forEach(el => {
+            const sourceId = el.getAttribute('data-interpolate');
+            if (this.data[sourceId]) {
+                el.textContent = this.data[sourceId];
+            } else {
+                el.textContent = "[Your answer from a previous chapter will appear here]";
+            }
+        });
     }
 
     disableFields() {

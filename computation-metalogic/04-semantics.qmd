@@ -16,11 +16,16 @@ While proof theory concerns symbol manipulation according to syntactic rules, se
 
 ##### 4.1.1. Models and Interpretations
 
+:::{.reading-assignment}
+- **Sider**, pp. 34-35, 38
+:::
+
+
 To evaluate formal sentence truth, we construct **Models**—abstract mathematical representations of possible states of affairs.
 
-A model functions as a semantic bridge, connecting the formal language to the world. It assigns "semantic values" to the non-logical expressions (sentence letters, names, predicates), allowing us to hold the logical constants fixed while varying the "universe" and the meanings of content words (Sider, pp. 34–35).
+A model functions as a semantic bridge, connecting the formal language to the world. It assigns "semantic values" to the non-logical expressions (sentence letters, names, predicates), allowing us to hold the logical constants fixed while varying the "universe" and the meanings of content words.
 
-From this, we define **Semantic Consequence**: a sentence $\phi$ is a consequence of a set of sentences $\Gamma$ (written $\Gamma \vDash \phi$) if and only if there is no interpretation in which all members of $\Gamma$ are true and $\phi$ is false. Equivalently, $\phi$ is true in *every* model in which all members of $\Gamma$ are true (Sider, p. 10; Magnus et al., pp. 9–10). A sentence is **valid** (or a logical truth) if it is true in *every* possible interpretation (Sider, p. 38).
+From this, we define **Semantic Consequence**: a sentence $\phi$ is a consequence of a set of sentences $\Gamma$ (written $\Gamma \vDash \phi$) if and only if there is no interpretation in which all members of $\Gamma$ are true and $\phi$ is false. Equivalently, $\phi$ is true in *every* model in which all members of $\Gamma$ are true (Sider, p. 10; Magnus et al., pp. 9–10). A sentence is **valid** (or a logical truth) if it is true in *every* possible interpretation.
 
 **The Classical Choice:** By modeling validity as a function returning a `Boolean` (True/False), we enforce the **Law of Excluded Middle**. We assume the universe is "complete"—that every question has an answer waiting for us. Constructive systems would return a *program* or *evidence* instead of a simple bit.
 
@@ -30,11 +35,22 @@ In Propositional Logic, the "world" is simple, consisting entirely of the truth 
 
 ##### 4.2.1. Interpretations and Valuations
 
-* **PL-Interpretation:** A PL-interpretation is strictly defined as a function $I$ that assigns a truth value (represented as 1 or 0, or T or F) to every sentence letter ($P, Q, R...$) in the language (Sider, p. 36).
-* **The Valuation Function:** Once an interpretation $I$ fixes atomic truth values, a **valuation function** ($V_I$) determines the truth value of every complex formula based on the fixed meanings of the logical connectives (Sider, p. 37).
-* **Completeness of Truth Tables:** A **complete truth table** represents every possible valuation for a given set of sentence letters. If a sentence contains $n$ distinct letters, there are $2^n$ possible valuations (rows) required to determine its semantic status (Magnus et al., p. 81).
+:::{.reading-assignment}
+- **Sider**, pp. 36-37
+- **Magnus et al.**, p. 81
+:::
+
+
+* **PL-Interpretation:** A PL-interpretation is strictly defined as a function $I$ that assigns a truth value (represented as 1 or 0, or T or F) to every sentence letter ($P, Q, R...$) in the language.
+* **The Valuation Function:** Once an interpretation $I$ fixes atomic truth values, a **valuation function** ($V_I$) determines the truth value of every complex formula based on the fixed meanings of the logical connectives.
+* **Completeness of Truth Tables:** A **complete truth table** represents every possible valuation for a given set of sentence letters. If a sentence contains $n$ distinct letters, there are $2^n$ possible valuations (rows) required to determine its semantic status.
 
 ##### 4.2.2. Truth Conditions for Connectives
+
+:::{.reading-assignment}
+- **Sider**, pp. 37, 39
+:::
+
 
 We define the valuation function VI​ recursively. For any PL-interpretation I and sentences ϕ,ψ, we can model the truth conditions as a functional process `valuation` that reduces complex sentences to atomic truth values.
 
@@ -58,11 +74,11 @@ We define the valuation function VI​ recursively. For any PL-interpretation I 
 
 *Notation: This is a recursive evaluation function. It matches the structure of the formula and recursively calls itself (`valuation`) on the sub-components.*
 
-* **Negation (¬):** As defined in the `(Not p)` case, $V_I(\neg \phi) = 1$ iff $V_I(\phi) = 0$. A negation is true if and only if the sentence being negated is false (Sider, p. 37).
-* **Conjunction ($\land$):** The `(And p q)` case requires both recursive calls to return true. $V_I(\phi \land \psi) = 1$ iff $V_I(\phi) = 1$ and $V_I(\psi) = 1$. A conjunction is true if and only if both conjuncts are true (Sider, p. 39).
-* **Disjunction ($\lor$):** The `(Or p q)` case returns true if *either* recursive call returns true. $V_I(\phi \lor \psi) = 1$ iff $V_I(\phi) = 1$ or $V_I(\psi) = 1$. This represents inclusive "or"; it is true if at least one disjunct is true (Sider, p. 39).
-* **Conditional ($\to$):** The `(Implies p q)` case is equivalent to `(not p) or q`. $V_I(\phi \to \psi) = 1$ iff it is *not* the case that $V_I(\phi) = 1$ and $V_I(\psi) = 0$. The material conditional is false only when the antecedent is true and the consequent is false (Sider, p. 37).
-* **Biconditional ($\leftrightarrow$):** The `(Iff p q)` case checks for equality of truth values. $V_I(\phi \leftrightarrow \psi) = 1$ iff $V_I(\phi) = V_I(\psi)$. It is true when both sides have the same truth value (Sider, p. 39).
+* **Negation (¬):** As defined in the `(Not p)` case, $V_I(\neg \phi) = 1$ iff $V_I(\phi) = 0$. A negation is true if and only if the sentence being negated is false.
+* **Conjunction ($\land$):** The `(And p q)` case requires both recursive calls to return true. $V_I(\phi \land \psi) = 1$ iff $V_I(\phi) = 1$ and $V_I(\psi) = 1$. A conjunction is true if and only if both conjuncts are true.
+* **Disjunction ($\lor$):** The `(Or p q)` case returns true if *either* recursive call returns true. $V_I(\phi \lor \psi) = 1$ iff $V_I(\phi) = 1$ or $V_I(\psi) = 1$. This represents inclusive "or"; it is true if at least one disjunct is true.
+* **Conditional ($\to$):** The `(Implies p q)` case is equivalent to `(not p) or q`. $V_I(\phi \to \psi) = 1$ iff it is *not* the case that $V_I(\phi) = 1$ and $V_I(\psi) = 0$. The material conditional is false only when the antecedent is true and the consequent is false.
+* **Biconditional ($\leftrightarrow$):** The `(Iff p q)` case checks for equality of truth values. $V_I(\phi \leftrightarrow \psi) = 1$ iff $V_I(\phi) = V_I(\psi)$. It is true when both sides have the same truth value.
 
 **Example:** If $P$ is true (1) and $Q$ is false (0), then:
 * $P \land Q$ is 0.
@@ -99,6 +115,11 @@ isValid model phi =
 
 ##### 4.3.1. Structures and Models
 
+:::{.reading-assignment}
+- **Sider**, p. 118
+:::
+
+
 A **PC-Model** (Predicate Calculus Model) is an ordered pair $\langle D, I \rangle$ consisting of a Domain and an Interpretation Function.
 
 ```haskell
@@ -113,19 +134,30 @@ Model :: {Domain, Interpretation}
 * **The Domain ($D$):** As modeled by `Set Object`, this is a non-empty set of objects (e.g., numbers, people) that constitutes the "universe" of the model. The quantifiers $\forall$ and $\exists$ range over this set (Sider, p. 118; Magnus et al., p. 264).
 * **The Interpretation Function ($I$):** This function maps non-logical symbols to semantic values:
     * **Names:** For every constant symbol $\alpha$, `Interpretation`($\alpha$) is an object in $D$.
-    * **Predicates:** For every $n$-place predicate $\Pi$, `Interpretation`($\Pi$) is a set of $n$-tuples drawn from $D$ (the extension). For example, `Interpretation`($F$) is a subset of $D$; $F$ is true of an object if the object is in that subset (Sider, p. 118).
+    * **Predicates:** For every $n$-place predicate $\Pi$, `Interpretation`($\Pi$) is a set of $n$-tuples drawn from $D$ (the extension). For example, `Interpretation`($F$) is a subset of $D$; $F$ is true of an object if the object is in that subset.
 
 **Example:** Consider a model $M = \langle D, I \rangle$ where $D = \{1, 2\}$ and $I(F) = \{1\}$. Here, $F(a)$ is true if $I(a) = 1$, but $\forall x F(x)$ is false because $2 \in D$ but $2 \notin I(F)$.
 
 ##### 4.3.2. Variable Assignments and Satisfaction
 
+:::{.reading-assignment}
+- **Sider**, p. 120
+- **Magnus et al.**, p. 273
+:::
+
+
 Because FOL contains variables ($x, y, z$) functioning as placeholders, we cannot define truth directly for open formulas like $Fx$. We require a **variable assignment**.
 
-* **Definition:** A variable assignment $g$ is a function that assigns a specific object from the domain $D$ to every variable in the language (Sider, p. 120).
-* **Variant Assignment ($g_{\alpha}^{u}$):** To evaluate quantifiers, we must test whether a formula holds when a variable stands for different objects. $g_{\alpha}^{u}$ is an assignment identical to $g$ except that it assigns object $u$ to variable $\alpha$ (Sider, p. 120).
-* **Satisfaction:** An object $u$ **satisfies** a formula $A(x)$ if the formula is true when $x$ refers to $u$ (Magnus et al., p. 273).
+* **Definition:** A variable assignment $g$ is a function that assigns a specific object from the domain $D$ to every variable in the language.
+* **Variant Assignment ($g_{\alpha}^{u}$):** To evaluate quantifiers, we must test whether a formula holds when a variable stands for different objects. $g_{\alpha}^{u}$ is an assignment identical to $g$ except that it assigns object $u$ to variable $\alpha$.
+* **Satisfaction:** An object $u$ **satisfies** a formula $A(x)$ if the formula is true when $x$ refers to $u$.
 
 ##### 4.3.3. Truth for Quantifiers
+
+:::{.reading-assignment}
+- **Sider**, pp. 121-122
+:::
+
 
 We define truth in FOL relative to a model M and a variable assignment g. We can model this using a `satisfies?` function that handles the variable assignment updates.
 
@@ -145,11 +177,11 @@ We define truth in FOL relative to a model M and a variable assignment g. We can
             (model.domain)))))
 ```
 
-*Notation: `(lambda (u) ...)` creates an anonymous function. `every?` and `some?` are higher-order functions that check if a predicate holds for all or some elements of a collection (the domain).*
+*Notation: `(lambda (u)...)` creates an anonymous function. `every?` and `some?` are higher-order functions that check if a predicate holds for all or some elements of a collection (the domain).*
 
-* **Atomic Sentences:** $V_{M,g}(\Pi \alpha_1 ... \alpha_n)=1$ iff the tuple of objects denoted by $\alpha_1 ... \alpha_n$ is in the extension $I(\Pi)$ (Sider, p. 121).
-* **Universal Quantifier ($\forall$):** As shown in the `ForAll` case, the formula is true iff for *every* object `u` in the domain $D$ (checking `satisfies?` for all assignments). Formally, $V_{M,g}(\forall \alpha \phi)=1$ iff for *every* object $u$ in the domain $D$, $V_{M,g_{\alpha}^{u}}(\phi)=1$. The formula must hold for every possible assignment of the variable $\alpha$ (Sider, p. 121).
-* **Existential Quantifier ($\exists$):** As shown in the `Exists` case, the formula is true iff there is *at least one* object `u` in the domain $D$ such that the recursive call holds. Formally, $V_{M,g}(\exists \alpha \phi)=1$ iff there is *at least one* object $u$ in the domain $D$ such that $V_{M,g_{\alpha}^{u}}(\phi)=1$ (Sider, p. 122).
+* **Atomic Sentences:** $V_{M,g}(\Pi \alpha_1... \alpha_n)=1$ iff the tuple of objects denoted by $\alpha_1... \alpha_n$ is in the extension $I(\Pi)$.
+* **Universal Quantifier ($\forall$):** As shown in the `ForAll` case, the formula is true iff for *every* object `u` in the domain $D$ (checking `satisfies?` for all assignments). Formally, $V_{M,g}(\forall \alpha \phi)=1$ iff for *every* object $u$ in the domain $D$, $V_{M,g_{\alpha}^{u}}(\phi)=1$. The formula must hold for every possible assignment of the variable $\alpha$.
+* **Existential Quantifier ($\exists$):** As shown in the `Exists` case, the formula is true iff there is *at least one* object `u` in the domain $D$ such that the recursive call holds. Formally, $V_{M,g}(\exists \alpha \phi)=1$ iff there is *at least one* object $u$ in the domain $D$ such that $V_{M,g_{\alpha}^{u}}(\phi)=1$.
 
 :::{.guided-example}
 <div class="guided-example-title">
@@ -199,7 +231,7 @@ Having established the core definitions of truth and provability, we now turn to
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="04-semantics-prob1" title="Problem 1: Model Theory" description="Construct a mathematical model or 'world' where your syntax maps to actual truth-values. What objects exist in your domain, and how do predicates assign meaning to them?" data-groups='[
+<syntax-sandbox problem-id="04-semantics-prob1" title="Problem 1: Model Theory" description="Construct a mathematical model for the domain you defined in Chapter 1: <span data-interpolate='01-conceptual-foundations-prob1' class='text-primary fw-bold'>[Your Domain]</span>. What objects exist in your domain, and how do predicates assign meaning to them?" data-groups='[
   { "label": "Model Types", "buttons": ["Model", "Domain", "Interpretation", "Object", "Extension"] },
   { "label": "Truth Values", "buttons": ["True", "False", "1", "0"] },
   { "label": "Functions", "buttons": ["isValid", "evaluate"] },

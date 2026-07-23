@@ -342,3 +342,38 @@ textarea.form-control:focus, input.form-control:focus {
   color: #2d3748;
   font-size: 0.95rem;
 }
+
+/* --- Reading Assignment Component --- */
+.reading-assignment {
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #4a5568;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #2d3748;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.reading-assignment::before {
+  content: "Reading";
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #718096;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.reading-assignment p, .reading-assignment ul {
+  margin-bottom: 0;
+}
+
+.reading-assignment ul {
+  padding-left: 1.25rem;
+}
+
+.reading-assignment li {
+  margin-bottom: 0.15rem;
+}

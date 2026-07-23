@@ -18,7 +18,12 @@ The **Soundness Theorem** establishes a deductive system's reliability, guarante
 
 ##### 6.1.1. Definition and Significance
 
-Soundness asserts that provability implies semantic consequence: if $\Gamma \vdash \phi$, then $\Gamma \vDash \phi$ (Sider, p. 63). If we have a proof `(Gamma ⊢ Phi)`, the `Soundness` theorem guarantees we also have the semantic relationship `(Gamma ⊨ Phi)` (Sider, p. 63). We can model this as a type-level implication:
+:::{.reading-assignment}
+- **Sider**, pp. 63, 68
+:::
+
+
+Soundness asserts that provability implies semantic consequence: if $\Gamma \vdash \phi$, then $\Gamma \vDash \phi$. If we have a proof `(Gamma ⊢ Phi)`, the `Soundness` theorem guarantees we also have the semantic relationship `(Gamma ⊨ Phi)`. We can model this as a type-level implication:
 
 ```haskell
 -- Soundness: Provability implies Semantic Consequence
@@ -27,24 +32,31 @@ Soundness :: (Gamma ⊢ Phi) -> (Gamma ⊨ Phi)
 
 *Notation: `->` at the type level implies logical implication. If the premise (Provability) is true, the conclusion (Semantic Consequence) must be true.*
 
-This property ensures the proof system is **truth-preserving**: every theorem generated is guaranteed to be a semantic validity (a tautology in PL or a logical truth in FOL) (Sider, p. 63). This allows for a powerful **negative application** to establish **unprovability**: to show that a formula is *not* a theorem ($\nvdash \phi$), it suffices to show that it is *not* valid ($\nvDash \phi$) by providing a single counter-model (an interpretation where the premises are true and the conclusion false) (Sider, p. 68).
+This property ensures the proof system is **truth-preserving**: every theorem generated is guaranteed to be a semantic validity (a tautology in PL or a logical truth in FOL). This allows for a powerful **negative application** to establish **unprovability**: to show that a formula is *not* a theorem ($\nvdash \phi$), it suffices to show that it is *not* valid ($\nvDash \phi$) by providing a single counter-model (an interpretation where the premises are true and the conclusion false).
 
 ##### 6.1.2. The Method of Proof: Mathematical Induction
+
+:::{.reading-assignment}
+- **Velleman**, pp. 273-274, 276
+- **Bergmann et al.**, pp. 227-228
+- **Sider**, pp. 62-69, 134
+:::
+
 
 Moving from "doing proofs" (deduction) to "proving theorems about logic" (metatheory) requires mastery of **Mathematical Induction**. While Section 3.5 applied Velleman's strategies to *derivation*, this section applies his "Structured Approach" to *metalogical proof*.
 
 **The Velleman Induction Protocol:**
-To prove a universal claim about a recursive structure (e.g., "All WFFs have property P"), we treat the set of natural numbers (or formula complexity) as a domino chain (Velleman, p. 273).
+To prove a universal claim about a recursive structure (e.g., "All WFFs have property P"), we treat the set of natural numbers (or formula complexity) as a domino chain.
 
 1. **The Base Case:**
     * **Goal:** Prove the property $P(0)$ holds for the simplest elements (e.g., Atomic Formulas).
-    * **Method:** Direct verification. Show that the property holds for formulas with 0 logical operators (Velleman, p. 274).
+    * **Method:** Direct verification. Show that the property holds for formulas with 0 logical operators.
 
 2. **The Inductive Step:**
     * **Setup:** Let $k$ be an arbitrary number (representing the complexity of a formula).
     * **Inductive Hypothesis (IH):** *Assume* that the property $P(k)$ holds for all formulas of complexity $k$ (or less). This is your "Given."
     * **Goal:** Prove that the property $P(k+1)$ must hold for formulas of complexity $k+1$.
-    * **Method:** Show that if the components (complexity $k$) have the property, the compound formula (complexity $k+1$) inherits it (Velleman, p. 276).
+    * **Method:** Show that if the components (complexity $k$) have the property, the compound formula (complexity $k+1$) inherits it.
 
 3. **Conclusion:**
     * By the Principle of Mathematical Induction, since $P(0)$ is true and $P(k) \to P(k+1)$, the property $P(n)$ holds for all $n$.
@@ -52,15 +64,15 @@ To prove a universal claim about a recursive structure (e.g., "All WFFs have pro
 **Application in Metalogic (Induction on Complexity):**
 In logic, we replace "numbers" with "formula height" or "connective count."
 
-* **Basis Clause:** Show the property holds for all sentence letters (atomic sentences) (Bergmann et al., p. 227).
-* **Inductive Step:** Assume the property holds for sentences $P$ and $Q$. Show that if it holds for the immediate components, it must also hold for $\neg P$, $(P \land Q)$, and other compounds formed by the recursive definition of a sentence (Bergmann et al., pp. 227–228).
+* **Basis Clause:** Show the property holds for all sentence letters (atomic sentences).
+* **Inductive Step:** Assume the property holds for sentences $P$ and $Q$. Show that if it holds for the immediate components, it must also hold for $\neg P$, $(P \land Q)$, and other compounds formed by the recursive definition of a sentence.
 
 **Sider's Application (Soundness):**
 Sider applies this framework specifically as **Induction on the length of the proof** to establish Soundness. This method establishes that validity is hereditary across the system's rules.
 
-* **Base Case:** We must show that every **axiom** of the system is valid. For example, in Propositional Logic (PL), one demonstrates that every instance of axioms like $\phi \to (\psi \to \phi)$ is a tautology (Sider, p. 67).
-* **Inductive Step:** We assume all previous proof lines are valid (the "Inductive Hypothesis"). We then demonstrate that the **rules of inference** (e.g., Modus Ponens) preserve validity—if the inputs are valid, the output must be valid. Since valid axioms and validity-preserving rules generate all theorems, all theorems are valid (Sider, p. 68).
-* **Scope of Proof:** Sider provides the full inductive proof for Propositional Logic (Sider, pp. 62–69) and states that the result holds equally for Predicate Logic (Sider, p. 134).
+* **Base Case:** We must show that every **axiom** of the system is valid. For example, in Propositional Logic (PL), one demonstrates that every instance of axioms like $\phi \to (\psi \to \phi)$ is a tautology.
+* **Inductive Step:** We assume all previous proof lines are valid (the "Inductive Hypothesis"). We then demonstrate that the **rules of inference** (e.g., Modus Ponens) preserve validity—if the inputs are valid, the output must be valid. Since valid axioms and validity-preserving rules generate all theorems, all theorems are valid.
+* **Scope of Proof:** Sider provides the full inductive proof for Propositional Logic  and states that the result holds equally for Predicate Logic.
 
 :::{.guided-example}
 <div class="guided-example-title">
@@ -99,6 +111,11 @@ Completeness :: (Gamma ⊨ Phi) -> (Gamma ⊢ Phi)
 
 ##### 6.2.1. Definition and Significance
 
+:::{.reading-assignment}
+- **Sider**, pp. 63, 134
+:::
+
+
 Completeness is the converse of Soundness, asserting that semantic consequence implies provability.
 
 ```haskell
@@ -106,18 +123,23 @@ Completeness is the converse of Soundness, asserting that semantic consequence i
 Completeness :: (Gamma ⊨ Phi) -> (Gamma ⊢ Phi)
 ```
 
-Formally, if a semantic relationship `(Gamma ⊨ Phi)` holds (i.e., the conclusion is true in all models of the premises), the `Completeness` theorem guarantees that a derivation `(Gamma ⊢ Phi)` exists. Formally, if $\Gamma \vDash \phi$ then $\Gamma \vdash \phi$ (Sider, p. 63).
+Formally, if a semantic relationship `(Gamma ⊨ Phi)` holds (i.e., the conclusion is true in all models of the premises), the `Completeness` theorem guarantees that a derivation `(Gamma ⊢ Phi)` exists. Formally, if $\Gamma \vDash \phi$ then $\Gamma \vdash \phi$.
 
-This ensures the system has no "missing truths": if a sentence is true in all models, a finite derivation exists for it. This powerful result allows us to establish provability ($\vdash$) by reasoning entirely about models ($\vDash$), avoiding the difficulty of constructing axiomatic proofs manually (Sider, p. 134).
+This ensures the system has no "missing truths": if a sentence is true in all models, a finite derivation exists for it. This powerful result allows us to establish provability ($\vdash$) by reasoning entirely about models ($\vDash$), avoiding the difficulty of constructing axiomatic proofs manually.
 
 ##### 6.2.2. The Method of Proof: Henkin Construction
 
+:::{.reading-assignment}
+- **Sider**, pp. 78-84, 134
+:::
+
+
 Sider details the "Henkin-proof" method for Completeness, relying on constructing a specific model from the language's syntax. This construction relies heavily on the set-theoretic machinery introduced in Section 1.3.
 
-* **Maximally Consistent Sets:** The proof utilizes **Maximal Consistent Sets** of formulas. A set $\Gamma$ is consistent if $\Gamma \nvdash \bot$; it is maximal if $\forall \phi (\phi \in \Gamma \lor \neg \phi \in \Gamma)$ (Sider, p. 79).
+* **Maximally Consistent Sets:** The proof utilizes **Maximal Consistent Sets** of formulas. A set $\Gamma$ is consistent if $\Gamma \nvdash \bot$; it is maximal if $\forall \phi (\phi \in \Gamma \lor \neg \phi \in \Gamma)$.
 * **Lindenbaum's Lemma:** A core lemma states that any consistent set of sentences can be extended to a maximal consistent set.
     * *Set-Theoretic Basis:* This is a direct application of **Zorn's Lemma** (defined in 1.3). We treat the collection of all consistent extensions as a partially ordered set (a `Chain`). Since every chain of consistent sets has an upper bound (their union), Zorn's Lemma guarantees a `Maximal_Element` exists (Enderton, pp. 151–159; Sider, p. 80).
-* **The Canonical Model:** The proof constructs a "Canonical Model" where the domain consists of equivalence classes of terms, and the "truth" of a formula is defined by its membership in the maximal consistent set. Completeness is established by showing that if a set of sentences is consistent, it is satisfiable (has a model) (Sider, pp. 78–84). Sider summarizes this result for Predicate Logic, noting that for closed first-order wffs, provability and semantic consequence coincide (Sider, p. 134).
+* **The Canonical Model:** The proof constructs a "Canonical Model" where the domain consists of equivalence classes of terms, and the "truth" of a formula is defined by its membership in the maximal consistent set. Completeness is established by showing that if a set of sentences is consistent, it is satisfiable (has a model). Sider summarizes this result for Predicate Logic, noting that for closed first-order wffs, provability and semantic consequence coincide.
 
 #### 6.3. Compactness
 
@@ -134,18 +156,28 @@ The **Compactness Theorem** describes the relationship between satisfiability an
 
 ##### 6.3.1. Definition
 
-Compactness states that the semantic properties of infinite sets reduce to their finite subsets. Specifically, regarding **satisfiability** (where a set has a model in which all members are true), the theorem states that a set of sentences $\Gamma$ is satisfiable if and only if every **finite subset** of $\Gamma$ is satisfiable (Sider, p. 134).
+:::{.reading-assignment}
+- **Sider**, p. 134
+:::
+
+
+Compactness states that the semantic properties of infinite sets reduce to their finite subsets. Specifically, regarding **satisfiability** (where a set has a model in which all members are true), the theorem states that a set of sentences $\Gamma$ is satisfiable if and only if every **finite subset** of $\Gamma$ is satisfiable.
 
 As shown in the model above, the property `(Satisfiable Gamma)` is logically equivalent to the satisfiability of *every* finite subset of $\Gamma$. This means that if every finite subset has a model, the entire infinite set must also have a model.
 
-**Example:** Consider the set $\Gamma = \{P_1, P_2, P_3, ...\}$ where $P_n$ says "There are at least $n$ things." Every finite subset of $\Gamma$ is satisfiable (by a model with size equal to the largest $n$ in the subset). Therefore, by Compactness, the entire infinite set $\Gamma$ is satisfiable (by an infinite model).
+**Example:** Consider the set $\Gamma = \{P_1, P_2, P_3,...\}$ where $P_n$ says "There are at least $n$ things." Every finite subset of $\Gamma$ is satisfiable (by a model with size equal to the largest $n$ in the subset). Therefore, by Compactness, the entire infinite set $\Gamma$ is satisfiable (by an infinite model).
 
 ##### 6.3.2. Implications and Expressive Limitations
 
+:::{.reading-assignment}
+- **Sider**, pp. 134-135
+:::
+
+
 Compactness limits FOL's expressive power, preventing it from distinguishing between finite and infinite sets beyond specific finite cardinalities. This "expressive weakness" is the price paid for the system's computational safety.
 
-* **Latent Contradictions:** Compactness implies a contradiction cannot be "latent" in an infinite set—if a set is inconsistent, the contradiction must arise within a finite number of sentences (Sider, p. 134).
-* **The "Zombie" Numbers:** Because FOL cannot strictly define "finiteness," it cannot distinguish between the standard natural numbers and **non-standard models**—structures that contain "zombie numbers" (infinite elements) but still satisfy every first-order axiom of arithmetic. The logic is simply too weak to exclude these impostors (Sider, p. 135).
+* **Latent Contradictions:** Compactness implies a contradiction cannot be "latent" in an infinite set—if a set is inconsistent, the contradiction must arise within a finite number of sentences.
+* **The "Zombie" Numbers:** Because FOL cannot strictly define "finiteness," it cannot distinguish between the standard natural numbers and **non-standard models**—structures that contain "zombie numbers" (infinite elements) but still satisfy every first-order axiom of arithmetic. The logic is simply too weak to exclude these impostors.
 
 <syntax-sandbox title="Interactive Sandbox: Compactness & Non-Standard Models" description="Experiment with latent contradictions and the limits of First-Order Logic." data-groups='[
   { "label": "Variables", "buttons": ["x", "y", "z", "a", "b", "c"] },
@@ -174,12 +206,17 @@ ExistsInfinite :: (Object -> Boolean) -> Boolean
 )
 ```
 
-*Notation: `(filter ...)` creates a subset satisfying the predicate. `(count ...)` measures its size. Standard FOL lacks the ability to check if a count is "Infinite."*
+*Notation: `(filter...)` creates a subset satisfying the predicate. `(count...)` measures its size. Standard FOL lacks the ability to check if a count is "Infinite."*
 
 * **Generalized Quantifiers:** We can extend the vocabulary with new logical constants like **$\exists^\infty$**. As modeled by `ExistsInfinite`, this quantifier takes a predicate and returns true iff the set of objects satisfying it is infinite. This allows for direct expression of cardinality.
 * **Second-Order Logic:** By allowing quantification over *properties* (sets) rather than just individuals, Second-Order Logic can distinguish between finite and infinite structures (e.g., characterizing the natural numbers). However, this increase in expressive power comes at the cost of metalogical properties: **Second-Order Logic lacks both Compactness and a Complete proof system**.
 
 ##### 6.3.4. The Löwenheim-Skolem Theorems: The Leaky Abstraction
+
+:::{.reading-assignment}
+- **Enderton**, pp. 159, 161
+:::
+
 
 **Scope:** While **Compactness** demonstrates the limitations of First-Order Logic (FOL) regarding *finiteness*, the **Löwenheim-Skolem Theorems** demonstrate its limitations regarding the *infinite*. This section explores the "twin sister" of Compactness, proving that FOL cannot distinguish between different sizes of infinity.
 
@@ -187,8 +224,8 @@ If Compactness is the shield that protects finite consistency, Löwenheim-Skolem
 
 This result creates a profound "disconnect" between the **Intended Model** (what we *think* we are talking about) and the **Actual Models** (what the axioms allow).
 
-* **The Prerequisites (Set Theory):** To understand the gravity of this theorem, one must master the definition of **Cardinality**. We rely on **[Enderton]** to define the "size" of a set, specifically the distinction between **Countable** sets (those that can be mapped 1-to-1 to natural numbers) and **Uncountable** sets (Enderton, p. 159). Without this set-theoretic machinery, the paradox of the theorem is invisible.
-* **The Paradox (Skolem's Paradox):** Consider the set of Real Numbers (R). We know from Cantor that R is uncountable (Enderton, p. 161). Yet, the Löwenheim-Skolem theorem proves that if there is a consistent First-Order theory of Real Arithmetic, there must be a *countable* model of it.
+* **The Prerequisites (Set Theory):** To understand the gravity of this theorem, one must master the definition of **Cardinality**. We rely on **[Enderton]** to define the "size" of a set, specifically the distinction between **Countable** sets (those that can be mapped 1-to-1 to natural numbers) and **Uncountable** sets. Without this set-theoretic machinery, the paradox of the theorem is invisible.
+* **The Paradox (Skolem's Paradox):** Consider the set of Real Numbers (R). We know from Cantor that R is uncountable. Yet, the Löwenheim-Skolem theorem proves that if there is a consistent First-Order theory of Real Arithmetic, there must be a *countable* model of it.
 
 * **The "Non-Standard" Problem:** How can a countable model satisfy axioms that say "I am uncountable"? The answer lies in the difference between the *meta-perspective* (looking at the model from the outside) and the *object-perspective* (what the model "knows" about itself). The model contains a function it *calls* "uncountable," but from our outside perspective, we see it misses elements.
 
@@ -232,17 +269,27 @@ Metalogic investigates whether mechanical procedures (algorithms) exist to deter
 
 ##### 6.4.1. Decidability of Propositional Logic
 
+:::{.reading-assignment}
+- **Sider**, p. 44
+:::
+
+
 Propositional Logic (PL) is **decidable**.
 
-* **Mechanism:** A mechanical procedure—the truth table method—exists that can determine in a finite number of steps whether any arbitrary PL formula is valid or invalid (Sider, p. 44).
+* **Mechanism:** A mechanical procedure—the truth table method—exists that can determine in a finite number of steps whether any arbitrary PL formula is valid or invalid.
 
 ##### 6.4.2. Undecidability of First-Order Logic (Church's Theorem)
 
+:::{.reading-assignment}
+- **Sider**, pp. 134-135
+:::
+
+
 First-Order Logic (Predicate Logic) is **undecidable**.
 
-* **Church's Theorem:** Alonzo Church proved that the decision problem for First-Order Logic is unsolvable. No algorithm exists that can determine, for any arbitrary FOL sentence, whether it is valid or invalid. While we can semi-decide validity (prove valid formulas via Completeness), we cannot mechanically reject all invalid ones (Sider, p. 135).
+* **Church's Theorem:** Alonzo Church proved that the decision problem for First-Order Logic is unsolvable. No algorithm exists that can determine, for any arbitrary FOL sentence, whether it is valid or invalid. While we can semi-decide validity (prove valid formulas via Completeness), we cannot mechanically reject all invalid ones.
 * **The Mechanism:** To define "mechanical algorithm" rigorously, we rely on the Church-Turing Thesis. It tells us we can reduce the problem of determining validity in FOL to the Halting Problem. Since no Turing Machine can determine if an arbitrary program halts, no algorithm can determine if an arbitrary FOL sentence is valid.
-* **Implication:** This contrasts strictly with PL. In FOL, "establishing facts of the form $\Gamma \nvDash \phi$" (invalidity) relies on human ingenuity to construct counter-models, as no algorithm can guarantee a result (Sider, p. 134).
+* **Implication:** This contrasts strictly with PL. In FOL, "establishing facts of the form $\Gamma \nvDash \phi$" (invalidity) relies on human ingenuity to construct counter-models, as no algorithm can guarantee a result.
 
 ##### 6.4.3. Sidebar: The Battle for the Meaning of Proof
 
@@ -275,7 +322,7 @@ By inventing the **Turing Machine** to answer Hilbert, Turing effectively formal
 
 ## Problem Sets
 
-<syntax-sandbox problem-id="06-metalogic-prob1" title="Problem 1: Soundness & Completeness" description="Analyze your toy system. Do you believe it is Sound (it only proves true things) and Complete (it can prove all true things within its domain)? Defend your architectural choices." data-groups='[
+<syntax-sandbox problem-id="06-metalogic-prob1" title="Problem 1: Soundness & Completeness" description="Analyze the system you designed in Chapter 2: <span data-interpolate='02-syntax-prob1' class='text-primary fw-bold'>[Your System]</span>. Do you believe it is Sound and Complete? Defend your architectural choices." data-groups='[
   { "label": "Properties", "buttons": ["Soundness", "Completeness"] },
   { "label": "Relations", "buttons": ["⊢", "⊨"] },
   { "label": "Sets", "buttons": ["Γ", "Δ", "Theory", "Model"] },

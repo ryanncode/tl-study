@@ -32,17 +32,27 @@ Here, `LogicalConsequence` operates as a binary function: it accepts a set of se
 
 ##### 1.1.1 Intuitive Definition
 
+:::{.reading-assignment}
+- **Sider**, pp. 2, 13
+:::
+
+
 Intuitively, `LogicalConsequence` yields `True` if and only if the argument exhibits **truth-preservation by virtue of form**.
 
-* **Truth-Preservation:** A modal constraint. It demands the *impossibility* of the `Premises` being true while the `Conclusion` is false (Sider, p. 2). It is not merely that the conclusion *happens* to be true; rather, there is no possible state of affairs where the premises hold and the conclusion fails.
-* **By Virtue of Form:** Validity derives from structural arrangement—logical form—rather than the specific content of non-logical terms. The inference from "Leisel is a swimmer and Leisel is famous" to "Leisel is a swimmer" holds because of the structure *P and Q; therefore P*, regardless of Leisel's identity (Sider, p. 13).
+* **Truth-Preservation:** A modal constraint. It demands the *impossibility* of the `Premises` being true while the `Conclusion` is false. It is not merely that the conclusion *happens* to be true; rather, there is no possible state of affairs where the premises hold and the conclusion fails.
+* **By Virtue of Form:** Validity derives from structural arrangement—logical form—rather than the specific content of non-logical terms. The inference from "Leisel is a swimmer and Leisel is famous" to "Leisel is a swimmer" holds because of the structure *P and Q; therefore P*, regardless of Leisel's identity.
 
 ##### 1.1.2 The Two Implementations: Truth vs. Proof
 
-Sider (Chapter 2) makes a crucial distinction between two ways of making this precise. This distinction ($\vdash$ vs $\vDash$) is the core theme of this guide.
+:::{.reading-assignment}
+- **Sider**, 2.3
+:::
+
+
+Sider  makes a crucial distinction between two ways of making this precise. This distinction ($\vdash$ vs $\vDash$) is the core theme of this guide.
 
 1. **Semantic Consequence (Static):** $\Gamma \vDash \phi$ (The Double Turnstile)
-    * **Definition:** (Sider 2.3) For every possible "interpretation" (model) $I$, if all members of $\Gamma$ are true in $I$, then $\phi$ is true in $I$.
+    * **Definition:**  For every possible "interpretation" (model) $I$, if all members of $\Gamma$ are true in $I$, then $\phi$ is true in $I$.
     * **Intuition:** This is a "God's eye view." We check every possible universe. If the premises hold, the conclusion *must* hold.
     * **Mechanism:** Truth Tables (PL), Models (FOL).
 
@@ -80,6 +90,11 @@ isValidSyntactic premises conclusion =
 
 ##### 1.1.3. Logical Truth
 
+:::{.reading-assignment}
+- **Sider**, pp. 2-3
+:::
+
+
 A **logical truth** is a sentence true solely by virtue of its form, requiring no premises to be asserted.
 
 ```haskell
@@ -91,7 +106,7 @@ LogicalTruth phi = LogicalConsequence EmptySet phi
 
 *Notation: The `=` operator defines `LogicalTruth` as a specific case of the previously defined `LogicalConsequence` function, fixing the first argument to `EmptySet`.*
 
-* **Relationship to Consequence:** As modeled above, a logical truth is simply a `LogicalConsequence` where the input `Premises` is the `EmptySet`. It is a statement that logic alone suffices to establish (Sider, pp. 2–3).
+* **Relationship to Consequence:** As modeled above, a logical truth is simply a `LogicalConsequence` where the input `Premises` is the `EmptySet`. It is a statement that logic alone suffices to establish.
 * **Examples:** "Snow is white or snow is not white" is a logical truth; its truth is guaranteed by the structure of the logical constants "or" and "not."
 
 **Example:** Consider the sentence $P \lor \neg P$ ("Either it is raining or it is not"). This is a logical truth because no matter whether $P$ is true or false, the disjunction remains true. Conversely, $P \land \neg P$ is a logical falsehood (contradiction).
@@ -104,21 +119,36 @@ To study logical consequence mathematically, we do not analyze natural language 
 
 ##### 1.2.1 The Purpose of Formalization
 
+:::{.reading-assignment}
+- **Sider**, p. 4
+:::
+
+
 Formal languages are designed to represent specific logical behaviors while abstracting away the complexity and ambiguity of natural language. This design relies on two key mechanisms:
 
-1. **Stipulation:** Unlike natural languages (which are discovered), we stipulatively define the grammar and properties of formal languages. This allows for mathematical precision in analysis (Sider, p. 4).
-2. **Abstraction:** Symbols like $P$ and $Q$ in propositional logic are abstractions that ignore the internal structure of sentences to focus exclusively on connectives like *and* and *or* (Sider, p. 4).
+1. **Stipulation:** Unlike natural languages (which are discovered), we stipulatively define the grammar and properties of formal languages. This allows for mathematical precision in analysis.
+2. **Abstraction:** Symbols like $P$ and $Q$ in propositional logic are abstractions that ignore the internal structure of sentences to focus exclusively on connectives like *and* and *or*.
 
 This design represents a specific methodological choice: we prioritize **safety** (mechanical verifiability) over **power** (descriptive precision). By restricting ourselves to First-Order Logic, we gain a system where every valid consequence can be proven (**Completeness**), but we lose the ability to uniquely describe complex mathematical structures like the natural numbers (**Categoricity**). This trade-off defines the scope of standard metalogic: we accept a "weaker" language to secure a safer proof system.
 
 ##### 1.2.2 Metalogic
 
+:::{.reading-assignment}
+- **Sider**, p. 6
+:::
+
+
 **Metalogic** is the study of formal systems themselves. It asks questions *about* the logical system rather than reasoning *within* it.
 
-* **The Object Language:** The formal language being studied (e.g., the set of all wffs in Propositional Logic) (Sider, p. 6).
-* **The Metalanguage:** The language used to talk about the object language (e.g., English, augmented with set-theoretic notation). We use the metalanguage to prove theorems about the object language (Sider, p. 6).
+* **The Object Language:** The formal language being studied (e.g., the set of all wffs in Propositional Logic).
+* **The Metalanguage:** The language used to talk about the object language (e.g., English, augmented with set-theoretic notation). We use the metalanguage to prove theorems about the object language.
 
 ##### 1.2.3 The Use/Mention Distinction
+
+:::{.reading-assignment}
+- **Sider**, pp. 6-7
+:::
+
 
 A critical distinction in metalogic lies between **using** a word (to refer to its object) and **mentioning** a word (to refer to the linguistic expression itself).
 
@@ -130,9 +160,15 @@ philadelphia :: City        -- The object (bricks, mortar, people)
 
 *Notation: Haskell type annotations (`::`) clarify that the city itself (type `City`) is ontologically distinct from its name (type `String`).*
 
-For example, the statement "Philadelphia is made up of twelve letters" is strictly false; the object `philadelphia` (the city) consists of brick and mortar. The correct statement is that `"Philadelphia"` (the string) is made up of twelve letters (Sider, pp. 6–7). By convention, to talk about a specific string of symbols in the object language, we enclose it in quotation marks or use naming conventions to distinguish the sign from the signified (Sider, p. 7).
+For example, the statement "Philadelphia is made up of twelve letters" is strictly false; the object `philadelphia` (the city) consists of brick and mortar. The correct statement is that `"Philadelphia"` (the string) is made up of twelve letters. By convention, to talk about a specific string of symbols in the object language, we enclose it in quotation marks or use naming conventions to distinguish the sign from the signified.
 
 ##### 1.2.4 The "Code" vs. "Traditional" Approach
+
+:::{.reading-assignment}
+- **Pierce**, pp. 113-114
+- **Abelson & Sussman**, pp. 359-362
+:::
+
 
 The traditional way of teaching this distinction relies on **Natural Language (English) augmented with Set Theory**. In that framework, the "Use vs. Mention" distinction is enforced by convention (e.g., quotation marks).
 
@@ -141,25 +177,38 @@ The traditional way of teaching this distinction relies on **Natural Language (E
 
 **Notation: The Dual-Language Approach**
 
+:::{.callout-tip title="Rosetta Stone"}
+Throughout the guide, we use pseudocode. If you are unfamiliar with programming, read it conceptually:
+
+*   **Haskell (`data WFF =...`)**: This is like a dictionary definition or a taxonomy. It simply lists the valid shapes a thing can take.
+*   **Haskell (`::`)**: Think of this as "is a type of". (`"Philadelphia" :: String`).
+*   **Clojure (`(define (f x)...)`)**: This is an algorithm or a recipe. It's equivalent to standard mathematical function definition $f(x) =...$ but explicitly broken into mechanical steps.
+:::
+
 Throughout this guide, we use two distinct forms of pseudocode to enforce a conceptual distinction between the *ontology* of logic (what exists) and the *mechanics* of logic (what we do).
 
 1. **Haskell Syntax: The Static World (Ontology)**
     * **Role:** Used to define the "furniture of the universe"—distinguishing unalterably between Terms, Formulas, and Models.
-    * **Why Haskell:** Its strict type system (`data`, `::`) acts as a rigorous form of Category Theory, forcing us to define the shape of data before we touch it. Using a dynamic language here would obscure these rigid structural boundaries, which distinguish unalterably between Terms, Formulas, and Models. This corresponds to the "Type System" view of logic found in **[TAPL]** (Pierce, pp. 113–114).
+    * **Why Haskell:** Its strict type system (`data`, `::`) acts as a rigorous form of Category Theory, forcing us to define the shape of data before we touch it. Using a dynamic language here would obscure these rigid structural boundaries, which distinguish unalterably between Terms, Formulas, and Models. This corresponds to the "Type System" view of logic found in **[TAPL]**.
     * **Usage:** Treat these as "Dictionary Definitions." If you are unsure what an object *is*, look at its data definition.
 
 2. **Clojure Syntax: The Dynamic World (Process)**
     * **Role:** Used to define the "machinery"—the algorithms that crawl over trees and transform them.
-    * **Why Clojure:** Lisp's parenthesized structure (S-expressions) explicitly mirrors the recursive tree structure of logical formulas. While Haskell *could* describe these functions, Lisp's "code-as-data" philosophy offers a more tangible representation of how we mechanically manipulate syntax to establish truth. This corresponds to the "Metalinguistic Abstraction" view found in **[SICP]** (Abelson & Sussman, pp. 359–362).
+    * **Why Clojure:** Lisp's parenthesized structure (S-expressions) explicitly mirrors the recursive tree structure of logical formulas. While Haskell *could* describe these functions, Lisp's "code-as-data" philosophy offers a more tangible representation of how we mechanically manipulate syntax to establish truth. This corresponds to the "Metalinguistic Abstraction" view found in **[SICP]**.
     * **Usage:** Treat these as "Mental Execution" scripts. This aligns with **Brouwer's Intuitionism**: mathematical truth is constructed dynamically by the mind, not discovered as a static fact. The code forces you to perform this construction step-by-step.
     * **Implementation (Optional):** For Computer Science students, these snippets serve as a blueprint. The most powerful way to master this material is to port these logical specifications into a working program in your language of choice (Python, Java, etc.).
 
 #### 1.3 The Mathematical Substrate: Set Theory
 
+:::{.reading-assignment}
+- **Enderton**, pp. 40, 42
+:::
+
+
 To operate in the metalanguage, we treat logical systems as mathematical objects constructed from sets. We replace vague notions of "collections" with precise definitions of **Relations** and **Functions**, which are the building blocks of Model Theory.
 
-* **Relations:** A relation is not a metaphysical bond; it is strictly a set of ordered pairs (Enderton, p. 40).
-* **Functions:** A function is simply a relation with a uniqueness constraint (Enderton, p. 42).
+* **Relations:** A relation is not a metaphysical bond; it is strictly a set of ordered pairs.
+* **Functions:** A function is simply a relation with a uniqueness constraint.
 
 ```haskell
 -- The Set-Theoretic Substrate
@@ -172,14 +221,14 @@ isFunction :: Relation a b -> Bool
 isFunction r = all (\x -> unique (lookup x r)) (domain r)
 
 -- The Axiom of Choice (Zorn's Lemma Variant)
--- Required for Completeness Proofs (See Section 6.2.2)
+-- Required for Completeness Proofs (See Section 6.2.2) 
 lemma :: Chain_Condition -> Maximal_Element
 lemma chain = if (all_chains_bounded chain)
               then (exists_maximal_element chain)
               else undefined
 ```
 
-*Notation: `type` defines an alias. The syntax `\x -> ...` represents a lambda (anonymous) function, used here to define the uniqueness constraint logic.*
+*Notation: `type` defines an alias. The syntax `\x ->...` represents a lambda (anonymous) function, used here to define the uniqueness constraint logic.*
 
 :::{.guided-example}
 <div class="guided-example-title">
@@ -202,6 +251,11 @@ We defined `LogicalConsequence` abstractly above. But how do we actually compute
 
 ##### 1.4.1. The Semantic Conception (Model-Theoretic)
 
+:::{.reading-assignment}
+- **Sider**, p. 10
+:::
+
+
 This approach models logical consequence as **truth-preservation across all interpretations**.
 
 ```clojure
@@ -217,17 +271,22 @@ This approach models logical consequence as **truth-preservation across all inte
         True))) ;; Vacuously true if premises are false
 ```
 
-*Notation: We switch to Clojure (Lisp) syntax here to emphasize **process**. `(define ...)` creates a function, and `(forall ...)` represents an iterative check over all possible models.*
+*Notation: We switch to Clojure (Lisp) syntax here to emphasize **process**. `(define...)` creates a function, and `(forall...)` represents an iterative check over all possible models.*
 
 * **Mechanism:** As defined in the function `(⊨)`, we iterate through a class of "models" (or interpretations). Each `model` represents a possible state of the world and assigns meanings to non-logical expressions.
-* **Definition:** As modeled by the `is-true?` check over `all-true?` premises, a sentence ϕ is a semantic consequence of a set of sentences Γ if and only if ϕ is true in *every* model in which all members of Γ are true (Sider, p. 10).
-* **Philosophical Basis:** This formalizes the idea that the meanings of logical constants (fixed across models) guarantee truth-preservation regardless of how the world varies or how non-logical terms are interpreted (Sider, p. 10).
+* **Definition:** As modeled by the `is-true?` check over `all-true?` premises, a sentence ϕ is a semantic consequence of a set of sentences Γ if and only if ϕ is true in *every* model in which all members of Γ are true.
+* **Philosophical Basis:** This formalizes the idea that the meanings of logical constants (fixed across models) guarantee truth-preservation regardless of how the world varies or how non-logical terms are interpreted.
 
 **Example:** To show that $P \to Q, P \models Q$ (Modus Ponens) is valid, we observe that in any row of the truth table where $P \to Q$ is true (1) and $P$ is true (1), $Q$ must also be true (1). There is no "counter-model" (row) where premises are true and the conclusion is false.
 
 **Metaphysical Consequence:** This model treats the "checker" as an external validator—a "God's Eye View" that surveys all possible worlds. In Classical Logic, truth is a static landscape waiting to be verified; in Intuitionistic Logic, truth is constructed by the proof itself.
 
 ##### 1.4.2. The Proof-Theoretic Conception
+
+:::{.reading-assignment}
+- **Sider**, p. 11
+:::
+
 
 This approach models logical consequence as **provability** (derivability) within a deductive system.
 
@@ -244,23 +303,33 @@ This approach models logical consequence as **provability** (derivability) withi
          (ends-with? derivation conclusion))))
 ```
 
-*Notation: The `(exists ...)` form represents a search process: looking for a single valid derivation object that satisfies the rules.*
+*Notation: The `(exists...)` form represents a search process: looking for a single valid derivation object that satisfies the rules.*
 
 * **Mechanism:** Unlike the semantic iteration over models, the `(⊢)` function searches for a `derivation`—a finite sequence of symbols.
-* **Definition:** From this, we define **proof-theoretic consequence**: a sentence ϕ is a consequence of a set Γ if and only if there exists a finite sequence of legitimate rule applications leading from Γ to ϕ (Sider, p. 11). As modeled above, a sentence is a consequence if `(exists (derivation) ...)` returns true. This derivation must start with the `premises`, end with the `conclusion`, and every step must be a `valid-sequence?` according to the syntactic `rules`. This conception focuses entirely on *derivability*, independent of semantic truth conditions.
+* **Definition:** From this, we define **proof-theoretic consequence**: a sentence ϕ is a consequence of a set Γ if and only if there exists a finite sequence of legitimate rule applications leading from Γ to ϕ. As modeled above, a sentence is a consequence if `(exists (derivation)...)` returns true. This derivation must start with the `premises`, end with the `conclusion`, and every step must be a `valid-sequence?` according to the syntactic `rules`. This conception focuses entirely on *derivability*, independent of semantic truth conditions.
 
 ##### 1.4.3. Alternative Conceptions
 
+:::{.reading-assignment}
+- **Sider**, p. 11
+:::
+
+
 Sider notes other philosophical views that inform logic, though they are less central to standard metalogic courses:
 
-* **Modal Account:** ϕ is a consequence of Γ iff it is *impossible* for members of Γ to be true and ϕ false (Sider, p. 11).
-* **Quine's Substitutional Account:** ϕ is a consequence of Γ iff no uniform substitution of non-logical expressions renders the premises true and the conclusion false (Sider, p. 11).
+* **Modal Account:** ϕ is a consequence of Γ iff it is *impossible* for members of Γ to be true and ϕ false.
+* **Quine's Substitutional Account:** ϕ is a consequence of Γ iff no uniform substitution of non-logical expressions renders the premises true and the conclusion false.
 
 #### 1.5. Logical Constants and Form
 
+:::{.reading-assignment}
+- **Sider**, pp. 12-13
+:::
+
+
 The concept of "form" relies on the distinction between **logical constants** and **non-logical expressions**.
 
-**Logical Constants** are the specific words or symbols (e.g., *and*, *or*, *not*, *all*, *some*) that remain fixed when determining the logical form of an argument; they form the structural scaffolding of logic (Sider, p. 12). In contrast, **Non-Logical Expressions** are content words (e.g., "bachelor," "unmarried") that are abstracted away or allowed to vary in models.
+**Logical Constants** are the specific words or symbols (e.g., *and*, *or*, *not*, *all*, *some*) that remain fixed when determining the logical form of an argument; they form the structural scaffolding of logic. In contrast, **Non-Logical Expressions** are content words (e.g., "bachelor," "unmarried") that are abstracted away or allowed to vary in models.
 
 ```haskell
 data Symbol
@@ -270,7 +339,7 @@ data Symbol
 
 *Notation: The `data` keyword defines a new data type. The `|` character represents a **Sum Type** (Logical OR), meaning a `Symbol` can be *either* `Logical` *or* `NonLogical`.*
 
-The boundary between them is partly conventional. For example, the inference "Grant is a bachelor; therefore, Grant is unmarried" is valid based on word meaning, but it is **not** valid by virtue of *logical form* because "bachelor" is not treated as a logical constant in standard logic (Sider, pp. 12–13).
+The boundary between them is partly conventional. For example, the inference "Grant is a bachelor; therefore, Grant is unmarried" is valid based on word meaning, but it is **not** valid by virtue of *logical form* because "bachelor" is not treated as a logical constant in standard logic.
 
 ---
 

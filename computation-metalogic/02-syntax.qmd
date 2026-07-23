@@ -18,6 +18,12 @@ Before constructing sentences, we must define the language by its basic building
 
 ##### 2.1.1. Categorization of Symbols
 
+:::{.reading-assignment}
+- **Sider**, p. 115
+- **Bergmann et al.**, pp. 262-264
+:::
+
+
 The vocabulary of FOL is partitioned into two disjoint categories, which we can model as a Sum Type (Disjoint Union):
 
 ```haskell
@@ -28,16 +34,21 @@ data Symbol
 
 *Notation: Here, the constructors `Logical` and `NonLogical` take arguments (e.g., `Connective`), showing that these categories contain sub-data.*
 
-* **Logical Symbols:** These specific symbols (the `Logical` constructor) remain fixed across all interpretations and define the structural scaffolding of the logic. They include the sentence connectives (e.g., $\neg, \land, \lor, \to$), quantifiers ($\forall, \exists$), and variables ($x, y, z...$) (Sider, p. 115).
-* **Non-Logical Symbols:** These are the content words (the `NonLogical` constructor) that vary in meaning across different models. They include individual constants (names like $a, b, c$) and predicate symbols ($F, G, H$) (Bergmann et al., pp. 262–264).
+* **Logical Symbols:** These specific symbols (the `Logical` constructor) remain fixed across all interpretations and define the structural scaffolding of the logic. They include the sentence connectives (e.g., $\neg, \land, \lor, \to$), quantifiers ($\forall, \exists$), and variables ($x, y, z...$).
+* **Non-Logical Symbols:** These are the content words (the `NonLogical` constructor) that vary in meaning across different models. They include individual constants (names like $a, b, c$) and predicate symbols ($F, G, H$).
 
 ##### 2.1.2. Arity (n-place Predicates)
+
+:::{.reading-assignment}
+- **Barker-Plummer et al.**, pp. 31-33
+:::
+
 
 In FOL, predicates are not merely properties; they are rigorously defined by their **arity** (or adicity)—the fixed number of arguments they require.
 
 * **Definition:** An n-place predicate is a symbol that takes n number of individual terms to form an atomic formula.
 * **Examples:** A unary (1-place) predicate requires one term (e.g., $F(a)$), a binary (2-place) predicate requires two (e.g., $R(a,b)$), and a ternary (3-place) predicate requires three (Barker-Plummer et al., pp. 20–23, 31–33).
-* **Function Symbols:** Similarly, function symbols are defined by their arity, mapping n terms to a single unique term (Barker-Plummer et al., pp. 31–33).
+* **Function Symbols:** Similarly, function symbols are defined by their arity, mapping n terms to a single unique term.
 
 **Example:**
 * Unary (1-place): $Cube(x)$ ("x is a cube")
@@ -45,6 +56,12 @@ In FOL, predicates are not merely properties; they are rigorously defined by the
 * Ternary (3-place): $Between(x, y, z)$ ("x is between y and z")
 
 #### 2.2. Terms and Atomic Formulas
+
+:::{.reading-assignment}
+- **Zach et al.**, pp. 236-237
+- **Bergmann et al.**, pp. 268-276
+:::
+
 
 Valid syntax construction begins with the smallest units of meaning, defined as `Term` and `AtomicFormula`.
 
@@ -55,8 +72,8 @@ data AtomicFormula = Predicate Name [Term]
 
 *Notation: `[Term]` denotes a **List** of Terms. This defines an Atomic Formula as a Predicate name followed by a list of arguments.*
 
-* **Terms:** The linguistic representatives of objects. As defined in `Term`, a term is either an individual `Constant` (a name) or a `Variable`. In languages with function symbols, a complex term is formed by applying an n-place function symbol to n terms (Zach et al., pp. 236–237).
-* **Atomic Formulas:** An `AtomicFormula` is the most basic string of symbols that can bear a truth value. We construct it by placing an $n$-place `Predicate` symbol in front of a list of `[Term]`. For example, if $F$ is a 2-place predicate and $a$ and $b$ are terms, then $F(a,b)$ is an atomic formula (Bergmann et al., pp. 268–276).
+* **Terms:** The linguistic representatives of objects. As defined in `Term`, a term is either an individual `Constant` (a name) or a `Variable`. In languages with function symbols, a complex term is formed by applying an n-place function symbol to n terms.
+* **Atomic Formulas:** An `AtomicFormula` is the most basic string of symbols that can bear a truth value. We construct it by placing an $n$-place `Predicate` symbol in front of a list of `[Term]`. For example, if $F$ is a 2-place predicate and $a$ and $b$ are terms, then $F(a,b)$ is an atomic formula.
 
 #### 2.3. Recursive Definitions (Well-Formed Formulas)
 
@@ -78,6 +95,12 @@ data WFF
 
 ##### 2.3.1. The Inductive Definition
 
+:::{.reading-assignment}
+- **Zach et al.**, pp. 236-237
+- **Recursive**, clause 2, clause 3
+:::
+
+
 The `WFF` data type rigorously defines the set of Well-Formed Formulas via **Structural Induction** (Pierce 2002, pp. 23–44; Bergmann et al., pp. 268–276; Sider, pp. 115–116):
 
 1. **Base Clause (Atomics):** The `Atomic` constructor defines the foundation. Every atomic formula is a WFF.
@@ -85,12 +108,12 @@ The `WFF` data type rigorously defines the set of Well-Formed Formulas via **Str
 3. **Inductive Clauses (Quantifiers):** The constructors `ForAll` and `Exists` introduce binding. If $\phi$ is a WFF and $x$ is a variable, then $\forall x \phi$ and $\exists x \phi$ are WFFs.
 4. **Closure Clause:** Nothing else is a WFF. (This ensures the set is the *smallest* set satisfying the above conditions).
 
-This recursive structure enables metalogicians to prove theorems about *all* formulas by proving them for the base case (atomic) and showing the property is preserved across the recursive steps (Mathematical Induction) (Zach et al., pp. 236–237). This definition provides the structural basis for the induction proofs we will perform in **Section 6.1.2**.
+This recursive structure enables metalogicians to prove theorems about *all* formulas by proving them for the base case (atomic) and showing the property is preserved across the recursive steps (Mathematical Induction). This definition provides the structural basis for the induction proofs we will perform in **Section 6.1.2**.
 
 **Example of Construction:**
 1. $Cube(a)$ is a WFF (Base clause).
-2. $\neg Cube(a)$ is a WFF (Recursive clause 2).
-3. $\exists x \neg Cube(x)$ is a WFF (Recursive clause 3).
+2. $\neg Cube(a)$ is a WFF.
+3. $\exists x \neg Cube(x)$ is a WFF.
 
 <script src="/js/syntax-sandbox.js"></script>
 <syntax-sandbox title="Interactive Sandbox: WFF Construction" description="Practice building Well-Formed Formulas using the recursive rules of syntax." data-groups='[
@@ -119,12 +142,23 @@ Once constructed, a formula's semantic evaluation depends on parsing its structu
 
 ##### 2.4.1. Main Logical Operator and Scope
 
-* **Main Logical Operator:** The main connective is the last operator added during the recursive construction of the formula. It determines the overall truth conditions of the sentence (Zach et al., pp. 237–239).
+:::{.reading-assignment}
+- **Zach et al.**, pp. 237-239
+:::
+
+
+* **Main Logical Operator:** The main connective is the last operator added during the recursive construction of the formula. It determines the overall truth conditions of the sentence.
 * **Scope:** The scope of a logical operator (connective or quantifier) is the sub-formula over which it operates. For a quantifier like $\forall x$, the scope is the specific formula $\phi$ that immediately follows it in the construction $\forall x \phi$. Precise identification of scope is required to avoid ambiguity in translation and evaluation (Bergmann et al., p. 271; Barker-Plummer et al., pp. 238–239).
 
 **Example:** In the formula $\forall x (Cube(x) \to Small(x))$, the scope of $\forall x$ is the entire conditional. The variable $x$ in $Small(x)$ is bound. In contrast, in $\forall x Cube(x) \to Small(x)$, the scope ends at $Cube(x)$; the $x$ in $Small(x)$ is free.
 
 ##### 2.4.2. Free vs. Bound Variables
+
+:::{.reading-assignment}
+- **Bergmann et al.**, pp. 271-272
+- **Sider**, p. 117
+:::
+
 
 The distinction between free and bound variables is the syntactic basis for the semantic difference between **sentences** (which have truth values) and **open formulas** (which define sets). We model this as a function that recursively collects the "free" variables.
 
@@ -138,10 +172,10 @@ The distinction between free and bound variables is the syntactic basis for the 
     ((Exists x phi)      (remove x (free-vars phi)))))
 ```
 
-*Notation: `(match formula ...)` performs **Pattern Matching**, executing different code based on the structure of the input `formula` (e.g., whether it is `Atomic`, `Not`, etc.).*
+*Notation: `(match formula...)` performs **Pattern Matching**, executing different code based on the structure of the input `formula` (e.g., whether it is `Atomic`, `Not`, etc.).*
 
-* **Bound Variable:** An occurrence of a variable $x$ is bound if it falls within the scope of a quantifier matching that variable (e.g., $\forall x$ or $\exists x$). In the code above, the `ForAll` and `Exists` cases explicitly `remove` $x$ from the set of free variables of $\phi$, effectively "capturing" it (Bergmann et al., pp. 271–272).
-* **Free Variable:** An occurrence of a variable is free if it is not bound by any quantifier. A formula with free variables (e.g., $Fx$) is semantically incomplete; it acts like a function awaiting an input (Sider, p. 117).
+* **Bound Variable:** An occurrence of a variable $x$ is bound if it falls within the scope of a quantifier matching that variable (e.g., $\forall x$ or $\exists x$). In the code above, the `ForAll` and `Exists` cases explicitly `remove` $x$ from the set of free variables of $\phi$, effectively "capturing" it.
+* **Free Variable:** An occurrence of a variable is free if it is not bound by any quantifier. A formula with free variables (e.g., $Fx$) is semantically incomplete; it acts like a function awaiting an input.
 
 ##### 2.4.3. Sentences (Closed Formulas)
 

@@ -134,7 +134,7 @@
       "problems": {}
     },
     "computation-metalogic/01-conceptual-foundations.qmd": {
-      "document_hash": "e2e633bc9a6b9f0f78e79384c40915f3",
+      "document_hash": "20fcb9c61a42194f41964c002ff2227a",
       "historical_hashes": [
         "e365ea45",
         "73e62b02",
@@ -145,12 +145,18 @@
         "e818a352748fe5f0b165eaab0662695d",
         "2b02db66c8eafb5eed2d7e8c6c2fe405",
         "9af53d5ad924c788ab155d847d0ac788",
-        "8a69b9c27313a61af12e0b85b41d5de3"
+        "8a69b9c27313a61af12e0b85b41d5de3",
+        "e2e633bc9a6b9f0f78e79384c40915f3",
+        "cee1b9b39420549114399335e7a7e734",
+        "4196af7b66bdd646865a56e2fb7ad654",
+        "ade31e3bf4735dd3e1e0c6d01cda5750",
+        "12b0dbdb6b4c034eed7edd84c3addc13",
+        "c32dbe21e7d76d01ebc4dcefd8ffee3a"
       ],
       "problems": {}
     },
     "computation-metalogic/02-syntax.qmd": {
-      "document_hash": "b24336d6d38b9f9423ab1e91f5895dce",
+      "document_hash": "c74df98830d4da30841bced514291da5",
       "historical_hashes": [
         "d79f8005",
         "80faa72b",
@@ -164,12 +170,17 @@
         "b422d7793e7ce742121731970ab08380",
         "7e10d31f9bf4d816dadb2e413dd850d7",
         "bd836c5e70a3f44a2ccd50edace452ea",
-        "36036e7f92409f18de60eb7fba46dabe"
+        "36036e7f92409f18de60eb7fba46dabe",
+        "b24336d6d38b9f9423ab1e91f5895dce",
+        "9f465a3ceee8e71ee38dc6a3ecd87ccc",
+        "87d2dc078a62996020597998aa4656c5",
+        "33222bc92ab20a4f90e27b556049ff5f",
+        "f25ac9d605d58fb7edc5d2f74734e9ad"
       ],
       "problems": {}
     },
     "computation-metalogic/03-deduction.qmd": {
-      "document_hash": "9d1852241c92337ca4df1d9597d04b5e",
+      "document_hash": "e4bb5aadbb94f3fba789c6979f9e720d",
       "historical_hashes": [
         "4b548c47",
         "4a1c4121",
@@ -178,12 +189,17 @@
         "1b492802e139f9b05cab8e5a0e34ff1f",
         "316893c035e7f3cbd416af9482cd4d25",
         "8ba35d3a413ec824e9f41cfaf21d396d",
-        "c568de3f2b72a2cd6988cdab556fe17e"
+        "c568de3f2b72a2cd6988cdab556fe17e",
+        "9d1852241c92337ca4df1d9597d04b5e",
+        "d1fe84a039f35fb16d32f499d2fe7689",
+        "af0f4b785d5045291840d75d3458d900",
+        "e610ddcccc29804ad01cbec9214939f3",
+        "a02930c498bcc8d5b7872612bd8ec48a"
       ],
       "problems": {}
     },
     "computation-metalogic/04-semantics.qmd": {
-      "document_hash": "1c553e883f7a27cb1f73ee06623e4d1a",
+      "document_hash": "7d7dd83cec754db094c7744de52299b7",
       "historical_hashes": [
         "b7be45a3",
         "e6f32d2e",
@@ -192,12 +208,17 @@
         "a9828f735839b4f3ce5a5674861ebcaf",
         "1df7b8693a66154c5bca24595a5b6a96",
         "68158e40e993fd62b800d274d6425718",
-        "14f4f75dfcabc2aab72eaa192753bf50"
+        "14f4f75dfcabc2aab72eaa192753bf50",
+        "1c553e883f7a27cb1f73ee06623e4d1a",
+        "16aa5aaaa586dcb20a762fbe513a562a",
+        "26eb28683c88096c8ef9bcb24ac12044",
+        "1b46581041b20c25fa50013312520df1",
+        "0b1731b7587cb02b3c42997d8936d7d2"
       ],
       "problems": {}
     },
     "computation-metalogic/05-translation.qmd": {
-      "document_hash": "b02554814215761b6bb079024ba2940f",
+      "document_hash": "2fc5282cb34ffc549051abdba14d8fc4",
       "historical_hashes": [
         "7af743dc",
         "0e2bd024",
@@ -205,12 +226,17 @@
         "359e99fef870f11e54d9f2983b5c1ce3",
         "b137f75614de055d8fc4b3f5ed951afd",
         "04a6d4cc1ee73d9443ef67b9c6a76c3e",
-        "2ffe27ffef60c2547d22e4fb2e98c90e"
+        "2ffe27ffef60c2547d22e4fb2e98c90e",
+        "b02554814215761b6bb079024ba2940f",
+        "a343d93ee40330ce07dd9739f5deff31",
+        "da98de937d4b032d6da42cb71d95fcef",
+        "c7522efa222b4c0844ca29571d834504",
+        "9c8521271ca9a4701fc95feaefe71913"
       ],
       "problems": {}
     },
     "computation-metalogic/06-metalogic.qmd": {
-      "document_hash": "01565180b0ec7577bd03dd5ec7a849aa",
+      "document_hash": "6b7c57346ce0c17277a1c52f5e4aa159",
       "historical_hashes": [
         "5e32607b",
         "cb25f8c3",
@@ -219,7 +245,12 @@
         "5c0dc0672c25d71c23a49ad6c1b32b4c",
         "a696de23145fe9fa67f0eb25736d5fc5",
         "5d1abca0438426684f6262010648f6f2",
-        "9993eac2aa1478daa470afb7826af797"
+        "9993eac2aa1478daa470afb7826af797",
+        "01565180b0ec7577bd03dd5ec7a849aa",
+        "20f768ceabc6d2a53b1fce04b0bd77bd",
+        "b98b7c781b1363c737bc14b83ef583fd",
+        "6c32e83d4848d70174dd2db497431550",
+        "23e276ce9091767e32c417fe17d739ac"
       ],
       "problems": {}
     },
@@ -238,9 +269,14 @@
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
-      "document_hash": "2e6af052b4cc3c4f1fc8549f6ff6875c",
+      "document_hash": "68de40d0506848b14ddba891f271786b",
       "historical_hashes": [
-        "2e6af052"
+        "2e6af052",
+        "2e6af052b4cc3c4f1fc8549f6ff6875c",
+        "6f3d46daaf1a2b083ce046c7d96d42cc",
+        "db07b8d3f6868129433a7374b0ddde18",
+        "fd47838f814b28475572058939fa20aa",
+        "ad6d00bf6e91532d20d026d91fe65c77"
       ],
       "problems": {}
     },
@@ -371,5 +407,5 @@
       "problems": {}
     }
   },
-  "generated_at": "2026-07-20T20:25:42.651Z"
+  "generated_at": "2026-07-23T15:45:09.045Z"
 }

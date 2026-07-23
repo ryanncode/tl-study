@@ -63,19 +63,25 @@ By integrating resources from **Theodore Sider**, **Herbert Enderton**, and **Do
 
 #### Expanded Computer Science Coverage
 
+:::{.reading-assignment}
+- **Abelson & Sussman**, pp. 192-228, 492-518, 522-526
+- **Pierce**, pp. 23-44, 95-98, 108-109
+:::
+
+
 * **[SICP] Structure and Interpretation of Computer Programs**
     * It provides the deep theory behind our treatment of **Semantics** and **Valuation**.
     * **Key Concepts:**
-        * **Symbolic Data:** The structural analogue to "Logical Derivation" (Abelson & Sussman, pp. 192–228).
-        * **Metalinguistic Abstraction:** The explicit instruction on how to write an eval function, which corresponds to the "Valuation Function" in metalogic (Abelson & Sussman, pp. 492–518).
-        * **Data as Programs:** This grounds the Lisp concept of "homoiconicity" (code is data), the computational equivalent of the Gödelian insight that logical formulas are mathematical objects that can be manipulated (Abelson & Sussman, pp. 522–526).
+        * **Symbolic Data:** The structural analogue to "Logical Derivation".
+        * **Metalinguistic Abstraction:** The explicit instruction on how to write an eval function, which corresponds to the "Valuation Function" in metalogic.
+        * **Data as Programs:** This grounds the Lisp concept of "homoiconicity" (code is data), the computational equivalent of the Gödelian insight that logical formulas are mathematical objects that can be manipulated.
 
 * **[TAPL] Types and Programming Languages**
     * It serves as the authority for our type definitions. *Note: Pierce implements these in **OCaml** (Strict/Call-by-Value), whereas this guide uses **Haskell** (Lazy/Call-by-Need) for its cleaner conceptual syntax. We abstract away these evaluation differences to focus on the static type structure.*
     * **Key Concepts:**
-        * **Inductive Definitions:** The definitive treatment of defining terms inductively, proving why `data WFF = ...` is a rigorous mathematical definition (Pierce, pp. 23–44).
-        * **Safety = Progress + Preservation:** The modern computational parallel to logical "Soundness" (Pierce, pp. 95–98).
-        * **The Curry-Howard Correspondence:** The essential concept for interdisciplinary students, demonstrating that "Proof Theory" in logic is isomorphic to "Type Checking" in Computer Science (Pierce, pp. 108–109).
+        * **Inductive Definitions:** The definitive treatment of defining terms inductively, proving why `data WFF =...` is a rigorous mathematical definition.
+        * **Safety = Progress + Preservation:** The modern computational parallel to logical "Soundness".
+        * **The Curry-Howard Correspondence:** The essential concept for interdisciplinary students, demonstrating that "Proof Theory" in logic is isomorphic to "Type Checking" in Computer Science.
 
 ---
 
