@@ -1,0 +1,248 @@
+{
+  "documents": {
+    "nf-set-theory/01-topology-transclusion.qmd": {
+      "document_hash": "aa700a79e6d689b5ab187dec6b9da5b9",
+      "historical_hashes": [],
+      "problems": {
+        "topology-1-1": {
+          "title": "Problem 1.1: The Failure of the Shallow Copy",
+          "hash": "84b9bbf652938f886c88eaaf398f0a9e"
+        },
+        "topology-1-2": {
+          "title": "Problem 1.2: Syntactic Authorization",
+          "hash": "0c8fd466e7192fafb761ae3d7d765165"
+        }
+      }
+    },
+    "nf-set-theory/02-quine-math-logic.qmd": {
+      "document_hash": "4dd5db77325dcc451dc1c38c817327da",
+      "historical_hashes": [],
+      "problems": {
+        "quine-2-1": {
+          "title": "Problem 2.1: Resolving Russell's Paradox",
+          "hash": "c2af85c0127771849ca6dccf8c258511"
+        },
+        "quine-2-2": {
+          "title": "Problem 2.2: The Universal Set Proof",
+          "hash": "e010606c7a9f84b1e44669e255a609f3"
+        }
+      }
+    },
+    "nf-set-theory/03-hailperin-axioms.qmd": {
+      "document_hash": "5c7522d63e886f269ca5b532e2465dce",
+      "historical_hashes": [],
+      "problems": {
+        "hailperin-3-1": {
+          "title": "Problem 3.1: The Kuratowski Contradiction",
+          "hash": "011ccefb3f0fa62992d0c9c20b5791fa"
+        },
+        "hailperin-3-2": {
+          "title": "Problem 3.2: Combinatorial Execution",
+          "hash": "df36fb05e59574e74e7481faab125a9f"
+        }
+      }
+    },
+    "nf-set-theory/04-specker-orey-jensen.qmd": {
+      "document_hash": "5f3e4638ab25c384f2f97cf02af6313d",
+      "historical_hashes": [],
+      "problems": {
+        "jensen-4-1": {
+          "title": "Problem 4.1: Urelements vs The Empty Set",
+          "hash": "a64c4e8209576535595f5fc00457c232"
+        },
+        "jensen-4-2": {
+          "title": "Problem 4.2: The Choice Axiom Restoration",
+          "hash": "747738358b6c21af80bb2be525c3fa88"
+        }
+      }
+    },
+    "nf-set-theory/05-forster-holmes.qmd": {
+      "document_hash": "d6071e3f4884bf35fd46cc3bd2f8ad9a",
+      "historical_hashes": [],
+      "problems": {
+        "holmes-5-1": {
+          "title": "Problem 5.1: Tracking the T-Operation",
+          "hash": "9fc1d095faed71b551c412a9ea7eedc9"
+        }
+      }
+    },
+    "nf-set-theory/06-mac-lane-lawvere.qmd": {
+      "document_hash": "775d29c8ce7a890fc506df78612655b3",
+      "historical_hashes": [],
+      "problems": {
+        "maclane-6-1": {
+          "title": "Problem 6.1: Morphisms vs Elements",
+          "hash": "fc5a0cb16e826b7b7e18d4cf28d204ec"
+        },
+        "maclane-6-2": {
+          "title": "Problem 6.2: The Subobject Classifier",
+          "hash": "049de81c380b2b2ceffacf1719f3a953"
+        }
+      }
+    },
+    "nf-set-theory/07-lambek-scott.qmd": {
+      "document_hash": "cc856f11b416e8d83cc86297b2ed6ddf",
+      "historical_hashes": [],
+      "problems": {
+        "lambek-7-1": {
+          "title": "Problem 7.1: Modeling Modus Ponens",
+          "hash": "489c22592fbb276ef30be14ed31614ac"
+        },
+        "lambek-7-2": {
+          "title": "Problem 7.2: The C-Monoid Topology",
+          "hash": "1b65ce2f4182b16aa18e7f69ffc830c2"
+        }
+      }
+    },
+    "nf-set-theory/08-mclarty-forster-stratified.qmd": {
+      "document_hash": "02635df11df2d4225376fa8e23ef523c",
+      "historical_hashes": [],
+      "problems": {
+        "mclarty-8-1": {
+          "title": "Problem 8.1: The T-Functor JSON Property",
+          "hash": "4dd00c5a83083850308005dafd231ce5"
+        },
+        "mclarty-8-2": {
+          "title": "Problem 8.2: Topos Boundaries",
+          "hash": "bade17b13c084db372e922d21e1bc038"
+        }
+      }
+    },
+    "nf-set-theory/index.qmd": {
+      "document_hash": "5736ac6a4dcf972c50866c77f20a1434",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/01-conceptual-foundations.qmd": {
+      "document_hash": "20fcb9c61a42194f41964c002ff2227a",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/02-syntax.qmd": {
+      "document_hash": "c74df98830d4da30841bced514291da5",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/03-deduction.qmd": {
+      "document_hash": "e4bb5aadbb94f3fba789c6979f9e720d",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/04-semantics.qmd": {
+      "document_hash": "7d7dd83cec754db094c7744de52299b7",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/05-translation.qmd": {
+      "document_hash": "2fc5282cb34ffc549051abdba14d8fc4",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/06-metalogic.qmd": {
+      "document_hash": "6b7c57346ce0c17277a1c52f5e4aa159",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/07-conclusion.qmd": {
+      "document_hash": "1d8359ff16bc6671b5f32e97c5aa98ea",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "computation-metalogic/index.qmd": {
+      "document_hash": "68de40d0506848b14ddba891f271786b",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/01-syntax-material-basis.qmd": {
+      "document_hash": "f60a71503a7746d3bcfcde656c05819e",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/02-official-notation-semantics.qmd": {
+      "document_hash": "550de04fd42c5cb852e2439d3dbc2052",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/03-proof-theory-direct.qmd": {
+      "document_hash": "9bfb3a965ba226e9199ac4a5159b64a5",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/04-hypothetical-reasoning.qmd": {
+      "document_hash": "fac4947f9225e6f396ae09fc50844118",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/05-indirect-derivations.qmd": {
+      "document_hash": "b3b20b501a3608ba4585fa116e0bb177",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/06-normal-forms-machine.qmd": {
+      "document_hash": "f18069402578248bc5eb3488f853403f",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/07-dimacs-constraint-mapping.qmd": {
+      "document_hash": "6b02b32b6929be7bfe394554e8fef111",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/08-sat-heuristics-synthesis.qmd": {
+      "document_hash": "738ffe3f5aed1539f47fccc0f798b480",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-i/index.qmd": {
+      "document_hash": "3be46203f04363faae3c4234afbbac9d",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/01-propositional-to-quantified.qmd": {
+      "document_hash": "5abd2fec2869511952684b3772b87e1e",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/02-definite-descriptions.qmd": {
+      "document_hash": "a6495069c7d61a94d81f3108bbe50457",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/03-tarskian-semantics.qmd": {
+      "document_hash": "e914811322612fe625af40a1c3f6e9a5",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/04-model-checking-counter.qmd": {
+      "document_hash": "f167f5b3c970abb29dbc2a40266fca5b",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/05-natural-deduction-quantified.qmd": {
+      "document_hash": "412cebd0b8c8649e9b325e73c5f2c5c2",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/06-relational-logic-identity.qmd": {
+      "document_hash": "053abbe20ae4772153d5273081c13412",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/07-metatheory-transition-lean4.qmd": {
+      "document_hash": "796c8d49d5c92bc34e02db935b410d9e",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/08-formalization-portfolio.qmd": {
+      "document_hash": "3556ce5a409f0ca26f3bcf996fa018df",
+      "historical_hashes": [],
+      "problems": {}
+    },
+    "material-logics-ii/index.qmd": {
+      "document_hash": "ebcb5d5697667d66730dc47fc0b13a28",
+      "historical_hashes": [],
+      "problems": {}
+    }
+  },
+  "generated_at": "2026-07-30T16:07:09.951Z"
+}

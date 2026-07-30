@@ -1,0 +1,13 @@
+{
+  "active_topics": [
+    {
+      "topic": "computation-metalogic",
+      "cohort_id": "cml-fall-2026-9a4f",
+      "start_date": "2026-07-01",
+      "end_date": "2026-08-31",
+      "target_repo": "ryanncode/tl-study",
+      "proxy_url": "https://tl-study-relay.merciace.workers.dev",
+      "encryption_mode": "client"
+    }
+  ]
+}
