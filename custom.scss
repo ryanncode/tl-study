@@ -377,3 +377,9 @@ textarea.form-control:focus, input.form-control:focus {
 .reading-assignment li {
   margin-bottom: 0.15rem;
 }
+
+/* Fix MathJax Inline Clipping */
+mjx-container, .math.inline {
+  overflow: visible !important;
+  line-height: normal !important;
+}
