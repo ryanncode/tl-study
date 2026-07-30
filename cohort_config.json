@@ -6,7 +6,7 @@
       "start_date": "2026-07-01",
       "end_date": "2026-08-31",
       "target_repo": "ryanncode/tl-study",
-      "proxy_url": "https://tl-study-relay.ryann.workers.dev",
+      "proxy_url": "https://tl-study-relay.merciace.workers.dev",
       "encryption_mode": "client"
     }
   ]

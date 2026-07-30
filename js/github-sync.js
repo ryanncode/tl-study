@@ -6,8 +6,8 @@
  */
 
 const SYNC_CONFIG = {
-    clientId: 'GITHUB_APP_CLIENT_ID',
-    tokenRelayUrl: 'https://oauth-relay.thing.rodeo/api/token',
+    clientId: 'Iv23ctRcgkpuHH9jkEQc',
+    tokenRelayUrl: 'https://tl-study-relay.merciace.workers.dev',
     tokenKey: 'tl_study_github_token',
     repoKey: 'tl_study_github_repo',
     ownerKey: 'tl_study_github_owner'
