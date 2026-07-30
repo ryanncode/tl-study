@@ -86,6 +86,15 @@ website:
         - material-logics-ii/06-relational-logic-identity.qmd
         - material-logics-ii/07-metatheory-transition-lean4.qmd
         - material-logics-ii/08-formalization-portfolio.qmd
+    - id: test-sandbox
+      title: "Sandbox Environment"
+      contents:
+        - test-sandbox/index.qmd
+        - test-sandbox/01-components.qmd
+    - id: moderation
+      title: "Admin Moderation"
+      contents:
+        - moderation/index.qmd
 
 format:
   html:

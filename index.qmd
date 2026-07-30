@@ -1,9 +1,18 @@
 ---
-title: "TL Study Environment"
+title: "Interactive Study Environment"
 toc: false
 ---
 
-Welcome to the **Thinghood Limited** interactive studies environment. This platform hosts our core curriculums, problem sets, and theoretical explorations across a variety of disciplines.
+Explore our core curriculums, problem sets, and theoretical modules across a variety of disciplines. 
+
+### Decentralized Infrastructure
+Traditional learning platforms trap your work in centralized databases. We abandon that model entirely. We provide the educational theory, but your answers remain strictly under your control. Once you enter a topic, you will use your personal GitHub account to act as your own secure backend. The platform creates a private repository on your profile to store your notes and solutions. We cannot access or monitor your intellectual progress.
+
+### A Novel Framework
+We call this architecture **Zero-Cost Constructivism**. There is no backend server harvesting your information. Instead, this is a purely static application that uses your browser to communicate directly with the GitHub API. Your work is structurally versioned and yours alone, ultimately designed to compile into a personal digital portfolio. 
+
+### Absolute Privacy
+Your answers are encrypted locally on your machine before they are ever transmitted, meaning no one—not even us—can read your private notes without your permission. Additionally, our authentication system is mathematically restricted so it can only access the specific educational folder it creates, ensuring we never ask for sweeping permissions to your personal GitHub account.
 
 ---
 
@@ -77,7 +86,7 @@ Welcome to the **Thinghood Limited** interactive studies environment. This platf
     <div class="course-meta">
       <a href="https://thing.rodeo/git/" class="course-title">Git Practices</a>
     </div>
-    <div class="course-desc">A brief overview of how to manage your private sovereign repository and push solutions up securely.</div>
+    <div class="course-desc">A brief overview of how to manage your private repository and push solutions up securely.</div>
   </li>
 </ul>
 ```

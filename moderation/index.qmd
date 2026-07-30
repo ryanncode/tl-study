@@ -1,0 +1,109 @@
+---
+title: "Admin Moderation Dashboard"
+---
+
+This dashboard allows authorized administrators to manage cohort submissions.
+If you are not an administrator, the backend edge relay will mathematically reject your requests regardless of what buttons you click here.
+
+<div id="admin-auth-warning" class="alert alert-warning mt-4">
+  Loading authentication status...
+</div>
+
+<div class="card mb-4 mt-4" id="admin-panel" style="display: none;">
+  <div class="card-header bg-danger text-white">
+    Cohort Moderation Tools
+  </div>
+  <div class="card-body">
+    <div class="row g-3 mb-3">
+      <div class="col-md-3">
+        <label>Topic</label>
+        <input type="text" id="mod-topic" class="form-control" placeholder="e.g. nf-set-theory">
+      </div>
+      <div class="col-md-3">
+        <label>Cohort ID</label>
+        <input type="text" id="mod-cohort" class="form-control" placeholder="e.g. default">
+      </div>
+      <div class="col-md-3">
+        <label>Problem ID</label>
+        <input type="text" id="mod-problem" class="form-control" placeholder="e.g. exercise-1">
+      </div>
+      <div class="col-md-3">
+        <label>Target Username</label>
+        <input type="text" id="mod-username" class="form-control" placeholder="e.g. ryanncode">
+      </div>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-danger" onclick="executeAdminAction('admin_delete_submission')">Delete Submission</button>
+      <button class="btn btn-outline-warning" onclick="executeAdminAction('admin_edit_submission')">Hide Submission (WIP)</button>
+    </div>
+    <div id="admin-result" class="mt-3"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const token = localStorage.getItem('tl_study_token');
+    if (!token) {
+        document.getElementById('admin-auth-warning').textContent = "You are not authenticated via GitHub OAuth. Please log in first.";
+        document.getElementById('admin-auth-warning').className = "alert alert-danger mt-4";
+        return;
+    }
+    
+    // We assume the user is authenticated. 
+    // True admin status is verified mathematically on the backend.
+    document.getElementById('admin-auth-warning').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+});
+
+async function executeAdminAction(actionType) {
+    const topic = document.getElementById('mod-topic').value;
+    const cohort = document.getElementById('mod-cohort').value || 'default';
+    const problem = document.getElementById('mod-problem').value;
+    const username = document.getElementById('mod-username').value;
+    const resultDiv = document.getElementById('admin-result');
+    const token = localStorage.getItem('tl_study_token');
+    
+    if (!topic || !problem || !username) {
+        resultDiv.innerHTML = `<span class="text-danger">Topic, Problem ID, and Username are required.</span>`;
+        return;
+    }
+    
+    resultDiv.innerHTML = '<span class="text-muted">Executing...</span>';
+    
+    try {
+        let res;
+        if (actionType === 'admin_delete_submission') {
+            const url = `https://tl-study-relay.ryann.workers.dev/?action=admin_delete_submission&topic=${encodeURIComponent(topic)}&cohortId=${encodeURIComponent(cohort)}&problemId=${encodeURIComponent(problem)}&targetUsername=${encodeURIComponent(username)}`;
+            res = await fetch(url, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+        } else if (actionType === 'admin_edit_submission') {
+            const url = `https://tl-study-relay.ryann.workers.dev/`;
+            res = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: 'admin_edit_submission',
+                    topic: topic,
+                    cohortId: cohort,
+                    problemId: problem,
+                    targetUsername: username,
+                    solution_data: "[This submission was hidden by a moderator.]",
+                    comments: []
+                })
+            });
+        }
+        
+        const data = await res.json();
+        
+        if (res.ok) {
+            resultDiv.innerHTML = `<span class="text-success fw-bold">Success!</span> <br> <pre class="mt-2">${JSON.stringify(data, null, 2)}</pre>`;
+        } else {
+            resultDiv.innerHTML = `<span class="text-danger fw-bold">Action Failed (${res.status}):</span> <br> ${data.error || JSON.stringify(data)}`;
+        }
+    } catch (e) {
+        resultDiv.innerHTML = `<span class="text-danger fw-bold">Error:</span> ${e.message}`;
+    }
+}
+</script>

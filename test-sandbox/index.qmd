@@ -1,0 +1,9 @@
+---
+title: "Sandbox Environment"
+toc: false
+---
+
+This is the hidden test sandbox used for developing interactive components, verifying the `github-sync.js` engine, and performing administrative moderation duties.
+
+## Contents
+- [UI Components Test](01-components.qmd)

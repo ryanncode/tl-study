@@ -1,0 +1,24 @@
+---
+title: "UI Components Test"
+---
+
+This page tests the various custom blocks defined in the PRD.
+
+:::{.reading-assignment}
+**Read:** Example Text 1.1-1.3
+:::
+
+:::{.guided-example}
+Here is a guided example block to provide scaffolding before a problem set.
+:::
+
+::: {.card .mb-3}
+<div class="card-body">
+  <h5 class="card-title">Test Problem 1</h5>
+  <p class="card-text">Enter some test data to ensure the sync engine works.</p>
+  <textarea id="test-sandbox-problem-1" class="form-control" rows="3"></textarea>
+  <button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button>
+</div>
+:::
+
+<div data-interpolate="test-sandbox-problem-1" class="fst-italic mt-2"></div>

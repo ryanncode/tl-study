@@ -43,6 +43,11 @@ export default {
       if (request.method === "GET" && action === "cohort_read") {
         return await this.handleCohortRead(request, url, env, corsHeaders);
       }
+      
+      // Route: DELETE /?action=admin_delete_submission
+      if (request.method === "DELETE" && action === "admin_delete_submission") {
+        return await this.handleAdminDeleteSubmission(request, url, env, corsHeaders);
+      }
 
       // POST Routes
       if (request.method !== "POST" && request.method !== "PUT") {
@@ -98,6 +103,11 @@ export default {
       if (postAction === "cohort_publish_solution") {
         return await this.handleCohortPublishSolution(request, body, env, corsHeaders);
       }
+      
+      // Route: Admin Edit Submission
+      if (postAction === "admin_edit_submission") {
+        return await this.handleAdminEditSubmission(request, body, env, corsHeaders);
+      }
 
       return new Response("Unknown action.", { status: 400, headers: corsHeaders });
 
@@ -147,6 +157,16 @@ export default {
     const userData = await res.json();
     if (!userData.login) throw new Error("GitHub token did not return a valid user identity.");
     return userData.login;
+  },
+
+  async checkAdminStatus(authHeader, env) {
+    if (!env.ADMIN_GITHUB_HANDLES) throw new Error("Admin access is not configured on this server.");
+    const username = await this.verifyGithubIdentity(authHeader);
+    const admins = env.ADMIN_GITHUB_HANDLES.split(",").map(a => a.trim().toLowerCase());
+    if (!admins.includes(username.toLowerCase())) {
+        throw new Error(`User ${username} is not authorized for admin actions.`);
+    }
+    return username;
   },
 
   async handleCohortPublishSolution(request, body, env, corsHeaders) {
@@ -264,5 +284,90 @@ export default {
     let content = decodeURIComponent(escape(atob(fileData.content)));
     fileData.content = btoa(unescape(encodeURIComponent(content)));
     return new Response(JSON.stringify(fileData), { headers: { "Content-Type": "application/json", ...corsHeaders } });
+  },
+
+  async handleAdminDeleteSubmission(request, url, env, corsHeaders) {
+    try {
+      await this.checkAdminStatus(request.headers.get("Authorization"), env);
+      
+      const topic = url.searchParams.get("topic");
+      const cohortId = url.searchParams.get("cohortId") || "default";
+      const problemId = url.searchParams.get("problemId");
+      const targetUsername = url.searchParams.get("targetUsername");
+      
+      if (!topic || !problemId || !targetUsername) throw new Error("Missing required path components for deletion.");
+      
+      if (/[^a-zA-Z0-9\-_]/.test(topic) || /[^a-zA-Z0-9\-_]/.test(cohortId) || /[^a-zA-Z0-9\-_]/.test(problemId) || /[^a-zA-Z0-9\-_]/.test(targetUsername)) {
+          throw new Error("Invalid path components.");
+      }
+      
+      const path = `cohort_data/${topic}/${cohortId}/${problemId}/${targetUsername}.json`;
+      const githubApiUrl = `https://api.github.com/repos/${env.TARGET_REPO}/contents/${path}`;
+      
+      // We need the SHA to delete a file via GitHub API
+      const getRes = await fetch(githubApiUrl, {
+        headers: { 'Authorization': `Bearer ${env.GITHUB_COHORT_PAT}`, 'User-Agent': 'TL-Study-Proxy' }
+      });
+      if (!getRes.ok) throw new Error("Could not find file to delete.");
+      const existingFile = await getRes.json();
+      
+      const res = await fetch(githubApiUrl, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${env.GITHUB_COHORT_PAT}`, 'Content-Type': 'application/json', 'User-Agent': 'TL-Study-Proxy' },
+        body: JSON.stringify({
+          message: `Admin deleted submission for ${targetUsername}`,
+          sha: existingFile.sha
+        })
+      });
+      
+      return new Response(JSON.stringify(await res.json()), { status: res.status, headers: { "Content-Type": "application/json", ...corsHeaders } });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: e.message }), { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } });
+    }
+  },
+
+  async handleAdminEditSubmission(request, body, env, corsHeaders) {
+    try {
+      const adminUsername = await this.checkAdminStatus(request.headers.get("Authorization"), env);
+      
+      let { topic, cohortId, problemId, targetUsername, solution_data, comments } = body;
+      if (!topic || !problemId || !targetUsername) throw new Error("Missing required fields for admin edit.");
+      
+      const safeCohortId = cohortId || 'default';
+      
+      if (/[^a-zA-Z0-9\-_]/.test(topic) || /[^a-zA-Z0-9\-_]/.test(safeCohortId) || /[^a-zA-Z0-9\-_]/.test(problemId) || /[^a-zA-Z0-9\-_]/.test(targetUsername)) {
+          throw new Error("Invalid path components.");
+      }
+      
+      const path = `cohort_data/${topic}/${safeCohortId}/${problemId}/${targetUsername}.json`;
+      const githubApiUrl = `https://api.github.com/repos/${env.TARGET_REPO}/contents/${path}`;
+      
+      const getRes = await fetch(githubApiUrl, {
+        headers: { 'Authorization': `Bearer ${env.GITHUB_COHORT_PAT}`, 'User-Agent': 'TL-Study-Proxy' }
+      });
+      if (!getRes.ok) throw new Error("Could not find file to edit.");
+      const existingFile = await getRes.json();
+      
+      const payload = {
+        author: targetUsername,
+        updated_at: new Date().toISOString(),
+        solution_data: solution_data,
+        comments: comments || []
+      };
+      
+      const res = await fetch(githubApiUrl, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${env.GITHUB_COHORT_PAT}`, 'Content-Type': 'application/json', 'User-Agent': 'TL-Study-Proxy' },
+        body: JSON.stringify({
+          message: `Admin ${adminUsername} edited submission for ${targetUsername}`,
+          content: btoa(unescape(encodeURIComponent(JSON.stringify(payload)))),
+          sha: existingFile.sha
+        })
+      });
+      
+      return new Response(JSON.stringify(await res.json()), { status: res.status, headers: { "Content-Type": "application/json", ...corsHeaders } });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: e.message }), { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } });
+    }
   }
 };
