@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells – Thinghood Limited</title>
+<title>UI Components Test – Thinghood Limited</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -62,37 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../js/cohort.js"></script>
 <script src="../js/priority-nav.js"></script>
 <script src="../js/home-cohorts.js"></script>
-<script src="../js/github-sync.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -153,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nf-set-theory/07-lambek-scott.html">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../test-sandbox/01-components.html">UI Components Test</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -167,56 +137,14 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quinean Foundations &amp; Categorical Semantics</span></a>
+  <a href="../test-sandbox/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sandbox Environment</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/01-topology-transclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Topology and Transclusion</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/02-quine-math-logic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Quine’s Mathematical Logic and Stratification</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/03-hailperin-axioms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Hailperin’s Finite Axiomatization</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/04-specker-orey-jensen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. The Axiom of Choice Crisis</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/05-forster-holmes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. Untyped Universes (Forster &amp; Holmes)</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/06-mac-lane-lawvere.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6. Mac Lane, Lawvere, and Foundational Mappings</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/07-lambek-scott.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../nf-set-theory/08-mclarty-forster-stratified.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">8. Stratified Semantics (McLarty &amp; Forster)</span></a>
+  <a href="../test-sandbox/01-components.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">UI Components Test</span></a>
   </div>
 </li>
     </ul>
@@ -224,32 +152,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#categorical-semantics-for-logic-and-computation" id="toc-categorical-semantics-for-logic-and-computation" class="nav-link active" data-scroll-target="#categorical-semantics-for-logic-and-computation">Categorical Semantics for Logic and Computation</a>
-  <ul class="collapse">
-  <li><a href="#the-equivalence-of-logic-and-category" id="toc-the-equivalence-of-logic-and-category" class="nav-link" data-scroll-target="#the-equivalence-of-logic-and-category">The Equivalence of Logic and Category</a>
-  <ul class="collapse">
-  <li><a href="#functional-completeness" id="toc-functional-completeness" class="nav-link" data-scroll-target="#functional-completeness">Functional Completeness</a></li>
-  <li><a href="#untyped-systems-and-c-monoids" id="toc-untyped-systems-and-c-monoids" class="nav-link" data-scroll-target="#untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</a></li>
-  </ul></li>
-  <li><a href="#computer-science-and-state-transitions" id="toc-computer-science-and-state-transitions" class="nav-link" data-scroll-target="#computer-science-and-state-transitions">Computer Science and State Transitions</a>
-  <ul class="collapse">
-  <li><a href="#translating-to-json-products-and-limits" id="toc-translating-to-json-products-and-limits" class="nav-link" data-scroll-target="#translating-to-json-products-and-limits">Translating to JSON: Products and Limits</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</h1>
+<h1 class="title">UI Components Test</h1>
 </div>
 
 
@@ -266,141 +177,30 @@ window.Quarto = {
 </header>
 
 
-<section id="categorical-semantics-for-logic-and-computation" class="level1">
-<h1>Categorical Semantics for Logic and Computation</h1>
-<p>To successfully map our NF ontology to JSON, we must understand how logical derivation and computational states are inherently structural.</p>
-<p>J. Lambek and P.J. Scott’s <em>Introduction to Higher-Order Categorical Logic</em> (1986) demonstrated the fundamental mathematical equivalence between structural logic systems and specific category types. Barr and Wells’ <em>Category Theory for Computer Science</em> (1990) extended these maps directly into computational state architecture.</p>
+<p>This page tests the various custom blocks defined in the PRD.</p>
 <div class="reading-assignment">
-<strong>Suggested Reading: Higher-Order Logic &amp; CCCs</strong>
-<ul>
-<li>
-Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§5), Ch. II (§3), Ch. III (§4–§6), Ch. IV (§6).
-</li>
-<li>
-Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 11.1, 11.3 (Operations on Functions; Stratification), Ch. 23.1, 23.3 (Abstraction; State Machines &amp; C-Monoids).
-</li>
-<li>
-Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.1, 3.2 (Codes and Clouds) and Section 4.6 (Structural Actions).
-</li>
-</ul>
+<p><strong>Read:</strong> Example Text 1.1-1.3</p>
 </div>
-<section id="the-equivalence-of-logic-and-category" class="level2">
-<h2 class="anchored" data-anchor-id="the-equivalence-of-logic-and-category">The Equivalence of Logic and Category</h2>
-<p>Lambek and Scott established a strict dictionary between formal deductive systems, <span class="math inline">\(\lambda\)</span>-calculus, and Category Theory:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Category Theory</th>
-<th>Logical Semantics</th>
-<th>Typed <span class="math inline">\(\lambda\)</span>-Calculus</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Object <span class="math inline">\(A\)</span></td>
-<td>Formula <span class="math inline">\(A\)</span></td>
-<td>Type <span class="math inline">\(A\)</span></td>
-</tr>
-<tr class="even">
-<td>Arrow <span class="math inline">\(f: A \rightarrow B\)</span></td>
-<td>Proof of <span class="math inline">\(A \vdash B\)</span></td>
-<td>Term <span class="math inline">\(f(x)\)</span> of type <span class="math inline">\(B\)</span></td>
-</tr>
-<tr class="odd">
-<td>Terminal Object <span class="math inline">\(1\)</span></td>
-<td>Truth <span class="math inline">\(\top\)</span></td>
-<td>Basic term <span class="math inline">\(*\)</span></td>
-</tr>
-<tr class="even">
-<td>Product <span class="math inline">\(A \times B\)</span></td>
-<td>Conjunction <span class="math inline">\(A \wedge B\)</span></td>
-<td>Product Type</td>
-</tr>
-<tr class="odd">
-<td>Exponential <span class="math inline">\(B^A\)</span></td>
-<td>Implication <span class="math inline">\(A \Rightarrow B\)</span></td>
-<td>Function Type / Abstraction</td>
-</tr>
-<tr class="even">
-<td>Evaluation <span class="math inline">\(\epsilon_{A,B}\)</span></td>
-<td>Modus Ponens</td>
-<td>Application</td>
-</tr>
-</tbody>
-</table>
-<section id="functional-completeness" class="level3">
-<h3 class="anchored" data-anchor-id="functional-completeness">Functional Completeness</h3>
-<p>A major achievement of categorical logic is <strong>Functional Completeness</strong>: the ability to eliminate bound variables entirely. Any logical deduction dependent on an assumed variable can be algebraically translated into a pure categorical morphism composed of constant structural arrows (evaluations, projections, exponential adjoints). This proves that logic is structurally geometric.</p>
-</section>
-<section id="untyped-systems-and-c-monoids" class="level3">
-<h3 class="anchored" data-anchor-id="untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</h3>
-<p>While typed <span class="math inline">\(\lambda\)</span>-calculus strictly correlates to Cartesian Closed Categories, the untyped <span class="math inline">\(\lambda\)</span>-calculus semantically maps to <strong>C-Monoids</strong>. A C-monoid is a single-object Cartesian Closed Category that explicitly excludes a terminal object. Because NF allows for a universal set, handling untyped or reflexively typed loops requires leveraging these specialized single-object mapping behaviors.</p>
-</section>
-</section>
-<section id="computer-science-and-state-transitions" class="level2">
-<h2 class="anchored" data-anchor-id="computer-science-and-state-transitions">Computer Science and State Transitions</h2>
-<p>Barr and Wells contextualized these categorical mappings directly into functional programming.</p>
-<ul>
-<li><strong>Programs as Arrows</strong>: Functions <span class="math inline">\(f: S \to T\)</span> operate as structural morphisms. Anonymous functions (<span class="math inline">\(x \mapsto x^2\)</span>) define internal operational paths distinct from their formal signature.</li>
-<li><strong>Types as Objects</strong>: Data types (Booleans, Integers, complex structs) function as the objects defining the domain and codomain boundaries.</li>
-<li><strong>State Machines as Monoids</strong>: A classical automaton operating on an input alphabet acts algebraically as a Monoid (a single object category) where the input string evaluates as a directed path navigating through a free category.</li>
-</ul>
 <div class="guided-example">
-<div class="guided-example-title">
-<p>Guided Example: Categorical Modus Ponens</p>
-</div>
-<div class="guided-example-content">
-<p>In a Cartesian Closed Category, logical deduction is a geometric mapping. If we have an exponential object <span class="math inline">\(B^A\)</span> (representing <span class="math inline">\(A \to B\)</span>) and the domain object <span class="math inline">\(A\)</span>, the “Evaluation” morphism (<span class="math inline">\(eval\)</span>) maps their product to the target.</p>
-<p><span class="math inline">\(eval : B^A \times A \to \_\_\_\_\_\)</span></p>
-<p><em>(Hint: What is the resulting object when you successfully apply a function to its required input?)</em></p>
-</div>
-</div>
-<section id="translating-to-json-products-and-limits" class="level3">
-<h3 class="anchored" data-anchor-id="translating-to-json-products-and-limits">Translating to JSON: Products and Limits</h3>
-<p>When building your JSON ontology, you must translate these Cartesian elements into explicit properties:</p>
-<ul>
-<li><strong>The <code>source</code> Array</strong>: In a Cartesian Closed Category, evaluating a function requires the cross-product of the function and the input (<span class="math inline">\(B^A \times A\)</span>). In JSON, represent products by feeding an array of IDs into the <code>source</code> key: <code>"source": ["Exponential_Object", "Domain_Object"]</code>.</li>
-<li><strong>The <code>topology_limits</code> Constraint</strong>: Because C-Monoids lack a terminal object, your JSON models must enforce this structurally. Adding <code>"topology_limits": ["no_terminal_object"]</code> to your morphism’s <code>constraints</code> array establishes the structural boundary your future proofs must rely on to prevent recursive paradoxes when tracing compositions.</li>
-</ul>
-<hr>
-<div class="card mb-3">
-<div class="card-header">
-<p><strong>Problem 7.1: Modeling Modus Ponens</strong></p>
-</div>
-<div class="card-body">
-<p>In a Cartesian Closed Category (CCC), the logical rule of Modus Ponens is modeled geometrically via the Evaluation Arrow.</p>
-<p>Write the JSON structure for a morphism that evaluates <span class="math inline">\(B^A \times A \to B\)</span>. How will you define the <code>source</code> array to represent the product of the exponential object and the domain?</p>
-<textarea id="lambek-7-1" class="form-control problem-input" rows="5" placeholder="Enter your JSON mapping here..."></textarea>
-<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">
-Save to GitHub
-</button>
-</div>
+<p>Here is a guided example block to provide scaffolding before a problem set.</p>
 </div>
 <div class="card mb-3">
-<div class="card-header">
-<p><strong>Problem 7.2: The C-Monoid Topology</strong></p>
-</div>
 <div class="card-body">
-<p>To model an untyped lambda calculus (or an untyped universe like <span class="math inline">\(V\)</span>), Lambek introduced the C-Monoid.</p>
-<p>Since a C-Monoid lacks a terminal object (to prevent paradoxes), how will you design your JSON syntax to process arrow compositions without hitting a recursive loop? Define the <code>topology_limits</code> constraint in JSON.</p>
-<textarea id="lambek-7-2" class="form-control problem-input" rows="4" placeholder="Enter your structural logic here..."></textarea>
-<button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">
-Save to GitHub
-</button>
+<h5 class="card-title anchored">
+Test Problem 1
+</h5>
+<p class="card-text">
+Enter some test data to ensure the sync engine works.
+</p>
+<textarea id="test-sandbox-problem-1" class="form-control" rows="3"></textarea>
+<p><button class="btn btn-primary mt-2" onclick="tlStudySync.saveData()">Save to GitHub</button></p>
 </div>
 </div>
-<hr>
-<p><a href="../nf-set-theory/08-mclarty-forster-stratified.html">Next: Stratified Semantics ➔</a></p>
+<div class="fst-italic mt-2" data-interpolate="test-sandbox-problem-1">
+
+</div>
 
 
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
