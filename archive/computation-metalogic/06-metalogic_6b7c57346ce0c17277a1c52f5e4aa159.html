@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mathematical Properties (Metalogic) – Thinghood Limited</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-af83f27b3d41210d6abd0583250bd53c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.ryann.workers.dev; object-src 'none';">
+<meta name="referrer" content="no-referrer">
+<script src="../js/cohort.js"></script>
+<script src="../js/priority-nav.js"></script>
+<script src="../js/home-cohorts.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Thinghood Limited</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://study.thing.rodeo/" target="_self"> 
+<span class="menu-text">Study</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/computation-metalogic/" target="_self"> 
+<span class="menu-text">Logic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/living-syllabus/" target="_self"> 
+<span class="menu-text">Living Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/git/" target="_self"> 
+<span class="menu-text">Git</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/about/" target="_self"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/#/portal/signin" target="_self"> 
+<span class="menu-text">Sign in</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://thing.rodeo/#/portal/signup" target="_self"> 
+<span class="menu-text"><span class="nav-subscribe-btn">Subscribe</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../computation-metalogic/06-metalogic.html">Mathematical Properties (Metalogic)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computational Metalogic</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/01-conceptual-foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceptual Foundations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/02-syntax.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Syntax (Grammar)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/03-deduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Deduction System</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/04-semantics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Semantics and Model Theory</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/05-translation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Translation and Expressive Power</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/06-metalogic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Mathematical Properties (Metalogic)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computation-metalogic/07-conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mathematical-properties-metalogic" id="toc-mathematical-properties-metalogic" class="nav-link active" data-scroll-target="#mathematical-properties-metalogic">Mathematical Properties (Metalogic)</a></li>
+  <li><a href="#problem-sets" id="toc-problem-sets" class="nav-link" data-scroll-target="#problem-sets">Problem Sets</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mathematical Properties (Metalogic)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mathematical-properties-metalogic" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-properties-metalogic">Mathematical Properties (Metalogic)</h2>
+<p><strong>Scope:</strong> This section synthesizes the core metalogical results: the mathematical properties of the logical system itself. We strictly follow Theodore Sider’s <em>Logic for Philosophy</em> to articulate the bridge between proof-theoretic (⊢) and model-theoretic (⊨) conceptions of logic, focusing on Soundness, Completeness, Compactness, and the limitative result of Undecidability for First-Order Logic (FOL).</p>
+<ul>
+<li><strong>Reading:</strong> [LPL] 18.3, 19; [TLB] 6.4, 9.4, 11; [forallx] 22, 45, 46, 48; [Sider] 2.7, 2.9, 4.5; [Velleman] 6; [Enderton] 6, 7</li>
+<li><strong>Primary Focus:</strong> <strong>[Sider] Chapter 2</strong> (Metalogic) and <strong>[Enderton] Chapter 6</strong>. Use Sider for abstract properties (Soundness, Completeness) and Enderton for machinery (<strong>Cardinality</strong>, <strong>Zorn’s Lemma</strong>).</li>
+<li><strong>Technique:</strong> Use <strong>[Velleman] Chapter 6</strong> to master the “Structured Approach” to Mathematical Induction, then <strong>[TLB] Section 6.1</strong> to see it applied to formula complexity.</li>
+</ul>
+<p><strong>Note:</strong> The specific sections in Sider (2.7 and 2.9) that describe Henkin Construction and “Maximally Consistent Sets” require significantly more time to study than the rest of the guide.</p>
+<section id="soundness" class="level4">
+<h4 class="anchored" data-anchor-id="soundness">6.1. Soundness</h4>
+<p>The <strong>Soundness Theorem</strong> establishes a deductive system’s reliability, guaranteeing that it never derives a false conclusion from true premises.</p>
+<section id="definition-and-significance" class="level5">
+<h5 class="anchored" data-anchor-id="definition-and-significance">6.1.1. Definition and Significance</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, pp.&nbsp;63, 68</li>
+</ul>
+</div>
+<p>Soundness asserts that provability implies semantic consequence: if <span class="math inline">\(\Gamma \vdash \phi\)</span>, then <span class="math inline">\(\Gamma \vDash \phi\)</span>. If we have a proof <code>(Gamma ⊢ Phi)</code>, the <code>Soundness</code> theorem guarantees we also have the semantic relationship <code>(Gamma ⊨ Phi)</code>. We can model this as a type-level implication:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Soundness: Provability implies Semantic Consequence</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Soundness</span><span class="ot"> ::</span> (<span class="dt">Gamma</span> ⊢ <span class="dt">Phi</span>) <span class="ot">-&gt;</span> (<span class="dt">Gamma</span> ⊨ <span class="dt">Phi</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Notation: <code>-&gt;</code> at the type level implies logical implication. If the premise (Provability) is true, the conclusion (Semantic Consequence) must be true.</em></p>
+<p>This property ensures the proof system is <strong>truth-preserving</strong>: every theorem generated is guaranteed to be a semantic validity (a tautology in PL or a logical truth in FOL). This allows for a powerful <strong>negative application</strong> to establish <strong>unprovability</strong>: to show that a formula is <em>not</em> a theorem (<span class="math inline">\(\nvdash \phi\)</span>), it suffices to show that it is <em>not</em> valid (<span class="math inline">\(\nvDash \phi\)</span>) by providing a single counter-model (an interpretation where the premises are true and the conclusion false).</p>
+</section>
+<section id="the-method-of-proof-mathematical-induction" class="level5">
+<h5 class="anchored" data-anchor-id="the-method-of-proof-mathematical-induction">6.1.2. The Method of Proof: Mathematical Induction</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Velleman</strong>, pp.&nbsp;273-274, 276</li>
+<li><strong>Bergmann et al.</strong>, pp.&nbsp;227-228</li>
+<li><strong>Sider</strong>, pp.&nbsp;62-69, 134</li>
+</ul>
+</div>
+<p>Moving from “doing proofs” (deduction) to “proving theorems about logic” (metatheory) requires mastery of <strong>Mathematical Induction</strong>. While Section 3.5 applied Velleman’s strategies to <em>derivation</em>, this section applies his “Structured Approach” to <em>metalogical proof</em>.</p>
+<p><strong>The Velleman Induction Protocol:</strong> To prove a universal claim about a recursive structure (e.g., “All WFFs have property P”), we treat the set of natural numbers (or formula complexity) as a domino chain.</p>
+<ol type="1">
+<li><strong>The Base Case:</strong>
+<ul>
+<li><strong>Goal:</strong> Prove the property <span class="math inline">\(P(0)\)</span> holds for the simplest elements (e.g., Atomic Formulas).</li>
+<li><strong>Method:</strong> Direct verification. Show that the property holds for formulas with 0 logical operators.</li>
+</ul></li>
+<li><strong>The Inductive Step:</strong>
+<ul>
+<li><strong>Setup:</strong> Let <span class="math inline">\(k\)</span> be an arbitrary number (representing the complexity of a formula).</li>
+<li><strong>Inductive Hypothesis (IH):</strong> <em>Assume</em> that the property <span class="math inline">\(P(k)\)</span> holds for all formulas of complexity <span class="math inline">\(k\)</span> (or less). This is your “Given.”</li>
+<li><strong>Goal:</strong> Prove that the property <span class="math inline">\(P(k+1)\)</span> must hold for formulas of complexity <span class="math inline">\(k+1\)</span>.</li>
+<li><strong>Method:</strong> Show that if the components (complexity <span class="math inline">\(k\)</span>) have the property, the compound formula (complexity <span class="math inline">\(k+1\)</span>) inherits it.</li>
+</ul></li>
+<li><strong>Conclusion:</strong>
+<ul>
+<li>By the Principle of Mathematical Induction, since <span class="math inline">\(P(0)\)</span> is true and <span class="math inline">\(P(k) \to P(k+1)\)</span>, the property <span class="math inline">\(P(n)\)</span> holds for all <span class="math inline">\(n\)</span>.</li>
+</ul></li>
+</ol>
+<p><strong>Application in Metalogic (Induction on Complexity):</strong> In logic, we replace “numbers” with “formula height” or “connective count.”</p>
+<ul>
+<li><strong>Basis Clause:</strong> Show the property holds for all sentence letters (atomic sentences).</li>
+<li><strong>Inductive Step:</strong> Assume the property holds for sentences <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>. Show that if it holds for the immediate components, it must also hold for <span class="math inline">\(\neg P\)</span>, <span class="math inline">\((P \land Q)\)</span>, and other compounds formed by the recursive definition of a sentence.</li>
+</ul>
+<p><strong>Sider’s Application (Soundness):</strong> Sider applies this framework specifically as <strong>Induction on the length of the proof</strong> to establish Soundness. This method establishes that validity is hereditary across the system’s rules.</p>
+<ul>
+<li><strong>Base Case:</strong> We must show that every <strong>axiom</strong> of the system is valid. For example, in Propositional Logic (PL), one demonstrates that every instance of axioms like <span class="math inline">\(\phi \to (\psi \to \phi)\)</span> is a tautology.</li>
+<li><strong>Inductive Step:</strong> We assume all previous proof lines are valid (the “Inductive Hypothesis”). We then demonstrate that the <strong>rules of inference</strong> (e.g., Modus Ponens) preserve validity—if the inputs are valid, the output must be valid. Since valid axioms and validity-preserving rules generate all theorems, all theorems are valid.</li>
+<li><strong>Scope of Proof:</strong> Sider provides the full inductive proof for Propositional Logic and states that the result holds equally for Predicate Logic.</li>
+</ul>
+<div class="guided-example">
+<div class="guided-example-title">
+<p>Guided Example: The Broken Engine</p>
+</div>
+<div class="guided-example-content">
+<p>Imagine you build a mechanical deductive engine. You feed it the true axioms of arithmetic, and it cranks away, generating proof after proof.</p>
+<p>Suddenly, it prints out a proof for the sentence: <code>1 = 2</code></p>
+<p>Which metalogical property has your engine just violated?</p>
+<p><em>(Hint: Does your engine have “missing truths” or did it just generate a “false positive”?)</em></p>
+</div>
+</div>
+<script src="../js/syntax-sandbox.js"></script>
+<p><syntax-sandbox title="Interactive Sandbox: False Positives" description="Explore scenarios where a logical engine might violate soundness or completeness." data-groups="[
+  { &quot;label&quot;: &quot;Variables&quot;, &quot;buttons&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;] },
+  { &quot;label&quot;: &quot;Predicates&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;F&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;G&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;R&quot;, &quot;spaceAfter&quot;: false}] },
+  { &quot;label&quot;: &quot;Connectives&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;¬&quot;, &quot;spaceAfter&quot;: false}, &quot;∧&quot;, &quot;∨&quot;, &quot;→&quot;, &quot;↔&quot;] },
+  { &quot;label&quot;: &quot;Quantifiers&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;∀&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;∃&quot;, &quot;spaceAfter&quot;: false}] },
+  { &quot;label&quot;: &quot;Syntax&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;(&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;)&quot;, &quot;spaceBefore&quot;: false}, {&quot;val&quot;: &quot;,&quot;, &quot;spaceBefore&quot;: false}] }
+]"></syntax-sandbox></p>
+</section>
+</section>
+<section id="completeness" class="level4">
+<h4 class="anchored" data-anchor-id="completeness">6.2. Completeness</h4>
+<p>The <strong>Completeness Theorem</strong> establishes a deductive system’s power, guaranteeing its capability to prove every valid logical truth.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Completeness: Semantic Consequence implies Provability</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Completeness</span><span class="ot"> ::</span> (<span class="dt">Gamma</span> ⊨ <span class="dt">Phi</span>) <span class="ot">-&gt;</span> (<span class="dt">Gamma</span> ⊢ <span class="dt">Phi</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Notation: This reverses the implication of Soundness. Semantic Consequence implies Provability.</em></p>
+<section id="definition-and-significance-1" class="level5">
+<h5 class="anchored" data-anchor-id="definition-and-significance-1">6.2.1. Definition and Significance</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, pp.&nbsp;63, 134</li>
+</ul>
+</div>
+<p>Completeness is the converse of Soundness, asserting that semantic consequence implies provability.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Completeness: Semantic Consequence implies Provability</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Completeness</span><span class="ot"> ::</span> (<span class="dt">Gamma</span> ⊨ <span class="dt">Phi</span>) <span class="ot">-&gt;</span> (<span class="dt">Gamma</span> ⊢ <span class="dt">Phi</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Formally, if a semantic relationship <code>(Gamma ⊨ Phi)</code> holds (i.e., the conclusion is true in all models of the premises), the <code>Completeness</code> theorem guarantees that a derivation <code>(Gamma ⊢ Phi)</code> exists. Formally, if <span class="math inline">\(\Gamma \vDash \phi\)</span> then <span class="math inline">\(\Gamma \vdash \phi\)</span>.</p>
+<p>This ensures the system has no “missing truths”: if a sentence is true in all models, a finite derivation exists for it. This powerful result allows us to establish provability (<span class="math inline">\(\vdash\)</span>) by reasoning entirely about models (<span class="math inline">\(\vDash\)</span>), avoiding the difficulty of constructing axiomatic proofs manually.</p>
+</section>
+<section id="the-method-of-proof-henkin-construction" class="level5">
+<h5 class="anchored" data-anchor-id="the-method-of-proof-henkin-construction">6.2.2. The Method of Proof: Henkin Construction</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, pp.&nbsp;78-84, 134</li>
+</ul>
+</div>
+<p>Sider details the “Henkin-proof” method for Completeness, relying on constructing a specific model from the language’s syntax. This construction relies heavily on the set-theoretic machinery introduced in Section 1.3.</p>
+<ul>
+<li><strong>Maximally Consistent Sets:</strong> The proof utilizes <strong>Maximal Consistent Sets</strong> of formulas. A set <span class="math inline">\(\Gamma\)</span> is consistent if <span class="math inline">\(\Gamma \nvdash \bot\)</span>; it is maximal if <span class="math inline">\(\forall \phi (\phi \in \Gamma \lor \neg \phi \in \Gamma)\)</span>.</li>
+<li><strong>Lindenbaum’s Lemma:</strong> A core lemma states that any consistent set of sentences can be extended to a maximal consistent set.
+<ul>
+<li><em>Set-Theoretic Basis:</em> This is a direct application of <strong>Zorn’s Lemma</strong> (defined in 1.3). We treat the collection of all consistent extensions as a partially ordered set (a <code>Chain</code>). Since every chain of consistent sets has an upper bound (their union), Zorn’s Lemma guarantees a <code>Maximal_Element</code> exists (Enderton, pp.&nbsp;151–159; Sider, p.&nbsp;80).</li>
+</ul></li>
+<li><strong>The Canonical Model:</strong> The proof constructs a “Canonical Model” where the domain consists of equivalence classes of terms, and the “truth” of a formula is defined by its membership in the maximal consistent set. Completeness is established by showing that if a set of sentences is consistent, it is satisfiable (has a model). Sider summarizes this result for Predicate Logic, noting that for closed first-order wffs, provability and semantic consequence coincide.</li>
+</ul>
+</section>
+</section>
+<section id="compactness" class="level4">
+<h4 class="anchored" data-anchor-id="compactness">6.3. Compactness</h4>
+<p>The <strong>Compactness Theorem</strong> describes the relationship between satisfiability and finite subsets, revealing fundamental structural properties of First-Order Logic.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>-- Compactness</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(Satisfiable Gamma) &lt;-&gt; (forall (Subset)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          (<span class="kw">if</span> (<span class="kw">and</span> (subset-of Subset Gamma) (finite? Subset))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                              (Satisfiable Subset)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Notation: This uses logical notation nested within Lisp-style parentheses. <code>&lt;-&gt;</code> represents biconditional equivalence.</em></p>
+<section id="definition" class="level5">
+<h5 class="anchored" data-anchor-id="definition">6.3.1. Definition</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, p.&nbsp;134</li>
+</ul>
+</div>
+<p>Compactness states that the semantic properties of infinite sets reduce to their finite subsets. Specifically, regarding <strong>satisfiability</strong> (where a set has a model in which all members are true), the theorem states that a set of sentences <span class="math inline">\(\Gamma\)</span> is satisfiable if and only if every <strong>finite subset</strong> of <span class="math inline">\(\Gamma\)</span> is satisfiable.</p>
+<p>As shown in the model above, the property <code>(Satisfiable Gamma)</code> is logically equivalent to the satisfiability of <em>every</em> finite subset of <span class="math inline">\(\Gamma\)</span>. This means that if every finite subset has a model, the entire infinite set must also have a model.</p>
+<p><strong>Example:</strong> Consider the set <span class="math inline">\(\Gamma = \{P_1, P_2, P_3,...\}\)</span> where <span class="math inline">\(P_n\)</span> says “There are at least <span class="math inline">\(n\)</span> things.” Every finite subset of <span class="math inline">\(\Gamma\)</span> is satisfiable (by a model with size equal to the largest <span class="math inline">\(n\)</span> in the subset). Therefore, by Compactness, the entire infinite set <span class="math inline">\(\Gamma\)</span> is satisfiable (by an infinite model).</p>
+</section>
+<section id="implications-and-expressive-limitations" class="level5">
+<h5 class="anchored" data-anchor-id="implications-and-expressive-limitations">6.3.2. Implications and Expressive Limitations</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, pp.&nbsp;134-135</li>
+</ul>
+</div>
+<p>Compactness limits FOL’s expressive power, preventing it from distinguishing between finite and infinite sets beyond specific finite cardinalities. This “expressive weakness” is the price paid for the system’s computational safety.</p>
+<ul>
+<li><strong>Latent Contradictions:</strong> Compactness implies a contradiction cannot be “latent” in an infinite set—if a set is inconsistent, the contradiction must arise within a finite number of sentences.</li>
+<li><strong>The “Zombie” Numbers:</strong> Because FOL cannot strictly define “finiteness,” it cannot distinguish between the standard natural numbers and <strong>non-standard models</strong>—structures that contain “zombie numbers” (infinite elements) but still satisfy every first-order axiom of arithmetic. The logic is simply too weak to exclude these impostors.</li>
+</ul>
+<p><syntax-sandbox title="Interactive Sandbox: Compactness &amp; Non-Standard Models" description="Experiment with latent contradictions and the limits of First-Order Logic." data-groups="[
+  { &quot;label&quot;: &quot;Variables&quot;, &quot;buttons&quot;: [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;] },
+  { &quot;label&quot;: &quot;Predicates&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;F&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;G&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;R&quot;, &quot;spaceAfter&quot;: false}] },
+  { &quot;label&quot;: &quot;Connectives&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;¬&quot;, &quot;spaceAfter&quot;: false}, &quot;∧&quot;, &quot;∨&quot;, &quot;→&quot;, &quot;↔&quot;] },
+  { &quot;label&quot;: &quot;Quantifiers&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;∀&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;∃&quot;, &quot;spaceAfter&quot;: false}] },
+  { &quot;label&quot;: &quot;Syntax&quot;, &quot;buttons&quot;: [{&quot;val&quot;: &quot;(&quot;, &quot;spaceAfter&quot;: false}, {&quot;val&quot;: &quot;)&quot;, &quot;spaceBefore&quot;: false}, {&quot;val&quot;: &quot;,&quot;, &quot;spaceBefore&quot;: false}] }
+]"></syntax-sandbox></p>
+</section>
+<section id="overcoming-expressive-limitations" class="level5">
+<h5 class="anchored" data-anchor-id="overcoming-expressive-limitations">6.3.3. Overcoming Expressive Limitations</h5>
+<p>To express concepts like “finiteness” or “infinity” purely logically, Sider explains in <strong>Chapter 5</strong> that we must adopt extended frameworks where Compactness fails.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- The "Infinity" Quantifier</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- In standard FOL, this is impossible. In extended logic:</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">ExistsInfinite</span><span class="ot"> ::</span> (<span class="dt">Object</span> <span class="ot">-&gt;</span> <span class="dt">Boolean</span>) <span class="ot">-&gt;</span> <span class="dt">Boolean</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Notation: A higher-order function signature. It takes a predicate (<code>Object -&gt; Boolean</code>) and returns a Boolean.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(define (exists-infinite? predicate domain)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">;; This function is not computable in First-Order Logic</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">&gt;</span> (<span class="kw">count</span> (<span class="kw">filter</span> predicate domain)) Finite)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Notation: <code>(filter...)</code> creates a subset satisfying the predicate. <code>(count...)</code> measures its size. Standard FOL lacks the ability to check if a count is “Infinite.”</em></p>
+<ul>
+<li><strong>Generalized Quantifiers:</strong> We can extend the vocabulary with new logical constants like <strong><span class="math inline">\(\exists^\infty\)</span></strong>. As modeled by <code>ExistsInfinite</code>, this quantifier takes a predicate and returns true iff the set of objects satisfying it is infinite. This allows for direct expression of cardinality.</li>
+<li><strong>Second-Order Logic:</strong> By allowing quantification over <em>properties</em> (sets) rather than just individuals, Second-Order Logic can distinguish between finite and infinite structures (e.g., characterizing the natural numbers). However, this increase in expressive power comes at the cost of metalogical properties: <strong>Second-Order Logic lacks both Compactness and a Complete proof system</strong>.</li>
+</ul>
+</section>
+<section id="the-löwenheim-skolem-theorems-the-leaky-abstraction" class="level5">
+<h5 class="anchored" data-anchor-id="the-löwenheim-skolem-theorems-the-leaky-abstraction">6.3.4. The Löwenheim-Skolem Theorems: The Leaky Abstraction</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Enderton</strong>, pp.&nbsp;159, 161</li>
+</ul>
+</div>
+<p><strong>Scope:</strong> While <strong>Compactness</strong> demonstrates the limitations of First-Order Logic (FOL) regarding <em>finiteness</em>, the <strong>Löwenheim-Skolem Theorems</strong> demonstrate its limitations regarding the <em>infinite</em>. This section explores the “twin sister” of Compactness, proving that FOL cannot distinguish between different sizes of infinity.</p>
+<p>If Compactness is the shield that protects finite consistency, Löwenheim-Skolem is the sword that severs logic from absolute cardinality. The <strong>Downward Löwenheim-Skolem Theorem</strong> states: <em>If a countable first-order theory has an infinite model, it must also have a countable model.</em></p>
+<p>This result creates a profound “disconnect” between the <strong>Intended Model</strong> (what we <em>think</em> we are talking about) and the <strong>Actual Models</strong> (what the axioms allow).</p>
+<ul>
+<li><p><strong>The Prerequisites (Set Theory):</strong> To understand the gravity of this theorem, one must master the definition of <strong>Cardinality</strong>. We rely on <strong>[Enderton]</strong> to define the “size” of a set, specifically the distinction between <strong>Countable</strong> sets (those that can be mapped 1-to-1 to natural numbers) and <strong>Uncountable</strong> sets. Without this set-theoretic machinery, the paradox of the theorem is invisible.</p></li>
+<li><p><strong>The Paradox (Skolem’s Paradox):</strong> Consider the set of Real Numbers (R). We know from Cantor that R is uncountable. Yet, the Löwenheim-Skolem theorem proves that if there is a consistent First-Order theory of Real Arithmetic, there must be a <em>countable</em> model of it.</p></li>
+<li><p><strong>The “Non-Standard” Problem:</strong> How can a countable model satisfy axioms that say “I am uncountable”? The answer lies in the difference between the <em>meta-perspective</em> (looking at the model from the outside) and the <em>object-perspective</em> (what the model “knows” about itself). The model contains a function it <em>calls</em> “uncountable,” but from our outside perspective, we see it misses elements.</p></li>
+</ul>
+<p>We can visualize this “leaky abstraction” computationally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode haskell code-with-copy"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- The Löwenheim-Skolem Disconnect</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- 1. The Reality (Metalogic/Set Theory)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- From [Enderton], we know absolute cardinality exists.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">RealWorld_Size</span> <span class="ot">=</span> <span class="dt">Cardinality</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ot">isCountable ::</span> <span class="dt">Set</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>  <span class="co">-- True if |Set| &lt;= aleph_0</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2. The Logic (Object Language)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- The logic only knows what it can prove via the "exists" symbol.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Theory_Definition</span> <span class="ot">=</span> <span class="dt">Sentence</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ot">hasInfiniteModel ::</span> <span class="dt">Theory</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3. The Theorem (The Downward Limit)</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- If we have an infinite model, we can "compress" it to a countable one</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">-- without breaking any logical sentences.</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ot">theorem_LS_Downward ::</span> <span class="dt">Model</span> <span class="ot">-&gt;</span> <span class="dt">Model</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>theorem_LS_Downward hugeModel <span class="ot">=</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        smallModel <span class="ot">=</span> compressToCountable hugeModel</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> (checkValidity hugeModel <span class="op">==</span> checkValidity smallModel)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">then</span> smallModel</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">else</span> <span class="fu">error</span> <span class="st">"Logic Broken"</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">-- The Skolem Paradox:</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">-- smallModel satisfies the sentence "I am Uncountable"</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">-- even though isCountable(smallModel) == True.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Mastering Löwenheim-Skolem is the final step in realizing that logic is a <em>syntactic specification</em>, not a semantic mirror of reality. Just as we can write a Java interface <code>InfiniteList</code> that is implemented by a finite class that loops, we can write logical axioms for “Uncountable Sets” that are satisfied by countable structures. This realization—that truth is relative to the model’s capacity—defines the transition to advanced Model Theory.</p>
+</section>
+</section>
+<section id="decidability-and-undecidability" class="level4">
+<h4 class="anchored" data-anchor-id="decidability-and-undecidability">6.4. Decidability and Undecidability</h4>
+<p>Metalogic investigates whether mechanical procedures (algorithms) exist to determine validity or provability.</p>
+<section id="decidability-of-propositional-logic" class="level5">
+<h5 class="anchored" data-anchor-id="decidability-of-propositional-logic">6.4.1. Decidability of Propositional Logic</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, p.&nbsp;44</li>
+</ul>
+</div>
+<p>Propositional Logic (PL) is <strong>decidable</strong>.</p>
+<ul>
+<li><strong>Mechanism:</strong> A mechanical procedure—the truth table method—exists that can determine in a finite number of steps whether any arbitrary PL formula is valid or invalid.</li>
+</ul>
+</section>
+<section id="undecidability-of-first-order-logic-churchs-theorem" class="level5">
+<h5 class="anchored" data-anchor-id="undecidability-of-first-order-logic-churchs-theorem">6.4.2. Undecidability of First-Order Logic (Church’s Theorem)</h5>
+<div class="reading-assignment">
+<ul>
+<li><strong>Sider</strong>, pp.&nbsp;134-135</li>
+</ul>
+</div>
+<p>First-Order Logic (Predicate Logic) is <strong>undecidable</strong>.</p>
+<ul>
+<li><strong>Church’s Theorem:</strong> Alonzo Church proved that the decision problem for First-Order Logic is unsolvable. No algorithm exists that can determine, for any arbitrary FOL sentence, whether it is valid or invalid. While we can semi-decide validity (prove valid formulas via Completeness), we cannot mechanically reject all invalid ones.</li>
+<li><strong>The Mechanism:</strong> To define “mechanical algorithm” rigorously, we rely on the Church-Turing Thesis. It tells us we can reduce the problem of determining validity in FOL to the Halting Problem. Since no Turing Machine can determine if an arbitrary program halts, no algorithm can determine if an arbitrary FOL sentence is valid.</li>
+<li><strong>Implication:</strong> This contrasts strictly with PL. In FOL, “establishing facts of the form <span class="math inline">\(\Gamma \nvDash \phi\)</span>” (invalidity) relies on human ingenuity to construct counter-models, as no algorithm can guarantee a result.</li>
+</ul>
+</section>
+<section id="sidebar-the-battle-for-the-meaning-of-proof" class="level5">
+<h5 class="anchored" data-anchor-id="sidebar-the-battle-for-the-meaning-of-proof">6.4.3. Sidebar: The Battle for the Meaning of Proof</h5>
+<p><strong>Hilbert’s Game vs.&nbsp;Bishop’s Algorithm</strong></p>
+<p>To understand why we care about <strong>Computability</strong> in logic, we must look at the “Foundational Crisis” of the early 20th century. This was not just a math dispute; it was a philosophical war over what it means for something to <em>exist</em>.</p>
+<p><strong>1. The Formalist Dream (David Hilbert)</strong> * <strong>The View:</strong> Mathematics is a game of symbols played according to fixed rules. The “meaning” of the symbols is irrelevant; what matters is the consistency of the system. * <strong>The Goal:</strong> Hilbert wanted to prove that mathematics was <strong>Complete</strong> (every truth is provable), <strong>Consistent</strong> (no contradictions), and <strong>Decidable</strong> (there is an algorithm to check any proof). * <strong>The Vibe:</strong> <em>“Wir müssen wissen, wir werden wissen”</em> (“We must know, we will know”). This is the <strong>Static View</strong> of logic—the view that Truth is a landscape waiting to be mapped. * <strong>In This Guide:</strong> When you read the <strong>Haskell</strong> data definitions, you are seeing the Formalist dream: a rigorous, static ontology where every object is perfectly defined.</p>
+<p><strong>2. The Constructivist Revolt (L.E.J. Brouwer &amp; Errett Bishop)</strong> * <strong>The View:</strong> Mathematics is not a game on paper; it is a dynamic activity of the human mind. You cannot claim an object exists unless you can <em>construct</em> it. * <strong>The Critique:</strong> They rejected the <strong>Law of Excluded Middle</strong> (P∨¬P). For a Constructivist, saying “It is raining or it is not raining” is empty unless you can look out the window and check. * <strong>Bishop’s “Numerical Personality”:</strong> Errett Bishop later refined this into <strong>Constructive Analysis</strong>. He argued that to prove ∃x (that x exists), you must provide a finite routine (an algorithm) to calculate x to any decimal place. * <strong>In This Guide:</strong> When you read the <strong>Clojure</strong> functions, you are performing Constructive Mathematics. You are not just asserting that a valuation <em>exists</em>; you are providing the <em>computational witness</em> to that valuation.</p>
+<p><strong>3. The Resolution (Turing &amp; Church)</strong> The debate ended with a shock. <strong>Kurt Gödel</strong> proved that Hilbert’s dream of Completeness was impossible (Incompleteness Theorems). Then, <strong>Alan Turing</strong> and <strong>Alonzo Church</strong> proved that Hilbert’s dream of Decidability was impossible (Undecidability of FOL).</p>
+<p><strong>The Irony:</strong> Hilbert lost the battle, but Computer Science won the war. * Hilbert was wrong that logic is “complete.” * But Brouwer and Bishop were right that logic is “computation.”</p>
+<p>By inventing the <strong>Turing Machine</strong> to answer Hilbert, Turing effectively formalized the Constructivist idea of a “mental execution.” Today, every computer program is a constructive proof; when your code compiles, you have effectively proved a theorem in the logic of your type system.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="problem-sets" class="level2">
+<h2 class="anchored" data-anchor-id="problem-sets">Problem Sets</h2>
+<p><syntax-sandbox problem-id="06-metalogic-prob1" title="Problem 1: Soundness &amp; Completeness" description="Analyze the system you designed in Chapter 2: <span data-interpolate='02-syntax-prob1' class='text-primary fw-bold'>[Your System]</span>. Do you believe it is Sound and Complete? Defend your architectural choices." data-groups="[
+  { &quot;label&quot;: &quot;Properties&quot;, &quot;buttons&quot;: [&quot;Soundness&quot;, &quot;Completeness&quot;] },
+  { &quot;label&quot;: &quot;Relations&quot;, &quot;buttons&quot;: [&quot;⊢&quot;, &quot;⊨&quot;] },
+  { &quot;label&quot;: &quot;Sets&quot;, &quot;buttons&quot;: [&quot;Γ&quot;, &quot;Δ&quot;, &quot;Theory&quot;, &quot;Model&quot;] },
+  { &quot;label&quot;: &quot;Sentences&quot;, &quot;buttons&quot;: [&quot;ϕ&quot;, &quot;ψ&quot;, &quot;χ&quot;] }
+]"></syntax-sandbox></p>
+<p><syntax-sandbox problem-id="06-metalogic-prob2" title="Problem 2: The Limits of Logic" description="Explain Compactness and the Löwenheim-Skolem theorems. How do these theorems limit the expressive power of First-Order Logic?" data-groups="[
+  { &quot;label&quot;: &quot;Theorems&quot;, &quot;buttons&quot;: [&quot;Compactness&quot;, &quot;Löwenheim-Skolem&quot;] },
+  { &quot;label&quot;: &quot;Functions&quot;, &quot;buttons&quot;: [&quot;isCountable&quot;, &quot;hasInfiniteModel&quot;, &quot;ExistsInfinite&quot;] },
+  { &quot;label&quot;: &quot;Sets&quot;, &quot;buttons&quot;: [&quot;Set&quot;, &quot;Theory&quot;, &quot;Model&quot;, &quot;ℵ₀&quot;] },
+  { &quot;label&quot;: &quot;Relations&quot;, &quot;buttons&quot;: [&quot;<&quot;, &quot;>&quot;, &quot;=&quot;, &quot;≤&quot;, &quot;≥&quot;] }
+]"></syntax-sandbox></p>
+<p><a href="../computation-metalogic/07-conclusion.html">Continue to Part 7: Conclusion →</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/thing\.rodeo");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
