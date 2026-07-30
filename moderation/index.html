@@ -172,8 +172,28 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>This dashboard allows authorized administrators to manage cohort submissions. If you are not an administrator, the backend edge relay will mathematically reject your requests regardless of what buttons you click here.</p>
-<div id="admin-auth-warning" class="alert alert-warning mt-4">
-<p>Loading authentication status…</p>
+<div id="admin-auth-warning" class="mt-4">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Authentication Required
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access <strong>only</strong> to the specific repository you select during installation.</p>
+<ol type="1">
+<li>Click the button below to authenticate.</li>
+<li>If this is your first time, you will be prompted to install the App. <strong>Select a brand new, empty, private repository</strong> dedicated to this course.</li>
+<li>The app will automatically sync your solutions back to this single, isolated repository.</li>
+</ol>
+<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">
+Install &amp; Authenticate
+</button>
+</div>
+</div>
 </div>
 <div id="admin-panel" class="card mb-4 mt-4" style="display: none;">
 <div class="card-header bg-danger text-white">
@@ -209,8 +229,7 @@ ul.task-list li input[type="checkbox"] {
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem('tl_study_token');
     if (!token) {
-        document.getElementById('admin-auth-warning').textContent = "You are not authenticated via GitHub OAuth. Please log in first.";
-        document.getElementById('admin-auth-warning').className = "alert alert-danger mt-4";
+        document.getElementById('admin-auth-warning').style.display = 'block';
         return;
     }
     
