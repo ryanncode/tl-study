@@ -7,12 +7,14 @@ project:
     - "versions.json"
     - "cohort_config.json"
     - "archive/"
+    - "CNAME"
 
 website:
   title: "Thinghood Limited"
-  site-url: "https://thing.rodeo"
+  site-url: "https://study.thing.rodeo"
   search: false
   navbar:
+    title-href: "https://thing.rodeo/"
     left:
       - text: "Study"
         href: "https://study.thing.rodeo/"
