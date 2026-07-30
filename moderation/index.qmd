@@ -5,8 +5,8 @@ title: "Admin Moderation Dashboard"
 This dashboard allows authorized administrators to manage cohort submissions.
 If you are not an administrator, the backend edge relay will mathematically reject your requests regardless of what buttons you click here.
 
-<div id="admin-auth-warning" class="alert alert-warning mt-4">
-  Loading authentication status...
+<div id="admin-auth-warning" class="mt-4">
+  {{< include ../_includes/github-auth.qmd >}}
 </div>
 
 <div class="card mb-4 mt-4" id="admin-panel" style="display: none;">
@@ -44,8 +44,7 @@ If you are not an administrator, the backend edge relay will mathematically reje
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem('tl_study_token');
     if (!token) {
-        document.getElementById('admin-auth-warning').textContent = "You are not authenticated via GitHub OAuth. Please log in first.";
-        document.getElementById('admin-auth-warning').className = "alert alert-danger mt-4";
+        document.getElementById('admin-auth-warning').style.display = 'block';
         return;
     }
     
