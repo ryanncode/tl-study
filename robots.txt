@@ -1,1 +1,1 @@
-Sitemap: https://thing.rodeo/sitemap.xml
+Sitemap: https://study.thing.rodeo/sitemap.xml
