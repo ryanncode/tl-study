@@ -2,23 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Metalogic – Thinghood Limited</title>
+<title>Logic 101: Symbolic Logic &amp; Automated Reasoning – Thinghood Limited</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f1f4291434c6d2692507bf9a76a9b648.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-055e33e6affafb886cd39278c2ee5f2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -62,36 +59,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../js/cohort.js"></script>
 <script src="../js/priority-nav.js"></script>
 <script src="../js/home-cohorts.js"></script>
+<script src="../js/github-sync.js"></script>
+<script src="../js/syntax-sandbox.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -152,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../computation-metalogic/index.html">Computational Metalogic</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../material-logics-i/index.html">Logic 101: Symbolic Logic &amp; Automated Reasoning</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,50 +136,56 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Computational Metalogic</span></a>
+  <a href="../material-logics-i/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Logic 101: Symbolic Logic &amp; Automated Reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/01-conceptual-foundations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conceptual Foundations</span></a>
+  <a href="../material-logics-i/01-syntax-material-basis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Syntax and the Material Basis of Formalism</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/02-syntax.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Syntax (Grammar)</span></a>
+  <a href="../material-logics-i/02-official-notation-semantics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Official Notation and Algorithmic Semantics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/03-deduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Deduction System</span></a>
+  <a href="../material-logics-i/03-proof-theory-direct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Proof Theory and Direct Derivations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/04-semantics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Semantics and Model Theory</span></a>
+  <a href="../material-logics-i/04-hypothetical-reasoning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Hypothetical Reasoning and Deduction Architecture</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/05-translation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Translation and Expressive Power</span></a>
+  <a href="../material-logics-i/05-indirect-derivations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Indirect Derivations and Systematic Processing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/06-metalogic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mathematical Properties (Metalogic)</span></a>
+  <a href="../material-logics-i/06-normal-forms-machine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Normal Forms and Machine-Readable Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/07-conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conclusion</span></a>
+  <a href="../material-logics-i/07-dimacs-constraint-mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. The DIMACS Protocol and Constraint Mapping</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../material-logics-i/08-sat-heuristics-synthesis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. SAT Heuristics and Synthesis</span></a>
   </div>
 </li>
     </ul>
@@ -222,20 +198,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a>
+  <li><a href="#the-material-basis-of-computation" id="toc-the-material-basis-of-computation" class="nav-link active" data-scroll-target="#the-material-basis-of-computation">The Material Basis of Computation</a></li>
+  <li><a href="#course-progression" id="toc-course-progression" class="nav-link" data-scroll-target="#course-progression">Course Progression</a>
   <ul class="collapse">
-  <li><a href="#the-trading-zone-audience" id="toc-the-trading-zone-audience" class="nav-link" data-scroll-target="#the-trading-zone-audience">The “Trading Zone” Audience</a></li>
-  <li><a href="#methodology-literate-programming" id="toc-methodology-literate-programming" class="nav-link" data-scroll-target="#methodology-literate-programming">Methodology: Literate Programming</a></li>
+  <li><a href="#core-logic" id="toc-core-logic" class="nav-link" data-scroll-target="#core-logic">Core Logic</a></li>
+  <li><a href="#algorithmic-verification" id="toc-algorithmic-verification" class="nav-link" data-scroll-target="#algorithmic-verification">Algorithmic Verification</a></li>
   </ul></li>
-  <li><a href="#reading-list" id="toc-reading-list" class="nav-link" data-scroll-target="#reading-list">Reading List</a>
-  <ul class="collapse">
-  <li><a href="#the-philosophical-core" id="toc-the-philosophical-core" class="nav-link" data-scroll-target="#the-philosophical-core">The Philosophical Core</a></li>
-  <li><a href="#the-mathematical-substrate" id="toc-the-mathematical-substrate" class="nav-link" data-scroll-target="#the-mathematical-substrate">The Mathematical Substrate</a></li>
-  <li><a href="#the-computational-bridge" id="toc-the-computational-bridge" class="nav-link" data-scroll-target="#the-computational-bridge">The Computational Bridge</a></li>
-  <li><a href="#supplemental" id="toc-supplemental" class="nav-link" data-scroll-target="#supplemental">Supplemental</a></li>
-  </ul></li>
-  <li><a href="#guide" id="toc-guide" class="nav-link" data-scroll-target="#guide">Guide</a></li>
-  <li><a href="#project-the-formal-systems-specification" id="toc-project-the-formal-systems-specification" class="nav-link" data-scroll-target="#project-the-formal-systems-specification">Project: The Formal Systems Specification</a></li>
+  <li><a href="#connect-your-execution-environment" id="toc-connect-your-execution-environment" class="nav-link" data-scroll-target="#connect-your-execution-environment">Connect Your Execution Environment</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +213,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Computational Metalogic</h1>
+<h1 class="title">Logic 101: Symbolic Logic &amp; Automated Reasoning</h1>
 </div>
 
 
@@ -261,124 +230,35 @@ window.Quarto = {
 </header>
 
 
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The intellectual landscape of the twenty-first century is witnessing a convergence of historically distinct disciplines. The rigorous formalism of mathematical logic is merging with the algorithmic pragmatism of computer science and the conceptual depth of analytic philosophy. This convergence extends beyond overlapping interests to represent a fundamental unification of methodology. This is best exemplified by the <strong>Curry-Howard Correspondence</strong>, which posits a structural isomorphism between logical proofs and computer programs. As these fields merge, traditional methods of pedagogical transmission like static textbooks and detached lectures are proving insufficient. There is an urgent demand for a new class of educational resources that are at once rigorous, executable, and narratively rich.</p>
-<p>This guide organizes a reading pathway to prepare for <strong>Intermediate Logic</strong> at the graduate level. It bridges the gap between undergraduate logic, which typically focuses on doing proofs in a single system, and graduate metalogic, which focuses on proving theorems <em>about</em> those systems. Unlike traditional single-department reading lists, this guide adopts a <strong>Computational Metalogic</strong> approach. We approach logic as a programmable specification (Computer Science), avoiding the limitations of treating it solely as a linguistic tool (Philosophy) or a discrete structure (Math).</p>
-<section id="the-trading-zone-audience" class="level3">
-<h3 class="anchored" data-anchor-id="the-trading-zone-audience">The “Trading Zone” Audience</h3>
-<p>This guide is built for the <strong>“Trading Zone”</strong>—students operating at the intersection of Philosophy, Mathematics, and Computer Science. If you are comfortable in one of these fields but feel like an impostor in the others, this guide is for you.</p>
-<ul>
-<li><strong>For the Philosophy Student:</strong> You have mastered Natural Deduction (Fitch style) but hit a “Math Ceiling.” We use <strong>Enderton</strong> to build your set-theoretic machinery and <strong>Haskell</strong> type definitions to clarify ontological concepts that are often ambiguous in English prose. (Note: While we use Haskell for its clean syntax in this guide, Pierce’s <em>TAPL</em> uses <strong>OCaml</strong>, a related ML-family language with strict evaluation).</li>
-<li><strong>For the Computer Science Student:</strong> You can write a recursive tree-walker in your sleep but lack the historical and theoretical context of logic. We use <strong>Sider</strong> and <strong>LPL</strong> to ground your coding skills in deep metalogical theory, reframing recursion as <strong>Induction</strong> and types as <strong>Ontology</strong>.</li>
-<li><strong>For the Mathematics Student:</strong> You are comfortable with proofs but may lack the “Meta-Perspective.” We use <strong>computational pseudocode</strong> to enforce a strict separation between the Object Language (Data) and the Metalanguage (Functions), effectively solving the Use/Mention problem structurally.</li>
-</ul>
+<section id="the-material-basis-of-computation" class="level2">
+<h2 class="anchored" data-anchor-id="the-material-basis-of-computation">The Material Basis of Computation</h2>
+<p>Welcome to <strong>Logic 101: Symbolic Logic &amp; Automated Reasoning</strong>. This course bridges the material basis of computation with abstract formal logic. You will learn how abstract reasoning is physically realized in digital circuits and hardware, covering syntax, semantics, and the foundational elements of automated verification.</p>
+<p>The course employs a historical materialist framework. The development of formal logic is understood not as the descent of platonic forms from an abstract ether, but as the intellectual artifact of specific social formations, technological epochs, and shifting labor processes.</p>
 </section>
-<section id="methodology-literate-programming" class="level3">
-<h3 class="anchored" data-anchor-id="methodology-literate-programming">Methodology: Literate Programming</h3>
-<p>This guide follows Donald Knuth’s philosophy of <strong>Literate Programming</strong>. Throughout the text, you will encounter code snippets in <strong>Haskell</strong> (for defining static structures) and <strong>Clojure</strong> (for defining dynamic processes).</p>
-<ul>
-<li><strong>Do not compile this code.</strong></li>
-<li><strong>Read it as literature.</strong></li>
-</ul>
-<p>These snippets exist to provide unambiguous, formal definitions of concepts that are often slippery in natural language. They are designed for <strong>mental execution</strong>—to help you trace the precise logic of a definition or a proof strategy. By asking you to “mentally execute” this code, we are adopting the philosophical stance of <strong>Intuitionism</strong> (Brouwer) and <strong>Constructivism</strong> (Bishop). Rejecting the view of mathematical truth as a static fact awaiting discovery, these schools argue it is a dynamic mental construction. When you trace the recursion of a valuation function in your mind, you are not just learning <em>about</em> logic; you are <em>constructing</em> the proof in the only place it truly exists—your own intellect.</p>
-<hr>
+<section id="course-progression" class="level2">
+<h2 class="anchored" data-anchor-id="course-progression">Course Progression</h2>
+<section id="core-logic" class="level3">
+<h3 class="anchored" data-anchor-id="core-logic">Core Logic</h3>
+<ol type="1">
+<li><a href="../material-logics-i/01-syntax-material-basis.html">Syntax and the Material Basis of Formalism</a></li>
+<li><a href="../material-logics-i/02-official-notation-semantics.html">Official Notation and Algorithmic Semantics</a></li>
+<li><a href="../material-logics-i/03-proof-theory-direct.html">Proof Theory and Direct Derivations</a></li>
+<li><a href="../material-logics-i/04-hypothetical-reasoning.html">Hypothetical Reasoning and Deduction Architecture</a></li>
+<li><a href="../material-logics-i/05-indirect-derivations.html">Indirect Derivations and Systematic Processing</a></li>
+<li><a href="../material-logics-i/06-normal-forms-machine.html">Normal Forms and Machine-Readable Structures</a></li>
+</ol>
 </section>
-</section>
-<section id="reading-list" class="level2">
-<h2 class="anchored" data-anchor-id="reading-list">Reading List</h2>
-<p>By integrating resources from <strong>Theodore Sider</strong>, <strong>Herbert Enderton</strong>, and <strong>Donald Knuth</strong>, we aim to build a rigorous mental model of Soundness, Completeness, and Computability that is native to the modern interdisciplinary researcher. We move from the construction of the system (Syntax and Deduction) to its application (Translation) and finally to its mathematical analysis (Metalogic). We recommend a linear reading strategy that mirrors this structure: <code>1. Concepts</code> <span class="math inline">\(\to\)</span> <code>2. Syntax</code> <span class="math inline">\(\to\)</span> <code>3. Deduction</code> <span class="math inline">\(\to\)</span> <code>4. Semantics</code> <span class="math inline">\(\to\)</span> <code>5. Translation</code> <span class="math inline">\(\to\)</span> <code>6. Metalogic</code>.</p>
-<section id="the-philosophical-core" class="level3">
-<h3 class="anchored" data-anchor-id="the-philosophical-core">The Philosophical Core</h3>
-<ul>
-<li><strong>[Sider]</strong> Theodore Sider - <em>Logic for Philosophy</em>. 2010.
-<ul>
-<li><em>Role:</em> The primary textbook for the “Meta” perspective. Sider excels at defining the precise difference between <span class="math inline">\(\vdash\)</span> and <span class="math inline">\(\vDash\)</span>.</li>
-</ul></li>
-<li><strong>[LPL]</strong> Barker-Plummer, Barwise, &amp; Etchemendy - <em>Language, Proof and Logic</em> (2nd Edition). 2011.
-<ul>
-<li><em>Role:</em> The “Lab Manual” for deduction. We use it to master the Fitch system and the mechanics of translation.</li>
-</ul></li>
-<li><strong>[TLB]</strong> Bergmann et al.&nbsp;- <em>The Logic Book</em> (6th Edition). 2014.
-<ul>
-<li><em>Role:</em> The “Syntax Reference.” Its recursive definitions of WFFs are more mathematically rigorous than other texts.</li>
-</ul></li>
-<li><strong>[Negri]</strong> Sara Negri &amp; Jan von Plato - <em>Structural Proof Theory</em>. 2001.
-<ul>
-<li><em>Role:</em> The “Bridge.” We use Negri to connect the student’s prior knowledge of Natural Deduction (Fitch style) to the rigorous Sequent Calculus (<span class="math inline">\(\Gamma \vdash \phi\)</span>) used in advanced metalogic. Note that while Negri focuses on Gentzen-style derivation trees rather than Fitch’s vertical bars, the structural concepts are isomorphic.</li>
-</ul></li>
-</ul>
-</section>
-<section id="the-mathematical-substrate" class="level3">
-<h3 class="anchored" data-anchor-id="the-mathematical-substrate">The Mathematical Substrate</h3>
-<ul>
-<li><strong>[Enderton]</strong> Herbert B. Enderton - <em>Elements of Set Theory</em>. 1977.
-<ul>
-<li><em>Role:</em> The foundation. We use it to build the set-theoretic machinery (Relations, Functions, Cardinality) required for Model Theory.</li>
-</ul></li>
-<li><strong>[Velleman]</strong> Daniel J. Velleman - <em>How to Prove It: A Structured Approach</em> (3rd Edition). 2019.
-<ul>
-<li><em>Role:</em> The “Debugger.” Velleman’s structured approach to proof strategy is essentially a recursive search algorithm (p.&nbsp;ix).</li>
-</ul></li>
-</ul>
-</section>
-<section id="the-computational-bridge" class="level3">
-<h3 class="anchored" data-anchor-id="the-computational-bridge">The Computational Bridge</h3>
-<ul>
-<li><strong>[SICP]</strong> Abelson, Sussman, &amp; Sussman - <em>Structure and Interpretation of Computer Programs</em>. 1996.
-<ul>
-<li><em>Role:</em> The “Old Testament” of Computational Logic. It justifies our “Procedural Epistemology”—the idea that we learn logic by building the machinery of logic.</li>
-</ul></li>
-<li><strong>[TAPL]</strong> Benjamin C. Pierce - <em>Types and Programming Languages</em>. 2002.
-<ul>
-<li><em>Role:</em> The “New Testament” of Type Theory. It bridges the gap between <strong>Logical Syntax</strong> and <strong>Computer Science Types</strong>, providing the rigorous vocabulary required to discuss syntax trees.</li>
-</ul></li>
-</ul>
-</section>
-<section id="supplemental" class="level3">
-<h3 class="anchored" data-anchor-id="supplemental">Supplemental</h3>
-<ul>
-<li><strong>[forallx]</strong> Zach et al.&nbsp;- <em>forallx: Calgary</em>. 2025.
-<ul>
-<li><em>Role:</em> The “Safety Net.” A high-quality open-source supplement. If Sider’s density proves too difficult, read the corresponding chapter in <em>forallx</em> first.</li>
-</ul></li>
-</ul>
-<section id="expanded-computer-science-coverage" class="level4">
-<h4 class="anchored" data-anchor-id="expanded-computer-science-coverage">Expanded Computer Science Coverage</h4>
-<div class="reading-assignment">
-<ul>
-<li><strong>Abelson &amp; Sussman</strong>, pp.&nbsp;192-228, 492-518, 522-526</li>
-<li><strong>Pierce</strong>, pp.&nbsp;23-44, 95-98, 108-109</li>
-</ul>
-</div>
-<ul>
-<li><strong>[SICP] Structure and Interpretation of Computer Programs</strong>
-<ul>
-<li>It provides the deep theory behind our treatment of <strong>Semantics</strong> and <strong>Valuation</strong>.</li>
-<li><strong>Key Concepts:</strong>
-<ul>
-<li><strong>Symbolic Data:</strong> The structural analogue to “Logical Derivation”.</li>
-<li><strong>Metalinguistic Abstraction:</strong> The explicit instruction on how to write an eval function, which corresponds to the “Valuation Function” in metalogic.</li>
-<li><strong>Data as Programs:</strong> This grounds the Lisp concept of “homoiconicity” (code is data), the computational equivalent of the Gödelian insight that logical formulas are mathematical objects that can be manipulated.</li>
-</ul></li>
-</ul></li>
-<li><strong>[TAPL] Types and Programming Languages</strong>
-<ul>
-<li>It serves as the authority for our type definitions. <em>Note: Pierce implements these in <strong>OCaml</strong> (Strict/Call-by-Value), whereas this guide uses <strong>Haskell</strong> (Lazy/Call-by-Need) for its cleaner conceptual syntax. We abstract away these evaluation differences to focus on the static type structure.</em></li>
-<li><strong>Key Concepts:</strong>
-<ul>
-<li><strong>Inductive Definitions:</strong> The definitive treatment of defining terms inductively, proving why <code>data WFF =...</code> is a rigorous mathematical definition.</li>
-<li><strong>Safety = Progress + Preservation:</strong> The modern computational parallel to logical “Soundness”.</li>
-<li><strong>The Curry-Howard Correspondence:</strong> The essential concept for interdisciplinary students, demonstrating that “Proof Theory” in logic is isomorphic to “Type Checking” in Computer Science.</li>
-</ul></li>
-</ul></li>
-</ul>
-<hr>
+<section id="algorithmic-verification" class="level3">
+<h3 class="anchored" data-anchor-id="algorithmic-verification">Algorithmic Verification</h3>
+<ol start="7" type="1">
+<li><a href="../material-logics-i/07-dimacs-constraint-mapping.html">The DIMACS Protocol and Constraint Mapping</a></li>
+<li><a href="../material-logics-i/08-sat-heuristics-synthesis.html">SAT Heuristics and Synthesis</a></li>
+</ol>
 </section>
 </section>
-</section>
-<section id="guide" class="level2">
-<h2 class="anchored" data-anchor-id="guide">Guide</h2>
+<section id="connect-your-execution-environment" class="level2">
+<h2 class="anchored" data-anchor-id="connect-your-execution-environment">Connect Your Execution Environment</h2>
+<p>To participate in the problem-posing exercises and the final SAT Solver Challenge, you must connect your GitHub account.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -400,11 +280,8 @@ Install &amp; Authenticate
 </button>
 </div>
 </div>
-</section>
-<section id="project-the-formal-systems-specification" class="level2">
-<h2 class="anchored" data-anchor-id="project-the-formal-systems-specification">Project: The Formal Systems Specification</h2>
-<p>Over the next 7 chapters, you will build your own toy formal language and deductive engine from scratch. At the end of this curriculum, your answers will compile into a complete architectural manifesto.</p>
-<p><a href="../computation-metalogic/01-conceptual-foundations.html">Begin the Project <span class="math inline">\(\rightarrow\)</span></a></p>
+<hr>
+<p><a href="../material-logics-i/01-syntax-material-basis.html">Begin Week 1 ➔</a></p>
 
 
 </section>

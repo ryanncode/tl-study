@@ -2,23 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Metalogic – Thinghood Limited</title>
+<title>Quinean Foundations &amp; Categorical Semantics – Thinghood Limited</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f1f4291434c6d2692507bf9a76a9b648.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-055e33e6affafb886cd39278c2ee5f2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -62,36 +59,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../js/cohort.js"></script>
 <script src="../js/priority-nav.js"></script>
 <script src="../js/home-cohorts.js"></script>
+<script src="../js/github-sync.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -152,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../computation-metalogic/index.html">Computational Metalogic</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nf-set-theory/index.html">Quinean Foundations &amp; Categorical Semantics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,50 +135,56 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Computational Metalogic</span></a>
+  <a href="../nf-set-theory/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Quinean Foundations &amp; Categorical Semantics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/01-conceptual-foundations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conceptual Foundations</span></a>
+  <a href="../nf-set-theory/01-topology-transclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Topology and Transclusion</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/02-syntax.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Syntax (Grammar)</span></a>
+  <a href="../nf-set-theory/02-quine-math-logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Quine’s Mathematical Logic and Stratification</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/03-deduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Deduction System</span></a>
+  <a href="../nf-set-theory/03-hailperin-axioms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Hailperin’s Finite Axiomatization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/04-semantics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Semantics and Model Theory</span></a>
+  <a href="../nf-set-theory/04-specker-orey-jensen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. The Axiom of Choice Crisis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/05-translation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Translation and Expressive Power</span></a>
+  <a href="../nf-set-theory/05-forster-holmes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Untyped Universes (Forster &amp; Holmes)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/06-metalogic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mathematical Properties (Metalogic)</span></a>
+  <a href="../nf-set-theory/06-mac-lane-lawvere.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Mac Lane, Lawvere, and Foundational Mappings</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computation-metalogic/07-conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conclusion</span></a>
+  <a href="../nf-set-theory/07-lambek-scott.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Higher-Order Logic (Lambek &amp; Scott), Barr, and Wells</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nf-set-theory/08-mclarty-forster-stratified.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Stratified Semantics (McLarty &amp; Forster)</span></a>
   </div>
 </li>
     </ul>
@@ -222,20 +197,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a>
+  <li><a href="#building-the-monistic-universe" id="toc-building-the-monistic-universe" class="nav-link active" data-scroll-target="#building-the-monistic-universe">Building the Monistic Universe</a>
   <ul class="collapse">
-  <li><a href="#the-trading-zone-audience" id="toc-the-trading-zone-audience" class="nav-link" data-scroll-target="#the-trading-zone-audience">The “Trading Zone” Audience</a></li>
-  <li><a href="#methodology-literate-programming" id="toc-methodology-literate-programming" class="nav-link" data-scroll-target="#methodology-literate-programming">Methodology: Literate Programming</a></li>
-  </ul></li>
-  <li><a href="#reading-list" id="toc-reading-list" class="nav-link" data-scroll-target="#reading-list">Reading List</a>
+  <li><a href="#the-goal-formalizing-an-nf-categorical-ontology" id="toc-the-goal-formalizing-an-nf-categorical-ontology" class="nav-link" data-scroll-target="#the-goal-formalizing-an-nf-categorical-ontology">The Goal: Formalizing an NF Categorical Ontology</a></li>
+  <li><a href="#connect-your-execution-environment-the-digital-garden" id="toc-connect-your-execution-environment-the-digital-garden" class="nav-link" data-scroll-target="#connect-your-execution-environment-the-digital-garden">Connect Your Execution Environment: The Digital Garden</a></li>
+  <li><a href="#chapter-progression" id="toc-chapter-progression" class="nav-link" data-scroll-target="#chapter-progression">Chapter Progression</a>
   <ul class="collapse">
-  <li><a href="#the-philosophical-core" id="toc-the-philosophical-core" class="nav-link" data-scroll-target="#the-philosophical-core">The Philosophical Core</a></li>
-  <li><a href="#the-mathematical-substrate" id="toc-the-mathematical-substrate" class="nav-link" data-scroll-target="#the-mathematical-substrate">The Mathematical Substrate</a></li>
-  <li><a href="#the-computational-bridge" id="toc-the-computational-bridge" class="nav-link" data-scroll-target="#the-computational-bridge">The Computational Bridge</a></li>
-  <li><a href="#supplemental" id="toc-supplemental" class="nav-link" data-scroll-target="#supplemental">Supplemental</a></li>
+  <li><a href="#the-epistemology-of-the-web" id="toc-the-epistemology-of-the-web" class="nav-link" data-scroll-target="#the-epistemology-of-the-web">The Epistemology of the Web</a></li>
+  <li><a href="#quinean-foundations" id="toc-quinean-foundations" class="nav-link" data-scroll-target="#quinean-foundations">Quinean Foundations</a></li>
+  <li><a href="#categorical-semantics" id="toc-categorical-semantics" class="nav-link" data-scroll-target="#categorical-semantics">Categorical Semantics</a></li>
   </ul></li>
-  <li><a href="#guide" id="toc-guide" class="nav-link" data-scroll-target="#guide">Guide</a></li>
-  <li><a href="#project-the-formal-systems-specification" id="toc-project-the-formal-systems-specification" class="nav-link" data-scroll-target="#project-the-formal-systems-specification">Project: The Formal Systems Specification</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +216,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Computational Metalogic</h1>
+<h1 class="title">Quinean Foundations &amp; Categorical Semantics</h1>
 </div>
 
 
@@ -261,124 +233,30 @@ window.Quarto = {
 </header>
 
 
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The intellectual landscape of the twenty-first century is witnessing a convergence of historically distinct disciplines. The rigorous formalism of mathematical logic is merging with the algorithmic pragmatism of computer science and the conceptual depth of analytic philosophy. This convergence extends beyond overlapping interests to represent a fundamental unification of methodology. This is best exemplified by the <strong>Curry-Howard Correspondence</strong>, which posits a structural isomorphism between logical proofs and computer programs. As these fields merge, traditional methods of pedagogical transmission like static textbooks and detached lectures are proving insufficient. There is an urgent demand for a new class of educational resources that are at once rigorous, executable, and narratively rich.</p>
-<p>This guide organizes a reading pathway to prepare for <strong>Intermediate Logic</strong> at the graduate level. It bridges the gap between undergraduate logic, which typically focuses on doing proofs in a single system, and graduate metalogic, which focuses on proving theorems <em>about</em> those systems. Unlike traditional single-department reading lists, this guide adopts a <strong>Computational Metalogic</strong> approach. We approach logic as a programmable specification (Computer Science), avoiding the limitations of treating it solely as a linguistic tool (Philosophy) or a discrete structure (Math).</p>
-<section id="the-trading-zone-audience" class="level3">
-<h3 class="anchored" data-anchor-id="the-trading-zone-audience">The “Trading Zone” Audience</h3>
-<p>This guide is built for the <strong>“Trading Zone”</strong>—students operating at the intersection of Philosophy, Mathematics, and Computer Science. If you are comfortable in one of these fields but feel like an impostor in the others, this guide is for you.</p>
-<ul>
-<li><strong>For the Philosophy Student:</strong> You have mastered Natural Deduction (Fitch style) but hit a “Math Ceiling.” We use <strong>Enderton</strong> to build your set-theoretic machinery and <strong>Haskell</strong> type definitions to clarify ontological concepts that are often ambiguous in English prose. (Note: While we use Haskell for its clean syntax in this guide, Pierce’s <em>TAPL</em> uses <strong>OCaml</strong>, a related ML-family language with strict evaluation).</li>
-<li><strong>For the Computer Science Student:</strong> You can write a recursive tree-walker in your sleep but lack the historical and theoretical context of logic. We use <strong>Sider</strong> and <strong>LPL</strong> to ground your coding skills in deep metalogical theory, reframing recursion as <strong>Induction</strong> and types as <strong>Ontology</strong>.</li>
-<li><strong>For the Mathematics Student:</strong> You are comfortable with proofs but may lack the “Meta-Perspective.” We use <strong>computational pseudocode</strong> to enforce a strict separation between the Object Language (Data) and the Metalanguage (Functions), effectively solving the Use/Mention problem structurally.</li>
-</ul>
+<section id="building-the-monistic-universe" class="level1">
+<h1>Building the Monistic Universe</h1>
+<p>This learning area focuses strictly on the mathematical and logical structures required to formalize a Monistic Universe, which is a single, flat, self-containing totality.</p>
+<p>We will achieve this through an exhaustive analysis of <strong>Quine’s New Foundations (NF) Set Theory</strong> and the structural mapping provided by <strong>Categorical Semantics</strong>.</p>
+<section id="the-goal-formalizing-an-nf-categorical-ontology" class="level2">
+<h2 class="anchored" data-anchor-id="the-goal-formalizing-an-nf-categorical-ontology">The Goal: Formalizing an NF Categorical Ontology</h2>
+<p>Traditional, standard ontologies (built on Zermelo-Fraenkel set theory) rely on strict, top-down hierarchies. They mathematically forbid a “universal set” (a category that contains itself) because of the Axiom of Foundation and Russell’s Paradox. In standard systems, the Category of all Sets is a proper class, not a set, preventing you from treating the universe as a single, manipulated object.</p>
+<p>In this course, your problem sets will culminate in the construction of a <strong>Machine-Readable NF Categorical Ontology (JSON)</strong>.</p>
+<p>However, before we map JSON, we must understand the logical and topological boundaries of the universe. The course progresses through three phases:</p>
+<ol type="1">
+<li><strong>Topology and Transclusion</strong>: Understanding the epistemology of the idealized web (unmediated operational inclusion) vs.&nbsp;standard hierarchical file systems.</li>
+<li><strong>First-Order Logic</strong>: Manually constructing the finite axioms (Hailperin) and stratification rules (Quine) that mathematically authorize this flat ontology.</li>
+<li><strong>The JSON Pivot</strong>: Translating these semantic rules into JSON, the perfect computational medium for modeling a flat, self-referential graph without spatial recursion.</li>
+</ol>
 </section>
-<section id="methodology-literate-programming" class="level3">
-<h3 class="anchored" data-anchor-id="methodology-literate-programming">Methodology: Literate Programming</h3>
-<p>This guide follows Donald Knuth’s philosophy of <strong>Literate Programming</strong>. Throughout the text, you will encounter code snippets in <strong>Haskell</strong> (for defining static structures) and <strong>Clojure</strong> (for defining dynamic processes).</p>
-<ul>
-<li><strong>Do not compile this code.</strong></li>
-<li><strong>Read it as literature.</strong></li>
-</ul>
-<p>These snippets exist to provide unambiguous, formal definitions of concepts that are often slippery in natural language. They are designed for <strong>mental execution</strong>—to help you trace the precise logic of a definition or a proof strategy. By asking you to “mentally execute” this code, we are adopting the philosophical stance of <strong>Intuitionism</strong> (Brouwer) and <strong>Constructivism</strong> (Bishop). Rejecting the view of mathematical truth as a static fact awaiting discovery, these schools argue it is a dynamic mental construction. When you trace the recursion of a valuation function in your mind, you are not just learning <em>about</em> logic; you are <em>constructing</em> the proof in the only place it truly exists—your own intellect.</p>
-<hr>
-</section>
-</section>
-<section id="reading-list" class="level2">
-<h2 class="anchored" data-anchor-id="reading-list">Reading List</h2>
-<p>By integrating resources from <strong>Theodore Sider</strong>, <strong>Herbert Enderton</strong>, and <strong>Donald Knuth</strong>, we aim to build a rigorous mental model of Soundness, Completeness, and Computability that is native to the modern interdisciplinary researcher. We move from the construction of the system (Syntax and Deduction) to its application (Translation) and finally to its mathematical analysis (Metalogic). We recommend a linear reading strategy that mirrors this structure: <code>1. Concepts</code> <span class="math inline">\(\to\)</span> <code>2. Syntax</code> <span class="math inline">\(\to\)</span> <code>3. Deduction</code> <span class="math inline">\(\to\)</span> <code>4. Semantics</code> <span class="math inline">\(\to\)</span> <code>5. Translation</code> <span class="math inline">\(\to\)</span> <code>6. Metalogic</code>.</p>
-<section id="the-philosophical-core" class="level3">
-<h3 class="anchored" data-anchor-id="the-philosophical-core">The Philosophical Core</h3>
-<ul>
-<li><strong>[Sider]</strong> Theodore Sider - <em>Logic for Philosophy</em>. 2010.
-<ul>
-<li><em>Role:</em> The primary textbook for the “Meta” perspective. Sider excels at defining the precise difference between <span class="math inline">\(\vdash\)</span> and <span class="math inline">\(\vDash\)</span>.</li>
-</ul></li>
-<li><strong>[LPL]</strong> Barker-Plummer, Barwise, &amp; Etchemendy - <em>Language, Proof and Logic</em> (2nd Edition). 2011.
-<ul>
-<li><em>Role:</em> The “Lab Manual” for deduction. We use it to master the Fitch system and the mechanics of translation.</li>
-</ul></li>
-<li><strong>[TLB]</strong> Bergmann et al.&nbsp;- <em>The Logic Book</em> (6th Edition). 2014.
-<ul>
-<li><em>Role:</em> The “Syntax Reference.” Its recursive definitions of WFFs are more mathematically rigorous than other texts.</li>
-</ul></li>
-<li><strong>[Negri]</strong> Sara Negri &amp; Jan von Plato - <em>Structural Proof Theory</em>. 2001.
-<ul>
-<li><em>Role:</em> The “Bridge.” We use Negri to connect the student’s prior knowledge of Natural Deduction (Fitch style) to the rigorous Sequent Calculus (<span class="math inline">\(\Gamma \vdash \phi\)</span>) used in advanced metalogic. Note that while Negri focuses on Gentzen-style derivation trees rather than Fitch’s vertical bars, the structural concepts are isomorphic.</li>
-</ul></li>
-</ul>
-</section>
-<section id="the-mathematical-substrate" class="level3">
-<h3 class="anchored" data-anchor-id="the-mathematical-substrate">The Mathematical Substrate</h3>
-<ul>
-<li><strong>[Enderton]</strong> Herbert B. Enderton - <em>Elements of Set Theory</em>. 1977.
-<ul>
-<li><em>Role:</em> The foundation. We use it to build the set-theoretic machinery (Relations, Functions, Cardinality) required for Model Theory.</li>
-</ul></li>
-<li><strong>[Velleman]</strong> Daniel J. Velleman - <em>How to Prove It: A Structured Approach</em> (3rd Edition). 2019.
-<ul>
-<li><em>Role:</em> The “Debugger.” Velleman’s structured approach to proof strategy is essentially a recursive search algorithm (p.&nbsp;ix).</li>
-</ul></li>
-</ul>
-</section>
-<section id="the-computational-bridge" class="level3">
-<h3 class="anchored" data-anchor-id="the-computational-bridge">The Computational Bridge</h3>
-<ul>
-<li><strong>[SICP]</strong> Abelson, Sussman, &amp; Sussman - <em>Structure and Interpretation of Computer Programs</em>. 1996.
-<ul>
-<li><em>Role:</em> The “Old Testament” of Computational Logic. It justifies our “Procedural Epistemology”—the idea that we learn logic by building the machinery of logic.</li>
-</ul></li>
-<li><strong>[TAPL]</strong> Benjamin C. Pierce - <em>Types and Programming Languages</em>. 2002.
-<ul>
-<li><em>Role:</em> The “New Testament” of Type Theory. It bridges the gap between <strong>Logical Syntax</strong> and <strong>Computer Science Types</strong>, providing the rigorous vocabulary required to discuss syntax trees.</li>
-</ul></li>
-</ul>
-</section>
-<section id="supplemental" class="level3">
-<h3 class="anchored" data-anchor-id="supplemental">Supplemental</h3>
-<ul>
-<li><strong>[forallx]</strong> Zach et al.&nbsp;- <em>forallx: Calgary</em>. 2025.
-<ul>
-<li><em>Role:</em> The “Safety Net.” A high-quality open-source supplement. If Sider’s density proves too difficult, read the corresponding chapter in <em>forallx</em> first.</li>
-</ul></li>
-</ul>
-<section id="expanded-computer-science-coverage" class="level4">
-<h4 class="anchored" data-anchor-id="expanded-computer-science-coverage">Expanded Computer Science Coverage</h4>
-<div class="reading-assignment">
-<ul>
-<li><strong>Abelson &amp; Sussman</strong>, pp.&nbsp;192-228, 492-518, 522-526</li>
-<li><strong>Pierce</strong>, pp.&nbsp;23-44, 95-98, 108-109</li>
-</ul>
-</div>
-<ul>
-<li><strong>[SICP] Structure and Interpretation of Computer Programs</strong>
-<ul>
-<li>It provides the deep theory behind our treatment of <strong>Semantics</strong> and <strong>Valuation</strong>.</li>
-<li><strong>Key Concepts:</strong>
-<ul>
-<li><strong>Symbolic Data:</strong> The structural analogue to “Logical Derivation”.</li>
-<li><strong>Metalinguistic Abstraction:</strong> The explicit instruction on how to write an eval function, which corresponds to the “Valuation Function” in metalogic.</li>
-<li><strong>Data as Programs:</strong> This grounds the Lisp concept of “homoiconicity” (code is data), the computational equivalent of the Gödelian insight that logical formulas are mathematical objects that can be manipulated.</li>
-</ul></li>
-</ul></li>
-<li><strong>[TAPL] Types and Programming Languages</strong>
-<ul>
-<li>It serves as the authority for our type definitions. <em>Note: Pierce implements these in <strong>OCaml</strong> (Strict/Call-by-Value), whereas this guide uses <strong>Haskell</strong> (Lazy/Call-by-Need) for its cleaner conceptual syntax. We abstract away these evaluation differences to focus on the static type structure.</em></li>
-<li><strong>Key Concepts:</strong>
-<ul>
-<li><strong>Inductive Definitions:</strong> The definitive treatment of defining terms inductively, proving why <code>data WFF =...</code> is a rigorous mathematical definition.</li>
-<li><strong>Safety = Progress + Preservation:</strong> The modern computational parallel to logical “Soundness”.</li>
-<li><strong>The Curry-Howard Correspondence:</strong> The essential concept for interdisciplinary students, demonstrating that “Proof Theory” in logic is isomorphic to “Type Checking” in Computer Science.</li>
-</ul></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-</section>
-</section>
-<section id="guide" class="level2">
-<h2 class="anchored" data-anchor-id="guide">Guide</h2>
+<section id="connect-your-execution-environment-the-digital-garden" class="level2">
+<h2 class="anchored" data-anchor-id="connect-your-execution-environment-the-digital-garden">Connect Your Execution Environment: The Digital Garden</h2>
+<p>To participate in the problem-posing exercises, you must connect your GitHub account. Unlike standard learning platforms, this curriculum does not use a backend database to evaluate your answers with a rigid machine script.</p>
+<p>Instead, this platform acts as a <strong>Stateful Socratic Environment</strong>:</p>
+<ol type="1">
+<li><strong>Your Repo is a Digital Garden:</strong> Your creative proofs, essays, and ontological designs are serialized directly to a private GitHub repository that you own. As you progress, these files are synthesized into a personal, publishable artifact.</li>
+<li><strong>Stateful Narrative Progression:</strong> Your creative inputs are highly consequential. The logic you construct in early chapters will be dynamically injected into later prompts, forcing you to live with and defend your own axioms against systemic paradoxes.</li>
+<li><strong>Public Cohort Discussion:</strong> True mathematical proofs are validated by the community, not a machine. When you construct a novel proof, you will have the option to “Publish to Cohort” to debate your logic in the centralized community forum, ensuring your personal repository remains pristine.</li>
+</ol>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -401,12 +279,34 @@ Install &amp; Authenticate
 </div>
 </div>
 </section>
-<section id="project-the-formal-systems-specification" class="level2">
-<h2 class="anchored" data-anchor-id="project-the-formal-systems-specification">Project: The Formal Systems Specification</h2>
-<p>Over the next 7 chapters, you will build your own toy formal language and deductive engine from scratch. At the end of this curriculum, your answers will compile into a complete architectural manifesto.</p>
-<p><a href="../computation-metalogic/01-conceptual-foundations.html">Begin the Project <span class="math inline">\(\rightarrow\)</span></a></p>
+<section id="chapter-progression" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-progression">Chapter Progression</h2>
+<section id="the-epistemology-of-the-web" class="level3">
+<h3 class="anchored" data-anchor-id="the-epistemology-of-the-web">The Epistemology of the Web</h3>
+<ol type="1">
+<li><a href="../nf-set-theory/01-topology-transclusion.html">Topology and Transclusion</a></li>
+</ol>
+</section>
+<section id="quinean-foundations" class="level3">
+<h3 class="anchored" data-anchor-id="quinean-foundations">Quinean Foundations</h3>
+<ol start="2" type="1">
+<li><a href="../nf-set-theory/02-quine-math-logic.html">Quine’s Mathematical Logic and Stratification</a></li>
+<li><a href="../nf-set-theory/03-hailperin-axioms.html">Hailperin’s Finite Axiomatization</a></li>
+<li><a href="../nf-set-theory/04-specker-orey-jensen.html">The Axiom of Choice Crisis</a></li>
+<li><a href="../nf-set-theory/05-forster-holmes.html">Untyped Universes (Forster &amp; Holmes)</a></li>
+</ol>
+</section>
+<section id="categorical-semantics" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-semantics">Categorical Semantics</h3>
+<ol start="6" type="1">
+<li><a href="../nf-set-theory/06-mac-lane-lawvere.html">Mac Lane, Lawvere, and Foundational Mappings</a></li>
+<li><a href="../nf-set-theory/07-lambek-scott.html">Higher-Order Logic (Lambek &amp; Scott)</a></li>
+<li><a href="../nf-set-theory/08-mclarty-forster-stratified.html">Stratified Semantics (McLarty &amp; Forster)</a></li>
+</ol>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
