@@ -19,8 +19,8 @@ website:
       - text: "Study"
         href: "https://study.thing.rodeo/"
         target: _self
-      - text: "Logic"
-        href: "https://thing.rodeo/computation-metalogic/"
+      - text: "Monism"
+        href: "https://thing.rodeo/monism/"
         target: _self
       - text: "Living Syllabus"
         href: "https://thing.rodeo/living-syllabus/"
@@ -100,3 +100,11 @@ format:
           <script src="/js/cohort.js"></script>
           <script src="/js/priority-nav.js"></script>
           <script src="/js/home-cohorts.js"></script>
+    include-after-body:
+      - text: |
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var brand = document.querySelector(".navbar-brand");
+              if (brand) brand.href = "https://thing.rodeo/";
+            });
+          </script>
