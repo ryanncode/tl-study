@@ -35,10 +35,9 @@ class GitHubSync {
     getCurrentTopic() {
         const pathSegments = window.location.pathname.split('/').filter(Boolean);
         
-        // If we are on an archive page: /archive/topic_basename_hash.html
-        if (pathSegments[0] === 'archive' && pathSegments.length > 1) {
-            const archiveMatch = pathSegments[1].match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
-            if (archiveMatch) return archiveMatch[1];
+        // If we are on an archive page: /archive/<topic>/<basename>_<hash>.html
+        if (pathSegments[0] === 'archive' && pathSegments.length > 2) {
+            return pathSegments[1]; // The topic is the second segment
         }
         
         // Otherwise, the first directory in the path is the topic (e.g. /nf-set-theory/index.html)
@@ -49,9 +48,9 @@ class GitHubSync {
         const pathSegments = window.location.pathname.split('/').filter(Boolean);
         let filename = pathSegments[pathSegments.length - 1] || 'index.html';
         
-        const archiveMatch = filename.match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
+        const archiveMatch = filename.match(/^(.*)_([a-f0-9]{32})\.html$/);
         if (archiveMatch) {
-            return archiveMatch[2]; // basename
+            return archiveMatch[1]; // basename
         }
         return filename.replace('.html', '');
     }
@@ -59,8 +58,8 @@ class GitHubSync {
     getArchiveHash() {
         const pathSegments = window.location.pathname.split('/').filter(Boolean);
         let filename = pathSegments[pathSegments.length - 1] || 'index.html';
-        const archiveMatch = filename.match(/^([^_]+)_([^_]+)_([a-f0-9]+)\.html$/);
-        return archiveMatch ? archiveMatch[3] : null; // hash
+        const archiveMatch = filename.match(/^(.*)_([a-f0-9]{32})\.html$/);
+        return archiveMatch ? archiveMatch[2] : null; // hash
     }
 
     startAuthFlow() {
@@ -315,9 +314,9 @@ class GitHubSync {
         
         const isArchivedPage = window.location.pathname.includes('/archive/');
         if (isArchivedPage) {
-            window.location.href = `${topic}_${basename}_${hash}.html`;
+            window.location.href = `${basename}_${hash}.html`;
         } else {
-            window.location.href = `../archive/${topic}_${basename}_${hash}.html`;
+            window.location.href = `../archive/${topic}/${basename}_${hash}.html`;
         }
     }
 

@@ -30,43 +30,6 @@ export default {
     const origin = request.headers.get("Origin") || "";
     const corsHeaders = getCorsHeaders(origin);
 
-    // Basic Spam Prevention (Rate Limiting)
-    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    const now = Date.now();
-    
-    if (ip !== "unknown" && request.method === "POST") {
-      const record = this.rateLimitMap.get(ip) || { count: 0, lastRequest: 0, firstRequest: now };
-      
-      // Reset if it's been more than 24 hours since their first request
-      if (now - record.firstRequest > 86400000) {
-        record.count = 0;
-        record.firstRequest = now;
-      }
-
-      // Increasing timeout: 2 seconds per previous request, max 30 seconds
-      const timeoutNeeded = Math.min(record.count * 2000, 30000); 
-      const timeSinceLast = now - record.lastRequest;
-
-      if (timeSinceLast < timeoutNeeded) {
-        return new Response(JSON.stringify({ error: `Rate limit exceeded. Please wait ${Math.ceil((timeoutNeeded - timeSinceLast) / 1000)} seconds.` }), { 
-          status: 429,
-          headers: { "Content-Type": "application/json", ...corsHeaders }
-        });
-      }
-
-      // Large maximum limit per 24h window (e.g., 50 authentications)
-      if (record.count >= 50) {
-        return new Response(JSON.stringify({ error: "Maximum daily authentication limit exceeded." }), { 
-          status: 429,
-          headers: { "Content-Type": "application/json", ...corsHeaders }
-        });
-      }
-
-      record.count++;
-      record.lastRequest = now;
-      this.rateLimitMap.set(ip, record);
-    }
-
     // Handle CORS Preflight
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders });
@@ -88,6 +51,43 @@ export default {
 
       const body = await request.json();
       const postAction = body.action || action;
+
+      // Basic Spam Prevention (Rate Limiting) - Only apply to OAuth
+      const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+      const now = Date.now();
+      
+      if (ip !== "unknown" && postAction === "oauth") {
+        const record = this.rateLimitMap.get(ip) || { count: 0, lastRequest: 0, firstRequest: now };
+        
+        // Reset if it's been more than 24 hours since their first request
+        if (now - record.firstRequest > 86400000) {
+          record.count = 0;
+          record.firstRequest = now;
+        }
+
+        // Increasing timeout: 2 seconds per previous request, max 30 seconds
+        const timeoutNeeded = Math.min(record.count * 2000, 30000); 
+        const timeSinceLast = now - record.lastRequest;
+
+        if (timeSinceLast < timeoutNeeded) {
+          return new Response(JSON.stringify({ error: `Rate limit exceeded. Please wait ${Math.ceil((timeoutNeeded - timeSinceLast) / 1000)} seconds.` }), { 
+            status: 429,
+            headers: { "Content-Type": "application/json", ...corsHeaders }
+          });
+        }
+
+        // Large maximum limit per 24h window (e.g., 50 authentications)
+        if (record.count >= 50) {
+          return new Response(JSON.stringify({ error: "Maximum daily authentication limit exceeded." }), { 
+            status: 429,
+            headers: { "Content-Type": "application/json", ...corsHeaders }
+          });
+        }
+
+        record.count++;
+        record.lastRequest = now;
+        this.rateLimitMap.set(ip, record);
+      }
 
       // Route: OAuth Token Exchange
       if (postAction === "oauth") {

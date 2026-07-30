@@ -37,6 +37,14 @@ function archiveSite() {
                 const targetRelative = topic ? `${topic}/${basename}_${hash}.html` : `${basename}_${hash}.html`;
                 console.log(`[HTML Archiver] Archiving ${docKey.replace('.qmd', '.html')} to ${targetRelative}`);
                 fs.copyFileSync(sourceHtml, targetHtml);
+                
+                // Copy directly to _site/archive/ to prevent Quarto render lifecycle race condition
+                const siteArchiveDir = path.join(SITE_DIR, 'archive', topic);
+                if (!fs.existsSync(siteArchiveDir)) {
+                    fs.mkdirSync(siteArchiveDir, { recursive: true });
+                }
+                const siteTargetHtml = path.join(siteArchiveDir, `${basename}_${hash}.html`);
+                fs.copyFileSync(sourceHtml, siteTargetHtml);
             }
         } else {
             console.warn(`[HTML Archiver] Warning: Source file ${sourceHtml} not found. Quarto may not have rendered it yet.`);
