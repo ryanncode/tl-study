@@ -32,12 +32,7 @@ The course employs a historical materialist framework. The development of formal
 
 To participate in the problem-posing exercises and the final SAT Solver Challenge, you must connect your GitHub account. 
 
-::: {.callout-important}
-### Authentication Required
-To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
-
-<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
-:::
+{{< include ../_includes/github-auth.qmd >}}
 
 ---
 

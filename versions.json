@@ -109,8 +109,10 @@
       }
     },
     "nf-set-theory/index.qmd": {
-      "document_hash": "5736ac6a4dcf972c50866c77f20a1434",
-      "historical_hashes": [],
+      "document_hash": "d87ce64ed0263529a8b0fb3c4dd33869",
+      "historical_hashes": [
+        "5736ac6a4dcf972c50866c77f20a1434"
+      ],
       "problems": {}
     },
     "computation-metalogic/01-conceptual-foundations.qmd": {
@@ -149,8 +151,10 @@
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
-      "document_hash": "68de40d0506848b14ddba891f271786b",
-      "historical_hashes": [],
+      "document_hash": "832e99f2968776f6a24d4f94676b350a",
+      "historical_hashes": [
+        "68de40d0506848b14ddba891f271786b"
+      ],
       "problems": {}
     },
     "material-logics-i/01-syntax-material-basis.qmd": {
@@ -194,8 +198,10 @@
       "problems": {}
     },
     "material-logics-i/index.qmd": {
-      "document_hash": "3be46203f04363faae3c4234afbbac9d",
-      "historical_hashes": [],
+      "document_hash": "12c9b8259519c47a83ffeb4ccf0b7ae8",
+      "historical_hashes": [
+        "3be46203f04363faae3c4234afbbac9d"
+      ],
       "problems": {}
     },
     "material-logics-ii/01-propositional-to-quantified.qmd": {
@@ -239,10 +245,12 @@
       "problems": {}
     },
     "material-logics-ii/index.qmd": {
-      "document_hash": "ebcb5d5697667d66730dc47fc0b13a28",
-      "historical_hashes": [],
+      "document_hash": "b06859e631fc5f8b97dd4d65b76d0ed0",
+      "historical_hashes": [
+        "ebcb5d5697667d66730dc47fc0b13a28"
+      ],
       "problems": {}
     }
   },
-  "generated_at": "2026-07-30T17:18:57.775Z"
+  "generated_at": "2026-07-30T17:30:25.566Z"
 }

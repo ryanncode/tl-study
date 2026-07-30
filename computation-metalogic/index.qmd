@@ -87,7 +87,7 @@ By integrating resources from **Theodore Sider**, **Herbert Enderton**, and **Do
 
 ## Guide
 
-
+{{< include ../_includes/github-auth.qmd >}}
 ## Project: The Formal Systems Specification
 Over the next 7 chapters, you will build your own toy formal language and deductive engine from scratch. At the end of this curriculum, your answers will compile into a complete architectural manifesto.
 

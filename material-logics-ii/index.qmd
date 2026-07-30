@@ -32,12 +32,7 @@ This sequence utilizes a historical materialist reference frame to contextualize
 
 To participate in the problem-posing exercises and build your Formalization Portfolio, you must connect your GitHub account. 
 
-::: {.callout-important}
-### Authentication Required
-To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
-
-<button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
-:::
+{{< include ../_includes/github-auth.qmd >}}
 
 ---
 
