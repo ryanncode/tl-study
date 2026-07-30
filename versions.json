@@ -2,9 +2,7 @@
   "documents": {
     "nf-set-theory/01-topology-transclusion.qmd": {
       "document_hash": "aa700a79e6d689b5ab187dec6b9da5b9",
-      "historical_hashes": [
-        "aa700a79"
-      ],
+      "historical_hashes": [],
       "problems": {
         "topology-1-1": {
           "title": "Problem 1.1: The Failure of the Shallow Copy",
@@ -18,11 +16,7 @@
     },
     "nf-set-theory/02-quine-math-logic.qmd": {
       "document_hash": "4dd5db77325dcc451dc1c38c817327da",
-      "historical_hashes": [
-        "20c06cf9",
-        "20c06cf93fdc3a32d6eaef6213474034",
-        "66de85a8f0597dd4b4824c1432d54215"
-      ],
+      "historical_hashes": [],
       "problems": {
         "quine-2-1": {
           "title": "Problem 2.1: Resolving Russell's Paradox",
@@ -36,11 +30,7 @@
     },
     "nf-set-theory/03-hailperin-axioms.qmd": {
       "document_hash": "5c7522d63e886f269ca5b532e2465dce",
-      "historical_hashes": [
-        "31dc297f",
-        "31dc297f8fa7e06a56b6aeb580ef26aa",
-        "3111fa9bc5beb4883ad9cc06b7c62452"
-      ],
+      "historical_hashes": [],
       "problems": {
         "hailperin-3-1": {
           "title": "Problem 3.1: The Kuratowski Contradiction",
@@ -54,10 +44,7 @@
     },
     "nf-set-theory/04-specker-orey-jensen.qmd": {
       "document_hash": "5f3e4638ab25c384f2f97cf02af6313d",
-      "historical_hashes": [
-        "6914489b",
-        "6914489b543c551673e092f3e630007f"
-      ],
+      "historical_hashes": [],
       "problems": {
         "jensen-4-1": {
           "title": "Problem 4.1: Urelements vs The Empty Set",
@@ -71,10 +58,7 @@
     },
     "nf-set-theory/05-forster-holmes.qmd": {
       "document_hash": "d6071e3f4884bf35fd46cc3bd2f8ad9a",
-      "historical_hashes": [
-        "6df4061b",
-        "6df4061b100095a51691909f38b02ea8"
-      ],
+      "historical_hashes": [],
       "problems": {
         "holmes-5-1": {
           "title": "Problem 5.1: Tracking the T-Operation",
@@ -84,10 +68,7 @@
     },
     "nf-set-theory/06-mac-lane-lawvere.qmd": {
       "document_hash": "775d29c8ce7a890fc506df78612655b3",
-      "historical_hashes": [
-        "fab1c220",
-        "fab1c22053abf7477421568059cda429"
-      ],
+      "historical_hashes": [],
       "problems": {
         "maclane-6-1": {
           "title": "Problem 6.1: Morphisms vs Elements",
@@ -101,10 +82,7 @@
     },
     "nf-set-theory/07-lambek-scott.qmd": {
       "document_hash": "cc856f11b416e8d83cc86297b2ed6ddf",
-      "historical_hashes": [
-        "14ef7ea8",
-        "14ef7ea806042546273cd0f425f548ce"
-      ],
+      "historical_hashes": [],
       "problems": {
         "lambek-7-1": {
           "title": "Problem 7.1: Modeling Modus Ponens",
@@ -118,10 +96,7 @@
     },
     "nf-set-theory/08-mclarty-forster-stratified.qmd": {
       "document_hash": "02635df11df2d4225376fa8e23ef523c",
-      "historical_hashes": [
-        "cd27e3d9",
-        "cd27e3d9d455c64a2b59082f7ba5e1b6"
-      ],
+      "historical_hashes": [],
       "problems": {
         "mclarty-8-1": {
           "title": "Problem 8.1: The T-Functor JSON Property",
@@ -135,285 +110,139 @@
     },
     "nf-set-theory/index.qmd": {
       "document_hash": "5736ac6a4dcf972c50866c77f20a1434",
-      "historical_hashes": [
-        "fce8e5f3",
-        "5736ac6a"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/01-conceptual-foundations.qmd": {
       "document_hash": "20fcb9c61a42194f41964c002ff2227a",
-      "historical_hashes": [
-        "e365ea45",
-        "73e62b02",
-        "4d4e68f3",
-        "4d4e68f347c67eb989349e1846b24b0e",
-        "fea4505a8aaab3ec3d701bf5ef5040ef",
-        "796c212f6de69e094b23dc79f3917598",
-        "e818a352748fe5f0b165eaab0662695d",
-        "2b02db66c8eafb5eed2d7e8c6c2fe405",
-        "9af53d5ad924c788ab155d847d0ac788",
-        "8a69b9c27313a61af12e0b85b41d5de3",
-        "e2e633bc9a6b9f0f78e79384c40915f3",
-        "cee1b9b39420549114399335e7a7e734",
-        "4196af7b66bdd646865a56e2fb7ad654",
-        "ade31e3bf4735dd3e1e0c6d01cda5750",
-        "12b0dbdb6b4c034eed7edd84c3addc13",
-        "c32dbe21e7d76d01ebc4dcefd8ffee3a"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/02-syntax.qmd": {
       "document_hash": "c74df98830d4da30841bced514291da5",
-      "historical_hashes": [
-        "d79f8005",
-        "80faa72b",
-        "2127b714",
-        "01d3f605",
-        "5e13f085",
-        "b1b41093",
-        "c6aded6d",
-        "c6aded6de9a5f1dcbeca98e806633054",
-        "70eab94513840ccbc083bb9ef0a743cd",
-        "b422d7793e7ce742121731970ab08380",
-        "7e10d31f9bf4d816dadb2e413dd850d7",
-        "bd836c5e70a3f44a2ccd50edace452ea",
-        "36036e7f92409f18de60eb7fba46dabe",
-        "b24336d6d38b9f9423ab1e91f5895dce",
-        "9f465a3ceee8e71ee38dc6a3ecd87ccc",
-        "87d2dc078a62996020597998aa4656c5",
-        "33222bc92ab20a4f90e27b556049ff5f",
-        "f25ac9d605d58fb7edc5d2f74734e9ad"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/03-deduction.qmd": {
       "document_hash": "e4bb5aadbb94f3fba789c6979f9e720d",
-      "historical_hashes": [
-        "4b548c47",
-        "4a1c4121",
-        "3d89a852",
-        "3d89a8526dce70a205a20f27c8c8077f",
-        "1b492802e139f9b05cab8e5a0e34ff1f",
-        "316893c035e7f3cbd416af9482cd4d25",
-        "8ba35d3a413ec824e9f41cfaf21d396d",
-        "c568de3f2b72a2cd6988cdab556fe17e",
-        "9d1852241c92337ca4df1d9597d04b5e",
-        "d1fe84a039f35fb16d32f499d2fe7689",
-        "af0f4b785d5045291840d75d3458d900",
-        "e610ddcccc29804ad01cbec9214939f3",
-        "a02930c498bcc8d5b7872612bd8ec48a"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/04-semantics.qmd": {
       "document_hash": "7d7dd83cec754db094c7744de52299b7",
-      "historical_hashes": [
-        "b7be45a3",
-        "e6f32d2e",
-        "783722dd",
-        "783722dd8607816113107bfc2df95243",
-        "a9828f735839b4f3ce5a5674861ebcaf",
-        "1df7b8693a66154c5bca24595a5b6a96",
-        "68158e40e993fd62b800d274d6425718",
-        "14f4f75dfcabc2aab72eaa192753bf50",
-        "1c553e883f7a27cb1f73ee06623e4d1a",
-        "16aa5aaaa586dcb20a762fbe513a562a",
-        "26eb28683c88096c8ef9bcb24ac12044",
-        "1b46581041b20c25fa50013312520df1",
-        "0b1731b7587cb02b3c42997d8936d7d2"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/05-translation.qmd": {
       "document_hash": "2fc5282cb34ffc549051abdba14d8fc4",
-      "historical_hashes": [
-        "7af743dc",
-        "0e2bd024",
-        "359e99fe",
-        "359e99fef870f11e54d9f2983b5c1ce3",
-        "b137f75614de055d8fc4b3f5ed951afd",
-        "04a6d4cc1ee73d9443ef67b9c6a76c3e",
-        "2ffe27ffef60c2547d22e4fb2e98c90e",
-        "b02554814215761b6bb079024ba2940f",
-        "a343d93ee40330ce07dd9739f5deff31",
-        "da98de937d4b032d6da42cb71d95fcef",
-        "c7522efa222b4c0844ca29571d834504",
-        "9c8521271ca9a4701fc95feaefe71913"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/06-metalogic.qmd": {
       "document_hash": "6b7c57346ce0c17277a1c52f5e4aa159",
-      "historical_hashes": [
-        "5e32607b",
-        "cb25f8c3",
-        "252cec45",
-        "252cec45d434875aca815e5e66bd833a",
-        "5c0dc0672c25d71c23a49ad6c1b32b4c",
-        "a696de23145fe9fa67f0eb25736d5fc5",
-        "5d1abca0438426684f6262010648f6f2",
-        "9993eac2aa1478daa470afb7826af797",
-        "01565180b0ec7577bd03dd5ec7a849aa",
-        "20f768ceabc6d2a53b1fce04b0bd77bd",
-        "b98b7c781b1363c737bc14b83ef583fd",
-        "6c32e83d4848d70174dd2db497431550",
-        "23e276ce9091767e32c417fe17d739ac"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/07-conclusion.qmd": {
       "document_hash": "1d8359ff16bc6671b5f32e97c5aa98ea",
-      "historical_hashes": [
-        "0b877aa5",
-        "76cabdbe",
-        "876ef96c",
-        "876ef96c9201f179a9061dce1e6c9750",
-        "8c7bb125dec11cdf4fd61c479cc4bdc4",
-        "987f073ea13fb217f7348a5cbfe4aa2b",
-        "1481978faa915dcf86c65ee8947dd7b2",
-        "a1711f374b9d621d03bec774766e6337"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
       "document_hash": "68de40d0506848b14ddba891f271786b",
-      "historical_hashes": [
-        "2e6af052",
-        "2e6af052b4cc3c4f1fc8549f6ff6875c",
-        "6f3d46daaf1a2b083ce046c7d96d42cc",
-        "db07b8d3f6868129433a7374b0ddde18",
-        "fd47838f814b28475572058939fa20aa",
-        "ad6d00bf6e91532d20d026d91fe65c77"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/01-syntax-material-basis.qmd": {
       "document_hash": "f60a71503a7746d3bcfcde656c05819e",
-      "historical_hashes": [
-        "f60a7150"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/02-official-notation-semantics.qmd": {
       "document_hash": "550de04fd42c5cb852e2439d3dbc2052",
-      "historical_hashes": [
-        "550de04f"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/03-proof-theory-direct.qmd": {
       "document_hash": "9bfb3a965ba226e9199ac4a5159b64a5",
-      "historical_hashes": [
-        "9bfb3a96"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/04-hypothetical-reasoning.qmd": {
       "document_hash": "fac4947f9225e6f396ae09fc50844118",
-      "historical_hashes": [
-        "fac4947f"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/05-indirect-derivations.qmd": {
       "document_hash": "b3b20b501a3608ba4585fa116e0bb177",
-      "historical_hashes": [
-        "b3b20b50"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/06-normal-forms-machine.qmd": {
       "document_hash": "f18069402578248bc5eb3488f853403f",
-      "historical_hashes": [
-        "f1806940"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/07-dimacs-constraint-mapping.qmd": {
       "document_hash": "6b02b32b6929be7bfe394554e8fef111",
-      "historical_hashes": [
-        "6b02b32b"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/08-sat-heuristics-synthesis.qmd": {
       "document_hash": "738ffe3f5aed1539f47fccc0f798b480",
-      "historical_hashes": [
-        "738ffe3f"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-i/index.qmd": {
       "document_hash": "3be46203f04363faae3c4234afbbac9d",
-      "historical_hashes": [
-        "3be46203"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/01-propositional-to-quantified.qmd": {
       "document_hash": "5abd2fec2869511952684b3772b87e1e",
-      "historical_hashes": [
-        "5abd2fec"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/02-definite-descriptions.qmd": {
       "document_hash": "a6495069c7d61a94d81f3108bbe50457",
-      "historical_hashes": [
-        "a6495069"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/03-tarskian-semantics.qmd": {
       "document_hash": "e914811322612fe625af40a1c3f6e9a5",
-      "historical_hashes": [
-        "e9148113"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/04-model-checking-counter.qmd": {
       "document_hash": "f167f5b3c970abb29dbc2a40266fca5b",
-      "historical_hashes": [
-        "f167f5b3"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/05-natural-deduction-quantified.qmd": {
       "document_hash": "412cebd0b8c8649e9b325e73c5f2c5c2",
-      "historical_hashes": [
-        "412cebd0"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/06-relational-logic-identity.qmd": {
       "document_hash": "053abbe20ae4772153d5273081c13412",
-      "historical_hashes": [
-        "053abbe2"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/07-metatheory-transition-lean4.qmd": {
       "document_hash": "796c8d49d5c92bc34e02db935b410d9e",
-      "historical_hashes": [
-        "796c8d49"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/08-formalization-portfolio.qmd": {
       "document_hash": "3556ce5a409f0ca26f3bcf996fa018df",
-      "historical_hashes": [
-        "3556ce5a"
-      ],
+      "historical_hashes": [],
       "problems": {}
     },
     "material-logics-ii/index.qmd": {
       "document_hash": "ebcb5d5697667d66730dc47fc0b13a28",
-      "historical_hashes": [
-        "ebcb5d56"
-      ],
+      "historical_hashes": [],
       "problems": {}
     }
   },
-  "generated_at": "2026-07-23T16:52:24.002Z"
+  "generated_at": "2026-07-30T15:40:24.376Z"
 }
