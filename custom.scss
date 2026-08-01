@@ -204,38 +204,157 @@ textarea.form-control:focus, input.form-control:focus {
 
 /* Force stark white hamburger menu at mobile breakpoint */
 @media (max-width: 575.98px) {
+  #quarto-header > .navbar {
+    min-height: 72px !important; /* Allow the navbar to shrink on mobile */
+  }
+  #quarto-header .navbar-container {
+    min-height: 72px !important;
+    position: relative !important;
+  }
   #quarto-header .navbar-brand-container {
     order: 1 !important;
     margin-right: auto !important;
     margin-left: 0 !important;
   }
   #quarto-header .navbar-toggler {
-    order: 2 !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute !important;
+    right: 4vmin !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     border: none !important;
     padding: 0 !important;
-    margin-left: auto !important; /* Force to the right edge */
-    margin-right: 0 !important;
+    z-index: 1060 !important;
+    width: 30px !important;
+    height: 30px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    /* Hamburger should be the same off-white as Thinghood Limited so it doesn't blend into the navbar */
+    color: rgba(255, 255, 255, 0.95) !important; 
+    opacity: 1 !important;
   }
+  
   #quarto-header .navbar-toggler-icon {
-    width: 32px;
-    height: 32px;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    display: inline-block !important;
+    width: 24px !important;
+    height: 24px !important;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 12H20M4 6H20M4 18H20' stroke='%23a1a8b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border: none !important;
   }
-  /* Style the opened mobile menu so it overlays nicely */
-  #quarto-header .navbar-collapse {
-    background-color: #4a5568;
-    position: absolute;
-    top: 100px; /* Below the 100px navbar */
-    left: 0;
-    right: 0;
-    padding: 20px 4vmin;
-    z-index: 1050;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  
+  #quarto-header .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18M6 6L18 18' stroke='%23a1a8b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
   }
-  #quarto-header .navbar-nav {
-    gap: 16px;
-    align-items: flex-start !important;
+
+  #quarto-header .navbar-toggler::after {
+    display: none !important;
+  }
+  
+  /* Ghost-style Full Screen Mobile Menu Overlay */
+  #quarto-header .navbar-collapse,
+  #quarto-header .navbar-collapse.collapsing {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #4a5568 !important; /* Must perfectly match navbar slate background */
+    z-index: 99999 !important; /* Ensure it covers everything */
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    
+    /* Smooth fade in */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.4s ease, visibility 0.4s ease !important;
+  }
+  
+  #quarto-header .navbar-collapse.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* The first UL (Study, Monism, etc) */
+  #quarto-header .navbar-nav.me-auto {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 24px !important; /* Increased gap */
+    width: 100% !important;
+    margin: auto 0 !important; /* Pushes it to the absolute center vertically */
+    padding: 0 !important;
+  }
+
+  /* The second UL (Sign in, Subscribe) */
+  #quarto-header .navbar-nav.ms-auto {
+    display: flex !important;
+    flex-direction: column-reverse !important; /* Put Subscribe ON TOP of Sign in */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px 40px 20px !important; /* Bottom padding */
+  }
+
+  #quarto-header .navbar-nav .nav-item {
+    width: 100% !important; /* Make all items full width */
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  #quarto-header .navbar-collapse.show .navbar-nav .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #quarto-header .navbar-nav .nav-link {
+    font-size: 1.25rem !important; /* Larger text size matching Ghost */
+    font-weight: 600 !important;
+    text-transform: none !important;
+    color: #ffffff !important;
+    padding: 6px !important;
+    line-height: 1.4 !important;
+    text-align: center !important; /* Ensure centered links */
+  }
+
+  #quarto-header .navbar-nav.ms-auto .nav-item:last-child .nav-subscribe-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 14px 24px !important;
+    font-size: 1.125rem !important;
+    border-radius: 9999px !important;
+  }
+
+  #quarto-header .navbar-nav.ms-auto .nav-item:nth-last-child(2) .nav-link {
+    font-size: 1rem !important; /* Keep sign in slightly smaller */
+  }
+
+  /* Make sure the navbar container and brand stay visible ABOVE the full screen menu */
+  #quarto-header > .navbar,
+  #quarto-header .navbar-container,
+  #quarto-header .navbar-brand-container,
+  #quarto-header .navbar-toggler {
+    z-index: 100000 !important; 
+  }
+  
+  /* Prevent scrolling when menu is open */
+  body:has(#navbarCollapse.show) {
+    overflow: hidden !important;
   }
 }
 
