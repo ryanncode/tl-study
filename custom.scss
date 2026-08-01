@@ -290,13 +290,18 @@ textarea.form-control:focus, input.form-control:focus {
     inset: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+    height: 100dvh !important; /* Use dynamic viewport height for mobile browsers */
     background-color: #4a5568 !important; /* Must perfectly match navbar slate background */
     box-sizing: border-box !important;
     box-shadow: inset -11px 0 0 0 rgb(62, 67, 79) !important; /* Use inset shadow instead of border to bypass Dark Reader inversion bugs */
     z-index: 99999 !important; /* Ensure it covers everything */
-    padding: 0 !important;
     margin: 0 !important;
-    display: block !important; /* Rely on absolute positioning for children */
+    
+    /* Flexbox Layout to prevent overlapping on small screens */
+    display: flex !important; 
+    flex-direction: column !important;
+    padding: 80px 0 20px !important; /* Clear the top navbar and give bottom breathing room */
+    overflow-y: auto !important; /* Allow scrolling if screen is too small */
     
     /* Smooth fade in */
     opacity: 0 !important;
@@ -311,33 +316,33 @@ textarea.form-control:focus, input.form-control:focus {
 
   /* The first UL (Study, Monism, etc) perfectly centered in the screen */
   #quarto-header .navbar-nav.me-auto {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 16px !important; /* Decreased gap */
     width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: auto 0 !important; /* Flex trick: vertically centers itself and pushes ms-auto down */
+    padding: 20px 0 !important; /* Add padding in case it touches ms-auto when scrolling */
   }
 
-  /* The second UL (Sign in, Subscribe) absolutely positioned at bottom */
+  /* The second UL (Sign in, Subscribe) positioned at bottom */
   #quarto-header .navbar-nav.ms-auto {
-    position: absolute !important;
-    bottom: 20px !important;
-    left: 0 !important;
-    right: 0 !important;
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
     display: flex !important;
     flex-direction: column-reverse !important; /* Put Subscribe ON TOP of Sign in */
     align-items: center !important;
     gap: 16px !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 20px !important;
+    padding: 0 20px 20px !important;
   }
 
   #quarto-header .navbar-nav .nav-item {
