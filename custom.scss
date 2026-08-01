@@ -205,25 +205,37 @@ textarea.form-control:focus, input.form-control:focus {
 /* Force stark white hamburger menu at mobile breakpoint */
 @media (max-width: 575.98px) {
   #quarto-header > .navbar {
-    min-height: 72px !important; /* Allow the navbar to shrink on mobile */
+    min-height: 60px !important;
+    padding: 0 !important;
+    position: relative !important;
   }
   #quarto-header .navbar-container {
-    min-height: 72px !important;
-    position: relative !important;
+    min-height: 60px !important;
+    max-width: 100% !important; /* Force full width so it aligns with overlay */
+    padding: 0 16px !important; /* 16px from edges */
+    display: flex !important;
+    align-items: center !important;
   }
   #quarto-header .navbar-brand-container {
     order: 1 !important;
-    margin-right: auto !important;
-    margin-left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #quarto-header .navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #quarto-header .navbar-title {
+    font-size: 1.25rem !important; /* Restore normal size */
   }
   #quarto-header .navbar-toggler {
     display: flex !important;
     align-items: center;
     justify-content: center;
     position: absolute !important;
-    right: 4vmin !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    right: 16px !important;
+    top: 10px !important; /* Nudged up by 5px to visually center with the title text baseline */
+    margin: 0 !important;
     border: none !important;
     padding: 0 !important;
     z-index: 1060 !important;
@@ -237,23 +249,27 @@ textarea.form-control:focus, input.form-control:focus {
   }
   
   #quarto-header .navbar-toggler-icon {
-    display: inline-block !important;
-    width: 24px !important;
-    height: 24px !important;
-    background-color: transparent !important;
-    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 12H20M4 6H20M4 18H20' stroke='%23a1a8b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    border: none !important;
-  }
-  
-  #quarto-header .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18M6 6L18 18' stroke='%23a1a8b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    display: none !important; /* Hide the broken Bootstrap SVG icon */
   }
 
+  /* Use bulletproof text characters instead of fragile SVGs */
   #quarto-header .navbar-toggler::after {
-    display: none !important;
+    content: "☰" !important;
+    display: block !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    color: #cbd5e1 !important; /* Lighter grey */
+  }
+  
+  #quarto-header .navbar-toggler[aria-expanded="true"] {
+    z-index: 100001 !important;
+  }
+
+  #quarto-header .navbar-toggler[aria-expanded="true"]::after {
+    content: "✕" !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    font-weight: 200 !important;
   }
   
   /* Ghost-style Full Screen Mobile Menu Overlay */
@@ -264,13 +280,12 @@ textarea.form-control:focus, input.form-control:focus {
     width: 100vw !important;
     height: 100vh !important;
     background-color: #4a5568 !important; /* Must perfectly match navbar slate background */
+    box-sizing: border-box !important;
+    box-shadow: inset -11px 0 0 0 rgb(62, 67, 79) !important; /* Use inset shadow instead of border to bypass Dark Reader inversion bugs */
     z-index: 99999 !important; /* Ensure it covers everything */
     padding: 0 !important;
     margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: space-between !important;
+    display: block !important; /* Rely on absolute positioning for children */
     
     /* Smooth fade in */
     opacity: 0 !important;
@@ -283,32 +298,39 @@ textarea.form-control:focus, input.form-control:focus {
     visibility: visible !important;
   }
 
-  /* The first UL (Study, Monism, etc) */
+  /* The first UL (Study, Monism, etc) perfectly centered in the screen */
   #quarto-header .navbar-nav.me-auto {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 24px !important; /* Increased gap */
+    gap: 16px !important; /* Decreased gap */
     width: 100% !important;
-    margin: auto 0 !important; /* Pushes it to the absolute center vertically */
+    margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* The second UL (Sign in, Subscribe) */
+  /* The second UL (Sign in, Subscribe) absolutely positioned at bottom */
   #quarto-header .navbar-nav.ms-auto {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 0 !important;
+    right: 0 !important;
     display: flex !important;
     flex-direction: column-reverse !important; /* Put Subscribe ON TOP of Sign in */
     align-items: center !important;
-    justify-content: center !important;
     gap: 16px !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 20px 40px 20px !important; /* Bottom padding */
+    padding: 0 20px !important;
   }
 
   #quarto-header .navbar-nav .nav-item {
-    width: 100% !important; /* Make all items full width */
+    width: auto !important; /* Make items auto-width so align-items: center can center them horizontally */
     margin: 0 !important;
     padding: 0 !important;
     opacity: 0;
@@ -322,13 +344,24 @@ textarea.form-control:focus, input.form-control:focus {
   }
 
   #quarto-header .navbar-nav .nav-link {
-    font-size: 1.25rem !important; /* Larger text size matching Ghost */
+    font-size: 1rem !important; /* Smaller text size */
     font-weight: 600 !important;
     text-transform: none !important;
     color: #ffffff !important;
     padding: 6px !important;
     line-height: 1.4 !important;
     text-align: center !important; /* Ensure centered links */
+  }
+
+  #quarto-header .navbar-nav.ms-auto .nav-item:last-child {
+    width: 100% !important;
+  }
+
+  #quarto-header .navbar-nav.ms-auto .nav-item:last-child .nav-link,
+  #quarto-header .navbar-nav.ms-auto .nav-item:last-child .menu-text {
+    width: 100% !important;
+    display: block !important;
+    padding: 0 !important;
   }
 
   #quarto-header .navbar-nav.ms-auto .nav-item:last-child .nav-subscribe-btn {
