@@ -193,13 +193,24 @@ textarea.form-control:focus, input.form-control:focus {
   #quarto-header .navbar-expand-lg .navbar-nav {
     flex-direction: row;
   }
+  #quarto-header .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible !important;
+  }
   #quarto-header .navbar-expand-lg .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
+    overflow: visible !important;
   }
   #quarto-header .navbar-expand-lg .navbar-toggler {
     display: none !important;
   }
+}
+
+/* Prevent navbar text from wrapping or squishing, which breaks the JS overflow calculation */
+#quarto-header .navbar-nav .nav-link,
+#quarto-header .navbar-nav .nav-item {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 /* Force stark white hamburger menu at mobile breakpoint */
@@ -538,4 +549,60 @@ mjx-container, .math.inline {
 
 mjx-mo > mjx-c, mjx-mi > mjx-c, mjx-mn > mjx-c, mjx-ms > mjx-c, mjx-mtext > mjx-c {
   clip-path: none !important;
+}
+
+/* ------------------------------------------------------------- */
+/* Ghost Dropdown Menu Exact Output                              */
+/* ------------------------------------------------------------- */
+/* High specificity selector to crush Quarto's global white nav-link color */
+#quarto-header .navbar-nav .gh-dropdown li a.nav-link {
+	color: #15171a !important;
+	display: block;
+	line-height: 1.5;
+	padding: 7px 20px !important;
+	white-space: normal !important;
+	transition: opacity 0.2s ease;
+}
+
+/* Strip Bootstrap's grey hover background and apply text-only highlight */
+#quarto-header .navbar-nav .gh-dropdown li a.nav-link:hover,
+#quarto-header .navbar-nav .gh-dropdown li a.nav-link:focus {
+    background-color: transparent !important;
+    color: #15171a !important;
+    opacity: 0.6 !important;
+}
+
+:is(.gh-navigation, .gh-footer).has-accent-color, :root.has-light-text {
+	--color-lighter-gray: hsla(0,0%,100%,.1);
+	--color-darker-gray: #fff;
+	--color-secondary-text: hsla(0,0%,100%,.64);
+	--color-border: hsla(0,0%,100%,.15);
+	--color-dark-border: hsla(0,0%,100%,.5);
+}
+
+.gh-dropdown {
+	background-color: #fff !important;
+	border: none !important;
+	border-radius: 5px !important;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.04), 0 7px 20px -5px rgba(0,0,0,.15) !important;
+	margin-top: 24px !important;
+	opacity: 0;
+	padding: 12px 0 !important;
+	position: absolute !important;
+	right: -16px !important;
+	text-align: left;
+	top: 100%;
+	transform: translate3d(0,6px,0);
+	transition: opacity .3s, transform .2s;
+	visibility: hidden;
+	width: 200px !important;
+	z-index: 1050 !important;
+	display: block !important; /* Bootstrap uses display: none, but Ghost uses opacity/visibility */
+}
+
+/* Ensure the .show class from Bootstrap successfully overrides Ghost's hidden state */
+.gh-dropdown.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate3d(0,0,0) !important;
 }

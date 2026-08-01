@@ -20,17 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
     moreLi.className = 'nav-item dropdown d-none'; // Hidden by default
     moreLi.id = 'gh-more-toggle-li';
     moreLi.innerHTML = `
-        <a class="nav-link" href="#" id="navbarMoreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0 !important; margin: 0 !important;">
+        <a class="nav-link" href="#" id="navbarMoreDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0 !important; margin: 0 !important;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="20" height="20">
                 <path d="M21.333 16c0-1.473 1.194-2.667 2.667-2.667v0c1.473 0 2.667 1.194 2.667 2.667v0c0 1.473-1.194 2.667-2.667 2.667v0c-1.473 0-2.667-1.194-2.667-2.667v0zM13.333 16c0-1.473 1.194-2.667 2.667-2.667v0c1.473 0 2.667 1.194 2.667 2.667v0c0 1.473-1.194 2.667-2.667 2.667v0c-1.473 0-2.667-1.194-2.667-2.667v0zM5.333 16c0-1.473 1.194-2.667 2.667-2.667v0c1.473 0 2.667 1.194 2.667 2.667v0c0 1.473-1.194 2.667-2.667 2.667v0c-1.473 0-2.667-1.194-2.667-2.667v0z"></path>
             </svg>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="navbarMoreDropdown" id="gh-more-dropdown-menu" style="background-color: #4a5568;">
+        <ul class="dropdown-menu dropdown-menu-end gh-dropdown" aria-labelledby="navbarMoreDropdown" id="gh-more-dropdown-menu">
         </ul>
     `;
     leftNav.appendChild(moreLi);
 
     const dropdownMenu = moreLi.querySelector('.dropdown-menu');
+    
+    // Bulletproof manual toggle in case Bootstrap Dropdown JS fails to bind
+    const moreToggle = moreLi.querySelector('.nav-link');
+    moreToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('show');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!moreLi.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
     
     // Store original widths to know when to restore
     const itemWidths = [];
@@ -66,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const rightNavWidth = rightNav ? rightNav.offsetWidth : 0;
         
         // Available width for the left links: container - brand - rightNav - padding/margins
-        // We leave a generous buffer of 100px for safety and the toggle button
-        const availableWidth = containerWidth - brandWidth - rightNavWidth - 100;
+        // We leave a massive buffer of 260px to guarantee at least 100px of pure empty space
+        const availableWidth = containerWidth - brandWidth - rightNavWidth - 260;
         
         // Calculate current width of visible left nav items
         let currentWidth = 0;
@@ -90,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Style for dropdown
                 const link = lastItem.querySelector('.nav-link');
                 link.classList.add('dropdown-item');
-                // Ghost styling for dropdown items
-                link.style.color = '#ffffff'; 
-                link.style.padding = '8px 16px !important';
+                // Remove all inline styles so CSS can take over
+                link.style.color = ''; 
+                link.style.padding = '';
                 
                 dropdownMenu.insertBefore(lastItem, dropdownMenu.firstChild);
                 currentWidth -= (lastItem.offsetWidth + 24);
