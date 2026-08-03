@@ -151,9 +151,10 @@
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
-      "document_hash": "832e99f2968776f6a24d4f94676b350a",
+      "document_hash": "c35413ae33492797b3638a0ddf0b0240",
       "historical_hashes": [
-        "68de40d0506848b14ddba891f271786b"
+        "68de40d0506848b14ddba891f271786b",
+        "832e99f2968776f6a24d4f94676b350a"
       ],
       "problems": {}
     },
@@ -252,5 +253,5 @@
       "problems": {}
     }
   },
-  "generated_at": "2026-08-01T17:59:54.385Z"
+  "generated_at": "2026-08-03T00:47:55.583Z"
 }
