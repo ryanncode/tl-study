@@ -7,6 +7,7 @@
 
 const SYNC_CONFIG = {
     clientId: 'Iv23ctRcgkpuHH9jkEQc',
+    appSlug: 'thinghood-limited-study',
     tokenRelayUrl: 'https://tl-study-relay.merciace.workers.dev',
     tokenKey: 'tl_study_github_token',
     repoKey: 'tl_study_github_repo',
@@ -70,6 +71,11 @@ class GitHubSync {
         window.location.href = authUrl;
     }
 
+    redirectToAppInstallation() {
+        const installUrl = `https://github.com/apps/${SYNC_CONFIG.appSlug}/installations/new`;
+        window.location.href = installUrl;
+    }
+
     async handleOAuthCallback() {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
@@ -78,7 +84,7 @@ class GitHubSync {
         if (code) {
             const savedState = sessionStorage.getItem('oauth_state');
             sessionStorage.removeItem('oauth_state');
-            if (!state || state !== savedState) {
+            if (savedState && state && state !== savedState) {
                 console.error("OAuth state mismatch. Possible CSRF attack.");
                 alert("Security check failed during login. Please try again.");
                 return;
@@ -99,7 +105,12 @@ class GitHubSync {
                         localStorage.setItem(SYNC_CONFIG.tokenKey, this.token);
                         console.log("Successfully authenticated with GitHub.");
                         await this.discoverRepository();
+                    } else if (data.error) {
+                        console.error("Token exchange failed:", data.error_description || data.error);
+                        alert(`GitHub authentication error: ${data.error_description || data.error}`);
                     }
+                } else {
+                    console.error("Server relay returned non-200 status:", res.status);
                 }
             } catch (err) {
                 console.error("Error during token exchange:", err);
@@ -116,21 +127,23 @@ class GitHubSync {
             };
 
             const instRes = await fetch('https://api.github.com/user/installations', { headers });
-            if (instRes.status !== 200) throw new Error("Failed to fetch installations");
+            if (instRes.status !== 200) throw new Error(`Failed to fetch installations (status ${instRes.status})`);
             
             const instData = await instRes.json();
-            if (instData.total_count === 0 || instData.installations.length === 0) {
-                alert("GitHub App is not installed on any repository.");
+            if (instData.total_count === 0 || !instData.installations || instData.installations.length === 0) {
+                console.log("No GitHub App installations found. Redirecting to install app on a dedicated repository...");
+                this.redirectToAppInstallation();
                 return;
             }
             
             const installationId = instData.installations[0].id;
             const repoRes = await fetch(`https://api.github.com/user/installations/${installationId}/repositories`, { headers });
-            if (repoRes.status !== 200) throw new Error("Failed to fetch repositories");
+            if (repoRes.status !== 200) throw new Error(`Failed to fetch repositories (status ${repoRes.status})`);
             
             const repoData = await repoRes.json();
-            if (repoData.total_count === 0 || repoData.repositories.length === 0) {
-                alert("No repositories were selected.");
+            if (repoData.total_count === 0 || !repoData.repositories || repoData.repositories.length === 0) {
+                alert("The GitHub App is installed, but no repository was granted access. Please select or create a repository in GitHub App settings.");
+                window.location.href = `https://github.com/settings/installations/${installationId}`;
                 return;
             }
             
@@ -139,12 +152,8 @@ class GitHubSync {
                 repo = repoData.repositories[0];
             } else {
                 const names = repoData.repositories.map(r => r.full_name).join("\n");
-                const chosen = prompt(`You have multiple repositories selected. Which one should we use?\n\n${names}`);
-                repo = repoData.repositories.find(r => r.full_name === chosen || r.name === chosen);
-                if (!repo) {
-                    alert("Invalid repository selected.");
-                    return;
-                }
+                const chosen = prompt(`Multiple repositories found. Enter the name of the repository to use for course notes:\n\n${names}`, repoData.repositories[0].full_name);
+                repo = repoData.repositories.find(r => r.full_name === chosen || r.name === chosen) || repoData.repositories[0];
             }
             
             this.owner = repo.owner.login;
@@ -153,14 +162,75 @@ class GitHubSync {
             localStorage.setItem(SYNC_CONFIG.ownerKey, this.owner);
             localStorage.setItem(SYNC_CONFIG.repoKey, this.repo);
             
-            this.loadData();
+            this.renderAuthUI();
+            await this.loadData();
             
         } catch (error) {
             console.error("Error discovering repository:", error);
+            this.renderAuthUI();
         }
     }
 
+    renderAuthUI() {
+        const container = document.getElementById('tl-study-auth-container');
+        if (!container) return;
+
+        if (this.isFullyConfigured()) {
+            container.innerHTML = `
+                <div class="callout callout-style-default callout-note callout-titled my-3">
+                  <div class="callout-header d-flex align-items-center">
+                    <div class="callout-icon-container"><i class="callout-icon"></i></div>
+                    <div class="callout-title-container flex-fill">GitHub Sync Active</div>
+                  </div>
+                  <div class="callout-body-container callout-body">
+                    <p class="mb-2">Your answers and problem sets are synced to your repository: <strong><code>${this.owner}/${this.repo}</code></strong>.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                      <button class="btn btn-outline-primary btn-sm" onclick="window.tlStudySync.loadData()">Sync & Reload</button>
+                      <button class="btn btn-outline-secondary btn-sm" onclick="window.tlStudySync.changeRepository()">Change Repository</button>
+                      <button class="btn btn-outline-danger btn-sm" onclick="window.tlStudySync.disconnect()">Disconnect</button>
+                    </div>
+                  </div>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="callout callout-style-default callout-important callout-titled my-3">
+                  <div class="callout-header d-flex align-items-center">
+                    <div class="callout-icon-container"><i class="callout-icon"></i></div>
+                    <div class="callout-title-container flex-fill">Authentication Required</div>
+                  </div>
+                  <div class="callout-body-container callout-body">
+                    <p>To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access <strong>only</strong> to the specific repository you select during installation.</p>
+                    <ol>
+                      <li>Click the button below to authenticate.</li>
+                      <li>If this is your first time, you will be prompted to install the App. <strong>Select a brand new, empty, private repository</strong> dedicated to this course.</li>
+                      <li>The app will automatically sync your solutions back to this single, isolated repository.</li>
+                    </ol>
+                    <button class="btn btn-primary mt-2" onclick="window.tlStudySync.startAuthFlow()">Install & Authenticate</button>
+                  </div>
+                </div>
+            `;
+        }
+    }
+
+    changeRepository() {
+        this.redirectToAppInstallation();
+    }
+
+    disconnect() {
+        if (!confirm("Are you sure you want to disconnect your GitHub repository from this browser?")) return;
+        localStorage.removeItem(SYNC_CONFIG.tokenKey);
+        localStorage.removeItem(SYNC_CONFIG.ownerKey);
+        localStorage.removeItem(SYNC_CONFIG.repoKey);
+        this.token = null;
+        this.owner = null;
+        this.repo = null;
+        this.renderAuthUI();
+        alert("Disconnected from GitHub. Answers will now be saved locally in sandbox mode.");
+    }
+
     async loadData(skipRebuildSwitcher = false) {
+        this.renderAuthUI();
         try {
             const versionRes = await fetch('/versions.json');
             if (versionRes.ok) {
@@ -417,6 +487,20 @@ class GitHubSync {
         if (warning) {
             warning.remove();
         }
+
+        // Provide immediate visual feedback to the user on save buttons
+        const saveBtns = document.querySelectorAll('button[onclick*="saveData"]');
+        saveBtns.forEach(btn => {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓ Saved to GitHub';
+            btn.classList.add('btn-success');
+            btn.classList.remove('btn-primary');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-primary');
+            }, 2000);
+        });
     }
 
     collectFields() {
@@ -454,7 +538,7 @@ class GitHubSync {
         inputs.forEach(input => {
             input.disabled = true;
         });
-        const buttons = document.querySelectorAll('button[onclick="tlStudySync.saveData()"]');
+        const buttons = document.querySelectorAll('button[onclick*="saveData"]');
         buttons.forEach(b => {
             b.disabled = true;
             b.textContent = "Archived (Read-Only)";
@@ -465,9 +549,19 @@ class GitHubSync {
 window.tlStudySync = new GitHubSync();
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (window.location.search.includes('code=')) {
+    window.tlStudySync.renderAuthUI();
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('code')) {
         await window.tlStudySync.handleOAuthCallback();
+    } else if (urlParams.has('installation_id') || urlParams.has('setup_action')) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+        if (window.tlStudySync.isAuthenticated()) {
+            await window.tlStudySync.discoverRepository();
+        } else {
+            window.tlStudySync.startAuthFlow();
+        }
     } else {
-        window.tlStudySync.loadData();
+        await window.tlStudySync.loadData();
     }
 });
+

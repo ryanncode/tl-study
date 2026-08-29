@@ -1,11 +1,5 @@
 ---
 title: "Logic 102: First-Order Logic & Formal Semantics"
-format:
-  html:
-    include-in-header:
-      - text: |
-          <script src="/js/github-sync.js"></script>
-          <script src="/js/syntax-sandbox.js"></script>
 ---
 
 ## Objective Semantics and First-Order Logic

@@ -42,7 +42,7 @@ If you are not an administrator, the backend edge relay will mathematically reje
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const token = localStorage.getItem('tl_study_token');
+    const token = localStorage.getItem('tl_study_github_token');
     if (!token) {
         document.getElementById('admin-auth-warning').style.display = 'block';
         return;
@@ -60,7 +60,7 @@ async function executeAdminAction(actionType) {
     const problem = document.getElementById('mod-problem').value;
     const username = document.getElementById('mod-username').value;
     const resultDiv = document.getElementById('admin-result');
-    const token = localStorage.getItem('tl_study_token');
+    const token = localStorage.getItem('tl_study_github_token');
     
     if (!topic || !problem || !username) {
         resultDiv.innerHTML = `<span class="text-danger">Topic, Problem ID, and Username are required.</span>`;
@@ -72,13 +72,13 @@ async function executeAdminAction(actionType) {
     try {
         let res;
         if (actionType === 'admin_delete_submission') {
-            const url = `https://tl-study-relay.ryann.workers.dev/?action=admin_delete_submission&topic=${encodeURIComponent(topic)}&cohortId=${encodeURIComponent(cohort)}&problemId=${encodeURIComponent(problem)}&targetUsername=${encodeURIComponent(username)}`;
+            const url = `https://tl-study-relay.merciace.workers.dev/?action=admin_delete_submission&topic=${encodeURIComponent(topic)}&cohortId=${encodeURIComponent(cohort)}&problemId=${encodeURIComponent(problem)}&targetUsername=${encodeURIComponent(username)}`;
             res = await fetch(url, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
         } else if (actionType === 'admin_edit_submission') {
-            const url = `https://tl-study-relay.ryann.workers.dev/`;
+            const url = `https://tl-study-relay.merciace.workers.dev/`;
             res = await fetch(url, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },

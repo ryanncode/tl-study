@@ -1,11 +1,5 @@
 ---
 title: "Logic 101: Symbolic Logic & Automated Reasoning"
-format:
-  html:
-    include-in-header:
-      - text: |
-          <script src="/js/github-sync.js"></script>
-          <script src="/js/syntax-sandbox.js"></script>
 ---
 
 ## The Material Basis of Computation

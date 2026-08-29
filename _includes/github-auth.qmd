@@ -1,3 +1,4 @@
+<div id="tl-study-auth-container" class="my-4">
 ::: {.callout-important}
 ### Authentication Required
 To securely save your progress, this curriculum uses a dedicated GitHub App. It restricts access **only** to the specific repository you select during installation.
@@ -8,3 +9,5 @@ To securely save your progress, this curriculum uses a dedicated GitHub App. It 
 
 <button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">Install & Authenticate</button>
 :::
+</div>
+
