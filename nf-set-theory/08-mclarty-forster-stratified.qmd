@@ -3,49 +3,99 @@ title: "8. Stratified Semantics (McLarty & Forster)"
 format:
   html:
     include-in-header:
+
       - text: |
           <script src="/js/github-sync.js"></script>
 ---
 
 # The Crisis of Categorical Closedness in NF
 
-Categorical logic relies heavily on Cartesian Closed Categories (categories with products and exponentials) to provide semantics for the $\lambda$-calculus. Because Quine's New Foundations (NF) permits a universal set and avoids external class hierarchies, it seemed like the perfect foundation for a "Category of all Categories." However, evaluating NF through categorical semantics exposes a critical structural paradox.
+Categorical logic relies heavily on Cartesian Closed Categories (categories equipped with products and exponentials) to provide semantics for the $\lambda$-calculus. Because Quine's New Foundations (NF) permits a universal set ($V$) and avoids external class hierarchies, it initially appeared to be the ideal foundation for a self-containing "Category of all Categories." 
+
+However, evaluating New Foundations through categorical semantics exposes a critical structural paradox.
 
 :::{.reading-assignment}
 **Suggested Reading: Stratified Semantics & Topos Boundaries**
 <ul>
-  <li>McLarty, C. (1992). <em>Failure of Cartesian closedness in NF</em>. Journal of Symbolic Logic, 57(2), pp. 1-25.</li>
-  <li>Forster, T., Lewicki, A., & Vidrine, A. (2019). <em>Category Theory with Stratified Set Theory</em>.</li>
-  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 3 (Boolean Operations), Ch. 17.1 (Exponentiation meets T), Ch. 19.2 (ZFC in Cantorian Ordinals).</li>
-  <li>Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Sections 1.4 (Avoiding paradoxes) and 2.2.2 (Closure properties of small sets).</li>
-  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.3, 5.4, 7.1, and 7.2 (Singletons, Recoding, and Proving Consistency).</li>
+  <li>McLarty, C. (1992). <em>Failure of Cartesian closedness in NF</em>. Journal of Symbolic Logic, 57(2), pp. 555–556.</li>
+  <li>Forster, T., Lewicki, A., & Vidrine, A. (2019). <em>Category Theory with Stratified Set Theory</em>. Sections 1–4.</li>
 </ul>
 :::
 
+---
+
 ## McLarty: The Failure of Cartesian Closedness (1992)
 
-Colin McLarty definitively proved that **the category of sets within NF cannot constitute a topos**, and furthermore, it is not Cartesian Closed. 
+In 1992, Colin McLarty definitively proved that **the category of sets within New Foundations cannot constitute a topos**, and furthermore, it is fundamentally **not Cartesian Closed**.
 
-A topos represents a mathematical universe possessing finite limits, Cartesian closedness (exponential objects for functions), and a subobject classifier ($\Omega$). McLarty demonstrated that:
+A **topos** represents an idealized mathematical universe possessing:
 
-1. In NF, subsets have monic inclusion functions.
-2. Therefore, every set has a monic mapping to the Universal Set $V$.
-3. Using the internal language of a topos, McLarty proved that *only a trivial topos can have an object to which every other object has a monic mapping*.
-4. Because NF contains a universal monic, assuming it has exponential objects (like $B^A$) leads to a direct contradiction. 
+1. Finite limits (products, pullbacks, equalizers).
+2. Cartesian closedness (exponential function objects $B^A$ with evaluation maps).
+3. A subobject classifier ($\Omega$).
 
-Thus, in pure NF, if categorical products exist, exponentials do not. True function abstraction fails structurally under strict Cartesian conditions.
+McLarty constructed a devastating proof using the internal language of a topos:
+
+```
+Subsets have Monic Inclusions
+              │
+              ▼
+Every Set has a Monic to V
+              │
+              ▼
+Topos Collapses to a Trivial Point
+```
+
+1. In NF, every subset $S \subseteq A$ possesses a canonical monic inclusion function $S \hookrightarrow A$.
+2. Because $V$ contains all sets, every set in the universe possesses a monomorphism (an injective embedding) into the Universal Set $V$.
+3. McLarty proved a foundational lemma: *Only a trivial topos (where all objects collapse into a single terminal point) can possess an object to which every other object has a monic mapping*.
+4. If pure NF possessed full exponential objects $B^A$ with standard evaluation maps $ev(f, x) = f(x)$, a Cantorian diagonal subobject $R \subseteq V$ can be constructed such that both $i(R) \in R$ and $\sim(i(R) \in R)$ evaluate as true.
+
+**The Architectural Consequence:** In pure NF, if categorical products $A \times B$ exist, classical exponentials $B^A$ cannot. True function abstraction fails structurally under strict Cartesian conditions.
+
+---
 
 ## Forster, Lewicki, and Vidrine: Stratified Pseudo Elephants (2019)
 
-If true Cartesian closedness fails, how do we perform category theory in NF? Thomas Forster, Adam Lewicki, and Alice Vidrine resolved this by formalizing categorical mechanics native to NF's stratified boundaries.
+If classical Cartesian closedness fails, how do we execute category theory inside New Foundations? 
 
-The category of NF sets (Category N) achieves **Pseudo-Cartesian Closure** through the **T-Functor**. 
-The standard evaluation map $ev(\langle x, f \rangle) = f(x)$ violates Quine's stratification rules. To fix this, the T-functor maps elements to their singletons ($x \mapsto \{x\}$). The pseudo-evaluation arrow operates via $TA \times (A \Rightarrow B) \to TB$, mathematically resolving the typing barrier.
+In 2019, Thomas Forster, Adam Lewicki, and Alice Vidrine resolved this foundational crisis by formalizing categorical structures native to stratified boundaries: the **Stratified Pseudo Elephant (SPE)**.
+
+```
+Standard Evaluation (Breaks Stratification):
+  ev(⟨x, f⟩) = f(x)            : A × B^A ──► B
+
+Stratified Evaluation (T-Functor Guarded):
+  ev_T(⟨T(x), f⟩) = T(f(x))     : TA × (A ⇒ B) ──► TB
+```
+
+### The $T$-Functor & Pseudo-Cartesian Closure
+
+Standard evaluation $\text{ev}(\langle x, f \rangle) = f(x)$ fails in NF because the function $f$ (a set of pairs) and the element $x$ operate across unequal stratification tiers.
+
+Forster et al. achieved **Pseudo-Cartesian Closure** by routing evaluations through the **$T$-Functor** ($T: \mathcal{C} \to \mathcal{C}$), which maps objects to their unit subsets ($x \mapsto \iota``x$). The stratified evaluation arrow executes legally as:
+
+$$\text{ev}_T : TA \times (A \Rightarrow B) \longrightarrow TB$$
+
+By shifting the domain and codomain through the $T$-functor, the typing disparity is algebraically balanced.
 
 ### The Stratified Yoneda Lemma
-Because of the typing differentials between morphisms and objects, the classical Yoneda isomorphism fails in NF. The authors formulated the **Stratified Yoneda Lemma**, mapping natural transformations to the target object modified by the T-functor:
 
-$$Nat(C(U,-),F) \cong T(F(U))$$
+Because of the typing differential between arrows and objects, the classical Yoneda isomorphism fails in NF. The authors formulated the **Stratified Yoneda Lemma**, which accounts for the $T$-functor shift across natural transformations:
+
+$$\text{Nat}(\mathcal{C}(U, -), F) \cong T(F(U))$$
+
+### The Structure of a Stratified Pseudo Elephant (SPE)
+
+A **Stratified Pseudo Elephant (SPE)** is a regular category equipped with:
+
+* Finite coproducts and a subobject classifier ($2 = \{\bot, \top\}$).
+* A full embedding endofunctor $T$ generating finite limits.
+* Relative adjunctions for pullbacks and pseudo-power objects.
+
+Within an SPE, **the subcategory of Strongly Cantorian sets forms a true elementary topos**. Classical topos logic remains completely operational inside the Strongly Cantorian core, while the outer SPE environment safely encompasses the universal set $V$ without triggering McLarty's collapse.
+
+---
 
 :::{.guided-example}
 <div class="guided-example-title">

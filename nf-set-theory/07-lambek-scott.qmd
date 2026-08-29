@@ -3,53 +3,85 @@ title: "7. Higher-Order Logic (Lambek & Scott), Barr, and Wells"
 format:
   html:
     include-in-header:
+
       - text: |
           <script src="/js/github-sync.js"></script>
 ---
 
 # Categorical Semantics for Logic and Computation
 
-To successfully map our NF ontology to JSON, we must understand how logical derivation and computational states are inherently structural. 
+To successfully map our NF ontology to JSON, we must understand how logical deduction, computational execution, and categorical geometry are mathematically equivalent. 
 
-J. Lambek and P.J. Scott's *Introduction to Higher-Order Categorical Logic* (1986) demonstrated the fundamental mathematical equivalence between structural logic systems and specific category types. Barr and Wells' *Category Theory for Computer Science* (1990) extended these maps directly into computational state architecture.
+In *Introduction to Higher-Order Categorical Logic* (1986), J. Lambek and P.J. Scott established the rigorous isomorphism connecting deductive proof systems, typed $\lambda$-calculi, and Cartesian Closed Categories. Michael Barr and Charles Wells (*Category Theory for Computer Science*, 1990) extended this correspondence directly into computational state machines.
 
 :::{.reading-assignment}
 **Suggested Reading: Higher-Order Logic & CCCs**
 <ul>
-  <li>Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§5), Ch. II (§3), Ch. III (§4–§6), Ch. IV (§6).</li>
-  <li>Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 11.1, 11.3 (Operations on Functions; Stratification), Ch. 23.1, 23.3 (Abstraction; State Machines & C-Monoids).</li>
-  <li>Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.1, 3.2 (Codes and Clouds) and Section 4.6 (Structural Actions).</li>
+  <li>Lambek, J., & Scott, P. J. (1986). <em>Introduction to Higher-Order Categorical Logic</em>. Cambridge University Press. Part I (§1–§6).</li>
+  <li>Barr, M., & Wells, C. (1990). <em>Category Theory for Computer Science</em>. Ch. 1 (§1.1–§1.4) and Ch. 2 (§2.1–§2.3).</li>
 </ul>
 :::
 
-## The Equivalence of Logic and Category
+---
 
-Lambek and Scott established a strict dictionary between formal deductive systems, $\lambda$-calculus, and Category Theory:
+## The Trinity of Computation (Curry-Howard-Lambek)
 
-| Category Theory | Logical Semantics | Typed $\lambda$-Calculus |
+The Curry-Howard-Lambek correspondence proves that Logic, Computer Science, and Category Theory represent three distinct vantage points of the exact same mathematical structure:
+
+```
+           Category Theory (CCCs)
+                   ▲    ▲
+                  ╱      ╲
+                 ▼        ▼
+       Proof Theory ◄────► Type Theory
+      (Propositions)      (Programs)
+```
+
+| Category Theory | Logical Proof Semantics | Computer Science / Typed $\lambda$-Calculus |
 |---|---|---|
-| Object $A$ | Formula $A$ | Type $A$ |
-| Arrow $f: A \rightarrow B$ | Proof of $A \vdash B$ | Term $f(x)$ of type $B$ |
-| Terminal Object $1$ | Truth $\top$ | Basic term $*$ |
-| Product $A \times B$ | Conjunction $A \wedge B$ | Product Type |
-| Exponential $B^A$ | Implication $A \Rightarrow B$ | Function Type / Abstraction |
-| Evaluation $\epsilon_{A,B}$ | Modus Ponens | Application |
+| **Object $A$** | Proposition / Formula $A$ | Data Type $A$ (`Int`, `String`, `Struct`) |
+| **Arrow $f: A \to B$** | Deductive Proof of $A \vdash B$ | Executable Term / Function $f(x) : B$ |
+| **Terminal Object $1$** | Truth Constant $\top$ | Unit Type `()` / Primitive Value `*` |
+| **Product $A \times B$** | Conjunction $A \land B$ | Pair / Product Type `(A, B)` |
+| **Exponential $B^A$** | Material Implication $A \implies B$ | Function Type `A -> B` / Closure |
+| **Evaluation $\epsilon_{A,B}$** | Modus Ponens Step | Function Application `f(a)` |
+| **Initial Object $0$** | Falsehood $\bot$ | Empty / Bottom Type `Void` |
+| **Coproduct $A + B$** | Disjunction $A \lor B$ | Sum / Either Type `Either<A, B>` |
 
-### Functional Completeness
+### Functional Completeness: Eliminating Bound Variables
 
-A major achievement of categorical logic is **Functional Completeness**: the ability to eliminate bound variables entirely. Any logical deduction dependent on an assumed variable can be algebraically translated into a pure categorical morphism composed of constant structural arrows (evaluations, projections, exponential adjoints). This proves that logic is structurally geometric.
+A major achievement of categorical logic is **Functional Completeness**: any logical deduction that depends on an assumed hypothesis variable $x: 1 \to A$ can be algebraically translated into a pure morphism composed of constant structural arrows (evaluations, projections, exponential adjoints). 
 
-### Untyped Systems and C-Monoids
+Bound variables are an artifact of human notation. In category theory, computation evaluates as a static, coordinate-free geometric trajectory across arrows.
 
-While typed $\lambda$-calculus strictly correlates to Cartesian Closed Categories, the untyped $\lambda$-calculus semantically maps to **C-Monoids**. A C-monoid is a single-object Cartesian Closed Category that explicitly excludes a terminal object. Because NF allows for a universal set, handling untyped or reflexively typed loops requires leveraging these specialized single-object mapping behaviors.
+---
 
-## Computer Science and State Transitions
+## Untyped Systems and C-Monoids
 
-Barr and Wells contextualized these categorical mappings directly into functional programming.
+While typed programming languages correspond strictly to Cartesian Closed Categories, untyped systems (like pure untyped $\lambda$-calculus and Quine's universal set $V$) correspond algebraically to **C-Monoids**.
 
-* **Programs as Arrows**: Functions $f: S \to T$ operate as structural morphisms. Anonymous functions ($x \mapsto x^2$) define internal operational paths distinct from their formal signature.
-* **Types as Objects**: Data types (Booleans, Integers, complex structs) function as the objects defining the domain and codomain boundaries.
-* **State Machines as Monoids**: A classical automaton operating on an input alphabet acts algebraically as a Monoid (a single object category) where the input string evaluates as a directed path navigating through a free category.
+A **C-Monoid** is a single-object Cartesian Closed Category that explicitly excludes a terminal object. 
+
+```
+Standard CCC (Typed):
+  Multiple distinct objects A, B, C... + Terminal Object 1
+
+C-Monoid (Untyped):
+  Single Universal Object U containing all morphisms (No Terminal Object)
+```
+
+In an untyped universe where everything is an element of $V$, every function can accept any other function as input, including itself ($f(f)$). If an untyped system possessed a classical terminal object, this universal self-application would trigger an immediate Russellian contradiction, collapsing the category into a single trivial point. C-Monoids provide the exact topological boundary conditions required for an untyped engine to process self-referential loops safely.
+
+---
+
+## State Transitions & Automata (Barr & Wells)
+
+Barr and Wells demonstrated how categorical morphisms execute on physical computing hardware:
+
+1. **Functions as Arrows**: A software routine `fn(x: S) -> T` operates as a morphism $f: S \to T$. Pure subroutines define deterministic operational paths across typed memory domains.
+2. **State Automata as Monoid Actions**: A classical state machine with states $S$ and an input alphabet $\Sigma$ acts algebraically as a Monoid action. Feeding a string $w = \sigma_1 \sigma_2 \dots \sigma_n$ into the automaton corresponds to navigating a directed composition path $\delta_n \circ \dots \circ \delta_1$ across the state transition graph.
+
+---
 
 :::{.guided-example}
 <div class="guided-example-title">

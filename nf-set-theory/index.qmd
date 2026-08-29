@@ -3,6 +3,7 @@ title: "Quinean Foundations & Categorical Semantics"
 format:
   html:
     include-in-header:
+
       - text: |
           <script src="/js/github-sync.js"></script>
 ---

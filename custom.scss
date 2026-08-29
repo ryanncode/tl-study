@@ -552,8 +552,17 @@ mjx-container, .math.inline {
   line-height: normal !important;
 }
 
+mjx-math {
+  font-size: 90% !important;
+}
+
 mjx-mo > mjx-c, mjx-mi > mjx-c, mjx-mn > mjx-c, mjx-ms > mjx-c, mjx-mtext > mjx-c {
   clip-path: none !important;
+}
+
+/* Fix MathJax Accent (Hat/Bar/Vector) Vertical Collision */
+mjx-mover > mjx-over, mjx-over {
+  transform: translateY(-0.2em) !important;
 }
 
 /* ------------------------------------------------------------- */

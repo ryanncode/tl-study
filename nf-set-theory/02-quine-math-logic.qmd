@@ -3,6 +3,7 @@ title: "2. Quine's Mathematical Logic and Stratification"
 format:
   html:
     include-in-header:
+
       - text: |
           <script src="/js/github-sync.js"></script>
 ---
@@ -24,71 +25,96 @@ Quine's objective was to translate pure mathematics into formal logic utilizing 
 
 Imagine building an entire programming language from just three CPU instructions. Quine's language operates strictly on three primitive mathematical constructs:
 
-1. **Membership**: $x \epsilon y$ (Object $x$ belongs to set $y$)
-2. **Alternative Denial**: $(\phi\vert{}\psi)$ (The logical NAND gate)
+1. **Membership**: $x \in y$ (Object $x$ belongs to set $y$)
+2. **Alternative Denial**: $(\phi \mid \psi)$ (The logical NAND gate)
 3. **Universal Quantification**: $(x)\phi$ (For all $x$, $\phi$ is true)
 
 Everything else in mathematics—from addition to complex geometry—must be built from these three atoms. To prevent human mathematicians from writing endless strings of NAND gates, Quine created **15 Derivative Definitions** to act as typographical macros.
 
 ---
 
-## The 15 Derivative Definitions
+## Contextual Eliminability & The 15 Derivative Definitions
 
-Quine groups his definitions into logical phases. By unpacking these phases, you can see how higher-level human reasoning compiles down to raw syntax.
+In Quine's philosophy of logic, mathematical objects do not possess independent metaphysical substance. Mathematical expressions operate as syntactic macros that dissolve upon evaluation into raw primitive statements. Quine terms this design principle **Contextual Eliminability**: every high-level mathematical notation must be uniquely eliminable in favor of primitive membership and logical connectives.
+
+The 15 Derivative Definitions (D1–D15) form a four-stage compilation pipeline, translating mathematical reasoning systematically down into primitive NAND gates and membership assertions.
 
 ### Phase 1: Boolean Connectives (D1 - D5)
-Quine proves that every standard logical operator (AND, OR, NOT) can be simulated using only the NAND gate ($|$).
+Quine proves that every standard propositional connective compiles down to Sheffer's alternative denial gate ($|$):
 
 * **D1: Denial (Not)**  
-  $\sim\phi =_{def} (\phi\vert\phi)$
-  > **Why it matters:** Passing the exact same proposition into both sides of a NAND gate creates an absolute logical NOT. 
-* **D2: Conjunction (And)**  
-  $(\phi\cdot\psi) =_{def} \sim(\phi\vert\psi)$
-  > **Why it matters:** By wrapping the NAND operation in a negation (D1), the system constructs logical AND.
-* **D3: Implication (If-then)**  
-  $(\phi\supset\psi) =_{def} (\phi\vert\sim\psi)$
-* **D4: Alternation (Or)**  
-  $(\phi\lor\psi) =_{def} (\sim\phi\supset\psi)$
-* **D5: Equivalence (Iff)**  
-  $(\phi\equiv\psi) =_{def} ((\phi\vert\psi)\Vert(\phi\lor\psi))$
+  $\sim\phi =_{\text{def}} (\phi \mid \phi)$  
+  Passing the identical proposition into both inputs of a NAND gate outputs its logical negation.
 
-### Phase 2: First-Order Logic (D6 - D8)
-With Boolean logic established, Quine defines existential quantifiers and identity without adding new primitive operations.
+* **D2: Conjunction (And)**  
+  $(\phi\cdot\psi) =_{\text{def}} \sim(\phi \mid \psi)$  
+  Wrapping a NAND operation in a negation produces logical AND.
+
+* **D3: Implication (If-then)**  
+  $(\phi\supset\psi) =_{\text{def}} (\phi \mid \sim\psi)$
+
+* **D4: Alternation (Or)**  
+  $(\phi\lor\psi) =_{\text{def}} (\sim\phi\supset\psi)$
+
+* **D5: Equivalence (Iff)**  
+  $(\phi\equiv\psi) =_{\text{def}} ((\phi \mid \psi) \mid (\phi\lor\psi))$
+
+### Phase 2: First-Order Logic & Identity (D6 - D8)
+With Boolean logic operational, Quine constructs existential quantification, set inclusion, and equality without introducing a primitive equality operator:
 
 * **D6: Particular Quantification (Exists)**  
-  $(\exists\alpha)\phi =_{def} \sim(\alpha)\sim\phi$
-  > **How it works:** "There exists an $\alpha$" is geometrically defined as "It is NOT the case that for ALL $\alpha$, $\phi$ is false."
+  $(\exists\alpha)\phi =_{\text{def}} \sim(\alpha)\sim\phi$  
+  "There exists an $\alpha$" translates to "It is not the case that for all $\alpha$, $\phi$ is false."
+
 * **D7: Inclusion (Subclass)**  
-  $(\alpha\subset\beta) =_{def} (\gamma)((\gamma\epsilon\alpha)\supset(\gamma\epsilon\beta))$
+  $(\alpha \subseteq \beta) =_{\text{def}} (\gamma)((\gamma \in \alpha)\supset(\gamma \in \beta))$
+
 * **D8: Identity (Equals)**  
-  $(\alpha=\beta) =_{def} (\gamma)((\alpha\epsilon\gamma)\supset(\beta\epsilon\gamma))$
-  > **Leibniz's Law:** Two objects are mathematically identical if and only if they belong to all the exact same classes. You don't look *inside* the objects; you look at what contains them.
+  $(\alpha=\beta) =_{\text{def}} (\gamma)((\alpha \in \gamma)\supset(\beta \in \gamma))$  
+  **Leibnizian Extensional Identity:** Two entities are mathematically identical if every class containing $\alpha$ also contains $\beta$. Identity is established through external containment relations rather than internal inspection.
 
 ### Phase 3: Definite Descriptions (D9 - D10)
-How do we mathematically point to a specific object without knowing its name?
+Definite descriptions provide the mechanism for referencing specific entities defined by unique predicates:
 
-* **D9: Description in Context**  
-  $((\iota\alpha)\phi\epsilon\beta) =_{def} (\exists\gamma)((\gamma\epsilon\beta)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))$
-  > **Translation:** "The specific $\alpha$ (defined by $\phi$) is a member of $\beta$."
-* **D10: Description as a Class**  
-  $(\beta\epsilon(\iota\alpha)\phi) =_{def} (\exists\gamma)((\beta\epsilon\gamma)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))$
-  > **Translation:** "$\beta$ is a member of the specific class $\alpha$ (defined by $\phi$)."
+* **D9: Description in Membership Context**  
+  $((\iota\alpha)\phi \in \beta) =_{\text{def}} (\exists\gamma)((\gamma \in \beta)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))$  
+  "The unique $\alpha$ satisfying $\phi$ belongs to class $\beta$."
+
+* **D10: Description Denoting a Class**  
+  $(\beta \in (\iota\alpha)\phi) =_{\text{def}} (\exists\gamma)((\beta \in \gamma)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))$
 
 ### Phase 4: Class and Relational Abstractions (D11 - D15)
-This is the heart of Contextual Eliminability. Abstractions (like "the set of all even numbers") are not real objects; they are temporary macros that explode into definite descriptions.
+Class abstractions represent the pinnacle of contextual eliminability. Expressions such as "the set of even numbers" are not static physical entities; they are dynamic queries executed against definite descriptions:
 
 * **D11: Class Abstraction**  
-  $\hat{\alpha}\phi =_{def} (\iota\beta)(\alpha)((\alpha\epsilon\beta)\equiv\phi)$
-  > **The Engine:** This takes the notation for a set ($\hat{\alpha}$) and mechanically unpacks it into the definite description rules established in D9/D10.
+  $\hat{\alpha}\phi =_{\text{def}} (\iota\beta)(\alpha)((\alpha \in \beta)\equiv\phi)$
+
 * **D12: Unit Class (Singleton)**  
-  $\{\alpha\} =_{def} \hat{\beta}(\beta=\alpha)$
+  $\{\alpha\} =_{\text{def}} \hat{\beta}(\beta=\alpha)$
+
 * **D13: Pair Class**  
-  $\{\alpha,\beta\} =_{def} \hat{\gamma}((\gamma=\alpha)\lor(\gamma=\beta))$
+  $\{\alpha,\beta\} =_{\text{def}} \hat{\gamma}((\gamma=\alpha)\lor(\gamma=\beta))$
+
 * **D14: Ordered Couple (Kuratowski Pair)**  
-  $(\alpha,\beta) =_{def} \{\{\alpha\},\{\alpha,\beta\}\}$
-  > **The Fatal Flaw:** Quine imported the standard Kuratowski ordered pair. If element $\alpha$ is type $n$, the set $\{\alpha\}$ is type $n+1$, and the nested set $\{\{\alpha\}\}$ is type $n+2$. This means the resulting ordered pair is a full two integer levels higher than its constituents! As you will see in the next module, this $+2$ type-raising shift severely restricts relational mapping, creating massive stratification violations that Hailperin must fix using a "flat" or homogeneous ordered pair.
+  $(\alpha,\beta) =_{\text{def}} \{\{\alpha\},\{\alpha,\beta\}\}$
+
 * **D15: Relational Abstraction**  
-  $\hat{\alpha}\hat{\beta}\phi =_{def} \hat{\gamma}(\exists\alpha)(\exists\beta)((\gamma=(\alpha,\beta))\cdot\phi)$
+  $\hat{\alpha}\hat{\beta}\phi =_{\text{def}} \hat{\gamma}(\exists\alpha)(\exists\beta)((\gamma=(\alpha,\beta))\cdot\phi)$
+
+### The Kuratowski Type-Inflation Problem
+
+Quine adopted Casimir Kuratowski's standard definition of the ordered pair: $(\alpha,\beta) = \{\{\alpha\},\{\alpha,\beta\}\}$. In classical set theory, this definition provides an elegant foundation for coordinate geometry and relations. In a stratified universe, however, Kuratowski pairing introduces an asymmetric type-inflation penalty.
+
+```
+Variable Base Level:       alpha : type n,   beta : type n
+First Singleton Level:     {alpha} : type n + 1,   {alpha, beta} : type n + 1
+Outer Enclosing Set:       {{alpha}, {alpha, beta}} : type n + 2
+Resulting Pair Type:       (alpha, beta) : type n + 2
+```
+
+Because the ordered pair $(\alpha,\beta)$ resides two integer levels higher than its constituent elements, any binary relation $R \subseteq A \times B$ requires its domain and codomain variables to be type-shifted by $+2$. When chaining relational mappings, this $+2$ displacement accumulates, creating severe stratification violations during function composition. 
+
+Resolving this architectural friction required Theodore Hailperin to engineer a flat, homogeneous pairing operator, which forms the focus of Chapter 3.
 
 ---
 
@@ -100,23 +126,28 @@ However, an unrestricted R3 immediately triggers **Russell's Paradox**. If $\phi
 
 To solve this without reverting to ZFC's total ban on the Universal Set, Quine modified the rule to **R3'**: A formula can only generate a class if it is **stratified**. 
 
-> [!IMPORTANT]
-> **What is Stratification?**
-> Stratification means you can assign integers to variables such that for every membership relation $x \epsilon y$, the type of $y$ is exactly one integer higher than $x$ ($n$ and $n+1$). 
+::: {.callout-important}
+## What is Stratification?
+Stratification means you can assign integers to variables such that for every membership relation $x \in y$, the type of $y$ is exactly one integer higher than $x$ ($n$ and $n+1$). 
+:::
 
-Formulas like $x \epsilon x$ are *unstratified* (because $x$ cannot be both $n$ and $n+1$ simultaneously). In NF, unstratified formulas are grammatically legal to write, but R3' forbids them from generating sets. This nullifies the paradox while perfectly preserving the Universal Set $V$ (because the formula $x=x$, defining the universal set, is trivially stratified as $n=n$).
+Formulas like $x \in x$ are *unstratified* (because $x$ cannot be both $n$ and $n+1$ simultaneously). In NF, unstratified formulas are grammatically legal to write, but R3' forbids them from generating sets. This nullifies the paradox while perfectly preserving the Universal Set $V$ (because the formula $x=x$, defining the universal set, is trivially stratified as $n=n$).
 
 ### A Concrete Example of Stratification
 
-Let's test the formula: "There exists a set $y$ such that $x \epsilon y$ AND $y \epsilon z$".
-In formal logic: $\exists y (x \epsilon y \cdot y \epsilon z)$
+Test the formula: "There exists a set $y$ such that $x \in y$ and $y \in z$."
 
-To prove this formula is stratified, we must assign an integer to every variable such that the right side of any $\epsilon$ is exactly $+1$ greater than the left side.
-1. Let's arbitrarily assign $x = 1$.
-2. Because of $x \epsilon y$, $y$ must equal $x + 1$. Therefore, $y = 2$.
-3. Because of $y \epsilon z$, $z$ must equal $y + 1$. Therefore, $z = 3$.
+In formal logic:
 
-We successfully mapped integers to all variables ($x=1, y=2, z=3$) without any contradictions. This formula is **strictly stratified**.
+$$\exists y (x \in y \land y \in z)$$
+
+To prove this formula is stratified, assign an integer to each variable such that the right-hand term of any membership relation $a \in b$ is $+1$ greater than the left-hand term:
+
+1. Assign $x = 1$.
+2. From $x \in y$, $y$ must equal $x + 1 = 2$.
+3. From $y \in z$, $z$ must equal $y + 1 = 3$.
+
+All variables map to consistent integers ($x=1, y=2, z=3$) without contradiction. The formula is stratified.
 
 :::{.guided-example}
 <div class="guided-example-title">
@@ -125,12 +156,12 @@ Guided Example: Stratification Types
 <div class="guided-example-content">
 Examine the formula: $x \in y \land y \in z$
 
-If we declare that $type(x) = 1$, then by the rule of stratification:
-$type(y) = 1 + 1 = 2$
+If we declare that $\text{type}(x) = 1$, then by the rule of stratification:
+$\text{type}(y) = 1 + 1 = 2$
 
-What must $type(z)$ be for this entire formula to remain strictly stratified? 
+What must $\text{type}(z)$ be for this entire formula to remain strictly stratified? 
 
-$type(z) = \_\_\_\_\_$
+$\text{type}(z) = \_\_\_\_\_$
 </div>
 :::
 
