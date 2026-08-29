@@ -6,9 +6,10 @@ This dashboard allows authorized administrators to manage cohort submissions.
 If you are not an administrator, the backend edge relay will mathematically reject your requests regardless of what buttons you click here.
 
 <div id="admin-auth-warning" class="mt-4">
-  {{< include ../_includes/github-auth.qmd >}}
+{{< include ../_includes/github-auth.qmd >}}
 </div>
 
+```{=html}
 <div class="card mb-4 mt-4" id="admin-panel" style="display: none;">
   <div class="card-header bg-danger text-white">
     Cohort Moderation Tools
@@ -16,19 +17,19 @@ If you are not an administrator, the backend edge relay will mathematically reje
   <div class="card-body">
     <div class="row g-3 mb-3">
       <div class="col-md-3">
-        <label>Topic</label>
+        <label class="form-label">Topic</label>
         <input type="text" id="mod-topic" class="form-control" placeholder="e.g. nf-set-theory">
       </div>
       <div class="col-md-3">
-        <label>Cohort ID</label>
+        <label class="form-label">Cohort ID</label>
         <input type="text" id="mod-cohort" class="form-control" placeholder="e.g. default">
       </div>
       <div class="col-md-3">
-        <label>Problem ID</label>
+        <label class="form-label">Problem ID</label>
         <input type="text" id="mod-problem" class="form-control" placeholder="e.g. exercise-1">
       </div>
       <div class="col-md-3">
-        <label>Target Username</label>
+        <label class="form-label">Target Username</label>
         <input type="text" id="mod-username" class="form-control" placeholder="e.g. ryanncode">
       </div>
     </div>
@@ -39,6 +40,7 @@ If you are not an administrator, the backend edge relay will mathematically reje
     <div id="admin-result" class="mt-3"></div>
   </div>
 </div>
+```
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
