@@ -66,8 +66,8 @@ class GitHubSync {
     startAuthFlow() {
         const state = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2);
         sessionStorage.setItem('oauth_state', state);
-        const redirectUri = window.location.origin + window.location.pathname;
-        const authUrl = `https://github.com/login/oauth/authorize?client_id=${SYNC_CONFIG.clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
+        sessionStorage.setItem('auth_return_url', window.location.href);
+        const authUrl = `https://github.com/login/oauth/authorize?client_id=${SYNC_CONFIG.clientId}&state=${state}`;
         window.location.href = authUrl;
     }
 
@@ -105,6 +105,15 @@ class GitHubSync {
                         localStorage.setItem(SYNC_CONFIG.tokenKey, this.token);
                         console.log("Successfully authenticated with GitHub.");
                         await this.discoverRepository();
+
+                        const returnUrl = sessionStorage.getItem('auth_return_url');
+                        if (returnUrl) {
+                            sessionStorage.removeItem('auth_return_url');
+                            if (returnUrl !== window.location.href && returnUrl.startsWith(window.location.origin)) {
+                                window.location.href = returnUrl;
+                                return;
+                            }
+                        }
                     } else if (data.error) {
                         console.error("Token exchange failed:", data.error_description || data.error);
                         alert(`GitHub authentication error: ${data.error_description || data.error}`);
