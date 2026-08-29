@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -269,7 +269,9 @@ window.Quarto = {
   <li><a href="#mclarty-the-failure-of-cartesian-closedness-1992" id="toc-mclarty-the-failure-of-cartesian-closedness-1992" class="nav-link" data-scroll-target="#mclarty-the-failure-of-cartesian-closedness-1992">McLarty: The Failure of Cartesian Closedness (1992)</a></li>
   <li><a href="#forster-lewicki-and-vidrine-stratified-pseudo-elephants-2019" id="toc-forster-lewicki-and-vidrine-stratified-pseudo-elephants-2019" class="nav-link" data-scroll-target="#forster-lewicki-and-vidrine-stratified-pseudo-elephants-2019">Forster, Lewicki, and Vidrine: Stratified Pseudo Elephants (2019)</a>
   <ul class="collapse">
+  <li><a href="#the-t-functor-pseudo-cartesian-closure" id="toc-the-t-functor-pseudo-cartesian-closure" class="nav-link" data-scroll-target="#the-t-functor-pseudo-cartesian-closure">The <span class="math inline">\(T\)</span>-Functor &amp; Pseudo-Cartesian Closure</a></li>
   <li><a href="#the-stratified-yoneda-lemma" id="toc-the-stratified-yoneda-lemma" class="nav-link" data-scroll-target="#the-stratified-yoneda-lemma">The Stratified Yoneda Lemma</a></li>
+  <li><a href="#the-structure-of-a-stratified-pseudo-elephant-spe" id="toc-the-structure-of-a-stratified-pseudo-elephant-spe" class="nav-link" data-scroll-target="#the-structure-of-a-stratified-pseudo-elephant-spe">The Structure of a Stratified Pseudo Elephant (SPE)</a></li>
   <li><a href="#the-stratified-pseudo-elephant-spe" id="toc-the-stratified-pseudo-elephant-spe" class="nav-link" data-scroll-target="#the-stratified-pseudo-elephant-spe">The Stratified Pseudo Elephant (SPE)</a></li>
   <li><a href="#api-schema-spe-flags" id="toc-api-schema-spe-flags" class="nav-link" data-scroll-target="#api-schema-spe-flags">API Schema: SPE Flags</a></li>
   </ul></li>
@@ -301,58 +303,88 @@ window.Quarto = {
 
 <section id="the-crisis-of-categorical-closedness-in-nf" class="level1">
 <h1>The Crisis of Categorical Closedness in NF</h1>
-<p>Categorical logic relies heavily on Cartesian Closed Categories (categories with products and exponentials) to provide semantics for the <span class="math inline">\(\lambda\)</span>-calculus. Because Quine’s New Foundations (NF) permits a universal set and avoids external class hierarchies, it seemed like the perfect foundation for a “Category of all Categories.” However, evaluating NF through categorical semantics exposes a critical structural paradox.</p>
+<p>Categorical logic relies heavily on Cartesian Closed Categories (categories equipped with products and exponentials) to provide semantics for the <span class="math inline">\(\lambda\)</span>-calculus. Because Quine’s New Foundations (NF) permits a universal set (<span class="math inline">\(V\)</span>) and avoids external class hierarchies, it initially appeared to be the ideal foundation for a self-containing “Category of all Categories.”</p>
+<p>However, evaluating New Foundations through categorical semantics exposes a critical structural paradox.</p>
 <div class="reading-assignment">
 <strong>Suggested Reading: Stratified Semantics &amp; Topos Boundaries</strong>
 <ul>
 <li>
-McLarty, C. (1992). <em>Failure of Cartesian closedness in NF</em>. Journal of Symbolic Logic, 57(2), pp.&nbsp;1-25.
+McLarty, C. (1992). <em>Failure of Cartesian closedness in NF</em>. Journal of Symbolic Logic, 57(2), pp.&nbsp;555–556.
 </li>
 <li>
-Forster, T., Lewicki, A., &amp; Vidrine, A. (2019). <em>Category Theory with Stratified Set Theory</em>.
-</li>
-<li>
-Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 3 (Boolean Operations), Ch. 17.1 (Exponentiation meets T), Ch. 19.2 (ZFC in Cantorian Ordinals).
-</li>
-<li>
-Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Sections 1.4 (Avoiding paradoxes) and 2.2.2 (Closure properties of small sets).
-</li>
-<li>
-Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.3, 5.4, 7.1, and 7.2 (Singletons, Recoding, and Proving Consistency).
+Forster, T., Lewicki, A., &amp; Vidrine, A. (2019). <em>Category Theory with Stratified Set Theory</em>. Sections 1–4.
 </li>
 </ul>
 </div>
+<hr>
 <section id="mclarty-the-failure-of-cartesian-closedness-1992" class="level2">
 <h2 class="anchored" data-anchor-id="mclarty-the-failure-of-cartesian-closedness-1992">McLarty: The Failure of Cartesian Closedness (1992)</h2>
-<p>Colin McLarty definitively proved that <strong>the category of sets within NF cannot constitute a topos</strong>, and furthermore, it is not Cartesian Closed.</p>
-<p>A topos represents a mathematical universe possessing finite limits, Cartesian closedness (exponential objects for functions), and a subobject classifier (<span class="math inline">\(\Omega\)</span>). McLarty demonstrated that:</p>
+<p>In 1992, Colin McLarty definitively proved that <strong>the category of sets within New Foundations cannot constitute a topos</strong>, and furthermore, it is fundamentally <strong>not Cartesian Closed</strong>.</p>
+<p>A <strong>topos</strong> represents an idealized mathematical universe possessing:</p>
 <ol type="1">
-<li>In NF, subsets have monic inclusion functions.</li>
-<li>Therefore, every set has a monic mapping to the Universal Set <span class="math inline">\(V\)</span>.</li>
-<li>Using the internal language of a topos, McLarty proved that <em>only a trivial topos can have an object to which every other object has a monic mapping</em>.</li>
-<li>Because NF contains a universal monic, assuming it has exponential objects (like <span class="math inline">\(B^A\)</span>) leads to a direct contradiction.</li>
+<li>Finite limits (products, pullbacks, equalizers).</li>
+<li>Cartesian closedness (exponential function objects <span class="math inline">\(B^A\)</span> with evaluation maps).</li>
+<li>A subobject classifier (<span class="math inline">\(\Omega\)</span>).</li>
 </ol>
-<p>Thus, in pure NF, if categorical products exist, exponentials do not. True function abstraction fails structurally under strict Cartesian conditions.</p>
+<p>McLarty constructed a devastating proof using the internal language of a topos:</p>
+<pre><code>Subsets have Monic Inclusions
+              │
+              ▼
+Every Set has a Monic to V
+              │
+              ▼
+Topos Collapses to a Trivial Point</code></pre>
+<ol type="1">
+<li>In NF, every subset <span class="math inline">\(S \subseteq A\)</span> possesses a canonical monic inclusion function <span class="math inline">\(S \hookrightarrow A\)</span>.</li>
+<li>Because <span class="math inline">\(V\)</span> contains all sets, every set in the universe possesses a monomorphism (an injective embedding) into the Universal Set <span class="math inline">\(V\)</span>.</li>
+<li>McLarty proved a foundational lemma: <em>Only a trivial topos (where all objects collapse into a single terminal point) can possess an object to which every other object has a monic mapping</em>.</li>
+<li>If pure NF possessed full exponential objects <span class="math inline">\(B^A\)</span> with standard evaluation maps <span class="math inline">\(ev(f, x) = f(x)\)</span>, a Cantorian diagonal subobject <span class="math inline">\(R \subseteq V\)</span> can be constructed such that both <span class="math inline">\(i(R) \in R\)</span> and <span class="math inline">\(\sim(i(R) \in R)\)</span> evaluate as true.</li>
+</ol>
+<p><strong>The Architectural Consequence:</strong> In pure NF, if categorical products <span class="math inline">\(A \times B\)</span> exist, classical exponentials <span class="math inline">\(B^A\)</span> cannot. True function abstraction fails structurally under strict Cartesian conditions.</p>
+<hr>
 </section>
 <section id="forster-lewicki-and-vidrine-stratified-pseudo-elephants-2019" class="level2">
 <h2 class="anchored" data-anchor-id="forster-lewicki-and-vidrine-stratified-pseudo-elephants-2019">Forster, Lewicki, and Vidrine: Stratified Pseudo Elephants (2019)</h2>
-<p>If true Cartesian closedness fails, how do we perform category theory in NF? Thomas Forster, Adam Lewicki, and Alice Vidrine resolved this by formalizing categorical mechanics native to NF’s stratified boundaries.</p>
-<p>The category of NF sets (Category N) achieves <strong>Pseudo-Cartesian Closure</strong> through the <strong>T-Functor</strong>. The standard evaluation map <span class="math inline">\(ev(\langle x, f \rangle) = f(x)\)</span> violates Quine’s stratification rules. To fix this, the T-functor maps elements to their singletons (<span class="math inline">\(x \mapsto \{x\}\)</span>). The pseudo-evaluation arrow operates via <span class="math inline">\(TA \times (A \Rightarrow B) \to TB\)</span>, mathematically resolving the typing barrier.</p>
+<p>If classical Cartesian closedness fails, how do we execute category theory inside New Foundations?</p>
+<p>In 2019, Thomas Forster, Adam Lewicki, and Alice Vidrine resolved this foundational crisis by formalizing categorical structures native to stratified boundaries: the <strong>Stratified Pseudo Elephant (SPE)</strong>.</p>
+<pre><code>Standard Evaluation (Breaks Stratification):
+  ev(⟨x, f⟩) = f(x)            : A × B^A ──► B
+
+Stratified Evaluation (T-Functor Guarded):
+  ev_T(⟨T(x), f⟩) = T(f(x))     : TA × (A ⇒ B) ──► TB</code></pre>
+<section id="the-t-functor-pseudo-cartesian-closure" class="level3">
+<h3 class="anchored" data-anchor-id="the-t-functor-pseudo-cartesian-closure">The <span class="math inline">\(T\)</span>-Functor &amp; Pseudo-Cartesian Closure</h3>
+<p>Standard evaluation <span class="math inline">\(\text{ev}(\langle x, f \rangle) = f(x)\)</span> fails in NF because the function <span class="math inline">\(f\)</span> (a set of pairs) and the element <span class="math inline">\(x\)</span> operate across unequal stratification tiers.</p>
+<p>Forster et al.&nbsp;achieved <strong>Pseudo-Cartesian Closure</strong> by routing evaluations through the <strong><span class="math inline">\(T\)</span>-Functor</strong> (<span class="math inline">\(T: \mathcal{C} \to \mathcal{C}\)</span>), which maps objects to their unit subsets (<span class="math inline">\(x \mapsto \iota``x\)</span>). The stratified evaluation arrow executes legally as:</p>
+<p><span class="math display">\[\text{ev}_T : TA \times (A \Rightarrow B) \longrightarrow TB\]</span></p>
+<p>By shifting the domain and codomain through the <span class="math inline">\(T\)</span>-functor, the typing disparity is algebraically balanced.</p>
+</section>
 <section id="the-stratified-yoneda-lemma" class="level3">
 <h3 class="anchored" data-anchor-id="the-stratified-yoneda-lemma">The Stratified Yoneda Lemma</h3>
-<p>Because of the typing differentials between morphisms and objects, the classical Yoneda isomorphism fails in NF. The authors formulated the <strong>Stratified Yoneda Lemma</strong>, mapping natural transformations to the target object modified by the T-functor:</p>
-<p><span class="math display">\[Nat(C(U,-),F) \cong T(F(U))\]</span></p>
+<p>Because of the typing differential between arrows and objects, the classical Yoneda isomorphism fails in NF. The authors formulated the <strong>Stratified Yoneda Lemma</strong>, which accounts for the <span class="math inline">\(T\)</span>-functor shift across natural transformations:</p>
+<p><span class="math display">\[\text{Nat}(\mathcal{C}(U, -), F) \cong T(F(U))\]</span></p>
+</section>
+<section id="the-structure-of-a-stratified-pseudo-elephant-spe" class="level3">
+<h3 class="anchored" data-anchor-id="the-structure-of-a-stratified-pseudo-elephant-spe">The Structure of a Stratified Pseudo Elephant (SPE)</h3>
+<p>A <strong>Stratified Pseudo Elephant (SPE)</strong> is a regular category equipped with:</p>
+<ul>
+<li>Finite coproducts and a subobject classifier (<span class="math inline">\(2 = \{\bot, \top\}\)</span>).</li>
+<li>A full embedding endofunctor <span class="math inline">\(T\)</span> generating finite limits.</li>
+<li>Relative adjunctions for pullbacks and pseudo-power objects.</li>
+</ul>
+<p>Within an SPE, <strong>the subcategory of Strongly Cantorian sets forms a true elementary topos</strong>. Classical topos logic remains completely operational inside the Strongly Cantorian core, while the outer SPE environment safely encompasses the universal set <span class="math inline">\(V\)</span> without triggering McLarty’s collapse.</p>
+<hr>
 <div class="guided-example">
 <div class="guided-example-title">
 <p>Guided Example: Functorial Mapping</p>
 </div>
 <div class="guided-example-content">
 <p>A functor <span class="math inline">\(F\)</span> maps objects to objects, and morphisms to morphisms, preserving structure.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"functor"</span><span class="fu">:</span> <span class="st">"T"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"maps_object"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"from"</span><span class="fu">:</span> <span class="st">"A"</span><span class="fu">,</span> <span class="dt">"to"</span><span class="fu">:</span> <span class="st">"T(A)"</span> <span class="fu">},</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"maps_morphism"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"from"</span><span class="fu">:</span> <span class="st">"f"</span><span class="fu">,</span> <span class="dt">"to"</span><span class="fu">:</span> <span class="st">"_____"</span> <span class="fu">}</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"functor"</span><span class="fu">:</span> <span class="st">"T"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"maps_object"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"from"</span><span class="fu">:</span> <span class="st">"A"</span><span class="fu">,</span> <span class="dt">"to"</span><span class="fu">:</span> <span class="st">"T(A)"</span> <span class="fu">},</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"maps_morphism"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"from"</span><span class="fu">:</span> <span class="st">"f"</span><span class="fu">,</span> <span class="dt">"to"</span><span class="fu">:</span> <span class="st">"_____"</span> <span class="fu">}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>(Hint: If the functor is <span class="math inline">\(T\)</span>, and it maps morphism <span class="math inline">\(f\)</span>, what is the standard notation for the resulting mapped morphism?)</em></p>
 </div>
 </div>
@@ -364,11 +396,11 @@ Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.3, 5.4, 7
 <section id="api-schema-spe-flags" class="level3">
 <h3 class="anchored" data-anchor-id="api-schema-spe-flags">API Schema: SPE Flags</h3>
 <p>When modeling this environment, you will use the following JSON metadata structure on your root category object:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"category_type"</span><span class="fu">:</span> <span class="st">"Stratified_Pseudo_Elephant"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"true_topos_subcategory"</span><span class="fu">:</span> <span class="st">"strongly_cantorian"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"T_functor_applied"</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"category_type"</span><span class="fu">:</span> <span class="st">"Stratified_Pseudo_Elephant"</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"true_topos_subcategory"</span><span class="fu">:</span> <span class="st">"strongly_cantorian"</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"T_functor_applied"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use these exact keys when completing the problem sets to ensure your model mathematically aligns with Forster’s resolution.</p>
 <hr>
 <div class="card mb-3">

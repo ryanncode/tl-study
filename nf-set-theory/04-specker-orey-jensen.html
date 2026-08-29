@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -232,11 +232,8 @@ window.Quarto = {
   <li><a href="#specker-orey-and-jensen-stress-testing-the-monistic-universe" id="toc-specker-orey-and-jensen-stress-testing-the-monistic-universe" class="nav-link active" data-scroll-target="#specker-orey-and-jensen-stress-testing-the-monistic-universe">Specker, Orey, and Jensen: Stress-Testing the Monistic Universe</a>
   <ul class="collapse">
   <li><a href="#specker-the-failure-of-the-axiom-of-choice-1953" id="toc-specker-the-failure-of-the-axiom-of-choice-1953" class="nav-link" data-scroll-target="#specker-the-failure-of-the-axiom-of-choice-1953">Specker: The Failure of the Axiom of Choice (1953)</a></li>
-  <li><a href="#orey-relative-consistency-modeling-1956" id="toc-orey-relative-consistency-modeling-1956" class="nav-link" data-scroll-target="#orey-relative-consistency-modeling-1956">Orey: Relative Consistency Modeling (1956)</a></li>
-  <li><a href="#jensen-urelements-and-the-consistency-of-nfu-1969" id="toc-jensen-urelements-and-the-consistency-of-nfu-1969" class="nav-link" data-scroll-target="#jensen-urelements-and-the-consistency-of-nfu-1969">Jensen: Urelements and the Consistency of NFU (1969)</a>
-  <ul class="collapse">
-  <li><a href="#the-standard-axiom-of-extensionality" id="toc-the-standard-axiom-of-extensionality" class="nav-link" data-scroll-target="#the-standard-axiom-of-extensionality">The Standard Axiom of Extensionality</a></li>
-  </ul></li>
+  <li><a href="#orey-relative-consistency-host-logic-modeling-1956" id="toc-orey-relative-consistency-host-logic-modeling-1956" class="nav-link" data-scroll-target="#orey-relative-consistency-host-logic-modeling-1956">Orey: Relative Consistency &amp; Host Logic Modeling (1956)</a></li>
+  <li><a href="#jensen-urelements-and-the-consistency-of-nfu-1969" id="toc-jensen-urelements-and-the-consistency-of-nfu-1969" class="nav-link" data-scroll-target="#jensen-urelements-and-the-consistency-of-nfu-1969">Jensen: Urelements and the Consistency of NFU (1969)</a></li>
   <li><a href="#the-pivot-to-json-urelements-as-atomic-primitives" id="toc-the-pivot-to-json-urelements-as-atomic-primitives" class="nav-link" data-scroll-target="#the-pivot-to-json-urelements-as-atomic-primitives">The Pivot to JSON: Urelements as Atomic Primitives</a></li>
   <li><a href="#problem-set-logical-construction-of-urelements" id="toc-problem-set-logical-construction-of-urelements" class="nav-link" data-scroll-target="#problem-set-logical-construction-of-urelements">Problem Set: Logical Construction of Urelements</a></li>
   </ul></li>
@@ -267,59 +264,73 @@ window.Quarto = {
 
 <section id="specker-orey-and-jensen-stress-testing-the-monistic-universe" class="level1">
 <h1>Specker, Orey, and Jensen: Stress-Testing the Monistic Universe</h1>
-<p>While Hailperin proved Quine’s system could be finitely mechanized, the mid-century saw mathematical logicians stress-testing the <em>topological reality</em> of this Monistic Universe against the established boundaries of Zermelo-Fraenkel (ZF).</p>
+<p>While Theodore Hailperin proved that Quine’s system could be finitely mechanized, the mid-20th century saw mathematical logicians stress-testing the <em>topological reality</em> of this Monistic Universe against the established boundaries of Zermelo-Fraenkel (ZF) set theory.</p>
 <div class="reading-assignment">
 <strong>Suggested Reading:</strong>
 <ul>
 <li>
-Specker, E. P. (1953). <em>The Axiom of Choice in Quine’s New Foundations for Mathematical Logic</em>. Proceedings of the National Academy of Sciences, 39(9).
+Specker, E. P. (1953). <em>The Axiom of Choice in Quine’s New Foundations for Mathematical Logic</em>. Proceedings of the National Academy of Sciences, 39(9), pp.&nbsp;972–975.
 </li>
 <li>
-Orey, S. (1956). <em>On the Relative Consistency of Set Theory</em>. The Journal of Symbolic Logic, 21(3).
+Orey, S. (1956). <em>On the Relative Consistency of Set Theory</em>. The Journal of Symbolic Logic, 21(3), pp.&nbsp;280–290.
 </li>
 <li>
-Jensen, R. B. (1969). <em>On the Consistency of a Slight Modification of Quine’s New Foundations</em>. Synthese, 19(1/2), pp.&nbsp;228-236.
+Jensen, R. B. (1969). <em>On the Consistency of a Slight Modification of Quine’s New Foundations</em>. Synthese, 19(1/2), pp.&nbsp;228–236.
 </li>
 </ul>
 </div>
-<p>The defining feature of New Foundations (NF) is its explicit permission of a universal set (<span class="math inline">\(V \in V\)</span>). This structural rule directly collided with classical set-theoretic operations, sparking a foundational crisis.</p>
+<p>The defining feature of New Foundations (NF) is its explicit authorization of a universal set (<span class="math inline">\(V \in V\)</span>). This structural rule directly collided with classical set-theoretic operations, sparking a foundational crisis across cardinal arithmetic, choice principles, and extensionality.</p>
+<hr>
 <section id="specker-the-failure-of-the-axiom-of-choice-1953" class="level2">
 <h2 class="anchored" data-anchor-id="specker-the-failure-of-the-axiom-of-choice-1953">Specker: The Failure of the Axiom of Choice (1953)</h2>
-<p>Ernst P. Specker fundamentally altered the trajectory of NF research by proving that the <strong>Axiom of Choice (AC) is demonstrably false within pure NF</strong>.</p>
-<p>Specker did not rely on combinatorial models to prove this; he used raw Cantorian arithmetic. He analyzed the set of all singletons (unit subsets) within the universe, denoted as <span class="math inline">\(USC(V)\)</span>. Because mapping sets to their unit subsets changes their logical type in NF, we must use a <span class="math inline">\(T\)</span>-operation to compare their cardinalities. Specker proved that Cantor’s theorem manifests in NF as a strict inequality between the size of the singleton set and the universe itself:</p>
-<p><span class="math display">\[Nc(USC(V)) &lt; Nc(V)\]</span></p>
-<p>If the Axiom of Choice were true, the universal set <span class="math inline">\(V\)</span> could be well-ordered. However, Specker demonstrated that attempting to well-order <span class="math inline">\(V\)</span> forces a direct arithmetic contradiction against this size discrepancy. The universe simply cannot be well-ordered. The monistic rigidity of absolute extensionality forces the Axiom of Choice to fail.</p>
-<blockquote class="blockquote">
-<p>[!WARNING] Because AC is provable for all finite sets, its failure in NF implies the Axiom of Infinity. Specker’s theorem proves Quine’s universe must contain infinitely many elements, but it cannot be well-ordered.</p>
-</blockquote>
-</section>
-<section id="orey-relative-consistency-modeling-1956" class="level2">
-<h2 class="anchored" data-anchor-id="orey-relative-consistency-modeling-1956">Orey: Relative Consistency Modeling (1956)</h2>
-<p>Despite the failure of AC, Steven Orey proved that standard set theory could still operate <em>inside</em> NF. Orey utilized the monistic framework of NF as a “host logic” (<span class="math inline">\(L_2\)</span>) to construct an internal model of a pluralistic, cumulative hierarchy (<span class="math inline">\(L_1\)</span>, specifically von Neumann-Gödel or Zermelo set theory).</p>
-<p>Orey embedded the pluralistic ZF universe directly into Quine’s monistic universe by restricting Gödel’s constructible universe mapping functions. Orey created stratified functions <span class="math inline">\(s\)</span> and <span class="math inline">\(\sigma\)</span> to ensure the mappings strictly adhered to NF type rules. This proved that a universe forbidding a universal set (ZF) could be perfectly modeled inside a universe containing a universal set (NF).</p>
-</section>
-<section id="jensen-urelements-and-the-consistency-of-nfu-1969" class="level2">
-<h2 class="anchored" data-anchor-id="jensen-urelements-and-the-consistency-of-nfu-1969">Jensen: Urelements and the Consistency of NFU (1969)</h2>
-<p>Recognizing the structural barriers within pure NF, Ronald Björn Jensen salvaged Quine’s stratification approach by introducing a definitive modification: <strong>NFU (New Foundations with Urelements)</strong>.</p>
-<p>In standard NF, the Axiom of Extensionality dictates that all objects are sets, defined entirely by their members. Jensen relaxed this axiom to explicitly accommodate <em>Urelements</em>—objects that have no members but are distinct from the empty set.</p>
-<p>By breaking the strict monistic reduction of all entities to pure sets, Jensen stabilized the universe. Using Ramsey’s theorem and shifting automorphisms (mapping infinite sets of indiscernibles across domains to preserve truth values), Jensen proved that <strong>NFU is consistent, and is fully compatible with both the Axiom of Choice and the Axiom of Infinity</strong>.</p>
-<section id="the-standard-axiom-of-extensionality" class="level3">
-<h3 class="anchored" data-anchor-id="the-standard-axiom-of-extensionality">The Standard Axiom of Extensionality</h3>
-<p>To complete the upcoming problem set, you must understand how Extensionality is traditionally written in First-Order Logic (FOL): <span class="math inline">\(\forall x \forall y (\forall z (z \in x \iff z \in y) \implies x = y)\)</span></p>
-<p><em>(Translation: For all sets <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, if they contain the exact same elements <span class="math inline">\(z\)</span>, then <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are identical.)</em> When Urelements are introduced, this strict axiom must be modified because Urelements have no members, but are <em>not</em> identical to the empty set.</p>
-<div class="guided-example">
-<div class="guided-example-title">
-<p>Guided Example: The Empty Set vs Urelement</p>
+<p>In 1953, Ernst P. Specker established a profound result in non-well-founded mathematics: <strong>the Axiom of Choice (AC) is demonstrably false within pure New Foundations</strong>.</p>
+<p>In classical set theory (ZFC), the map sending each element to its singleton (<span class="math inline">\(x \mapsto \{x\}\)</span>) is a direct bijection, meaning a set and its singletons share identical cardinality. In NF, however, mapping <span class="math inline">\(x\)</span> to its singleton <span class="math inline">\(\{x\}\)</span> elevates its logical type from <span class="math inline">\(n\)</span> to <span class="math inline">\(n+1\)</span>. To compare cardinalities across stratification tiers, Specker introduced the <span class="math inline">\(T\)</span>-operation:</p>
+<p><span class="math display">\[T(m) = \text{Nc}(\text{USC}(a)) \quad \text{where } m = \text{Nc}(a)\]</span></p>
+<p>Specker analyzed the power set of the universal set, <span class="math inline">\(\text{SC}(V)\)</span>. Because every subset of <span class="math inline">\(V\)</span> is itself an entity in the universe, the power set is identical to the universe itself: <span class="math inline">\(\text{SC}(V) = V\)</span>. Cantor’s theorem manifests in NF as a strict inequality between the collection of unit subsets (<span class="math inline">\(\text{USC}(V)\)</span>) and the universal set:</p>
+<p><span class="math display">\[\text{Nc}(\text{USC}(V)) &lt; \text{Nc}(V)\]</span></p>
+<pre><code>Classical ZFC:
+  |Singletons(A)| = |A|  ──►  Cantor: |A| &lt; |PowerSet(A)|
+
+Quinean NF:
+  |PowerSet(V)| = |V|    ──►  Cantor: |USC(V)| &lt; |V|</code></pre>
+<p>If the Axiom of Choice held in NF, the universal set <span class="math inline">\(V\)</span> could be well-ordered. Specker proved that well-ordering <span class="math inline">\(V\)</span> forces its cardinalities to satisfy finite arithmetic identities (<span class="math inline">\(n = T(n)+1\)</span> or <span class="math inline">\(n = T(n)+2\)</span>) that are mathematically impossible for finite cardinals. The absolute extensionality of a universal set shatters the Axiom of Choice.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="guided-example-content">
-<p>If we permit Urelements, both they and the empty set share the property of having <em>no members</em>: <span class="math inline">\(\forall y (y \notin x)\)</span>.</p>
-<p>To distinguish them, some formalizations state that a Urelement is uniquely identical to its own singleton set, while the empty set is not.</p>
-<p>Empty Set: <span class="math inline">\(x = \emptyset \iff \forall y (y \notin x) \land x \neq \{x\}\)</span> Urelement: <span class="math inline">\(x \in U \iff \forall y (y \notin x) \land \_\_\_\_\_\_\_\_\_\_\)</span></p>
-<p><em>(Hint: How would you express the condition that the Urelement IS identical to its own singleton?)</em></p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The Provability of Infinity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because the Axiom of Choice is provably true for all finite sets, its refutation in NF directly proves that the universe must be infinite. Unlike ZFC, which requires a standalone Axiom of Infinity, pure NF derives the existence of an infinite universe as an internal deductive theorem.</p>
 </div>
 </div>
 <hr>
 </section>
+<section id="orey-relative-consistency-host-logic-modeling-1956" class="level2">
+<h2 class="anchored" data-anchor-id="orey-relative-consistency-host-logic-modeling-1956">Orey: Relative Consistency &amp; Host Logic Modeling (1956)</h2>
+<p>Despite the failure of the Axiom of Choice, Steven Orey demonstrated that classical set theory can be embedded directly <em>inside</em> New Foundations.</p>
+<p>Orey utilized NF as a <strong>Host Logic</strong> (<span class="math inline">\(L_2\)</span>) to construct an internal simulation of a cumulative, pluralistic hierarchy (<span class="math inline">\(L_1\)</span>, specifically von Neumann-Bernays-Gödel set theory). By restricting Gödel’s constructible universe mapping functions with stratified indexing parameters <span class="math inline">\(s\)</span> and <span class="math inline">\(\sigma\)</span>, Orey proved:</p>
+<p><span class="math display">\[\text{Con}(NF) \implies \text{Con}(ZFC)\]</span></p>
+<p>A universe that contains a universal set (<span class="math inline">\(V \in V\)</span>) possesses sufficient structural capacity to model a universe that strictly forbids a universal set (ZFC). The pluralistic hierarchy of classical mathematics emerges as a localized simulation running inside a flat, monistic host logic.</p>
+<hr>
+</section>
+<section id="jensen-urelements-and-the-consistency-of-nfu-1969" class="level2">
+<h2 class="anchored" data-anchor-id="jensen-urelements-and-the-consistency-of-nfu-1969">Jensen: Urelements and the Consistency of NFU (1969)</h2>
+<p>To restore the Axiom of Choice and resolve consistency concerns, Ronald Björn Jensen engineered <strong>NFU (New Foundations with Urelements)</strong>.</p>
+<p>In pure NF, the Axiom of Extensionality dictates that all objects are sets, defined entirely by their constituent members. Any two entities sharing the exact same elements must be identical. Jensen weakened extensionality to apply only to non-empty collections:</p>
+<p><span class="math display">\[\exists z (z \in x) \implies (\forall z (z \in x \leftrightarrow z \in y) \implies x = y)\]</span></p>
+<p>Collections containing at least one member remain strictly extensional. However, entities containing no members are exempted. This permits the coexistence of the true empty set alongside distinct <strong>Urelements</strong> (atoms that contain no members, yet are distinct from the empty set).</p>
+<pre><code>Pure NF:   Object with no members  ──►  Must be Empty Set ∅  (Extensionality Rigid)
+NFU:       Objects with no members ──►  Empty Set ∅ OR Urelements u₁, u₂, u₃... (Buffered)</code></pre>
+<p>By introducing Urelements, Jensen broke the rigid extensional symmetry of the universal set. Using Ramsey’s theorem on infinite sets of indiscernibles and shifting automorphisms (<span class="math inline">\(\sigma: U_i \to U_{i+1}\)</span>), Jensen proved:</p>
+<ol type="1">
+<li><strong>NFU is Consistent</strong>: Its consistency is provable within elementary number theory (Peano Arithmetic).</li>
+<li><strong>Full Compatibility with Choice and Infinity</strong>: Both the Axiom of Choice and the Axiom of Infinity can be added to NFU without triggering Specker’s contradiction.</li>
+</ol>
+<hr>
 </section>
 <section id="the-pivot-to-json-urelements-as-atomic-primitives" class="level2">
 <h2 class="anchored" data-anchor-id="the-pivot-to-json-urelements-as-atomic-primitives">The Pivot to JSON: Urelements as Atomic Primitives</h2>

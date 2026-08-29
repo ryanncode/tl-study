@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -231,12 +231,12 @@ window.Quarto = {
   <ul>
   <li><a href="#categorical-semantics-for-logic-and-computation" id="toc-categorical-semantics-for-logic-and-computation" class="nav-link active" data-scroll-target="#categorical-semantics-for-logic-and-computation">Categorical Semantics for Logic and Computation</a>
   <ul class="collapse">
-  <li><a href="#the-equivalence-of-logic-and-category" id="toc-the-equivalence-of-logic-and-category" class="nav-link" data-scroll-target="#the-equivalence-of-logic-and-category">The Equivalence of Logic and Category</a>
+  <li><a href="#the-trinity-of-computation-curry-howard-lambek" id="toc-the-trinity-of-computation-curry-howard-lambek" class="nav-link" data-scroll-target="#the-trinity-of-computation-curry-howard-lambek">The Trinity of Computation (Curry-Howard-Lambek)</a>
   <ul class="collapse">
-  <li><a href="#functional-completeness" id="toc-functional-completeness" class="nav-link" data-scroll-target="#functional-completeness">Functional Completeness</a></li>
-  <li><a href="#untyped-systems-and-c-monoids" id="toc-untyped-systems-and-c-monoids" class="nav-link" data-scroll-target="#untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</a></li>
+  <li><a href="#functional-completeness-eliminating-bound-variables" id="toc-functional-completeness-eliminating-bound-variables" class="nav-link" data-scroll-target="#functional-completeness-eliminating-bound-variables">Functional Completeness: Eliminating Bound Variables</a></li>
   </ul></li>
-  <li><a href="#computer-science-and-state-transitions" id="toc-computer-science-and-state-transitions" class="nav-link" data-scroll-target="#computer-science-and-state-transitions">Computer Science and State Transitions</a>
+  <li><a href="#untyped-systems-and-c-monoids" id="toc-untyped-systems-and-c-monoids" class="nav-link" data-scroll-target="#untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</a></li>
+  <li><a href="#state-transitions-automata-barr-wells" id="toc-state-transitions-automata-barr-wells" class="nav-link" data-scroll-target="#state-transitions-automata-barr-wells">State Transitions &amp; Automata (Barr &amp; Wells)</a>
   <ul class="collapse">
   <li><a href="#translating-to-json-products-and-limits" id="toc-translating-to-json-products-and-limits" class="nav-link" data-scroll-target="#translating-to-json-products-and-limits">Translating to JSON: Products and Limits</a></li>
   </ul></li>
@@ -268,25 +268,29 @@ window.Quarto = {
 
 <section id="categorical-semantics-for-logic-and-computation" class="level1">
 <h1>Categorical Semantics for Logic and Computation</h1>
-<p>To successfully map our NF ontology to JSON, we must understand how logical derivation and computational states are inherently structural.</p>
-<p>J. Lambek and P.J. Scott’s <em>Introduction to Higher-Order Categorical Logic</em> (1986) demonstrated the fundamental mathematical equivalence between structural logic systems and specific category types. Barr and Wells’ <em>Category Theory for Computer Science</em> (1990) extended these maps directly into computational state architecture.</p>
+<p>To successfully map our NF ontology to JSON, we must understand how logical deduction, computational execution, and categorical geometry are mathematically equivalent.</p>
+<p>In <em>Introduction to Higher-Order Categorical Logic</em> (1986), J. Lambek and P.J. Scott established the rigorous isomorphism connecting deductive proof systems, typed <span class="math inline">\(\lambda\)</span>-calculi, and Cartesian Closed Categories. Michael Barr and Charles Wells (<em>Category Theory for Computer Science</em>, 1990) extended this correspondence directly into computational state machines.</p>
 <div class="reading-assignment">
 <strong>Suggested Reading: Higher-Order Logic &amp; CCCs</strong>
 <ul>
 <li>
-Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§5), Ch. II (§3), Ch. III (§4–§6), Ch. IV (§6).
+Lambek, J., &amp; Scott, P. J. (1986). <em>Introduction to Higher-Order Categorical Logic</em>. Cambridge University Press. Part I (§1–§6).
 </li>
 <li>
-Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 11.1, 11.3 (Operations on Functions; Stratification), Ch. 23.1, 23.3 (Abstraction; State Machines &amp; C-Monoids).
-</li>
-<li>
-Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.1, 3.2 (Codes and Clouds) and Section 4.6 (Structural Actions).
+Barr, M., &amp; Wells, C. (1990). <em>Category Theory for Computer Science</em>. Ch. 1 (§1.1–§1.4) and Ch. 2 (§2.1–§2.3).
 </li>
 </ul>
 </div>
-<section id="the-equivalence-of-logic-and-category" class="level2">
-<h2 class="anchored" data-anchor-id="the-equivalence-of-logic-and-category">The Equivalence of Logic and Category</h2>
-<p>Lambek and Scott established a strict dictionary between formal deductive systems, <span class="math inline">\(\lambda\)</span>-calculus, and Category Theory:</p>
+<hr>
+<section id="the-trinity-of-computation-curry-howard-lambek" class="level2">
+<h2 class="anchored" data-anchor-id="the-trinity-of-computation-curry-howard-lambek">The Trinity of Computation (Curry-Howard-Lambek)</h2>
+<p>The Curry-Howard-Lambek correspondence proves that Logic, Computer Science, and Category Theory represent three distinct vantage points of the exact same mathematical structure:</p>
+<pre><code>           Category Theory (CCCs)
+                   ▲    ▲
+                  ╱      ╲
+                 ▼        ▼
+       Proof Theory ◄────► Type Theory
+      (Propositions)      (Programs)</code></pre>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -296,60 +300,80 @@ Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 3.1, 3.2 (C
 <thead>
 <tr class="header">
 <th>Category Theory</th>
-<th>Logical Semantics</th>
-<th>Typed <span class="math inline">\(\lambda\)</span>-Calculus</th>
+<th>Logical Proof Semantics</th>
+<th>Computer Science / Typed <span class="math inline">\(\lambda\)</span>-Calculus</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Object <span class="math inline">\(A\)</span></td>
-<td>Formula <span class="math inline">\(A\)</span></td>
-<td>Type <span class="math inline">\(A\)</span></td>
+<td><strong>Object <span class="math inline">\(A\)</span></strong></td>
+<td>Proposition / Formula <span class="math inline">\(A\)</span></td>
+<td>Data Type <span class="math inline">\(A\)</span> (<code>Int</code>, <code>String</code>, <code>Struct</code>)</td>
 </tr>
 <tr class="even">
-<td>Arrow <span class="math inline">\(f: A \rightarrow B\)</span></td>
-<td>Proof of <span class="math inline">\(A \vdash B\)</span></td>
-<td>Term <span class="math inline">\(f(x)\)</span> of type <span class="math inline">\(B\)</span></td>
+<td><strong>Arrow <span class="math inline">\(f: A \to B\)</span></strong></td>
+<td>Deductive Proof of <span class="math inline">\(A \vdash B\)</span></td>
+<td>Executable Term / Function <span class="math inline">\(f(x) : B\)</span></td>
 </tr>
 <tr class="odd">
-<td>Terminal Object <span class="math inline">\(1\)</span></td>
-<td>Truth <span class="math inline">\(\top\)</span></td>
-<td>Basic term <span class="math inline">\(*\)</span></td>
+<td><strong>Terminal Object <span class="math inline">\(1\)</span></strong></td>
+<td>Truth Constant <span class="math inline">\(\top\)</span></td>
+<td>Unit Type <code>()</code> / Primitive Value <code>*</code></td>
 </tr>
 <tr class="even">
-<td>Product <span class="math inline">\(A \times B\)</span></td>
-<td>Conjunction <span class="math inline">\(A \wedge B\)</span></td>
-<td>Product Type</td>
+<td><strong>Product <span class="math inline">\(A \times B\)</span></strong></td>
+<td>Conjunction <span class="math inline">\(A \land B\)</span></td>
+<td>Pair / Product Type <code>(A, B)</code></td>
 </tr>
 <tr class="odd">
-<td>Exponential <span class="math inline">\(B^A\)</span></td>
-<td>Implication <span class="math inline">\(A \Rightarrow B\)</span></td>
-<td>Function Type / Abstraction</td>
+<td><strong>Exponential <span class="math inline">\(B^A\)</span></strong></td>
+<td>Material Implication <span class="math inline">\(A \implies B\)</span></td>
+<td>Function Type <code>A -&gt; B</code> / Closure</td>
 </tr>
 <tr class="even">
-<td>Evaluation <span class="math inline">\(\epsilon_{A,B}\)</span></td>
-<td>Modus Ponens</td>
-<td>Application</td>
+<td><strong>Evaluation <span class="math inline">\(\epsilon_{A,B}\)</span></strong></td>
+<td>Modus Ponens Step</td>
+<td>Function Application <code>f(a)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Initial Object <span class="math inline">\(0\)</span></strong></td>
+<td>Falsehood <span class="math inline">\(\bot\)</span></td>
+<td>Empty / Bottom Type <code>Void</code></td>
+</tr>
+<tr class="even">
+<td><strong>Coproduct <span class="math inline">\(A + B\)</span></strong></td>
+<td>Disjunction <span class="math inline">\(A \lor B\)</span></td>
+<td>Sum / Either Type <code>Either&lt;A, B&gt;</code></td>
 </tr>
 </tbody>
 </table>
-<section id="functional-completeness" class="level3">
-<h3 class="anchored" data-anchor-id="functional-completeness">Functional Completeness</h3>
-<p>A major achievement of categorical logic is <strong>Functional Completeness</strong>: the ability to eliminate bound variables entirely. Any logical deduction dependent on an assumed variable can be algebraically translated into a pure categorical morphism composed of constant structural arrows (evaluations, projections, exponential adjoints). This proves that logic is structurally geometric.</p>
-</section>
-<section id="untyped-systems-and-c-monoids" class="level3">
-<h3 class="anchored" data-anchor-id="untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</h3>
-<p>While typed <span class="math inline">\(\lambda\)</span>-calculus strictly correlates to Cartesian Closed Categories, the untyped <span class="math inline">\(\lambda\)</span>-calculus semantically maps to <strong>C-Monoids</strong>. A C-monoid is a single-object Cartesian Closed Category that explicitly excludes a terminal object. Because NF allows for a universal set, handling untyped or reflexively typed loops requires leveraging these specialized single-object mapping behaviors.</p>
+<section id="functional-completeness-eliminating-bound-variables" class="level3">
+<h3 class="anchored" data-anchor-id="functional-completeness-eliminating-bound-variables">Functional Completeness: Eliminating Bound Variables</h3>
+<p>A major achievement of categorical logic is <strong>Functional Completeness</strong>: any logical deduction that depends on an assumed hypothesis variable <span class="math inline">\(x: 1 \to A\)</span> can be algebraically translated into a pure morphism composed of constant structural arrows (evaluations, projections, exponential adjoints).</p>
+<p>Bound variables are an artifact of human notation. In category theory, computation evaluates as a static, coordinate-free geometric trajectory across arrows.</p>
+<hr>
 </section>
 </section>
-<section id="computer-science-and-state-transitions" class="level2">
-<h2 class="anchored" data-anchor-id="computer-science-and-state-transitions">Computer Science and State Transitions</h2>
-<p>Barr and Wells contextualized these categorical mappings directly into functional programming.</p>
-<ul>
-<li><strong>Programs as Arrows</strong>: Functions <span class="math inline">\(f: S \to T\)</span> operate as structural morphisms. Anonymous functions (<span class="math inline">\(x \mapsto x^2\)</span>) define internal operational paths distinct from their formal signature.</li>
-<li><strong>Types as Objects</strong>: Data types (Booleans, Integers, complex structs) function as the objects defining the domain and codomain boundaries.</li>
-<li><strong>State Machines as Monoids</strong>: A classical automaton operating on an input alphabet acts algebraically as a Monoid (a single object category) where the input string evaluates as a directed path navigating through a free category.</li>
-</ul>
+<section id="untyped-systems-and-c-monoids" class="level2">
+<h2 class="anchored" data-anchor-id="untyped-systems-and-c-monoids">Untyped Systems and C-Monoids</h2>
+<p>While typed programming languages correspond strictly to Cartesian Closed Categories, untyped systems (like pure untyped <span class="math inline">\(\lambda\)</span>-calculus and Quine’s universal set <span class="math inline">\(V\)</span>) correspond algebraically to <strong>C-Monoids</strong>.</p>
+<p>A <strong>C-Monoid</strong> is a single-object Cartesian Closed Category that explicitly excludes a terminal object.</p>
+<pre><code>Standard CCC (Typed):
+  Multiple distinct objects A, B, C... + Terminal Object 1
+
+C-Monoid (Untyped):
+  Single Universal Object U containing all morphisms (No Terminal Object)</code></pre>
+<p>In an untyped universe where everything is an element of <span class="math inline">\(V\)</span>, every function can accept any other function as input, including itself (<span class="math inline">\(f(f)\)</span>). If an untyped system possessed a classical terminal object, this universal self-application would trigger an immediate Russellian contradiction, collapsing the category into a single trivial point. C-Monoids provide the exact topological boundary conditions required for an untyped engine to process self-referential loops safely.</p>
+<hr>
+</section>
+<section id="state-transitions-automata-barr-wells" class="level2">
+<h2 class="anchored" data-anchor-id="state-transitions-automata-barr-wells">State Transitions &amp; Automata (Barr &amp; Wells)</h2>
+<p>Barr and Wells demonstrated how categorical morphisms execute on physical computing hardware:</p>
+<ol type="1">
+<li><strong>Functions as Arrows</strong>: A software routine <code>fn(x: S) -&gt; T</code> operates as a morphism <span class="math inline">\(f: S \to T\)</span>. Pure subroutines define deterministic operational paths across typed memory domains.</li>
+<li><strong>State Automata as Monoid Actions</strong>: A classical state machine with states <span class="math inline">\(S\)</span> and an input alphabet <span class="math inline">\(\Sigma\)</span> acts algebraically as a Monoid action. Feeding a string <span class="math inline">\(w = \sigma_1 \sigma_2 \dots \sigma_n\)</span> into the automaton corresponds to navigating a directed composition path <span class="math inline">\(\delta_n \circ \dots \circ \delta_1\)</span> across the state transition graph.</li>
+</ol>
+<hr>
 <div class="guided-example">
 <div class="guided-example-title">
 <p>Guided Example: Categorical Modus Ponens</p>

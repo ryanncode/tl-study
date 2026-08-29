@@ -1,8 +1,12 @@
 {
   "documents": {
     "nf-set-theory/01-topology-transclusion.qmd": {
-      "document_hash": "aa700a79e6d689b5ab187dec6b9da5b9",
-      "historical_hashes": [],
+      "document_hash": "5455c9f1a49444c598cba81db0f0c426",
+      "historical_hashes": [
+        "aa700a79e6d689b5ab187dec6b9da5b9",
+        "2afb0e861d34794b2c45e55e904179a1",
+        "59f5866bb177aae845cde46a2149bb14"
+      ],
       "problems": {
         "topology-1-1": {
           "title": "Problem 1.1: The Failure of the Shallow Copy",
@@ -15,8 +19,18 @@
       }
     },
     "nf-set-theory/02-quine-math-logic.qmd": {
-      "document_hash": "4dd5db77325dcc451dc1c38c817327da",
-      "historical_hashes": [],
+      "document_hash": "3b9301829332ebd81b35868b65eeafa4",
+      "historical_hashes": [
+        "4dd5db77325dcc451dc1c38c817327da",
+        "283c82d477e2e7c3020baaccaba55599",
+        "8b97129d65b5b25f4d47c9accc83093f",
+        "c8d7053fab1106ca1da5cc4fd2fc6284",
+        "72f0a832263f53c3979fb8e6f8e5ba53",
+        "91ea0f1fda11cea9d771482525ee3d3f",
+        "415398a9eba206403368539b44b87bc0",
+        "ab307391da69a0aafbf7ac4a7fc9c6ab",
+        "98cd14b2cbd73abe8d00253643ad4f42"
+      ],
       "problems": {
         "quine-2-1": {
           "title": "Problem 2.1: Resolving Russell's Paradox",
@@ -29,8 +43,17 @@
       }
     },
     "nf-set-theory/03-hailperin-axioms.qmd": {
-      "document_hash": "5c7522d63e886f269ca5b532e2465dce",
-      "historical_hashes": [],
+      "document_hash": "597462e1552e6dd43bad19f8c9ad5ba3",
+      "historical_hashes": [
+        "5c7522d63e886f269ca5b532e2465dce",
+        "1b91ade0d19208fb6f6769455b94c700",
+        "4519125e346a94b0d2e687230780119b",
+        "f8a91a9b159cf497f7a0ef284fa3b54e",
+        "bcea5c9ffcd9f85e6f776b831d4e4ccb",
+        "e7bca654a75350cf3db13f2e7f5076aa",
+        "861b35a6cc40adf2a4ade68ee766046f",
+        "414ef4f827d6467d584df510efd5f9ea"
+      ],
       "problems": {
         "hailperin-3-1": {
           "title": "Problem 3.1: The Kuratowski Contradiction",
@@ -43,8 +66,15 @@
       }
     },
     "nf-set-theory/04-specker-orey-jensen.qmd": {
-      "document_hash": "5f3e4638ab25c384f2f97cf02af6313d",
-      "historical_hashes": [],
+      "document_hash": "9cd5a8244b240f2ae6436d7df72035b6",
+      "historical_hashes": [
+        "5f3e4638ab25c384f2f97cf02af6313d",
+        "0bf1b9f386ac7509de20ddf15de384d0",
+        "236e58512e48c6bd3ef37d02ea17fb43",
+        "a3c1b3fe8e0a1771a046c0d7d70731ec",
+        "ae790cbe43587254c683682d51afcabf",
+        "8e86c08fc648f858e40a66ea58955b3d"
+      ],
       "problems": {
         "jensen-4-1": {
           "title": "Problem 4.1: Urelements vs The Empty Set",
@@ -57,8 +87,14 @@
       }
     },
     "nf-set-theory/05-forster-holmes.qmd": {
-      "document_hash": "d6071e3f4884bf35fd46cc3bd2f8ad9a",
-      "historical_hashes": [],
+      "document_hash": "fd541128f814f1aa60ab3c37ac825f8d",
+      "historical_hashes": [
+        "d6071e3f4884bf35fd46cc3bd2f8ad9a",
+        "57fdb0170663b8da0308b5d8d42026ba",
+        "341de387bc7948c2c97f1992e84d9f44",
+        "9b80ad96fbe7ab1501dd06fba3d4c257",
+        "18dffbeb26d030cc47db66c46053f8ca"
+      ],
       "problems": {
         "holmes-5-1": {
           "title": "Problem 5.1: Tracking the T-Operation",
@@ -67,8 +103,16 @@
       }
     },
     "nf-set-theory/06-mac-lane-lawvere.qmd": {
-      "document_hash": "775d29c8ce7a890fc506df78612655b3",
-      "historical_hashes": [],
+      "document_hash": "ae19e05da6830678aad523f0a5201b95",
+      "historical_hashes": [
+        "775d29c8ce7a890fc506df78612655b3",
+        "91208e84e9fbfd08b2d57046cab115bc",
+        "0e4293a91fbe71d0cc3084abdf2b90b4",
+        "dcf42958fea52b830238c7cf5e50f280",
+        "a1640d6abf9abf7c9092d0ebb0dc0d34",
+        "2cd93d32e948380c9d11b40d01452a7b",
+        "1a9eaf01ae77dc8c074c8e424994bb8c"
+      ],
       "problems": {
         "maclane-6-1": {
           "title": "Problem 6.1: Morphisms vs Elements",
@@ -81,8 +125,13 @@
       }
     },
     "nf-set-theory/07-lambek-scott.qmd": {
-      "document_hash": "cc856f11b416e8d83cc86297b2ed6ddf",
-      "historical_hashes": [],
+      "document_hash": "2b753a89dff47ce20e709f942b53512f",
+      "historical_hashes": [
+        "cc856f11b416e8d83cc86297b2ed6ddf",
+        "179f73e889b59c4f6885f05a1285f9f9",
+        "c0f38a0cd49561a706bdeeb233384ec9",
+        "d63c8844f5c944cad28d9599436d4c2c"
+      ],
       "problems": {
         "lambek-7-1": {
           "title": "Problem 7.1: Modeling Modus Ponens",
@@ -95,8 +144,14 @@
       }
     },
     "nf-set-theory/08-mclarty-forster-stratified.qmd": {
-      "document_hash": "02635df11df2d4225376fa8e23ef523c",
-      "historical_hashes": [],
+      "document_hash": "7916564f7f6b896e08463eef3b628843",
+      "historical_hashes": [
+        "02635df11df2d4225376fa8e23ef523c",
+        "3439abc410660193256f3bacb12ca813",
+        "6788bbe7b73d6c07ae14c6b6dae13472",
+        "0027ca3851350d13bd5c2e58807fb5fb",
+        "0d590180ec409e488f6d7b98af546dbe"
+      ],
       "problems": {
         "mclarty-8-1": {
           "title": "Problem 8.1: The T-Functor JSON Property",
@@ -109,9 +164,10 @@
       }
     },
     "nf-set-theory/index.qmd": {
-      "document_hash": "d87ce64ed0263529a8b0fb3c4dd33869",
+      "document_hash": "b25f92e521547907af75bce4fa565555",
       "historical_hashes": [
-        "5736ac6a4dcf972c50866c77f20a1434"
+        "5736ac6a4dcf972c50866c77f20a1434",
+        "d87ce64ed0263529a8b0fb3c4dd33869"
       ],
       "problems": {}
     },
@@ -151,9 +207,10 @@
       "problems": {}
     },
     "computation-metalogic/index.qmd": {
-      "document_hash": "832e99f2968776f6a24d4f94676b350a",
+      "document_hash": "c35413ae33492797b3638a0ddf0b0240",
       "historical_hashes": [
-        "68de40d0506848b14ddba891f271786b"
+        "68de40d0506848b14ddba891f271786b",
+        "832e99f2968776f6a24d4f94676b350a"
       ],
       "problems": {}
     },
@@ -252,5 +309,5 @@
       "problems": {}
     }
   },
-  "generated_at": "2026-08-01T18:02:14.256Z"
+  "generated_at": "2026-08-29T03:32:25.217Z"
 }

@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -232,12 +232,13 @@ window.Quarto = {
   <li><a href="#quine---new-foundations-for-mathematical-logic-1937" id="toc-quine---new-foundations-for-mathematical-logic-1937" class="nav-link active" data-scroll-target="#quine---new-foundations-for-mathematical-logic-1937">Quine - New Foundations for Mathematical Logic (1937)</a>
   <ul class="collapse">
   <li><a href="#the-primitives" id="toc-the-primitives" class="nav-link" data-scroll-target="#the-primitives">The Primitives</a></li>
-  <li><a href="#the-15-derivative-definitions" id="toc-the-15-derivative-definitions" class="nav-link" data-scroll-target="#the-15-derivative-definitions">The 15 Derivative Definitions</a>
+  <li><a href="#contextual-eliminability-the-15-derivative-definitions" id="toc-contextual-eliminability-the-15-derivative-definitions" class="nav-link" data-scroll-target="#contextual-eliminability-the-15-derivative-definitions">Contextual Eliminability &amp; The 15 Derivative Definitions</a>
   <ul class="collapse">
   <li><a href="#phase-1-boolean-connectives-d1---d5" id="toc-phase-1-boolean-connectives-d1---d5" class="nav-link" data-scroll-target="#phase-1-boolean-connectives-d1---d5">Phase 1: Boolean Connectives (D1 - D5)</a></li>
-  <li><a href="#phase-2-first-order-logic-d6---d8" id="toc-phase-2-first-order-logic-d6---d8" class="nav-link" data-scroll-target="#phase-2-first-order-logic-d6---d8">Phase 2: First-Order Logic (D6 - D8)</a></li>
+  <li><a href="#phase-2-first-order-logic-identity-d6---d8" id="toc-phase-2-first-order-logic-identity-d6---d8" class="nav-link" data-scroll-target="#phase-2-first-order-logic-identity-d6---d8">Phase 2: First-Order Logic &amp; Identity (D6 - D8)</a></li>
   <li><a href="#phase-3-definite-descriptions-d9---d10" id="toc-phase-3-definite-descriptions-d9---d10" class="nav-link" data-scroll-target="#phase-3-definite-descriptions-d9---d10">Phase 3: Definite Descriptions (D9 - D10)</a></li>
   <li><a href="#phase-4-class-and-relational-abstractions-d11---d15" id="toc-phase-4-class-and-relational-abstractions-d11---d15" class="nav-link" data-scroll-target="#phase-4-class-and-relational-abstractions-d11---d15">Phase 4: Class and Relational Abstractions (D11 - D15)</a></li>
+  <li><a href="#the-kuratowski-type-inflation-problem" id="toc-the-kuratowski-type-inflation-problem" class="nav-link" data-scroll-target="#the-kuratowski-type-inflation-problem">The Kuratowski Type-Inflation Problem</a></li>
   </ul></li>
   <li><a href="#postulates-and-the-principle-of-stratification" id="toc-postulates-and-the-principle-of-stratification" class="nav-link" data-scroll-target="#postulates-and-the-principle-of-stratification">Postulates and The Principle of Stratification</a>
   <ul class="collapse">
@@ -286,69 +287,85 @@ Quine, W. V. (1937). <em>New Foundations for Mathematical Logic</em>. The Americ
 <h2 class="anchored" data-anchor-id="the-primitives">The Primitives</h2>
 <p>Imagine building an entire programming language from just three CPU instructions. Quine’s language operates strictly on three primitive mathematical constructs:</p>
 <ol type="1">
-<li><strong>Membership</strong>: <span class="math inline">\(x \epsilon y\)</span> (Object <span class="math inline">\(x\)</span> belongs to set <span class="math inline">\(y\)</span>)</li>
-<li><strong>Alternative Denial</strong>: <span class="math inline">\((\phi\vert{}\psi)\)</span> (The logical NAND gate)</li>
+<li><strong>Membership</strong>: <span class="math inline">\(x \in y\)</span> (Object <span class="math inline">\(x\)</span> belongs to set <span class="math inline">\(y\)</span>)</li>
+<li><strong>Alternative Denial</strong>: <span class="math inline">\((\phi \mid \psi)\)</span> (The logical NAND gate)</li>
 <li><strong>Universal Quantification</strong>: <span class="math inline">\((x)\phi\)</span> (For all <span class="math inline">\(x\)</span>, <span class="math inline">\(\phi\)</span> is true)</li>
 </ol>
 <p>Everything else in mathematics—from addition to complex geometry—must be built from these three atoms. To prevent human mathematicians from writing endless strings of NAND gates, Quine created <strong>15 Derivative Definitions</strong> to act as typographical macros.</p>
 <hr>
 </section>
-<section id="the-15-derivative-definitions" class="level2">
-<h2 class="anchored" data-anchor-id="the-15-derivative-definitions">The 15 Derivative Definitions</h2>
-<p>Quine groups his definitions into logical phases. By unpacking these phases, you can see how higher-level human reasoning compiles down to raw syntax.</p>
+<section id="contextual-eliminability-the-15-derivative-definitions" class="level2">
+<h2 class="anchored" data-anchor-id="contextual-eliminability-the-15-derivative-definitions">Contextual Eliminability &amp; The 15 Derivative Definitions</h2>
+<p>In Quine’s philosophy of logic, mathematical objects do not possess independent metaphysical substance. Mathematical expressions operate as syntactic macros that dissolve upon evaluation into raw primitive statements. Quine terms this design principle <strong>Contextual Eliminability</strong>: every high-level mathematical notation must be uniquely eliminable in favor of primitive membership and logical connectives.</p>
+<p>The 15 Derivative Definitions (D1–D15) form a four-stage compilation pipeline, translating mathematical reasoning systematically down into primitive NAND gates and membership assertions.</p>
 <section id="phase-1-boolean-connectives-d1---d5" class="level3">
 <h3 class="anchored" data-anchor-id="phase-1-boolean-connectives-d1---d5">Phase 1: Boolean Connectives (D1 - D5)</h3>
-<p>Quine proves that every standard logical operator (AND, OR, NOT) can be simulated using only the NAND gate (<span class="math inline">\(|\)</span>).</p>
+<p>Quine proves that every standard propositional connective compiles down to Sheffer’s alternative denial gate (<span class="math inline">\(|\)</span>):</p>
 <ul>
-<li><strong>D1: Denial (Not)</strong><br>
-<span class="math inline">\(\sim\phi =_{def} (\phi\vert\phi)\)</span> &gt; <strong>Why it matters:</strong> Passing the exact same proposition into both sides of a NAND gate creates an absolute logical NOT.</li>
-<li><strong>D2: Conjunction (And)</strong><br>
-<span class="math inline">\((\phi\cdot\psi) =_{def} \sim(\phi\vert\psi)\)</span> &gt; <strong>Why it matters:</strong> By wrapping the NAND operation in a negation (D1), the system constructs logical AND.</li>
-<li><strong>D3: Implication (If-then)</strong><br>
-<span class="math inline">\((\phi\supset\psi) =_{def} (\phi\vert\sim\psi)\)</span></li>
-<li><strong>D4: Alternation (Or)</strong><br>
-<span class="math inline">\((\phi\lor\psi) =_{def} (\sim\phi\supset\psi)\)</span></li>
-<li><strong>D5: Equivalence (Iff)</strong><br>
-<span class="math inline">\((\phi\equiv\psi) =_{def} ((\phi\vert\psi)\Vert(\phi\lor\psi))\)</span></li>
+<li><p><strong>D1: Denial (Not)</strong><br>
+<span class="math inline">\(\sim\phi =_{\text{def}} (\phi \mid \phi)\)</span><br>
+Passing the identical proposition into both inputs of a NAND gate outputs its logical negation.</p></li>
+<li><p><strong>D2: Conjunction (And)</strong><br>
+<span class="math inline">\((\phi\cdot\psi) =_{\text{def}} \sim(\phi \mid \psi)\)</span><br>
+Wrapping a NAND operation in a negation produces logical AND.</p></li>
+<li><p><strong>D3: Implication (If-then)</strong><br>
+<span class="math inline">\((\phi\supset\psi) =_{\text{def}} (\phi \mid \sim\psi)\)</span></p></li>
+<li><p><strong>D4: Alternation (Or)</strong><br>
+<span class="math inline">\((\phi\lor\psi) =_{\text{def}} (\sim\phi\supset\psi)\)</span></p></li>
+<li><p><strong>D5: Equivalence (Iff)</strong><br>
+<span class="math inline">\((\phi\equiv\psi) =_{\text{def}} ((\phi \mid \psi) \mid (\phi\lor\psi))\)</span></p></li>
 </ul>
 </section>
-<section id="phase-2-first-order-logic-d6---d8" class="level3">
-<h3 class="anchored" data-anchor-id="phase-2-first-order-logic-d6---d8">Phase 2: First-Order Logic (D6 - D8)</h3>
-<p>With Boolean logic established, Quine defines existential quantifiers and identity without adding new primitive operations.</p>
+<section id="phase-2-first-order-logic-identity-d6---d8" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-first-order-logic-identity-d6---d8">Phase 2: First-Order Logic &amp; Identity (D6 - D8)</h3>
+<p>With Boolean logic operational, Quine constructs existential quantification, set inclusion, and equality without introducing a primitive equality operator:</p>
 <ul>
-<li><strong>D6: Particular Quantification (Exists)</strong><br>
-<span class="math inline">\((\exists\alpha)\phi =_{def} \sim(\alpha)\sim\phi\)</span> &gt; <strong>How it works:</strong> “There exists an <span class="math inline">\(\alpha\)</span>” is geometrically defined as “It is NOT the case that for ALL <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\phi\)</span> is false.”</li>
-<li><strong>D7: Inclusion (Subclass)</strong><br>
-<span class="math inline">\((\alpha\subset\beta) =_{def} (\gamma)((\gamma\epsilon\alpha)\supset(\gamma\epsilon\beta))\)</span></li>
-<li><strong>D8: Identity (Equals)</strong><br>
-<span class="math inline">\((\alpha=\beta) =_{def} (\gamma)((\alpha\epsilon\gamma)\supset(\beta\epsilon\gamma))\)</span> &gt; <strong>Leibniz’s Law:</strong> Two objects are mathematically identical if and only if they belong to all the exact same classes. You don’t look <em>inside</em> the objects; you look at what contains them.</li>
+<li><p><strong>D6: Particular Quantification (Exists)</strong><br>
+<span class="math inline">\((\exists\alpha)\phi =_{\text{def}} \sim(\alpha)\sim\phi\)</span><br>
+“There exists an <span class="math inline">\(\alpha\)</span>” translates to “It is not the case that for all <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\phi\)</span> is false.”</p></li>
+<li><p><strong>D7: Inclusion (Subclass)</strong><br>
+<span class="math inline">\((\alpha \subseteq \beta) =_{\text{def}} (\gamma)((\gamma \in \alpha)\supset(\gamma \in \beta))\)</span></p></li>
+<li><p><strong>D8: Identity (Equals)</strong><br>
+<span class="math inline">\((\alpha=\beta) =_{\text{def}} (\gamma)((\alpha \in \gamma)\supset(\beta \in \gamma))\)</span><br>
+<strong>Leibnizian Extensional Identity:</strong> Two entities are mathematically identical if every class containing <span class="math inline">\(\alpha\)</span> also contains <span class="math inline">\(\beta\)</span>. Identity is established through external containment relations rather than internal inspection.</p></li>
 </ul>
 </section>
 <section id="phase-3-definite-descriptions-d9---d10" class="level3">
 <h3 class="anchored" data-anchor-id="phase-3-definite-descriptions-d9---d10">Phase 3: Definite Descriptions (D9 - D10)</h3>
-<p>How do we mathematically point to a specific object without knowing its name?</p>
+<p>Definite descriptions provide the mechanism for referencing specific entities defined by unique predicates:</p>
 <ul>
-<li><strong>D9: Description in Context</strong><br>
-<span class="math inline">\(((\iota\alpha)\phi\epsilon\beta) =_{def} (\exists\gamma)((\gamma\epsilon\beta)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))\)</span> &gt; <strong>Translation:</strong> “The specific <span class="math inline">\(\alpha\)</span> (defined by <span class="math inline">\(\phi\)</span>) is a member of <span class="math inline">\(\beta\)</span>.”</li>
-<li><strong>D10: Description as a Class</strong><br>
-<span class="math inline">\((\beta\epsilon(\iota\alpha)\phi) =_{def} (\exists\gamma)((\beta\epsilon\gamma)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))\)</span> &gt; <strong>Translation:</strong> “<span class="math inline">\(\beta\)</span> is a member of the specific class <span class="math inline">\(\alpha\)</span> (defined by <span class="math inline">\(\phi\)</span>).”</li>
+<li><p><strong>D9: Description in Membership Context</strong><br>
+<span class="math inline">\(((\iota\alpha)\phi \in \beta) =_{\text{def}} (\exists\gamma)((\gamma \in \beta)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))\)</span><br>
+“The unique <span class="math inline">\(\alpha\)</span> satisfying <span class="math inline">\(\phi\)</span> belongs to class <span class="math inline">\(\beta\)</span>.”</p></li>
+<li><p><strong>D10: Description Denoting a Class</strong><br>
+<span class="math inline">\((\beta \in (\iota\alpha)\phi) =_{\text{def}} (\exists\gamma)((\beta \in \gamma)\cdot(\alpha)((\alpha=\gamma)\equiv\phi))\)</span></p></li>
 </ul>
 </section>
 <section id="phase-4-class-and-relational-abstractions-d11---d15" class="level3">
 <h3 class="anchored" data-anchor-id="phase-4-class-and-relational-abstractions-d11---d15">Phase 4: Class and Relational Abstractions (D11 - D15)</h3>
-<p>This is the heart of Contextual Eliminability. Abstractions (like “the set of all even numbers”) are not real objects; they are temporary macros that explode into definite descriptions.</p>
+<p>Class abstractions represent the pinnacle of contextual eliminability. Expressions such as “the set of even numbers” are not static physical entities; they are dynamic queries executed against definite descriptions:</p>
 <ul>
-<li><strong>D11: Class Abstraction</strong><br>
-<span class="math inline">\(\hat{\alpha}\phi =_{def} (\iota\beta)(\alpha)((\alpha\epsilon\beta)\equiv\phi)\)</span> &gt; <strong>The Engine:</strong> This takes the notation for a set (<span class="math inline">\(\hat{\alpha}\)</span>) and mechanically unpacks it into the definite description rules established in D9/D10.</li>
-<li><strong>D12: Unit Class (Singleton)</strong><br>
-<span class="math inline">\(\{\alpha\} =_{def} \hat{\beta}(\beta=\alpha)\)</span></li>
-<li><strong>D13: Pair Class</strong><br>
-<span class="math inline">\(\{\alpha,\beta\} =_{def} \hat{\gamma}((\gamma=\alpha)\lor(\gamma=\beta))\)</span></li>
-<li><strong>D14: Ordered Couple (Kuratowski Pair)</strong><br>
-<span class="math inline">\((\alpha,\beta) =_{def} \{\{\alpha\},\{\alpha,\beta\}\}\)</span> &gt; <strong>The Fatal Flaw:</strong> Quine imported the standard Kuratowski ordered pair. If element <span class="math inline">\(\alpha\)</span> is type <span class="math inline">\(n\)</span>, the set <span class="math inline">\(\{\alpha\}\)</span> is type <span class="math inline">\(n+1\)</span>, and the nested set <span class="math inline">\(\{\{\alpha\}\}\)</span> is type <span class="math inline">\(n+2\)</span>. This means the resulting ordered pair is a full two integer levels higher than its constituents! As you will see in the next module, this <span class="math inline">\(+2\)</span> type-raising shift severely restricts relational mapping, creating massive stratification violations that Hailperin must fix using a “flat” or homogeneous ordered pair.</li>
-<li><strong>D15: Relational Abstraction</strong><br>
-<span class="math inline">\(\hat{\alpha}\hat{\beta}\phi =_{def} \hat{\gamma}(\exists\alpha)(\exists\beta)((\gamma=(\alpha,\beta))\cdot\phi)\)</span></li>
+<li><p><strong>D11: Class Abstraction</strong><br>
+<span class="math inline">\(\hat{\alpha}\phi =_{\text{def}} (\iota\beta)(\alpha)((\alpha \in \beta)\equiv\phi)\)</span></p></li>
+<li><p><strong>D12: Unit Class (Singleton)</strong><br>
+<span class="math inline">\(\{\alpha\} =_{\text{def}} \hat{\beta}(\beta=\alpha)\)</span></p></li>
+<li><p><strong>D13: Pair Class</strong><br>
+<span class="math inline">\(\{\alpha,\beta\} =_{\text{def}} \hat{\gamma}((\gamma=\alpha)\lor(\gamma=\beta))\)</span></p></li>
+<li><p><strong>D14: Ordered Couple (Kuratowski Pair)</strong><br>
+<span class="math inline">\((\alpha,\beta) =_{\text{def}} \{\{\alpha\},\{\alpha,\beta\}\}\)</span></p></li>
+<li><p><strong>D15: Relational Abstraction</strong><br>
+<span class="math inline">\(\hat{\alpha}\hat{\beta}\phi =_{\text{def}} \hat{\gamma}(\exists\alpha)(\exists\beta)((\gamma=(\alpha,\beta))\cdot\phi)\)</span></p></li>
 </ul>
+</section>
+<section id="the-kuratowski-type-inflation-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-kuratowski-type-inflation-problem">The Kuratowski Type-Inflation Problem</h3>
+<p>Quine adopted Casimir Kuratowski’s standard definition of the ordered pair: <span class="math inline">\((\alpha,\beta) = \{\{\alpha\},\{\alpha,\beta\}\}\)</span>. In classical set theory, this definition provides an elegant foundation for coordinate geometry and relations. In a stratified universe, however, Kuratowski pairing introduces an asymmetric type-inflation penalty.</p>
+<pre><code>Variable Base Level:       alpha : type n,   beta : type n
+First Singleton Level:     {alpha} : type n + 1,   {alpha, beta} : type n + 1
+Outer Enclosing Set:       {{alpha}, {alpha, beta}} : type n + 2
+Resulting Pair Type:       (alpha, beta) : type n + 2</code></pre>
+<p>Because the ordered pair <span class="math inline">\((\alpha,\beta)\)</span> resides two integer levels higher than its constituent elements, any binary relation <span class="math inline">\(R \subseteq A \times B\)</span> requires its domain and codomain variables to be type-shifted by <span class="math inline">\(+2\)</span>. When chaining relational mappings, this <span class="math inline">\(+2\)</span> displacement accumulates, creating severe stratification violations during function composition.</p>
+<p>Resolving this architectural friction required Theodore Hailperin to engineer a flat, homogeneous pairing operator, which forms the focus of Chapter 3.</p>
 <hr>
 </section>
 </section>
@@ -357,24 +374,41 @@ Quine, W. V. (1937). <em>New Foundations for Mathematical Logic</em>. The Americ
 <p>To generate theorems, Quine relies on one core postulate (P1: Extensionality) and five rules of inference (R1-R5). The most critical rule is <strong>R3 (Principle of Abstraction)</strong>, which states that for any formula <span class="math inline">\(\phi\)</span>, there exists a class containing exactly the objects satisfying <span class="math inline">\(\phi\)</span>.</p>
 <p>However, an unrestricted R3 immediately triggers <strong>Russell’s Paradox</strong>. If <span class="math inline">\(\phi\)</span> is “not a member of itself” (<span class="math inline">\(x \notin x\)</span>), R3 generates a self-contradictory class.</p>
 <p>To solve this without reverting to ZFC’s total ban on the Universal Set, Quine modified the rule to <strong>R3’</strong>: A formula can only generate a class if it is <strong>stratified</strong>.</p>
-<blockquote class="blockquote">
-<p>[!IMPORTANT] <strong>What is Stratification?</strong> Stratification means you can assign integers to variables such that for every membership relation <span class="math inline">\(x \epsilon y\)</span>, the type of <span class="math inline">\(y\)</span> is exactly one integer higher than <span class="math inline">\(x\)</span> (<span class="math inline">\(n\)</span> and <span class="math inline">\(n+1\)</span>).</p>
-</blockquote>
-<p>Formulas like <span class="math inline">\(x \epsilon x\)</span> are <em>unstratified</em> (because <span class="math inline">\(x\)</span> cannot be both <span class="math inline">\(n\)</span> and <span class="math inline">\(n+1\)</span> simultaneously). In NF, unstratified formulas are grammatically legal to write, but R3’ forbids them from generating sets. This nullifies the paradox while perfectly preserving the Universal Set <span class="math inline">\(V\)</span> (because the formula <span class="math inline">\(x=x\)</span>, defining the universal set, is trivially stratified as <span class="math inline">\(n=n\)</span>).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>What is Stratification?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Stratification means you can assign integers to variables such that for every membership relation <span class="math inline">\(x \in y\)</span>, the type of <span class="math inline">\(y\)</span> is exactly one integer higher than <span class="math inline">\(x\)</span> (<span class="math inline">\(n\)</span> and <span class="math inline">\(n+1\)</span>).</p>
+</div>
+</div>
+<p>Formulas like <span class="math inline">\(x \in x\)</span> are <em>unstratified</em> (because <span class="math inline">\(x\)</span> cannot be both <span class="math inline">\(n\)</span> and <span class="math inline">\(n+1\)</span> simultaneously). In NF, unstratified formulas are grammatically legal to write, but R3’ forbids them from generating sets. This nullifies the paradox while perfectly preserving the Universal Set <span class="math inline">\(V\)</span> (because the formula <span class="math inline">\(x=x\)</span>, defining the universal set, is trivially stratified as <span class="math inline">\(n=n\)</span>).</p>
 <section id="a-concrete-example-of-stratification" class="level3">
 <h3 class="anchored" data-anchor-id="a-concrete-example-of-stratification">A Concrete Example of Stratification</h3>
-<p>Let’s test the formula: “There exists a set <span class="math inline">\(y\)</span> such that <span class="math inline">\(x \epsilon y\)</span> AND <span class="math inline">\(y \epsilon z\)</span>”. In formal logic: <span class="math inline">\(\exists y (x \epsilon y \cdot y \epsilon z)\)</span></p>
-<p>To prove this formula is stratified, we must assign an integer to every variable such that the right side of any <span class="math inline">\(\epsilon\)</span> is exactly <span class="math inline">\(+1\)</span> greater than the left side. 1. Let’s arbitrarily assign <span class="math inline">\(x = 1\)</span>. 2. Because of <span class="math inline">\(x \epsilon y\)</span>, <span class="math inline">\(y\)</span> must equal <span class="math inline">\(x + 1\)</span>. Therefore, <span class="math inline">\(y = 2\)</span>. 3. Because of <span class="math inline">\(y \epsilon z\)</span>, <span class="math inline">\(z\)</span> must equal <span class="math inline">\(y + 1\)</span>. Therefore, <span class="math inline">\(z = 3\)</span>.</p>
-<p>We successfully mapped integers to all variables (<span class="math inline">\(x=1, y=2, z=3\)</span>) without any contradictions. This formula is <strong>strictly stratified</strong>.</p>
+<p>Test the formula: “There exists a set <span class="math inline">\(y\)</span> such that <span class="math inline">\(x \in y\)</span> and <span class="math inline">\(y \in z\)</span>.”</p>
+<p>In formal logic:</p>
+<p><span class="math display">\[\exists y (x \in y \land y \in z)\]</span></p>
+<p>To prove this formula is stratified, assign an integer to each variable such that the right-hand term of any membership relation <span class="math inline">\(a \in b\)</span> is <span class="math inline">\(+1\)</span> greater than the left-hand term:</p>
+<ol type="1">
+<li>Assign <span class="math inline">\(x = 1\)</span>.</li>
+<li>From <span class="math inline">\(x \in y\)</span>, <span class="math inline">\(y\)</span> must equal <span class="math inline">\(x + 1 = 2\)</span>.</li>
+<li>From <span class="math inline">\(y \in z\)</span>, <span class="math inline">\(z\)</span> must equal <span class="math inline">\(y + 1 = 3\)</span>.</li>
+</ol>
+<p>All variables map to consistent integers (<span class="math inline">\(x=1, y=2, z=3\)</span>) without contradiction. The formula is stratified.</p>
 <div class="guided-example">
 <div class="guided-example-title">
 <p>Guided Example: Stratification Types</p>
 </div>
 <div class="guided-example-content">
 <p>Examine the formula: <span class="math inline">\(x \in y \land y \in z\)</span></p>
-<p>If we declare that <span class="math inline">\(type(x) = 1\)</span>, then by the rule of stratification: <span class="math inline">\(type(y) = 1 + 1 = 2\)</span></p>
-<p>What must <span class="math inline">\(type(z)\)</span> be for this entire formula to remain strictly stratified?</p>
-<p><span class="math inline">\(type(z) = \_\_\_\_\_\)</span></p>
+<p>If we declare that <span class="math inline">\(\text{type}(x) = 1\)</span>, then by the rule of stratification: <span class="math inline">\(\text{type}(y) = 1 + 1 = 2\)</span></p>
+<p>What must <span class="math inline">\(\text{type}(z)\)</span> be for this entire formula to remain strictly stratified?</p>
+<p><span class="math inline">\(\text{type}(z) = \_\_\_\_\_\)</span></p>
 </div>
 </div>
 <hr>

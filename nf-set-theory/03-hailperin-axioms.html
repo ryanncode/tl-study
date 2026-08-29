@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -234,11 +234,16 @@ window.Quarto = {
   <ul>
   <li><a href="#hailperin---a-set-of-axioms-for-logic-1944" id="toc-hailperin---a-set-of-axioms-for-logic-1944" class="nav-link active" data-scroll-target="#hailperin---a-set-of-axioms-for-logic-1944">Hailperin - A Set of Axioms for Logic (1944)</a>
   <ul class="collapse">
-  <li><a href="#the-nine-finite-axioms-p1-p9" id="toc-the-nine-finite-axioms-p1-p9" class="nav-link" data-scroll-target="#the-nine-finite-axioms-p1-p9">The Nine Finite Axioms (P1-P9)</a>
+  <li><a href="#the-bifurcated-architecture-logic-l_1-vs.-logic-l_2" id="toc-the-bifurcated-architecture-logic-l_1-vs.-logic-l_2" class="nav-link" data-scroll-target="#the-bifurcated-architecture-logic-l_1-vs.-logic-l_2">The Bifurcated Architecture: Logic <span class="math inline">\(L_1\)</span> vs.&nbsp;Logic <span class="math inline">\(L_2\)</span></a>
   <ul class="collapse">
-  <li><a href="#group-1-basic-class-operations" id="toc-group-1-basic-class-operations" class="nav-link" data-scroll-target="#group-1-basic-class-operations">Group 1: Basic Class Operations</a></li>
-  <li><a href="#group-2-the-geometry-of-relations" id="toc-group-2-the-geometry-of-relations" class="nav-link" data-scroll-target="#group-2-the-geometry-of-relations">Group 2: The Geometry of Relations</a></li>
-  <li><a href="#group-3-type-elevation-quantification" id="toc-group-3-type-elevation-quantification" class="nav-link" data-scroll-target="#group-3-type-elevation-quantification">Group 3: Type Elevation &amp; Quantification</a></li>
+  <li><a href="#the-abstractionless-transform-algorithm" id="toc-the-abstractionless-transform-algorithm" class="nav-link" data-scroll-target="#the-abstractionless-transform-algorithm">The Abstractionless Transform Algorithm</a></li>
+  </ul></li>
+  <li><a href="#the-nine-finite-axioms-p1p9" id="toc-the-nine-finite-axioms-p1p9" class="nav-link" data-scroll-target="#the-nine-finite-axioms-p1p9">The Nine Finite Axioms (P1–P9)</a>
+  <ul class="collapse">
+  <li><a href="#group-1-basic-class-boolean-operations" id="toc-group-1-basic-class-boolean-operations" class="nav-link" data-scroll-target="#group-1-basic-class-boolean-operations">Group 1: Basic Class &amp; Boolean Operations</a></li>
+  <li><a href="#group-2-relational-permutations-projections" id="toc-group-2-relational-permutations-projections" class="nav-link" data-scroll-target="#group-2-relational-permutations-projections">Group 2: Relational Permutations &amp; Projections</a></li>
+  <li><a href="#group-3-type-elevation-universal-quantification" id="toc-group-3-type-elevation-universal-quantification" class="nav-link" data-scroll-target="#group-3-type-elevation-universal-quantification">Group 3: Type Elevation &amp; Universal Quantification</a></li>
+  <li><a href="#the-homogeneous-ordered-pair-solution" id="toc-the-homogeneous-ordered-pair-solution" class="nav-link" data-scroll-target="#the-homogeneous-ordered-pair-solution">The Homogeneous Ordered Pair Solution</a></li>
   </ul></li>
   <li><a href="#combinatorial-explosion-and-tree-traversal" id="toc-combinatorial-explosion-and-tree-traversal" class="nav-link" data-scroll-target="#combinatorial-explosion-and-tree-traversal">Combinatorial Explosion and Tree Traversal</a>
   <ul class="collapse">
@@ -275,65 +280,97 @@ window.Quarto = {
 
 <section id="hailperin---a-set-of-axioms-for-logic-1944" class="level1">
 <h1>Hailperin - A Set of Axioms for Logic (1944)</h1>
-<p>Willard Van Orman Quine’s <em>New Foundations</em> relied on an “infinite schema” (Rule R3’). If a formula was grammatically stratified, Quine’s system instantly generated the corresponding set. While elegant for human mathematicians, this is terrible for automated theorem provers, which require strict, mechanical boundaries.</p>
+<p>Willard Van Orman Quine’s <em>New Foundations</em> established a brilliant philosophical defense of the universal set, but relied on an <strong>infinite axiom schema</strong> (Rule R3’). For every well-formed stratified formula, Quine’s metalanguage dynamically generated a corresponding existence axiom.</p>
+<p>For a human mathematician reading a paper, an infinite schema is elegant. For an automated theorem prover, hardware evaluator, or compiler, an infinite schema is a structural liability. An engine cannot execute an unbounded rule generator without an external metalanguage interpreter.</p>
 <div class="reading-assignment">
 <strong>Suggested Reading:</strong>
 <ul>
 <li>
-Hailperin, T. (1944). <em>A Set of Axioms for Logic</em>. The Journal of Symbolic Logic, 9(1).
+Hailperin, T. (1944). <em>A Set of Axioms for Logic</em>. The Journal of Symbolic Logic, 9(1), pp.&nbsp;1–19.
 </li>
 </ul>
 </div>
-<p>Theodore Hailperin fundamentally rejected this infinite schema. He proved that Quine’s meta-rule could be entirely replaced by a <strong>strictly finite, self-contained set of 9 deductive axioms (P1 through P9)</strong>.</p>
-<p>To build an NF Universe computationally, you must force all class generation through these nine axiomatic bottlenecks.</p>
+<p>Theodore Hailperin resolved this structural dependency by proving that Quine’s infinite metalogical rule can be replaced by a <strong>strictly finite set of nine deductive axioms (P1 through P9)</strong>.</p>
+<p>Just as John von Neumann, Paul Bernays, and Kurt Gödel proved that Zermelo-Fraenkel set theory could be finitely axiomatized as NBG, Hailperin demonstrated that New Foundations can operate as a closed, self-contained mechanical system.</p>
 <hr>
-<section id="the-nine-finite-axioms-p1-p9" class="level2">
-<h2 class="anchored" data-anchor-id="the-nine-finite-axioms-p1-p9">The Nine Finite Axioms (P1-P9)</h2>
-<p>Instead of magical grammatical generation, Hailperin’s axioms represent isolated physical functions (like a CPU instruction set for Set Theory). We can group them into three operational phases:</p>
-<section id="group-1-basic-class-operations" class="level3">
-<h3 class="anchored" data-anchor-id="group-1-basic-class-operations">Group 1: Basic Class Operations</h3>
-<p>These axioms handle the absolute foundations of sets and Boolean combinations.</p>
+<section id="the-bifurcated-architecture-logic-l_1-vs.-logic-l_2" class="level2">
+<h2 class="anchored" data-anchor-id="the-bifurcated-architecture-logic-l_1-vs.-logic-l_2">The Bifurcated Architecture: Logic <span class="math inline">\(L_1\)</span> vs.&nbsp;Logic <span class="math inline">\(L_2\)</span></h2>
+<p>To prove that finite axioms suffice for all mathematics, Hailperin constructed two parallel logical environments:</p>
+<pre><code>Augmented Logic L2 (High-Level Syntax):
+  {x | P(x)} with circumflex
+            │
+            ▼  [Abstractionless Transform]
+Foundational Logic L1 (Primitive Execution):
+  Variables and raw membership (x ∈ y)</code></pre>
+<ol type="1">
+<li><strong>Foundational Logic (<span class="math inline">\(L_1\)</span>)</strong>: Restricted strictly to variables, parentheses, and the primitive membership operator (<span class="math inline">\(\in\)</span>). No class terms, singletons, or complex abstractions exist in <span class="math inline">\(L_1\)</span>.</li>
+<li><strong>Augmented Logic (<span class="math inline">\(L_2\)</span>)</strong>: Houses high-level abstractions denoted by circumflex variables (<span class="math inline">\(\hat{x}\phi\)</span>), representing the class of all elements satisfying condition <span class="math inline">\(\phi\)</span>.</li>
+</ol>
+<p>Hailperin demonstrated that every proposition in <span class="math inline">\(L_2\)</span> possesses a unique, deterministic <strong>Abstractionless Transform</strong> in <span class="math inline">\(L_1\)</span>. Class abstractions are not irreducible objects; they are high-level syntax that compiles systematically down into primitive variable relations.</p>
+<section id="the-abstractionless-transform-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-abstractionless-transform-algorithm">The Abstractionless Transform Algorithm</h3>
+<p>When an abstraction occurs in a formula, Hailperin evaluates its spatial position relative to the membership operator (<span class="math inline">\(\in\)</span>):</p>
 <ul>
-<li><strong>P1: (Union)</strong><br>
-<span class="math inline">\((u,v)(\exists\beta)(x)[x\epsilon\beta \equiv x\epsilon u \lor x\epsilon v]\)</span><br>
-&gt; <strong>The Function:</strong> It provides the mechanical permission to combine exactly two existing classes into a new class. It is the engine of Boolean addition.</li>
-<li><strong>P8: (Unit Classes)</strong><br>
-<span class="math inline">\((\exists\beta)(x)[x\epsilon\beta \equiv (\exists y)(x=\iota y)]\)</span><br>
-&gt; <strong>The Function:</strong> It authorizes the existence of singletons (a class containing exactly one member).</li>
-<li><strong>P9: (Membership Relation)</strong><br>
-<span class="math inline">\((\exists\beta)(x,y)[\langle \iota x,y \rangle\epsilon\beta \equiv x\epsilon y]\)</span><br>
-&gt; <strong>The Function:</strong> This internalizes the “belongs to” operator (<span class="math inline">\(\epsilon\)</span>), turning it into a manipulable geometric relation.</li>
+<li><p><strong>Right-Hand Abstraction (<span class="math inline">\(y \in \hat{x} \, q\)</span>)</strong>: The class occurs on the right of membership (“<span class="math inline">\(y\)</span> belongs to the class defined by <span class="math inline">\(q\)</span>”). The transform isolates the variables into <span class="math inline">\(L_1\)</span> by asserting the existence of an intermediate class <span class="math inline">\(\alpha\)</span>: <span class="math display">\[\exists \alpha (y \in \alpha \land \forall x (x \in \alpha \equiv q))\]</span></p></li>
+<li><p><strong>Left-Hand Abstraction (<span class="math inline">\(\hat{x} \, q \in X\)</span>)</strong>: The class occurs on the left of membership (“the class defined by <span class="math inline">\(q\)</span> belongs to <span class="math inline">\(X\)</span>”). The transform isolates the left-hand terminus by asserting the existence of an element <span class="math inline">\(w\)</span>: <span class="math display">\[\exists w (w \in X \land w = \hat{x} \, q)\]</span></p></li>
+</ul>
+<p>By applying these transforms from right to left across a formula, an automated system strips away every circumflex abstraction, yielding a pure formula in <span class="math inline">\(L_1\)</span>.</p>
+<hr>
+</section>
+</section>
+<section id="the-nine-finite-axioms-p1p9" class="level2">
+<h2 class="anchored" data-anchor-id="the-nine-finite-axioms-p1p9">The Nine Finite Axioms (P1–P9)</h2>
+<p>In <span class="math inline">\(L_1\)</span>, class generation executes through nine atomic instructions. These axioms function as the native instruction set architecture (ISA) of the Monistic Universe:</p>
+<section id="group-1-basic-class-boolean-operations" class="level3">
+<h3 class="anchored" data-anchor-id="group-1-basic-class-boolean-operations">Group 1: Basic Class &amp; Boolean Operations</h3>
+<p>These axioms establish fundamental set creation and Boolean combinations:</p>
+<ul>
+<li><p><strong>P1: (Union &amp; Alternative Denial)</strong><br>
+<span class="math display">\[\forall u \forall v \exists \beta \forall x [x \in \beta \equiv (x \in u \mid x \in v)]\]</span><br>
+Provides the mechanical authorization to combine two existing classes through Sheffer’s alternative denial.</p></li>
+<li><p><strong>P8: (Unit Classes)</strong><br>
+<span class="math display">\[\exists \beta \forall x [x \in \beta \equiv \exists y (x = \iota y)]\]</span><br>
+Authorizes the creation of singletons (classes containing exactly one element, <span class="math inline">\(\iota y\)</span>).</p></li>
+<li><p><strong>P9: (Membership Relation)</strong><br>
+<span class="math display">\[\exists \beta \forall x \forall y [\langle \iota x, y \rangle \in \beta \equiv x \in y]\]</span><br>
+Internalizes the membership operator (<span class="math inline">\(\in\)</span>) into an addressable geometric relation.</p></li>
 </ul>
 </section>
-<section id="group-2-the-geometry-of-relations" class="level3">
-<h3 class="anchored" data-anchor-id="group-2-the-geometry-of-relations">Group 2: The Geometry of Relations</h3>
-<p>These axioms allow you to slice, dice, and rotate n-tuples (ordered pairs).</p>
+<section id="group-2-relational-permutations-projections" class="level3">
+<h3 class="anchored" data-anchor-id="group-2-relational-permutations-projections">Group 2: Relational Permutations &amp; Projections</h3>
+<p>These axioms slice, rotate, and project ordered pairs within relational coordinate spaces:</p>
 <ul>
-<li><strong>P3: (Cylindrification)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x,y,z)[\langle x,y,z \rangle\epsilon\beta \equiv \langle x,y \rangle\epsilon\alpha]\)</span><br>
-&gt; <strong>The Function:</strong> Projects a 2D relation into a 3D “cylinder” by adding an unrestrained variable <span class="math inline">\(z\)</span>.</li>
-<li><strong>P4: (Permutation)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x,y,z)[\langle x,z,y \rangle\epsilon\beta \equiv \langle x,y \rangle\epsilon\alpha]\)</span><br>
-&gt; <strong>The Function:</strong> Swaps the physical positions of variables within an n-tuple without altering the truth value.</li>
-<li><strong>P5: (Domain Extraction)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x,y)[\langle y,x \rangle\epsilon\beta \equiv x\epsilon\alpha]\)</span><br>
-&gt; <strong>The Function:</strong> A scalpel that severs the domain from a binary relation, isolating it into a standalone class.</li>
-<li><strong>P7: (Converse)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x,y)[\langle y,x \rangle\epsilon\beta \equiv \langle x,y \rangle\epsilon\alpha]\)</span><br>
-&gt; <strong>The Function:</strong> The relational mirror. It inverts <span class="math inline">\(\langle x,y \rangle\)</span> into <span class="math inline">\(\langle y,x \rangle\)</span>.</li>
+<li><p><strong>P3: (Cylindrification)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x \forall y \forall z [\langle x, y, z \rangle \in \beta \equiv \langle x, y \rangle \in \alpha]\]</span><br>
+Projects a 2D relation into 3D space by introducing an unconstrained variable <span class="math inline">\(z\)</span>.</p></li>
+<li><p><strong>P4: (Permutation)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x \forall y \forall z [\langle x, z, y \rangle \in \beta \equiv \langle x, y \rangle \in \alpha]\]</span><br>
+Swaps variable coordinates within an n-tuple without altering truth values.</p></li>
+<li><p><strong>P5: (Domain Extraction)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x \forall y [\langle y, x \rangle \in \beta \equiv x \in \alpha]\]</span><br>
+Isolates the domain of a binary relation into an independent class.</p></li>
+<li><p><strong>P7: (Converse)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x \forall y [\langle y, x \rangle \in \beta \equiv \langle x, y \rangle \in \alpha]\]</span><br>
+Inverts relation coordinates, mapping <span class="math inline">\(\langle x, y \rangle\)</span> to <span class="math inline">\(\langle y, x \rangle\)</span>.</p></li>
 </ul>
 </section>
-<section id="group-3-type-elevation-quantification" class="level3">
-<h3 class="anchored" data-anchor-id="group-3-type-elevation-quantification">Group 3: Type Elevation &amp; Quantification</h3>
-<p>These are the critical mechanics for solving stratification barriers.</p>
+<section id="group-3-type-elevation-universal-quantification" class="level3">
+<h3 class="anchored" data-anchor-id="group-3-type-elevation-universal-quantification">Group 3: Type Elevation &amp; Universal Quantification</h3>
+<p>These axioms resolve stratification boundaries and manage quantifiers:</p>
 <ul>
-<li><strong>P2: (Type Elevation)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x,y)[\langle \iota x,\iota y \rangle\epsilon\beta \equiv \langle x,y \rangle\epsilon\alpha]\)</span><br>
-&gt; <strong>The Function:</strong> The syntactic elevator. It wraps variables in unit classes (<span class="math inline">\(\iota\)</span>) to raise their logical type by exactly one integer level, preventing stratification paradoxes.</li>
-<li><strong>P6: (Universal Quantification)</strong><br>
-<span class="math inline">\((\alpha)(\exists\beta)(x)[x\epsilon\beta \equiv (u)(\langle u,\iota x \rangle\epsilon\alpha)]\)</span><br>
-&gt; <strong>The Function:</strong> Translates a universal quantifier (For All <span class="math inline">\(u\)</span>) into a physical, isolatable mathematical collection.</li>
+<li><p><strong>P2: (Type Elevation)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x \forall y [\langle \iota x, \iota y \rangle \in \beta \equiv \langle x, y \rangle \in \alpha]\]</span><br>
+Wraps variables in unit classes (<span class="math inline">\(\iota\)</span>) to raise their logical type by <span class="math inline">\(+1\)</span>, matching type levels across relational interfaces.</p></li>
+<li><p><strong>P6: (Universal Quantification)</strong><br>
+<span class="math display">\[\forall \alpha \exists \beta \forall x [x \in \beta \equiv \forall u (\langle u, \iota x \rangle \in \alpha)]\]</span><br>
+Translates universal quantification (<span class="math inline">\(\forall u\)</span>) into an explicit, bounded class.</p></li>
 </ul>
+</section>
+<section id="the-homogeneous-ordered-pair-solution" class="level3">
+<h3 class="anchored" data-anchor-id="the-homogeneous-ordered-pair-solution">The Homogeneous Ordered Pair Solution</h3>
+<p>To prevent the Kuratowski <span class="math inline">\(+2\)</span> type-inflation penalty identified in Chapter 2, Hailperin redefined the ordered n-tuple. Using the unit-class operator <span class="math inline">\(\iota\)</span>, Hailperin established a homogeneous sequence:</p>
+<p><span class="math display">\[\langle X_1, \dots, X_n \rangle = \langle \iota^{2(n-2)} X_1, \langle X_2, \dots, X_n \rangle \rangle \quad \text{for } n &gt; 2\]</span></p>
+<p>The exponent attached to <span class="math inline">\(\iota\)</span> balances the integers during type assignment. Every constituent variable <span class="math inline">\(x_1, \dots, x_n\)</span> shares the identical typestate integer, allowing complex multi-variable relations to compose without stratification breakdown.</p>
 <hr>
 </section>
 </section>
@@ -368,22 +405,34 @@ Hailperin, T. (1944). <em>A Set of Axioms for Logic</em>. The Journal of Symboli
 </section>
 <section id="example-unpacking-a-definition" class="level3">
 <h3 class="anchored" data-anchor-id="example-unpacking-a-definition">Example: Unpacking a Definition</h3>
-<p>Consider the Kuratowski ordered pair: <span class="math inline">\((x,y) = \{\{x\}, \{x,y\}\}\)</span>. To type-check this, an automated system must expand it into pure <span class="math inline">\(\epsilon\)</span> primitives. The set <span class="math inline">\(\{x\}\)</span> means “the class containing only <span class="math inline">\(x\)</span>”, which expands to: <span class="math inline">\(\forall z (z \epsilon \{x\} \equiv z = x)\)</span>. The set <span class="math inline">\(\{x,y\}\)</span> expands to: <span class="math inline">\(\forall z (z \epsilon \{x,y\} \equiv z = x \lor z = y)\)</span>. By expanding these macros down to their atomic <span class="math inline">\(\epsilon\)</span> connections, the machine can assign stratification integers to <span class="math inline">\(z\)</span>, <span class="math inline">\(x\)</span>, and <span class="math inline">\(y\)</span>.</p>
+<p>Consider the Kuratowski ordered pair: <span class="math inline">\((x,y) = \{\{x\}, \{x,y\}\}\)</span>.</p>
+<p>To type-check this, an automated system must expand it into pure <span class="math inline">\(\in\)</span> primitives:</p>
+<ul>
+<li>The set <span class="math inline">\(\{x\}\)</span> means “the class containing only <span class="math inline">\(x\)</span>”, expanding to: <span class="math inline">\(\forall z (z \in \{x\} \equiv z = x)\)</span>.</li>
+<li>The set <span class="math inline">\(\{x,y\}\)</span> expands to: <span class="math inline">\(\forall z (z \in \{x,y\} \equiv z = x \lor z = y)\)</span>.</li>
+</ul>
+<p>By expanding these macros down to their atomic <span class="math inline">\(\in\)</span> connections, the machine can assign stratification integers to <span class="math inline">\(z\)</span>, <span class="math inline">\(x\)</span>, and <span class="math inline">\(y\)</span>.</p>
 </section>
 <section id="example-chaining-axioms" class="level3">
 <h3 class="anchored" data-anchor-id="example-chaining-axioms">Example: Chaining Axioms</h3>
-<p>How does the system actually apply the axioms? If a compiler wants to extract the domain of a relation and then combine it with another class, it would chain the axioms sequentially: 1. <strong>Apply P5 (Domain Extraction)</strong> to isolate the <span class="math inline">\(x\)</span> values into a new class <span class="math inline">\(\alpha\)</span>. 2. <strong>Apply P1 (Union)</strong> to combine class <span class="math inline">\(\alpha\)</span> with an existing class <span class="math inline">\(\gamma\)</span>. The output of P5 serves directly as the input for P1.</p>
+<p>How does the system actually apply the axioms?</p>
+<p>If a compiler wants to extract the domain of a relation and then combine it with another class, it chains the axioms sequentially:</p>
+<ol type="1">
+<li><strong>Apply P5 (Domain Extraction)</strong> to isolate the <span class="math inline">\(x\)</span> values into a new class <span class="math inline">\(\alpha\)</span>.</li>
+<li><strong>Apply P1 (Union)</strong> to combine class <span class="math inline">\(\alpha\)</span> with an existing class <span class="math inline">\(\gamma\)</span>.</li>
+</ol>
+<p>The output of P5 serves directly as the input for P1.</p>
 <div class="guided-example">
 <div class="guided-example-title">
 <p>Guided Example: Axiomatic Combination</p>
 </div>
 <div class="guided-example-content">
-<p>Suppose we want to extract the Domain from a relation (using P5), and then immediately construct its absolute complement (using P2).</p>
+<p>Suppose we want to extract the Domain from a relation (using P5), and then immediately construct its absolute complement (using P1).</p>
 <ol type="1">
 <li>Execute <strong>P5</strong> on relation <span class="math inline">\(\alpha \rightarrow\)</span> Yields Domain <span class="math inline">\(\beta\)</span></li>
-<li>Execute <strong>P2</strong> on <span class="math inline">\(\beta \rightarrow\)</span> Yields _________</li>
+<li>Execute <strong>P1</strong> on <span class="math inline">\(\beta \rightarrow\)</span> Yields _________</li>
 </ol>
-<p><em>(Hint: What is the logical inverse of the Domain <span class="math inline">\(\beta\)</span>?)</em></p>
+<p><em>(Hint: What is the Boolean complement of the Domain <span class="math inline">\(\beta\)</span>?)</em></p>
 </div>
 </div>
 <hr>

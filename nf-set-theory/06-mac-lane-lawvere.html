@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c2c4b0ff4e0c6d0af1b22cafe3859569.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-57f5ff3f78d27fff2cca2e34d67c1aea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -266,10 +266,14 @@ window.Quarto = {
   <ul>
   <li><a href="#categorical-semantics-moving-beyond-elements" id="toc-categorical-semantics-moving-beyond-elements" class="nav-link active" data-scroll-target="#categorical-semantics-moving-beyond-elements">Categorical Semantics: Moving Beyond Elements</a>
   <ul class="collapse">
-  <li><a href="#saunders-mac-lane-arrow-based-definitions" id="toc-saunders-mac-lane-arrow-based-definitions" class="nav-link" data-scroll-target="#saunders-mac-lane-arrow-based-definitions">Saunders Mac Lane: Arrow-Based Definitions</a></li>
-  <li><a href="#f.-william-lawvere-category-of-categories-etac" id="toc-f.-william-lawvere-category-of-categories-etac" class="nav-link" data-scroll-target="#f.-william-lawvere-category-of-categories-etac">F. William Lawvere: Category of Categories (ETAC)</a></li>
-  <li><a href="#the-pivot-to-json-modeling-transclusion" id="toc-the-pivot-to-json-modeling-transclusion" class="nav-link" data-scroll-target="#the-pivot-to-json-modeling-transclusion">The Pivot to JSON: Modeling Transclusion</a>
+  <li><a href="#introspective-sets-vs.-behavioral-morphisms" id="toc-introspective-sets-vs.-behavioral-morphisms" class="nav-link" data-scroll-target="#introspective-sets-vs.-behavioral-morphisms">Introspective Sets vs.&nbsp;Behavioral Morphisms</a>
   <ul class="collapse">
+  <li><a href="#core-categorical-machinery-mac-lane" id="toc-core-categorical-machinery-mac-lane" class="nav-link" data-scroll-target="#core-categorical-machinery-mac-lane">Core Categorical Machinery (Mac Lane)</a></li>
+  </ul></li>
+  <li><a href="#f.-william-lawvere-the-category-of-categories-etac" id="toc-f.-william-lawvere-the-category-of-categories-etac" class="nav-link" data-scroll-target="#f.-william-lawvere-the-category-of-categories-etac">F. William Lawvere: The Category of Categories (ETAC)</a></li>
+  <li><a href="#the-pivot-to-json-modeling-flat-categorical-adjacency" id="toc-the-pivot-to-json-modeling-flat-categorical-adjacency" class="nav-link" data-scroll-target="#the-pivot-to-json-modeling-flat-categorical-adjacency">The Pivot to JSON: Modeling Flat Categorical Adjacency</a>
+  <ul class="collapse">
+  <li><a href="#why-json-models-category-theory-natively" id="toc-why-json-models-category-theory-natively" class="nav-link" data-scroll-target="#why-json-models-category-theory-natively">Why JSON Models Category Theory Natively</a></li>
   <li><a href="#the-json-ontology-blueprint" id="toc-the-json-ontology-blueprint" class="nav-link" data-scroll-target="#the-json-ontology-blueprint">The JSON Ontology Blueprint</a></li>
   </ul></li>
   <li><a href="#problem-set-json-relational-morphisms" id="toc-problem-set-json-relational-morphisms" class="nav-link" data-scroll-target="#problem-set-json-relational-morphisms">Problem Set: JSON Relational Morphisms</a></li>
@@ -301,66 +305,79 @@ window.Quarto = {
 
 <section id="categorical-semantics-moving-beyond-elements" class="level1">
 <h1>Categorical Semantics: Moving Beyond Elements</h1>
-<p>To formalize our NF Ontology computationally, we must transition from defining objects by their internal elements (standard set theory) to defining objects by their external structural relationships (morphisms). This is the domain of <strong>Category Theory</strong>.</p>
+<p>To formalize our NF Ontology computationally, we must transition from defining mathematical entities by their internal elements (standard set theory) to defining entities by their external structural relationships (morphisms). This is the domain of <strong>Category Theory</strong>.</p>
 <div class="reading-assignment">
 <strong>Suggested Reading: Category Theory Foundations</strong>
 <ul>
 <li>
-Lawvere, F. W. (1964). <em>The Category of Categories as a Foundation for Mathematics</em>.
+Lawvere, F. W. (1964). <em>The Category of Categories as a Foundation for Mathematics</em>. Proceedings of the National Academy of Sciences, 52(6), pp.&nbsp;1506–1512.
 </li>
 <li>
 Mac Lane, S. (1998). <em>Categories for the Working Mathematician</em>. Ch. I (§1–§4, §8), Ch. III (§1), Ch. IV (§1, §9).
 </li>
 </ul>
 </div>
-<section id="saunders-mac-lane-arrow-based-definitions" class="level2">
-<h2 class="anchored" data-anchor-id="saunders-mac-lane-arrow-based-definitions">Saunders Mac Lane: Arrow-Based Definitions</h2>
-<p>In <em>Categories for the Working Mathematician</em> (1971), Saunders Mac Lane systematically replaces element-based definitions with arrow-based (morphism) definitions.</p>
-<p>A category is defined by objects and arrows (morphisms), governed by associativity and identity.</p>
+<hr>
+<section id="introspective-sets-vs.-behavioral-morphisms" class="level2">
+<h2 class="anchored" data-anchor-id="introspective-sets-vs.-behavioral-morphisms">Introspective Sets vs.&nbsp;Behavioral Morphisms</h2>
+<p>Classical set theory is fundamentally <strong>Introspective</strong>: to understand a set, you must unpack its contents, inspecting every individual element <span class="math inline">\(x \in A\)</span>.</p>
+<p>Category Theory, pioneered by Saunders Mac Lane and Samuel Eilenberg, replaces this internal inspection with a <strong>Behavioral Ontology</strong>. An object <span class="math inline">\(A\)</span> possesses no internal spatial reality. It is characterized entirely by the totality of morphisms flowing into it and out of it across the network.</p>
+<pre><code>Set-Theoretic (Introspective):
+  A = { x1, x2, x3, ... }    ──►  Look inside container
+
+Categorical (Behavioral):
+  f: A ──► B,  g: C ──► A    ──►  Inspect external interactions</code></pre>
+<section id="core-categorical-machinery-mac-lane" class="level3">
+<h3 class="anchored" data-anchor-id="core-categorical-machinery-mac-lane">Core Categorical Machinery (Mac Lane)</h3>
+<p>A category <span class="math inline">\(\mathcal{C}\)</span> is defined by objects, arrows (morphisms), identity morphisms, and composition (<span class="math inline">\(g \circ f\)</span>), satisfying associativity and the identity laws:</p>
 <ul>
-<li><strong>Functors</strong>: Morphisms between categories that strictly preserve identity and composition.</li>
-<li><strong>Natural Transformations</strong>: Continuous morphisms between functors, ensuring mapping diagrams commute.</li>
-<li><strong>Universal Constructions</strong>: Defining structures via unique factorization mechanics (e.g., limits, pullbacks, tensor products).</li>
-<li><strong>Adjunctions</strong>: Formalizing the relationship between free constructions (left adjoint) and underlying constraints (right adjoint).</li>
+<li><strong>Functors (<span class="math inline">\(F: \mathcal{C} \to \mathcal{D}\)</span>)</strong>: Structure-preserving mappings between categories that map objects to objects and arrows to arrows, preserving composition and identities.</li>
+<li><strong>Natural Transformations (<span class="math inline">\(\alpha: F \Rightarrow G\)</span>)</strong>: Morphisms between functors that ensure all localized transformation squares commute.</li>
+<li><strong>Universal Properties &amp; Limits</strong>: Structures defined through unique factorization pathways (e.g., products, pullbacks, equalizers, and terminal objects).</li>
+<li><strong>Adjunctions (<span class="math inline">\(F \dashv G\)</span>)</strong>: Natural bijections between Hom-sets <span class="math inline">\(\text{Hom}_{\mathcal{D}}(F(A), B) \cong \text{Hom}_{\mathcal{C}}(A, G(B))\)</span>, establishing the fundamental duality between free constructions (left adjoint) and underlying constraints (right adjoint).</li>
 </ul>
-</section>
-<section id="f.-william-lawvere-category-of-categories-etac" class="level2">
-<h2 class="anchored" data-anchor-id="f.-william-lawvere-category-of-categories-etac">F. William Lawvere: Category of Categories (ETAC)</h2>
-<p>In 1965, F. William Lawvere published <em>The Category of Categories as a Foundation for Mathematics</em>, proposing a radical departure from Zermelo-Fraenkel (ZFC). Lawvere eliminated sets and element membership entirely as foundational primitives.</p>
-<p>The Elementary Theory of Abstract Categories (ETAC) builds mathematics using only a first-order language with unary functions for domain/codomain and a ternary relation for composition. This framework perfectly supports structural mathematics without the ontological baggage of assuming everything is built from atomic sets inside spatial containers.</p>
-<div class="reading-assignment">
-<strong>Suggested Reading: Relational Morphisms &amp; Flat Transclusion</strong>
-<ul>
-<li>
-Holmes, M. R. (2012). <em>Elementary Set Theory with a Universal Set</em>. Ch. 4 (Building Finite Structures), Ch. 5 (The Theory of Relations), Ch. 10 (Introducing Functions).
-</li>
-<li>
-Forster, T. (1995). <em>Set Theory with a Universal Set</em>. Section 2.1.2 (Boffa’s lemma and automorphism).
-</li>
-<li>
-Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 2.1, 2.3, 2.5 (The structural hierarchy and non-spatial model data).
-</li>
-</ul>
-</div>
 <hr>
 </section>
-<section id="the-pivot-to-json-modeling-transclusion" class="level2">
-<h2 class="anchored" data-anchor-id="the-pivot-to-json-modeling-transclusion">The Pivot to JSON: Modeling Transclusion</h2>
-<p>Up until now, you have been writing raw First-Order Logic to understand how syntax (Stratification) acts as the operational authorization for set formation.</p>
-<p>Now, we must translate this logic into a machine-readable format to build our Categorical Ontology.</p>
-<p><strong>Why JSON?</strong> As discussed in Module 1, the internet attempts (and largely fails) to produce a non-well-founded graph of pure transclusion. Physical hardware struggles with infinite recursion; you cannot put a spatial folder inside itself without crashing a hard drive.</p>
-<p>JSON (JavaScript Object Notation), however, is uniquely suited to model Quinean ontology. 1. <strong>It is Flat and Non-Spatial</strong>: A JSON object is not a physical box. It is a dictionary of key-value pairs. 2. <strong>Syntactic Authorization</strong>: By defining object references via ID strings (e.g., <code>"source_node": "NodeA"</code>) instead of nested arrays, JSON creates a flat, self-referential graph. It points to objects operationally rather than nesting them spatially.</p>
-<p>This makes JSON the perfect semantic vessel to model the Universal Set (<span class="math inline">\(V \in V\)</span>) and complex categorical morphisms without triggering a mechanical stack overflow.</p>
+</section>
+<section id="f.-william-lawvere-the-category-of-categories-etac" class="level2">
+<h2 class="anchored" data-anchor-id="f.-william-lawvere-the-category-of-categories-etac">F. William Lawvere: The Category of Categories (ETAC)</h2>
+<p>In 1964, F. William Lawvere published <em>The Category of Categories as a Foundation for Mathematics</em>, eliminating set membership (<span class="math inline">\(\in\)</span>) entirely as a foundational primitive.</p>
+<p>Lawvere’s <strong>Elementary Theory of Abstract Categories (ETAC)</strong> builds mathematics upon a first-order language using only:</p>
+<ol type="1">
+<li>Unary domain and codomain operations (<span class="math inline">\(\Delta_0(f) = A, \Delta_1(f) = B\)</span>).</li>
+<li>A ternary composition relation (<span class="math inline">\(\Gamma(f, g, h) \iff h = g \circ f\)</span>).</li>
+</ol>
+<p>By abandoning element membership as the bedrock of reason, Lawvere demonstrated that mathematics can be formulated directly as a flat web of compositional arrows.</p>
+<hr>
+</section>
+<section id="the-pivot-to-json-modeling-flat-categorical-adjacency" class="level2">
+<h2 class="anchored" data-anchor-id="the-pivot-to-json-modeling-flat-categorical-adjacency">The Pivot to JSON: Modeling Flat Categorical Adjacency</h2>
+<p>Up until now, you have analyzed how First-Order Logic uses Stratification to authorize set formation syntactically. We must now serialize this logic into a machine-readable format to build our NF Categorical Ontology.</p>
+<pre><code>Set-Theoretic Class Hierarchy:    Nested V_alpha sets
+              │
+              ▼
+Categorical Arrow Network:        Objects &amp; Morphisms
+              │
+              ▼
+Flat JSON Adjacency Matrix:       Key-Value Object Arrays</code></pre>
+<section id="why-json-models-category-theory-natively" class="level3">
+<h3 class="anchored" data-anchor-id="why-json-models-category-theory-natively">Why JSON Models Category Theory Natively</h3>
+<ol type="1">
+<li><strong>Non-Spatial Flat Addressing</strong>: In a physical filesystem, putting a folder inside itself creates an infinite recursive loop. A JSON document is a flat hash map of key-value pairs. Nodes reference other nodes through string identifiers (<code>"source": "NodeA"</code>), establishing operational links without spatial nesting.</li>
+<li><strong>Native Morphism Representation</strong>: A JSON object with <code>source</code>, <code>target</code>, and <code>id</code> properties is an exact computational instantiation of a category theory arrow <span class="math inline">\(f: A \to B\)</span>.</li>
+<li><strong>Graph Traversal without Stack Overflows</strong>: Because references are flat string lookups, self-referential structures (such as Quine’s Universal Set <span class="math inline">\(V \in V\)</span> or endofunctors <span class="math inline">\(T: \mathcal{C} \to \mathcal{C}\)</span>) evaluate as directed graph cycles in constant memory.</li>
+</ol>
+</section>
 <section id="the-json-ontology-blueprint" class="level3">
 <h3 class="anchored" data-anchor-id="the-json-ontology-blueprint">The JSON Ontology Blueprint</h3>
 <p>Before solving the following problems, review the core schema format we will use to model Categorical objects and morphisms. Note the specific keys (<code>id</code>, <code>type</code>, <code>source</code>, <code>target</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"Morphism_f"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"morphism"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"NodeA"</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"NodeB"</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"constraints"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"associative"</span><span class="ot">]</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"Morphism_f"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"morphism"</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"NodeA"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"NodeB"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"constraints"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"associative"</span><span class="ot">]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>type</code>: Identifies the mathematical entity (<code>object</code>, <code>morphism</code>, <code>functor</code>).</li>
 <li><code>source</code> / <code>target</code>: The domains and codomains (can be single strings or arrays of strings for products).</li>
@@ -372,12 +389,12 @@ Wilshaw, S. (2025). <em>New Foundations is Consistent</em>. Sections 2.1, 2.3, 2
 </div>
 <div class="guided-example-content">
 <p>If you want to represent the morphism <span class="math inline">\(f: A \to B\)</span> in JSON, you need to specify its domain and codomain explicitly.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"Morphism_f"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"morphism"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"_____"</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"_____"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"Morphism_f"</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"morphism"</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source"</span><span class="fu">:</span> <span class="st">"_____"</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"_____"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>(Hint: What are the ID strings for the objects representing the domain and codomain in <span class="math inline">\(f: A \to B\)</span>?)</em></p>
 </div>
 </div>
