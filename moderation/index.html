@@ -57,11 +57,13 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.ryann.workers.dev; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.merciace.workers.dev https://tl-study-relay.ryann.workers.dev; object-src 'none';">
 <meta name="referrer" content="no-referrer">
+<script src="../js/github-sync.js"></script>
 <script src="../js/cohort.js"></script>
 <script src="../js/priority-nav.js"></script>
 <script src="../js/home-cohorts.js"></script>
+<script src="../js/syntax-sandbox.js"></script>
 
 
 </head>
@@ -173,6 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This dashboard allows authorized administrators to manage cohort submissions. If you are not an administrator, the backend edge relay will mathematically reject your requests regardless of what buttons you click here.</p>
 <div id="admin-auth-warning" class="mt-4">
+<div id="tl-study-auth-container" class="my-4">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -192,6 +195,7 @@ ul.task-list li input[type="checkbox"] {
 <button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">
 Install &amp; Authenticate
 </button>
+</div>
 </div>
 </div>
 </div>
@@ -227,7 +231,7 @@ Install &amp; Authenticate
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const token = localStorage.getItem('tl_study_token');
+    const token = localStorage.getItem('tl_study_github_token');
     if (!token) {
         document.getElementById('admin-auth-warning').style.display = 'block';
         return;
@@ -245,7 +249,7 @@ async function executeAdminAction(actionType) {
     const problem = document.getElementById('mod-problem').value;
     const username = document.getElementById('mod-username').value;
     const resultDiv = document.getElementById('admin-result');
-    const token = localStorage.getItem('tl_study_token');
+    const token = localStorage.getItem('tl_study_github_token');
     
     if (!topic || !problem || !username) {
         resultDiv.innerHTML = `<span class="text-danger">Topic, Problem ID, and Username are required.</span>`;
@@ -257,13 +261,13 @@ async function executeAdminAction(actionType) {
     try {
         let res;
         if (actionType === 'admin_delete_submission') {
-            const url = `https://tl-study-relay.ryann.workers.dev/?action=admin_delete_submission&topic=${encodeURIComponent(topic)}&cohortId=${encodeURIComponent(cohort)}&problemId=${encodeURIComponent(problem)}&targetUsername=${encodeURIComponent(username)}`;
+            const url = `https://tl-study-relay.merciace.workers.dev/?action=admin_delete_submission&topic=${encodeURIComponent(topic)}&cohortId=${encodeURIComponent(cohort)}&problemId=${encodeURIComponent(problem)}&targetUsername=${encodeURIComponent(username)}`;
             res = await fetch(url, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
         } else if (actionType === 'admin_edit_submission') {
-            const url = `https://tl-study-relay.ryann.workers.dev/`;
+            const url = `https://tl-study-relay.merciace.workers.dev/`;
             res = await fetch(url, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },

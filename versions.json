@@ -164,10 +164,11 @@
       }
     },
     "nf-set-theory/index.qmd": {
-      "document_hash": "b25f92e521547907af75bce4fa565555",
+      "document_hash": "c071c70a27741077b969b1e6875a9709",
       "historical_hashes": [
         "5736ac6a4dcf972c50866c77f20a1434",
-        "d87ce64ed0263529a8b0fb3c4dd33869"
+        "d87ce64ed0263529a8b0fb3c4dd33869",
+        "b25f92e521547907af75bce4fa565555"
       ],
       "problems": {}
     },
@@ -255,9 +256,10 @@
       "problems": {}
     },
     "material-logics-i/index.qmd": {
-      "document_hash": "12c9b8259519c47a83ffeb4ccf0b7ae8",
+      "document_hash": "79e8944c8589b72542f10872e4f2cd22",
       "historical_hashes": [
-        "3be46203f04363faae3c4234afbbac9d"
+        "3be46203f04363faae3c4234afbbac9d",
+        "12c9b8259519c47a83ffeb4ccf0b7ae8"
       ],
       "problems": {}
     },
@@ -302,12 +304,13 @@
       "problems": {}
     },
     "material-logics-ii/index.qmd": {
-      "document_hash": "b06859e631fc5f8b97dd4d65b76d0ed0",
+      "document_hash": "6d9ee90a18497d045ed3e94077b42ad2",
       "historical_hashes": [
-        "ebcb5d5697667d66730dc47fc0b13a28"
+        "ebcb5d5697667d66730dc47fc0b13a28",
+        "b06859e631fc5f8b97dd4d65b76d0ed0"
       ],
       "problems": {}
     }
   },
-  "generated_at": "2026-08-29T03:32:25.217Z"
+  "generated_at": "2026-08-29T04:32:12.844Z"
 }

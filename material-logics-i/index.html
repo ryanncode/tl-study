@@ -57,12 +57,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.ryann.workers.dev; object-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.github.com https://tl-study-relay.merciace.workers.dev https://tl-study-relay.ryann.workers.dev; object-src 'none';">
 <meta name="referrer" content="no-referrer">
+<script src="../js/github-sync.js"></script>
 <script src="../js/cohort.js"></script>
 <script src="../js/priority-nav.js"></script>
 <script src="../js/home-cohorts.js"></script>
-<script src="../js/github-sync.js"></script>
 <script src="../js/syntax-sandbox.js"></script>
 
 
@@ -262,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="connect-your-execution-environment" class="level2">
 <h2 class="anchored" data-anchor-id="connect-your-execution-environment">Connect Your Execution Environment</h2>
 <p>To participate in the problem-posing exercises and the final SAT Solver Challenge, you must connect your GitHub account.</p>
+<div id="tl-study-auth-container" class="my-4">
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -281,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 <button class="btn btn-primary mt-3" onclick="tlStudySync.startAuthFlow()">
 Install &amp; Authenticate
 </button>
+</div>
 </div>
 </div>
 <hr>
