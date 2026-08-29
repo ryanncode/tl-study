@@ -181,11 +181,12 @@ class GitHubSync {
     }
 
     renderAuthUI() {
-        const container = document.getElementById('tl-study-auth-container');
-        if (!container) return;
+        const containers = document.querySelectorAll('#tl-study-auth-container, .tl-study-auth-container');
+        if (containers.length === 0) return;
 
+        let html = '';
         if (this.isFullyConfigured()) {
-            container.innerHTML = `
+            html = `
                 <div class="callout callout-style-default callout-note callout-titled my-3">
                   <div class="callout-header d-flex align-items-center">
                     <div class="callout-icon-container"><i class="callout-icon"></i></div>
@@ -201,8 +202,25 @@ class GitHubSync {
                   </div>
                 </div>
             `;
+        } else if (this.isAuthenticated()) {
+            html = `
+                <div class="callout callout-style-default callout-warning callout-titled my-3">
+                  <div class="callout-header d-flex align-items-center">
+                    <div class="callout-icon-container"><i class="callout-icon"></i></div>
+                    <div class="callout-title-container flex-fill">GitHub Account Connected – Repository Required</div>
+                  </div>
+                  <div class="callout-body-container callout-body">
+                    <p class="mb-2">You are authenticated with GitHub, but have not selected a dedicated repository for this course yet.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                      <button class="btn btn-primary btn-sm" onclick="window.tlStudySync.redirectToAppInstallation()">Select / Install Repository</button>
+                      <button class="btn btn-outline-secondary btn-sm" onclick="window.tlStudySync.discoverRepository()">Check Connection</button>
+                      <button class="btn btn-outline-danger btn-sm" onclick="window.tlStudySync.disconnect()">Disconnect</button>
+                    </div>
+                  </div>
+                </div>
+            `;
         } else {
-            container.innerHTML = `
+            html = `
                 <div class="callout callout-style-default callout-important callout-titled my-3">
                   <div class="callout-header d-flex align-items-center">
                     <div class="callout-icon-container"><i class="callout-icon"></i></div>
@@ -220,6 +238,10 @@ class GitHubSync {
                 </div>
             `;
         }
+
+        containers.forEach(container => {
+            container.innerHTML = html;
+        });
     }
 
     changeRepository() {
