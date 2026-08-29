@@ -199,35 +199,35 @@ Install &amp; Authenticate
 </div>
 </div>
 </div>
-<div id="admin-panel" class="card mb-4 mt-4" style="display: none;">
-<div class="card-header bg-danger text-white">
-<pre><code>Cohort Moderation Tools</code></pre>
-</div>
-<div class="card-body">
-<pre><code>&lt;div class="row g-3 mb-3"&gt;
-  &lt;div class="col-md-3"&gt;
-    &lt;label&gt;Topic&lt;/label&gt;
-    &lt;input type="text" id="mod-topic" class="form-control" placeholder="e.g. nf-set-theory"&gt;
-  &lt;/div&gt;
-  &lt;div class="col-md-3"&gt;
-    &lt;label&gt;Cohort ID&lt;/label&gt;
-    &lt;input type="text" id="mod-cohort" class="form-control" placeholder="e.g. default"&gt;
-  &lt;/div&gt;
-  &lt;div class="col-md-3"&gt;
-    &lt;label&gt;Problem ID&lt;/label&gt;
-    &lt;input type="text" id="mod-problem" class="form-control" placeholder="e.g. exercise-1"&gt;
-  &lt;/div&gt;
-  &lt;div class="col-md-3"&gt;
-    &lt;label&gt;Target Username&lt;/label&gt;
-    &lt;input type="text" id="mod-username" class="form-control" placeholder="e.g. ryanncode"&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="d-flex gap-2"&gt;
-  &lt;button class="btn btn-outline-danger" onclick="executeAdminAction('admin_delete_submission')"&gt;Delete Submission&lt;/button&gt;
-  &lt;button class="btn btn-outline-warning" onclick="executeAdminAction('admin_edit_submission')"&gt;Hide Submission (WIP)&lt;/button&gt;
-&lt;/div&gt;
-&lt;div id="admin-result" class="mt-3"&gt;&lt;/div&gt;</code></pre>
-</div>
+<div class="card mb-4 mt-4" id="admin-panel" style="display: none;">
+  <div class="card-header bg-danger text-white">
+    Cohort Moderation Tools
+  </div>
+  <div class="card-body">
+    <div class="row g-3 mb-3">
+      <div class="col-md-3">
+        <label class="form-label">Topic</label>
+        <input type="text" id="mod-topic" class="form-control" placeholder="e.g. nf-set-theory">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Cohort ID</label>
+        <input type="text" id="mod-cohort" class="form-control" placeholder="e.g. default">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Problem ID</label>
+        <input type="text" id="mod-problem" class="form-control" placeholder="e.g. exercise-1">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Target Username</label>
+        <input type="text" id="mod-username" class="form-control" placeholder="e.g. ryanncode">
+      </div>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-danger" onclick="executeAdminAction('admin_delete_submission')">Delete Submission</button>
+      <button class="btn btn-outline-warning" onclick="executeAdminAction('admin_edit_submission')">Hide Submission (WIP)</button>
+    </div>
+    <div id="admin-result" class="mt-3"></div>
+  </div>
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
